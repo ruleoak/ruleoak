@@ -35,4 +35,4 @@ policy boundary
 
 The demos are intentionally synthetic and small. They are not production systems.
 
-| Python Bridge | `examples/python-bridge/generic_bridge_sample.py` | Python SDK bridge for RuleOak Core v1.0-compatible governance records | Python app integration |
+| Python Bridge | `examples/python-bridge/generic_bridge_sample.py` | Python SDK bridge private preview for RuleOak Core v1.0-compatible governance records | Python app integration |

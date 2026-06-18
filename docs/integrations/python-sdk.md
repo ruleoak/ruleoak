@@ -1,8 +1,12 @@
 # Python SDK Bridge
 
-RuleOak Core v1.0 is the canonical governed AI runtime. The companion Python SDK, `ruleoak-py`, lets Python applications emit RuleOak Core v1.0-compatible governance records without embedding the TypeScript runtime.
+RuleOak Core v1.0 is the canonical governed AI runtime. The companion Python SDK, `ruleoak-py`, is currently a **private-preview bridge** for Python applications that need RuleOak Core v1.0-compatible governance records and governed LLM calls.
 
-Use the Python SDK when the vertical application is already written in Python and needs a clean governance trail around automated work:
+Do not describe `ruleoak-py` as a public stable SDK yet. It is useful for private validation, integration testing, and proving that RuleOak governance can fit Python vertical-app workflows without embedding the TypeScript runtime.
+
+## Use case
+
+Use the Python bridge when an application is already written in Python and needs a clean governance trail around automated work:
 
 - run records
 - evidence records
@@ -11,6 +15,8 @@ Use the Python SDK when the vertical application is already written in Python an
 - audit events
 - report records
 - domain-pack metadata
+- governed LLM request/response records
+- local-first LLM routing with cloud-disabled-by-default behavior
 
 ## Positioning
 
@@ -19,7 +25,7 @@ Use the Python SDK when the vertical application is already written in Python an
 | Layer | Role |
 |---|---|
 | RuleOak Core v1.0 | Canonical governed runtime and policy/sandbox foundation |
-| ruleoak-py v0.1.0 | Python SDK for RuleOak-compatible governance records |
+| ruleoak-py v0.2.1 private preview | Python SDK bridge for RuleOak-compatible governance records and governed LLM calls |
 | Vertical app | Performs domain work and calls the SDK at governance boundaries |
 
 ## Typical integration pattern
@@ -32,6 +38,7 @@ A Python application should call the SDK before and after meaningful actions:
 4. Request or record approval when needed.
 5. Append audit events.
 6. Write a report record.
+7. For LLM calls, record prompt/response hashes, provider mode, data boundary, policy decision, and approval status.
 
 The application remains responsible for its own domain logic. RuleOak records the governance trail around that work.
 
@@ -58,16 +65,24 @@ The optional smoke test is local only. It does not download packages and does no
 
 ## Release boundary
 
-The Python SDK starts at `0.1.0` because it is a new SDK surface. Its record protocol is compatible with RuleOak Core v1.0. Keep this distinction clear:
+The SDK version is separate from RuleOak Core:
 
-- RuleOak Core: v1.0
-- ruleoak-py: v0.1.0
+- RuleOak Core: v1.0 product line
+- ruleoak-py: v0.2.1 private preview
 - Record compatibility: RuleOak Core v1.0
+
+The SDK should stay private until:
+
+- final license is selected;
+- API stability level is clear;
+- public README and examples are reviewed;
+- no private vertical-app names or internal project details remain;
+- PyPI/GitHub publication decision is intentional.
 
 ## Public communication
 
-When describing the SDK publicly, use this sentence:
+Safe public wording:
 
-> ruleoak-py is a Python SDK for emitting RuleOak Core v1.0-compatible governance records from Python vertical applications.
+> A private-preview Python bridge is being validated for RuleOak Core v1.0-compatible governance records and governed LLM calls from Python vertical applications.
 
-Avoid describing it as a full Python port or as a sandbox.
+Avoid describing it as a full Python port, a public stable SDK, a sandbox, or a cloud service.

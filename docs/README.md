@@ -31,11 +31,11 @@ RuleOak Core is an AGPL early runtime for governed AI workflows: policy, evidenc
 
 ## Integrations
 
-- [Python SDK bridge](integrations/python-sdk.md) — emit RuleOak Core v1.0-compatible governance records from Python applications.
+- [Python SDK bridge private preview](integrations/python-sdk.md) — evaluate RuleOak Core v1.0-compatible governance records from Python applications through the private-preview bridge.
 
 
 ## Discovery and contribution
 
 - [How RuleOak fits with other agent tools](comparisons.md)
 - [Feedback tasks](community/feedback-tasks.md)
-- [Python SDK bridge](integrations/python-sdk.md)
+- [Python SDK bridge private preview](integrations/python-sdk.md)

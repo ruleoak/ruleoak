@@ -63,7 +63,7 @@ RuleOak is useful for technical diagnosis, research workflows, review systems, o
 | Sandbox foundation | Filesystem, network, command, and tool policy guards with deny-by-default behavior |
 | Demos | Technical Consultant demo and Research Brief demo |
 | Launch UX | `npm run launch`, `npm run demo`, workflow chooser, templates, one-page HTML reports, local report viewer |
-| Python bridge | `ruleoak-py v0.1.0` companion SDK for RuleOak Core v1.0-compatible governance records |
+| Python bridge | Private-preview `ruleoak-py v0.2.1` SDK guidance for RuleOak Core v1.0-compatible governance records and governed LLM calls |
 | Local LLM readiness | Hardware check, starter Ollama model recommendation, smoke test helpers |
 | Quality signals | Tests, CI workflow, demo GIF, threat model docs, feedback task list |
 
@@ -71,17 +71,19 @@ RuleOak is useful for technical diagnosis, research workflows, review systems, o
 
 RuleOak Core is the canonical runtime foundation.
 
-Python builders can use the companion SDK:
+Python builders can evaluate the private-preview companion SDK:
 
 ```bash
 cd ruleoak-py
 python -m pip install -e .
-python examples/generic_governance_example.py
+python examples/media_workflow_example.py
 ```
 
-The Python SDK emits RuleOak Core v1.0-compatible run, evidence, approval, audit, policy decision, and report records. It is a bridge, not a fork of the runtime.
+The Python SDK emits RuleOak Core v1.0-compatible run, evidence, approval, audit, policy decision, report, and governed LLM records. It is a bridge, not a fork of the runtime. The SDK is currently private preview and should not be described as a public stable package yet.
 
 Read [docs/integrations/python-sdk.md](docs/integrations/python-sdk.md).
+
+Public release note: `ruleoak-py` is not yet a public stable SDK. It is a private-preview bridge used to validate Python vertical-app integration before final licensing and API boundaries are published.
 
 ## Runtime lifecycle
 

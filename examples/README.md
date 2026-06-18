@@ -32,4 +32,4 @@ Shows a non-IT workflow: sourced claims, confidence, known unknowns, recommendat
 
 ## Python bridge example
 
-`python-bridge/` shows how a Python application can use the companion `ruleoak-py` SDK to emit RuleOak Core v1.0-compatible governance records. The example is generic and local-first.
+`python-bridge/` shows how a Python application can use the private-preview companion `ruleoak-py` SDK to emit RuleOak Core v1.0-compatible governance records. The example is generic and local-first.

@@ -1,6 +1,6 @@
 {
   "name": "@ruleoak/core",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "private": false,
   "type": "module",
   "description": "AGPL early runtime with sandbox foundation and launch UX for governed AI workflows: policy, evidence, approval, audit, and deny-by-default boundaries.",
