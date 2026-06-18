@@ -1,0 +1,8 @@
+{
+  "project": { "key": "GOV", "name": "Governed Workflow Example" },
+  "issues": [
+    { "key": "GOV-1", "summary": "Review external action approval", "status": "In Review", "priority": "High" },
+    { "key": "GOV-2", "summary": "Add audit report wording", "status": "To Do", "priority": "Medium" },
+    { "key": "GOV-3", "summary": "Validate connector boundaries", "status": "Done", "priority": "High" }
+  ]
+}

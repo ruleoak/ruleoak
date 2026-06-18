@@ -1,6 +1,6 @@
 # Threat Model
 
-RuleOak Core v1.0 includes a sandbox foundation. It is not yet externally security-reviewed.
+RuleOak Core v1.3 includes a sandbox foundation. It is not yet externally security-reviewed.
 
 ## Primary risks
 
@@ -20,4 +20,4 @@ The model can propose. The runtime and sandbox decide. Risky actions require app
 
 ## Review boundary
 
-The v1.0 threat model is a starting point for engineering review. It is not a certification or security audit.
+The v1.3 threat model is a starting point for engineering review. It is not a certification or security audit.

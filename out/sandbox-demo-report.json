@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-18T02:46:30.172Z",
+  "generatedAt": "2026-06-18T14:06:43.716Z",
   "stage": "security foundation",
   "boundary": "deny-by-default sandbox foundation; not externally security-reviewed",
   "checks": [

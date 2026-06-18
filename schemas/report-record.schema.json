@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/report-record.schema.json",
+  "title": "RuleOak ReportRecord",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schemaVersion",
+    "recordType",
+    "reportId",
+    "runId",
+    "title",
+    "summary",
+    "createdAt"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "ruleoak.governance.v1"
+    },
+    "recordType": {
+      "const": "ReportRecord"
+    }
+  }
+}

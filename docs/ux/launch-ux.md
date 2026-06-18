@@ -1,6 +1,6 @@
 # Launch UX
 
-RuleOak Core v1.0 includes a guided first-run experience.
+RuleOak Core v1.3 includes a guided first-run experience.
 
 ## Main commands
 

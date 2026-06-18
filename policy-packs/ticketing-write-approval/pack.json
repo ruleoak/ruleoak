@@ -1,0 +1,24 @@
+{
+  "id": "ticketing-write-approval",
+  "name": "Ticketing Write Approval",
+  "version": "1.0.0",
+  "category": "ticketing",
+  "description": "Allows ticket reads and requires approval for comments, transitions, and assignment changes.",
+  "policy": {
+    "allowedTools": [
+      "read_ticket",
+      "search_tickets",
+      "collect_ticket_evidence"
+    ],
+    "approvalRequired": [
+      "comment_ticket",
+      "transition_ticket",
+      "assign_ticket"
+    ],
+    "blockedTools": [
+      "delete_ticket",
+      "bulk_close_tickets"
+    ],
+    "boundary": "approval_gated_writes"
+  }
+}

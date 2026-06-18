@@ -1,0 +1,18 @@
+{
+  "boundary": "governed_tool_calls",
+  "allowedTools": [
+    "search_docs",
+    "read_ticket",
+    "summarize_notes"
+  ],
+  "approvalRequired": [
+    "send_external_message",
+    "update_ticket",
+    "create_issue"
+  ],
+  "blockedTools": [
+    "delete_workspace_file",
+    "upload_secret",
+    "run_destructive_command"
+  ]
+}

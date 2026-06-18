@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/policy-decision-record.schema.json",
+  "title": "RuleOak PolicyDecisionRecord",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schemaVersion",
+    "recordType",
+    "decisionId",
+    "runId",
+    "action",
+    "subject",
+    "effect",
+    "createdAt"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "ruleoak.governance.v1"
+    },
+    "recordType": {
+      "const": "PolicyDecisionRecord"
+    }
+  }
+}

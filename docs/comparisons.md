@@ -41,7 +41,7 @@ RuleOak asks questions such as:
 
 ## What RuleOak does not claim
 
-RuleOak Core v1.0 does not claim to be:
+RuleOak Core v1.3 does not claim to be:
 
 - a full graph orchestration framework;
 - a multi-agent team builder;

@@ -1,0 +1,35 @@
+{
+  "id": "filesystem-safe",
+  "name": "Filesystem Safe Actions",
+  "version": "1.0.0",
+  "category": "filesystem",
+  "description": "Local-first filesystem safety defaults: read/list allowed, writes approval-gated, destructive actions blocked.",
+  "policy": {
+    "allowedTools": [
+      "search_docs",
+      "read_workspace_file",
+      "list_workspace_files",
+      "generate_report"
+    ],
+    "approvalRequired": [
+      "write_workspace_file",
+      "create_workspace_note"
+    ],
+    "blockedTools": [
+      "delete_workspace_file",
+      "modify_secret_file",
+      "read_secret_file"
+    ],
+    "boundary": "local_only"
+  },
+  "tools": [
+    {
+      "id": "search_docs",
+      "risk": "low"
+    },
+    {
+      "id": "delete_workspace_file",
+      "risk": "critical"
+    }
+  ]
+}

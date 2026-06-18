@@ -1,0 +1,22 @@
+{
+  "id": "ticketing-readonly",
+  "name": "Ticketing Read-only Evidence",
+  "version": "1.0.0",
+  "category": "ticketing",
+  "description": "Allows read-only ticket evidence collection and blocks ticket mutations.",
+  "policy": {
+    "allowedTools": [
+      "read_ticket",
+      "search_tickets",
+      "collect_ticket_evidence"
+    ],
+    "approvalRequired": [],
+    "blockedTools": [
+      "comment_ticket",
+      "transition_ticket",
+      "close_ticket",
+      "assign_ticket"
+    ],
+    "boundary": "read_only"
+  }
+}

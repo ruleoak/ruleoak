@@ -51,7 +51,7 @@ export class RunManager {
 
   report({ summary = {}, output = {} } = {}) {
     return {
-      runtimeVersion: "1.0.0",
+      runtimeVersion: "2.0.0",
       runtimeStage: "early-runtime",
       run: { ...this.run },
       boundary: this.policyEngine.boundary(),

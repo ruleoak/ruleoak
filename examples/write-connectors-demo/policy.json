@@ -1,0 +1,6 @@
+{
+  "boundary": "approval_gated_writes",
+  "allowedTools": ["local.write_outbox_note"],
+  "approvalRequired": ["github.comment_issue", "jira.add_comment", "jira.transition_ticket"],
+  "blockedTools": ["github.close_issue", "jira.delete_ticket", "github.merge_pull_request"]
+}

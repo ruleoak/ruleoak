@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/approval-record.schema.json",
+  "title": "RuleOak ApprovalRecord",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schemaVersion",
+    "recordType",
+    "approvalId",
+    "runId",
+    "action",
+    "subject",
+    "decision",
+    "actor",
+    "createdAt"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "ruleoak.governance.v1"
+    },
+    "recordType": {
+      "const": "ApprovalRecord"
+    }
+  }
+}

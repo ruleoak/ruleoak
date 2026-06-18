@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/audit-event.schema.json",
+  "title": "RuleOak AuditEvent",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schemaVersion",
+    "recordType",
+    "eventId",
+    "runId",
+    "eventType",
+    "createdAt"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "ruleoak.governance.v1"
+    },
+    "recordType": {
+      "const": "AuditEvent"
+    }
+  }
+}

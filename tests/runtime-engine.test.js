@@ -20,7 +20,7 @@ run.addEvidence({ id: "E1", source: "test", claim: "runtime records evidence", v
 const { decision, approval } = run.evaluateAction("restart.service");
 const report = run.complete({ summary: { ok: true }, output: { decision } });
 
-assert.equal(report.runtimeVersion, "1.0.0");
+assert.equal(report.runtimeVersion, "2.0.0");
 assert.equal(report.runtimeStage, "early-runtime");
 assert.equal(report.evidence.length, 1);
 assert.equal(decision.approvalRequired, true);

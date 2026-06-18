@@ -1,0 +1,23 @@
+{
+  "id": "cloud-llm-approval",
+  "name": "Cloud LLM Approval",
+  "version": "1.0.0",
+  "category": "llm",
+  "description": "Keeps local LLM calls allowed and requires approval before cloud LLM calls or external data transfer.",
+  "policy": {
+    "allowedTools": [
+      "local_llm_generate",
+      "redact_prompt",
+      "summarize_locally"
+    ],
+    "approvalRequired": [
+      "cloud_llm_generate",
+      "send_prompt_to_cloud"
+    ],
+    "blockedTools": [
+      "upload_raw_data_to_cloud",
+      "send_secret_to_llm"
+    ],
+    "boundary": "local_first_cloud_approval"
+  }
+}

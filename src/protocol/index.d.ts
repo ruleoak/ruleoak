@@ -1,0 +1,12 @@
+export type GovernanceRecordType = "RunRecord" | "EvidenceRecord" | "ApprovalRecord" | "AuditEvent" | "PolicyDecisionRecord" | "ReportRecord";
+export declare const GOVERNANCE_SCHEMA_VERSION: "ruleoak.governance.v1";
+export declare function stableJson(value: unknown): string;
+export declare function recordHash(record: Record<string, unknown>): string;
+export declare function validateGovernanceRecord(record: Record<string, unknown>, expectedType?: GovernanceRecordType): { valid: true; recordType: string; schemaVersion: string };
+export declare function validateMany(records: Array<Record<string, unknown>>): Array<{ valid: true; recordType: string; schemaVersion: string }>;
+export declare function createRunRecord(args?: Record<string, unknown>): Record<string, unknown>;
+export declare function createEvidenceRecord(args?: Record<string, unknown>): Record<string, unknown>;
+export declare function createPolicyDecisionRecord(args?: Record<string, unknown>): Record<string, unknown>;
+export declare function createApprovalRecord(args?: Record<string, unknown>): Record<string, unknown>;
+export declare function createAuditEvent(args?: Record<string, unknown>): Record<string, unknown>;
+export declare function createReportRecord(args?: Record<string, unknown>): Record<string, unknown>;

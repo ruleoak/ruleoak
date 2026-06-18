@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "ruleoak.governance.v1",
+  "recordType": "EvidenceRecord",
+  "evidenceId": "roak-evidence-golden-001",
+  "runId": "roak-run-golden-001",
+  "action": "search_docs",
+  "subject": "docs-folder",
+  "subjectType": "local-folder",
+  "source": "local-fixture",
+  "metadata": {
+    "path": "docs/"
+  },
+  "createdAt": "2026-01-01T00:00:00.000Z",
+  "hash": "sha256-fixture"
+}

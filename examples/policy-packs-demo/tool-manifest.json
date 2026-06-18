@@ -1,0 +1,52 @@
+{
+  "tools": [
+    {
+      "id": "search_docs",
+      "name": "Search docs",
+      "kind": "read",
+      "risk": "low"
+    },
+    {
+      "id": "write_workspace_file",
+      "name": "Write workspace file",
+      "kind": "write",
+      "risk": "medium"
+    },
+    {
+      "id": "delete_workspace_file",
+      "name": "Delete workspace file",
+      "kind": "destructive",
+      "risk": "critical"
+    },
+    {
+      "id": "send_external_message",
+      "name": "Send external message",
+      "kind": "external_write",
+      "risk": "high"
+    },
+    {
+      "id": "read_ticket",
+      "name": "Read ticket",
+      "kind": "ticketing_read",
+      "risk": "low"
+    },
+    {
+      "id": "comment_ticket",
+      "name": "Comment ticket",
+      "kind": "ticketing_write",
+      "risk": "high"
+    },
+    {
+      "id": "cloud_llm_generate",
+      "name": "Cloud LLM generate",
+      "kind": "llm_cloud",
+      "risk": "high"
+    },
+    {
+      "id": "upload_raw_data_to_cloud",
+      "name": "Upload raw data to cloud",
+      "kind": "data_export",
+      "risk": "critical"
+    }
+  ]
+}

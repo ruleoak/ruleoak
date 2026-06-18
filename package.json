@@ -1,9 +1,9 @@
 {
   "name": "@ruleoak/core",
-  "version": "1.0.0",
+  "version": "2.0.1",
   "private": false,
   "type": "module",
-  "description": "AGPL early runtime with sandbox foundation and launch UX for governed AI workflows: policy, evidence, approval, audit, and deny-by-default boundaries.",
+  "description": "AGPL governance layer for AI tool calls with policy checks, evidence records, approval gates, audit reports, protocol conformance, adapters, MCP Guard, policy packs, and local approval inbox.",
   "license": "AGPL-3.0-or-later",
   "exports": {
     ".": {
@@ -18,6 +18,37 @@
     "./sandbox": {
       "types": "./src/sandbox/index.d.ts",
       "import": "./src/sandbox/index.js"
+    },
+    "./guard": {
+      "types": "./src/guard/index.d.ts",
+      "import": "./src/guard/index.js"
+    },
+    "./connectors": {
+      "types": "./src/connectors/index.d.ts",
+      "import": "./src/connectors/index.js"
+    },
+    "./telemetry": {
+      "types": "./src/telemetry/index.d.ts",
+      "import": "./src/telemetry/index.js"
+    },
+    "./reports": {
+      "import": "./src/reports/index.js"
+    },
+    "./protocol": {
+      "types": "./src/protocol/index.d.ts",
+      "import": "./src/protocol/index.js"
+    },
+    "./adapters": {
+      "types": "./src/adapters/index.d.ts",
+      "import": "./src/adapters/index.js"
+    },
+    "./policy-packs": {
+      "types": "./src/policy-packs/index.d.ts",
+      "import": "./src/policy-packs/index.js"
+    },
+    "./approval": {
+      "types": "./src/approval/index.d.ts",
+      "import": "./src/approval/index.js"
     }
   },
   "scripts": {
@@ -25,7 +56,7 @@
     "example:consultant": "node examples/technical-consultant-demo/run.js",
     "create:app": "node scripts/create-app.js",
     "typecheck": "tsc --noEmit",
-    "test": "npm run typecheck && npm run test:runtime && npm run test:examples && npm run test:sandbox && npm run test:ux",
+    "test": "npm run typecheck && npm run test:runtime && npm run test:examples && npm run test:sandbox && npm run test:guard && npm run test:mcp && npm run test:connectors && npm run test:writes && npm run test:reports && npm run test:telemetry && npm run test:protocol && npm run test:adapters && npm run test:mcp-proxy && npm run test:policy-packs && npm run test:approval-inbox && npm run test:polish && npm run test:ux",
     "llm:doctor": "node scripts/local-llm-doctor.js",
     "llm:pull": "node scripts/local-llm-pull.js",
     "llm:smoke": "node scripts/local-llm-smoke.js",
@@ -51,7 +82,43 @@
     "report:html": "node src/cli/roak.js report html",
     "report:view": "node src/cli/roak.js report view",
     "test:ux": "node tests/ux-cli.test.js",
-    "test:types": "npm run typecheck"
+    "test:types": "npm run typecheck",
+    "guard:demo": "node examples/tool-guard-demo/run.js",
+    "guard:report": "node examples/tool-guard-demo/run.js",
+    "test:guard": "node tests/tool-guard.test.js",
+    "mcp:demo": "node examples/mcp-guard-demo/run.js",
+    "mcp:report": "node examples/mcp-guard-demo/run.js",
+    "test:mcp": "node tests/mcp-guard.test.js",
+    "connector:demo": "node examples/evidence-connectors-demo/run.js",
+    "connector:report": "node examples/evidence-connectors-demo/run.js",
+    "test:connectors": "node tests/evidence-connectors.test.js",
+    "write:demo": "node examples/write-connectors-demo/run.js",
+    "write:report": "node examples/write-connectors-demo/run.js",
+    "test:writes": "node tests/write-connectors.test.js",
+    "telemetry:export": "node scripts/export-telemetry.js",
+    "viewer:build": "node scripts/build-report-viewer.js",
+    "test:telemetry": "node tests/telemetry-export.test.js",
+    "test:reports": "node tests/report-catalog.test.js",
+    "protocol:conformance": "node scripts/protocol-conformance.js",
+    "test:protocol": "node tests/protocol-conformance.test.js",
+    "adapter:demo": "node examples/agent-adapters-demo/run.js",
+    "langgraph:demo": "node examples/agent-adapters-demo/langgraph-sample.js",
+    "crewai:demo": "node examples/agent-adapters-demo/crewai-sample.js",
+    "test:adapters": "node tests/agent-adapters.test.js",
+    "mcp:proxy:demo": "node examples/mcp-proxy-demo/run.js",
+    "mcp:proxy:report": "node examples/mcp-proxy-demo/run.js",
+    "test:mcp-proxy": "node tests/mcp-proxy.test.js",
+    "policy:packs:list": "node scripts/list-policy-packs.js",
+    "policy:demo": "node examples/policy-packs-demo/run.js",
+    "policy:report": "node examples/policy-packs-demo/run.js",
+    "test:policy-packs": "node tests/policy-packs.test.js",
+    "approval:inbox:build": "node scripts/approval-inbox.js build",
+    "approval:inbox": "node scripts/approval-inbox.js serve",
+    "approval:approve": "node scripts/approval-inbox.js approve",
+    "approval:reject": "node scripts/approval-inbox.js reject",
+    "test:approval-inbox": "node tests/approval-inbox.test.js",
+    "integrate:10min": "node examples/ten-minute-tool-governance/run.js",
+    "test:polish": "node tests/polish-release.test.js"
   },
   "dependencies": {
     "zod": "^3.23.8",

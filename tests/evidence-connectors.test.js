@@ -1,0 +1,30 @@
+import assert from "node:assert/strict";
+import { existsSync, readFileSync, rmSync } from "node:fs";
+import { spawnSync } from "node:child_process";
+import { GitHubReadOnlyConnector, JiraReadOnlyConnector, LocalFileEvidenceConnector, EvidenceConnectorRunner, hashRecord } from "../src/connectors/index.js";
+
+assert.equal(hashRecord({ b: 2, a: 1 }), hashRecord({ a: 1, b: 2 }), "stable hash should ignore key order");
+const github = GitHubReadOnlyConnector.fromFixture("examples/evidence-connectors-demo/fixtures/github.json");
+const jira = JiraReadOnlyConnector.fromFixture("examples/evidence-connectors-demo/fixtures/jira.json");
+const runner = new EvidenceConnectorRunner({ connectors: [github, jira], runId: "test-connectors" });
+const evidence = runner.collect();
+assert.ok(evidence.length >= 4);
+assert.ok(evidence.every((record) => record.metadata.readOnly === true));
+const local = new LocalFileEvidenceConnector({ workspaceRoot: "examples/evidence-connectors-demo" });
+const localEvidence = local.readEvidence("fixtures/local-notes.md");
+assert.equal(localEvidence.connector, "local_files");
+assert.throws(() => local.readEvidence("../../package.json"), /outside workspace/);
+const report = runner.report();
+assert.equal(report.runtimeVersion, "2.0.0");
+assert.equal(report.connectorBoundary.mode, "read_only");
+
+const outDir = "examples/evidence-connectors-demo/out";
+rmSync(outDir, { recursive: true, force: true });
+const result = spawnSync("node", ["examples/evidence-connectors-demo/run.js"], { encoding: "utf8" });
+assert.equal(result.status, 0, result.stderr || result.stdout);
+assert.ok(result.stdout.includes("Evidence records:"));
+assert.ok(existsSync("examples/evidence-connectors-demo/out/evidence-connectors-report.json"));
+const fileReport = JSON.parse(readFileSync("examples/evidence-connectors-demo/out/evidence-connectors-report.json", "utf8"));
+assert.equal(fileReport.runtimeVersion, "2.0.0");
+assert.ok(fileReport.summary.evidenceCount >= 5);
+console.log("evidence connector tests passed");

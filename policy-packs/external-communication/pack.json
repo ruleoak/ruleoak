@@ -1,0 +1,22 @@
+{
+  "id": "external-communication",
+  "name": "External Communication Approval",
+  "version": "1.0.0",
+  "category": "communication",
+  "description": "Requires human approval before sending external messages or publishing outside the local workspace.",
+  "policy": {
+    "allowedTools": [
+      "draft_external_message",
+      "summarize_thread"
+    ],
+    "approvalRequired": [
+      "send_external_message",
+      "publish_external_update",
+      "post_to_channel"
+    ],
+    "blockedTools": [
+      "send_bulk_external_message"
+    ],
+    "boundary": "approval_required_for_external_actions"
+  }
+}

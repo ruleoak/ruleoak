@@ -1,0 +1,6 @@
+{
+  "boundary": "mcp_guard_demo",
+  "allowedTools": ["search_docs", "mcp.tools/list"],
+  "approvalRequired": ["send_external_message"],
+  "blockedTools": ["delete_workspace_file"]
+}

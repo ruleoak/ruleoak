@@ -1,0 +1,34 @@
+{
+  "tools": [
+    {
+      "id": "search_docs",
+      "name": "Search local docs",
+      "description": "Read-only search over local project docs",
+      "kind": "read",
+      "risk": "low",
+      "metadata": {
+        "data_boundary": "local"
+      }
+    },
+    {
+      "id": "send_external_message",
+      "name": "Send external message",
+      "description": "Send a message outside the workspace",
+      "kind": "external_write",
+      "risk": "high",
+      "metadata": {
+        "data_boundary": "external"
+      }
+    },
+    {
+      "id": "delete_workspace_file",
+      "name": "Delete workspace file",
+      "description": "Delete a file from the local workspace",
+      "kind": "destructive_write",
+      "risk": "critical",
+      "metadata": {
+        "data_boundary": "local"
+      }
+    }
+  ]
+}

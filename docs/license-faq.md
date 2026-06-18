@@ -1,6 +1,6 @@
 # License FAQ
 
-RuleOak Core v1.0 is licensed under **AGPL-3.0-or-later**.
+RuleOak Core v1.3 is licensed under **AGPL-3.0-or-later**.
 
 This FAQ is not legal advice. Review the license and consult counsel for production or commercial use.
 

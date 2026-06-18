@@ -1,6 +1,6 @@
 # Sandbox Foundation
 
-RuleOak Core v1.0 includes an early deny-by-default sandbox foundation.
+RuleOak Core v1.3 includes an early deny-by-default sandbox foundation.
 
 The sandbox is a policy decision layer. It does not make RuleOak automatically secure, but it gives workflows a concrete control boundary that can be tested and improved.
 

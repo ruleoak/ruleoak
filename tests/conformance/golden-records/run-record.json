@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "ruleoak.governance.v1",
+  "recordType": "RunRecord",
+  "runId": "roak-run-golden-001",
+  "domain": "generic",
+  "workflow": "tool-call-governance",
+  "actor": "local-user",
+  "status": "completed",
+  "createdAt": "2026-01-01T00:00:00.000Z",
+  "updatedAt": "2026-01-01T00:00:00.000Z",
+  "metadata": {
+    "fixture": true
+  }
+}

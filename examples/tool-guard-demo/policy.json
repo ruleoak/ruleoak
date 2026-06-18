@@ -1,0 +1,12 @@
+{
+  "boundary": "local_guard_demo",
+  "allowedTools": [
+    "search_docs"
+  ],
+  "approvalRequired": [
+    "send_external_message"
+  ],
+  "blockedTools": [
+    "delete_workspace_file"
+  ]
+}

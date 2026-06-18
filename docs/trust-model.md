@@ -21,6 +21,6 @@ What record remains afterward?
 | Audit | Record the run, decisions, evidence, and outputs |
 | Sandbox foundation | Add concrete filesystem, network, command, and tool boundaries |
 
-## v1.0 boundary
+## v1.3 boundary
 
-RuleOak Core v1.0 includes an early runtime and sandbox foundation. It is suitable for learning, prototyping, and building controlled workflows. It is not yet a mature enterprise platform, certified compliance product, or externally security-reviewed sandbox.
+RuleOak Core v1.3 includes an early runtime and sandbox foundation. It is suitable for learning, prototyping, and building controlled workflows. It is not yet a mature enterprise platform, certified compliance product, or externally security-reviewed sandbox.

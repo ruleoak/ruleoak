@@ -35,4 +35,53 @@ policy boundary
 
 The demos are intentionally synthetic and small. They are not production systems.
 
-| Python Bridge | `examples/python-bridge/generic_bridge_sample.py` | Python SDK bridge private preview for RuleOak Core v1.0-compatible governance records | Python app integration |
+| Python Bridge | `examples/python-bridge/generic_bridge_sample.py` | Python SDK bridge private preview for RuleOak Core v1.3-compatible governance records | Python app integration |
+
+
+## RuleOak Core v1.3: Governed Tool Calls
+
+RuleOak Core v1.3 adds Tool Guard and an MCP Guard prototype. Start with `npm run guard:demo`, then read `docs/tool-guard.md` and `docs/mcp-guard.md`.
+
+| Tool Guard | `npm run guard:demo` | Govern AI tool calls before execution with allow, approval-required, and blocked outcomes | Agent tool governance |
+
+
+## Approval-gated write connectors
+
+Run `npm run write:demo` to see GitHub-style, Jira-style, and local write intents governed by policy, approval, evidence, and audit before simulated execution.
+
+See `docs/approval-gated-write-connectors.md`.
+
+
+## Report viewer and telemetry export
+
+Run `npm run viewer:build` to build a local report catalog and `npm run telemetry:export` to export local OpenTelemetry-style governance events.
+
+See `docs/observability/report-viewer-and-telemetry.md`.
+
+
+## LangGraph and CrewAI Adapter Samples
+
+RuleOak Core v1.8 includes dependency-free adapter samples that show how to wrap agent-framework tool calls with RuleOak Tool Guard.
+
+```bash
+npm run adapter:demo
+npm run test:adapters
+```
+
+
+## MCP Guard Proxy Prototype
+
+RuleOak Core v1.8 includes a local in-process MCP Guard Proxy prototype for JSON-RPC `tools/call` requests.
+
+```bash
+npm run mcp:proxy:demo
+npm run test:mcp-proxy
+```
+
+The proxy demonstrates how RuleOak can sit between an AI client and MCP-style tool execution.
+
+## v2.0.1 polish guides
+
+- [Govern an AI tool call in 10 minutes](integrations/govern-ai-tool-call-in-10-minutes.md)
+- [Protocol compatibility statement](protocol/compatibility-statement.md)
+- [Python SDK compatibility note](integrations/python-sdk-compatibility.md)

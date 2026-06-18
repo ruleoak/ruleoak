@@ -6,6 +6,7 @@ import { join, resolve, extname, basename, dirname } from "node:path";
 import { createInterface } from "node:readline/promises";
 import { stdin as input, stdout as output } from "node:process";
 import { renderReportFile } from "../reports/html-report.js";
+import { writeReportCatalog } from "../reports/report-catalog.js";
 
 const root = resolve(".");
 const reportsDir = join(root, "reports", "html");
@@ -30,7 +31,12 @@ function run(cmd, args, options = {}) {
 function findReports() {
   const paths = [
     join(root, "examples", "technical-consultant-demo", "out", "case-report.json"),
-    join(root, "examples", "research-brief-demo", "out", "research-brief-report.json")
+    join(root, "examples", "research-brief-demo", "out", "research-brief-report.json"),
+    join(root, "examples", "tool-guard-demo", "out", "tool-guard-report.json"),
+    join(root, "examples", "tool-guard-demo", "out", "mcp-guard-report.json"),
+    join(root, "examples", "mcp-guard-demo", "out", "mcp-guard-report.json"),
+    join(root, "examples", "evidence-connectors-demo", "out", "evidence-connectors-report.json"),
+    join(root, "examples", "write-connectors-demo", "out", "write-connectors-report.json")
   ];
   return paths.filter(existsSync);
 }
@@ -39,11 +45,13 @@ function htmlReports() {
   const reports = findReports();
   const rendered = [];
   for (const reportPath of reports) {
-    const name = reportPath.includes("research") ? "research-brief-report.html" : "technical-consultant-report.html";
+    const normalizedPath = reportPath.replaceAll("\\", "/");
+    const name = normalizedPath.includes("/write-connectors-demo/") ? "write-connectors-report.html" : normalizedPath.includes("/evidence-connectors-demo/") ? "evidence-connectors-report.html" : normalizedPath.includes("/mcp-guard-demo/") ? "mcp-guard-report.html" : normalizedPath.includes("/tool-guard-demo/") && basename(reportPath).includes("mcp") ? "mcp-guard-tool-demo-report.html" : normalizedPath.includes("/tool-guard-demo/") ? "tool-guard-report.html" : normalizedPath.includes("/research-brief-demo/") ? "research-brief-report.html" : "technical-consultant-report.html";
     rendered.push(renderReportFile(reportPath, join(reportsDir, name)));
   }
   const index = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RuleOak Reports</title><style>body{font-family:system-ui;background:#08111f;color:#eef5ff;padding:40px}a{color:#d6b56d;font-size:20px}li{margin:14px 0}.card{max-width:780px;border:1px solid #2a405e;border-radius:20px;background:#0d1b2e;padding:26px}</style></head><body><div class="card"><h1>RuleOak local report viewer</h1><p>Generated one-page reports:</p><ul>${rendered.map(p => `<li><a href="./${basename(p)}">${basename(p)}</a></li>`).join("")}</ul><p>Run <code>npm run report:view</code> to serve this folder locally.</p></div></body></html>`;
   writeFileSync(join(reportsDir, "index.html"), index);
+  writeReportCatalog(reports, join(reportsDir, "catalog.json"));
   return rendered;
 }
 function printSummary(reportPath) {
@@ -61,6 +69,10 @@ async function chooseWorkflow() {
   console.log("  1) Technical Consultant — evidence, probable cause, approval boundary");
   console.log("  2) Research Brief — sourced claims, confidence, publication approval");
   console.log("  3) Sandbox Demo — deny-by-default filesystem/network/command/tool checks");
+  console.log("  4) Tool Guard Demo — govern AI tool calls before execution");
+  console.log("  5) MCP Guard Demo — govern MCP-style tool requests before execution");
+  console.log("  6) Evidence Connectors Demo — collect read-only evidence from local fixtures");
+  console.log("  7) Write Connectors Demo — approval-gated dry-run writes");
   if (!process.stdin.isTTY) {
     warn("No interactive terminal detected. Running full demo instead.");
     return "all";
@@ -72,6 +84,10 @@ async function chooseWorkflow() {
   if (a === "1") return "consultant";
   if (a === "2") return "research";
   if (a === "3") return "sandbox";
+  if (a === "4") return "guard";
+  if (a === "5") return "mcp";
+  if (a === "6") return "connectors";
+  if (a === "7") return "writes";
   return "all";
 }
 
@@ -91,6 +107,30 @@ function runWorkflow(choice = "all") {
   if (choice === "sandbox" || choice === "all") {
     step("Run sandbox demo");
     run("npm", ["run", "sandbox:demo"], { stdio: "inherit" });
+  }
+  if (choice === "guard" || choice === "all") {
+    step("Run Tool Guard demo");
+    run("npm", ["run", "guard:demo"], { stdio: "inherit" });
+    const p = join(root, "examples", "tool-guard-demo", "out", "tool-guard-report.json");
+    if (existsSync(p)) printSummary(p);
+  }
+  if (choice === "mcp" || choice === "all") {
+    step("Run MCP Guard demo");
+    run("npm", ["run", "mcp:demo"], { stdio: "inherit" });
+    const p = join(root, "examples", "mcp-guard-demo", "out", "mcp-guard-report.json");
+    if (existsSync(p)) printSummary(p);
+  }
+  if (choice === "connectors" || choice === "all") {
+    step("Run Evidence Connectors demo");
+    run("npm", ["run", "connector:demo"], { stdio: "inherit" });
+    const p = join(root, "examples", "evidence-connectors-demo", "out", "evidence-connectors-report.json");
+    if (existsSync(p)) printSummary(p);
+  }
+  if (choice === "writes" || choice === "all") {
+    step("Run Approval-gated Write Connectors demo");
+    run("npm", ["run", "write:demo"], { stdio: "inherit" });
+    const p = join(root, "examples", "write-connectors-demo", "out", "write-connectors-report.json");
+    if (existsSync(p)) printSummary(p);
   }
 }
 
@@ -143,11 +183,15 @@ async function main() {
     console.log("  roak init <dir>          copy a governed workflow template");
     console.log("  roak report html         generate one-page HTML reports");
     console.log("  roak report view         start browser-based local report viewer");
+    console.log("  npm run mcp:demo         run MCP Guard demo");
+    console.log("  npm run connector:demo   run read-only evidence connectors demo");
+    console.log("  npm run write:demo       run approval-gated write connectors demo");
+    console.log("  npm run telemetry:export run local OpenTelemetry-style export");
     return;
   }
   if (cmd === "launch") {
     banner("launch path");
-    console.log("AGPL early runtime + sandbox foundation for governed AI workflows.");
+    console.log("AGPL runtime foundation for governed AI workflows and governed AI tool calls.");
     step("List examples"); run("npm", ["run", "examples:list"], { stdio: "inherit" });
     runWorkflow("all");
     step("Generate one-page HTML reports"); const rendered = htmlReports(); rendered.forEach(p => ok(p));

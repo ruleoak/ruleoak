@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "ruleoak.governance.v1",
+  "recordType": "ApprovalRecord",
+  "approvalId": "roak-approval-golden-001",
+  "runId": "roak-run-golden-001",
+  "action": "send_external_message",
+  "subject": "external-recipient",
+  "decision": "needs_review",
+  "actor": "reviewer",
+  "reason": "External communication requires approval.",
+  "metadata": {},
+  "createdAt": "2026-01-01T00:00:00.000Z"
+}

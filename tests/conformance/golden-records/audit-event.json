@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "ruleoak.governance.v1",
+  "recordType": "AuditEvent",
+  "eventId": "roak-audit-golden-001",
+  "runId": "roak-run-golden-001",
+  "eventType": "policy_checked",
+  "action": "send_external_message",
+  "subject": "external-recipient",
+  "actor": "ruleoak",
+  "policyDecision": "approval_required",
+  "evidenceId": "roak-evidence-golden-001",
+  "approvalId": "roak-approval-golden-001",
+  "metadata": {},
+  "createdAt": "2026-01-01T00:00:00.000Z"
+}

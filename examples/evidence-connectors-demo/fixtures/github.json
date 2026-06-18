@@ -1,0 +1,9 @@
+{
+  "repository": { "fullName": "example/governed-agent", "defaultBranch": "main", "visibility": "private" },
+  "issues": [
+    { "number": 1, "title": "Clarify quickstart", "state": "open", "labels": ["docs", "feedback"] },
+    { "number": 2, "title": "Add policy examples", "state": "open", "labels": ["policy"] },
+    { "number": 3, "title": "Completed README typo", "state": "closed", "labels": ["docs"] }
+  ],
+  "pullRequests": []
+}

@@ -1,6 +1,6 @@
 # Sandbox Boundaries
 
-RuleOak Core v1.0 includes four security foundation boundaries.
+RuleOak Core v1.3 includes four security foundation boundaries.
 
 ## Filesystem
 

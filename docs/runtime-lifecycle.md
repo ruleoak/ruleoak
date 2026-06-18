@@ -1,6 +1,6 @@
-# RuleOak v1.0 Early Runtime Lifecycle
+# RuleOak v1.3 Early Runtime Lifecycle
 
-RuleOak Core v1.0 moves from demo scripts plus contracts to an **early runtime**.
+RuleOak Core v1.3 moves from demo scripts plus contracts to an **early runtime**.
 
 It is still not a mature enterprise runtime, but the demos now run through real runtime modules:
 
@@ -36,7 +36,7 @@ create run
 | `AuditLog` | Records run, evidence, policy, approval, and completion events. |
 | `ReportExporter` | Writes structured runtime reports to disk. |
 
-## What v1.0 proves
+## What v1.3 proves
 
 v1.0 proves that the RuleOak pattern is executable as a small runtime:
 
@@ -47,7 +47,7 @@ policy-bound actions
 + audit-style outputs
 ```
 
-## What v1.0 does not claim
+## What v1.3 does not claim
 
 v1.0 is not yet:
 

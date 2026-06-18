@@ -9,7 +9,7 @@ function help() {
 
 Commands:
   inspect             Print the public package boundary
-  runtime-inspect     Print early-runtime modules and lifecycle
+  runtime-inspect     Print runtime modules and lifecycle
   sandbox-inspect     Print sandbox foundation controls
   help                Show this help
 
@@ -29,10 +29,10 @@ if (args.length === 0 || args.includes('--help') || args.includes('-h') || args[
 if (args[0] === 'inspect') {
   console.log(JSON.stringify({
     name: 'RuleOak Core',
-    version: '1.0.0',
-    stage: 'v1.0 early runtime + sandbox foundation + launch UX',
+    version: '2.0.1',
+    stage: 'v2.0.1 polish: govern AI tool calls in 10 minutes + protocol v1 compatibility + approval inbox UX guidance',
     boundary: 'AGPL open core for governed AI workflows',
-    includes: ['runtime modules', 'sandbox foundation', 'contracts', 'schemas', 'copyable examples', 'local LLM readiness', 'tests', 'CI', 'launch UX'],
+    includes: ['runtime modules', 'sandbox foundation', 'contracts', 'schemas', 'copyable examples', 'local LLM readiness', 'tests', 'CI', 'launch UX', 'Tool Guard', 'MCP Guard Proxy', 'connectors', 'policy packs', 'local approval inbox', 'report viewer', 'telemetry export', 'Governance Protocol v1', '10-minute integration guide', 'adapter samples'],
     excludes: ['mature enterprise runtime', 'security-reviewed sandbox', 'certified compliance product', 'hosted cloud service', 'finished hosted products']
   }, null, 2));
   process.exit(0);

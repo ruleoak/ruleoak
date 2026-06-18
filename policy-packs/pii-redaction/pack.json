@@ -1,0 +1,22 @@
+{
+  "id": "pii-redaction",
+  "name": "PII Redaction Guard",
+  "version": "1.0.0",
+  "category": "privacy",
+  "description": "Requires redaction before external processing and blocks raw PII export.",
+  "policy": {
+    "allowedTools": [
+      "detect_pii",
+      "redact_pii",
+      "process_redacted_text"
+    ],
+    "approvalRequired": [
+      "export_redacted_summary"
+    ],
+    "blockedTools": [
+      "export_raw_pii",
+      "send_raw_pii_to_cloud"
+    ],
+    "boundary": "privacy_first"
+  }
+}

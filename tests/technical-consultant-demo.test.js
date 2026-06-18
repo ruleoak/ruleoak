@@ -12,7 +12,7 @@ const reportPath = join(root, "examples", "technical-consultant-demo", "out", "c
 assert.equal(existsSync(reportPath), true, "case-report.json should be generated");
 const report = JSON.parse(readFileSync(reportPath, "utf8"));
 
-assert.equal(report.runtimeVersion, "1.0.0");
+assert.equal(report.runtimeVersion, "2.0.0");
 assert.equal(report.runtimeStage, "early-runtime");
 assert.equal(report.run.app, "RuleOak Technical Consultant Demo");
 assert.ok(report.output.case?.id, "report should include case id");
