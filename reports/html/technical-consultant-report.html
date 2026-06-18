@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RuleOak Technical Consultant Demo</title>
+  <style>
+    :root { color-scheme: dark; --bg:#08111f; --panel:#0d1b2e; --panel2:#13243b; --text:#eef5ff; --muted:#9fb3ca; --accent:#d6b56d; --ok:#9fd3b8; --line:#2a405e; }
+    body { margin:0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif; background: radial-gradient(circle at top left, #172a46, var(--bg)); color:var(--text); }
+    main { max-width:1080px; margin:0 auto; padding:40px 22px 80px; }
+    .hero { border:1px solid var(--line); background:rgba(13,27,46,.82); border-radius:26px; padding:28px; box-shadow:0 20px 80px rgba(0,0,0,.24); }
+    .eyebrow { color:var(--accent); text-transform:uppercase; letter-spacing:.12em; font-size:12px; font-weight:700; }
+    h1 { font-size:clamp(30px,5vw,54px); line-height:1; margin:10px 0; }
+    h2 { margin:0 0 12px; font-size:24px; }
+    p { color:var(--muted); line-height:1.65; }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; margin-top:18px; }
+    .card,.record { background:rgba(19,36,59,.88); border:1px solid var(--line); border-radius:18px; padding:18px; }
+    .section { margin-top:24px; }
+    code, pre { background:#07101d; border:1px solid #243853; color:#dbeafe; border-radius:12px; padding:10px; display:block; white-space:pre-wrap; overflow:auto; }
+    dl { display:grid; grid-template-columns:180px 1fr; gap:10px; }
+    dt { color:var(--accent); font-weight:700; } dd { margin:0; color:var(--text); }
+    ul { margin:0; padding-left:22px; } li { margin:8px 0; color:var(--muted); }
+    .muted { color:var(--muted); }
+    .badge { display:inline-block; padding:7px 10px; border-radius:999px; background:rgba(159,211,184,.12); color:var(--ok); border:1px solid rgba(159,211,184,.35); margin-right:8px; }
+    @media (max-width:760px){.grid{grid-template-columns:1fr;} dl{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<main>
+  <section class="hero">
+    <div class="eyebrow">RuleOak one-page report</div>
+    <h1>Checkout service latency and error increase</h1>
+    <p>Database connection pool saturation affecting checkout-service request handling.</p>
+    <span class="badge">early-runtime</span>
+    <span class="badge">completed</span>
+    <p class="muted">Source: case-report.json</p>
+  </section>
+
+  <section class="section grid">
+    <div class="card"><h2>Policy decisions</h2><dl><dt>Policy decision</dt><dd>approval_required</dd><dt>Approval</dt><dd>pending</dd><dt>Action</dt><dd>approval_required (requires approval)</dd></dl></div>
+    <div class="card"><h2>Boundary</h2><p>local_only</p><p class="muted">This report is audit-style output, not compliance certification or production authority.</p></div>
+  </section>
+
+  <section class="section card"><h2>Recommendations</h2><ul><li>Do not make an automatic production change.</li><li>Capture current database connection, recent deployment, and traffic context.</li><li>Escalate to the service owner if saturation persists.</li><li>Consider restart or capacity change only after approval.</li></ul></section>
+  <section class="section card"><h2>Evidence / Claims</h2><article class="record"><strong>E1</strong><p>checkout-service has high latency and elevated errors</p><code>p95 latency above normal baseline; increased timeout errors; customer checkout flow affected</code></article>
+<article class="record"><strong>E2</strong><p>Service logs show database connection wait and timeout messages</p><code>2026-06-17T09:15:02+08:00 request timeout while waiting for database connection | 2026-06-17T09:15:18+08:00 database connection wait exceeded 1200ms | 2026-06-17T09:16:45+08:00 checkout request failed after database connection timeout</code></article>
+<article class="record"><strong>E3</strong><p>Database pool pressure is high while service CPU and memory are not saturated</p><code>dbPool=96%, cpu=51%, memory=63%, dbActiveConnections=94%</code></article>
+<article class="record"><strong>E4</strong><p>External payment provider appears normal compared with the affected service</p><code>providerP95=280ms, providerErrorRate=0.2%</code></article>
+<article class="record"><strong>E5</strong><p>Known review notes identify database pool pressure as a matching pattern</p><code>matched known pattern</code></article></section>
+  <section class="section card"><h2>Audit trail</h2><article class="record"><strong>run.created</strong><p>{&quot;id&quot;:&quot;roak-run-1781750789621-evt-0001&quot;,&quot;runId&quot;:&quot;roak-run-1781750789621&quot;,&quot;sequence&quot;:1,&quot;type&quot;:&quot;run.created&quot;,&quot;timestamp&quot;:&quot;2026-06-18T02:46:29.622Z&quot;,&quot;payload&quot;:{&quot;app&quot;:&quot;RuleOak Technical Consultant Demo&quot;,&quot;metadata&quot;:{&quot;demo&quot;:&quot;technical-consultant-demo&quot;,&quot;caseId&quot;:&quot;CASE-2026-001&quot;},&quot;boundary&quot;:&quot;local_only&quot;}}</p></article>
+<article class="record"><strong>run.started</strong><p>{&quot;id&quot;:&quot;roak-run-1781750789621-evt-0002&quot;,&quot;runId&quot;:&quot;roak-run-1781750789621&quot;,&quot;sequence&quot;:2,&quot;type&quot;:&quot;run.started&quot;,&quot;timestamp&quot;:&quot;2026-06-18T02:46:29.622Z&quot;,&quot;payload&quot;:{&quot;status&quot;:&quot;running&quot;}}</p></article>
+<article class="record"><strong>evidence.added</strong><p>{&quot;id&quot;:&quot;roak-run-1781750789621-evt-0003&quot;,&quot;runId&quot;:&quot;roak-run-1781750789621&quot;,&quot;sequence&quot;:3,&quot;type&quot;:&quot;evidence.added&quot;,&quot;timestamp&quot;:&quot;2026-06-18T02:46:29.622Z&quot;,&quot;payload&quot;:{&quot;evidenceId&quot;:&quot;E1&quot;,&quot;source&quot;:&quot;case&quot;,&quot;claim&quot;:&quot;checkout-service has high latency and elevated errors&quot;}}</p></article>
+<article class="record"><strong>evidence.added</strong><p>{&quot;id&quot;:&quot;roak-run-1781750789621-evt-0004&quot;,&quot;runId&quot;:&quot;roak-run-1781750789621&quot;,&quot;sequence&quot;:4,&quot;type&quot;:&quot;evidence.added&quot;,&quot;timestamp&quot;:&quot;2026-06-18T02:46:29.622Z&quot;,&quot;payload&quot;:{&quot;evidenceId&quot;:&quot;E2&quot;,&quot;source&quot;:&quot;logs&quot;,&quot;claim&quot;:&quot;Service logs show database connection wait and timeout messages&quot;}}</p></article>
+<article class="record"><strong>evidence.added</strong><p>{&quot;id&quot;:&quot;roak-run-1781750789621-evt-0005&quot;,&quot;runId&quot;:&quot;roak-run-1781750789621&quot;,&quot;sequence&quot;:5,&quot;type&quot;:&quot;evidence.added&quot;,&quot;timestamp&quot;:&quot;2026-06-18T02:46:29.622Z&quot;,&quot;payload&quot;:{&quot;evidenceId&quot;:&quot;E3&quot;,&quot;source&quot;:&quot;metrics&quot;,&quot;claim&quot;:&quot;Database pool pressure is high while service CPU and memory are not saturated&quot;}}</p></article>
+<article class="record"><strong>evidence.added</strong><p>{&quot;id&quot;:&quot;roak-run-1781750789621-evt-0006&quot;,&quot;runId&quot;:&quot;roak-run-1781750789621&quot;,&quot;sequence&quot;:6,&quot;type&quot;:&quot;evidence.added&quot;,&quot;timestamp&quot;:&quot;2026-06-18T02:46:29.622Z&quot;,&quot;payload&quot;:{&quot;evidenceId&quot;:&quot;E4&quot;,&quot;source&quot;:&quot;metrics&quot;,&quot;claim&quot;:&quot;External payment provider appears normal compared with the affected service&quot;}}</p></article>
+<article class="record"><strong>evidence.added</strong><p>{&quot;id&quot;:&quot;roak-run-1781750789621-evt-0007&quot;,&quot;runId&quot;:&quot;roak-run-1781750789621&quot;,&quot;sequence&quot;:7,&quot;type&quot;:&quot;evidence.added&quot;,&quot;timestamp&quot;:&quot;2026-06-18T02:46:29.622Z&quot;,&quot;payload&quot;:{&quot;evidenceId&quot;:&quot;E5&quot;,&quot;source&quot;:&quot;notes&quot;,&quot;claim&quot;:&quot;Known review notes identify database pool pressure as a matching pattern&quot;}}</p></article>
+<article class="record"><strong>policy.evaluated</strong><p>{&quot;id&quot;:&quot;roak-run-1781750789621-evt-0008&quot;,&quot;runId&quot;:&quot;roak-run-1781750789621&quot;,&quot;sequence&quot;:8,&quot;type&quot;:&quot;policy.evaluated&quot;,&quot;timestamp&quot;:&quot;2026-06-18T02:46:29.622Z&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;restart.service&quot;,&quot;decision&quot;:&quot;approval_required&quot;,&quot;allowedNow&quot;:false,&quot;approvalRequired&quot;:true,&quot;blocked&quot;:false,&quot;reason&quot;:&quot;requires approval&quot;,&quot;context&quot;:{&quot;proposedBy&quot;:&quot;technical-consultant-demo&quot;,&quot;caseId&quot;:&quot;CASE-2026-001&quot;,&quot;severity&quot;:&quot;high&quot;,&quot;evidenceIds&quot;:[&quot;E1&quot;,&quot;E2&quot;,&quot;E3&quot;,&quot;E4&quot;,&quot;E5&quot;]}}}</p></article>
+<article class="record"><strong>approval.requested</strong><p>{&quot;id&quot;:&quot;roak-run-1781750789621-evt-0009&quot;,&quot;runId&quot;:&quot;roak-run-1781750789621&quot;,&quot;sequence&quot;:9,&quot;type&quot;:&quot;approval.requested&quot;,&quot;timestamp&quot;:&quot;2026-06-18T02:46:29.622Z&quot;,&quot;payload&quot;:{&quot;id&quot;:&quot;restart.service-approval-1&quot;,&quot;action&quot;:&quot;restart.service&quot;,&quot;status&quot;:&quot;pending&quot;,&quot;proposedBy&quot;:&quot;technical-consultant-demo&quot;,&quot;reason&quot;:&quot;requires approval&quot;,&quot;createdAt&quot;:&quot;2026-06-18T02:46:29.622Z&quot;}}</p></article>
+<article class="record"><strong>run.completed</strong><p>{&quot;id&quot;:&quot;roak-run-1781750789621-evt-0010&quot;,&quot;runId&quot;:&quot;roak-run-1781750789621&quot;,&quot;sequence&quot;:10,&quot;type&quot;:&quot;run.completed&quot;,&quot;timestamp&quot;:&quot;2026-06-18T02:46:29.622Z&quot;,&quot;payload&quot;:{&quot;summary&quot;:{&quot;title&quot;:&quot;Checkout service latency and error increase&quot;,&quot;probableCause&quot;:&quot;Database connection pool saturation affecting checkout-service request handling.&quot;,&quot;confidence&quot;:&quot;medium-high&quot;,&quot;proposedAction&quot;:&quot;restart.service&quot;,&quot;policyDecision&quot;:&quot;approval_required&quot;,&quot;approvalStatus&quot;:&quot;pending&quot;}}}</p></article></section>
+
+  <section class="section card"><h2>Raw JSON</h2><pre>{
+  &quot;runtimeVersion&quot;: &quot;1.0.0&quot;,
+  &quot;runtimeStage&quot;: &quot;early-runtime&quot;,
+  &quot;run&quot;: {
+    &quot;id&quot;: &quot;roak-run-1781750789621&quot;,
+    &quot;app&quot;: &quot;RuleOak Technical Consultant Demo&quot;,
+    &quot;status&quot;: &quot;completed&quot;,
+    &quot;startedAt&quot;: &quot;2026-06-18T02:46:29.621Z&quot;,
+    &quot;completedAt&quot;: &quot;2026-06-18T02:46:29.622Z&quot;,
+    &quot;metadata&quot;: {
+      &quot;demo&quot;: &quot;technical-consultant-demo&quot;,
+      &quot;caseId&quot;: &quot;CASE-2026-001&quot;
+    }
+  },
+  &quot;boundary&quot;: &quot;local_only&quot;,
+  &quot;summary&quot;: {
+    &quot;title&quot;: &quot;Checkout service latency and error increase&quot;,
+    &quot;probableCause&quot;: &quot;Database connection pool saturation affecting checkout-service request handling.&quot;,
+    &quot;confidence&quot;: &quot;medium-high&quot;,
+    &quot;proposedAction&quot;: &quot;restart.service&quot;,
+    &quot;policyDecision&quot;: &quot;approval_required&quot;,
+    &quot;approvalStatus&quot;: &quot;pending&quot;
+  },
+  &quot;output&quot;: {
+    &quot;demo&quot;: &quot;technical-consultant-demo&quot;,
+    &quot;case&quot;: {
+      &quot;id&quot;: &quot;CASE-2026-001&quot;,
+      &quot;service&quot;: &quot;checkout-service&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;title&quot;: &quot;Checkout service latency and error increase&quot;
+    },
+    &quot;probableCause&quot;: &quot;Database connection pool saturation affecting checkout-service request handling.&quot;,
+    &quot;confidence&quot;: &quot;medium-high&quot;,
+    &quot;recommendation&quot;: [
+      &quot;Do not make an automatic production change.&quot;,
+      &quot;Capture current database connection, recent deployment, and traffic context.&quot;,
+      &quot;Escalate to the service owner if saturation persists.&quot;,
+      &quot;Consider restart or capacity change only after approval.&quot;
+    ],
+    &quot;proposedAction&quot;: &quot;restart.service&quot;,
+    &quot;policyDecision&quot;: {
+      &quot;action&quot;: &quot;restart.service&quot;,
+      &quot;decision&quot;: &quot;approval_required&quot;,
+      &quot;allowedNow&quot;: false,
+      &quot;approvalRequired&quot;: true,
+      &quot;blocked&quot;: false,
+      &quot;reason&quot;: &quot;requires approval&quot;,
+      &quot;context&quot;: {
+        &quot;proposedBy&quot;: &quot;technical-consultant-demo&quot;,
+        &quot;caseId&quot;: &quot;CASE-2026-001&quot;,
+        &quot;severity&quot;: &quot;high&quot;,
+        &quot;evidenceIds&quot;: [
+          &quot;E1&quot;,
+          &quot;E2&quot;,
+          &quot;E3&quot;,
+          &quot;E4&quot;,
+          &quot;E5&quot;
+        ]
+      }
+    },
+    &quot;approvalStatus&quot;: &quot;pending&quot;,
+    &quot;executedProductionChange&quot;: false
+  },
+  &quot;evidence&quot;: [
+    {
+      &quot;id&quot;: &quot;E1&quot;,
+      &quot;source&quot;: &quot;case&quot;,
+      &quot;claim&quot;: &quot;checkout-service has high latency and elevated errors&quot;,
+      &quot;value&quot;: &quot;p95 latency above normal baseline; increased timeout errors; customer checkout flow affected&quot;,
+      &quot;sourceIds&quot;: [],
+      &quot;metadata&quot;: {}
+    },
+    {
+      &quot;id&quot;: &quot;E2&quot;,
+      &quot;source&quot;: &quot;logs&quot;,
+      &quot;claim&quot;: &quot;Service logs show database connection wait and timeout messages&quot;,
+      &quot;value&quot;: &quot;2026-06-17T09:15:02+08:00 request timeout while waiting for database connection | 2026-06-17T09:15:18+08:00 database connection wait exceeded 1200ms | 2026-06-17T09:16:45+08:00 checkout request failed after database connection timeout&quot;,
+      &quot;sourceIds&quot;: [],
+      &quot;metadata&quot;: {}
+    },
+    {
+      &quot;id&quot;: &quot;E3&quot;,
+      &quot;source&quot;: &quot;metrics&quot;,
+      &quot;claim&quot;: &quot;Database pool pressure is high while service CPU and memory are not saturated&quot;,
+      &quot;value&quot;: &quot;dbPool=96%, cpu=51%, memory=63%, dbActiveConnections=94%&quot;,
+      &quot;sourceIds&quot;: [],
+      &quot;metadata&quot;: {}
+    },
+    {
+      &quot;id&quot;: &quot;E4&quot;,
+      &quot;source&quot;: &quot;metrics&quot;,
+      &quot;claim&quot;: &quot;External payment provider appears normal compared with the affected service&quot;,
+      &quot;value&quot;: &quot;providerP95=280ms, providerErrorRate=0.2%&quot;,
+      &quot;sourceIds&quot;: [],
+      &quot;metadata&quot;: {}
+    },
+    {
+      &quot;id&quot;: &quot;E5&quot;,
+      &quot;source&quot;: &quot;notes&quot;,
+      &quot;claim&quot;: &quot;Known review notes identify database pool pressure as a matching pattern&quot;,
+      &quot;value&quot;: &quot;matched known pattern&quot;,
+      &quot;sourceIds&quot;: [],
+      &quot;metadata&quot;: {}
+    }
+  ],
+  &quot;approvals&quot;: [
+    {
+      &quot;id&quot;: &quot;restart.service-approval-1&quot;,
+      &quot;action&quot;: &quot;restart.service&quot;,
+      &quot;status&quot;: &quot;pending&quot;,
+      &quot;proposedBy&quot;: &quot;technical-consultant-demo&quot;,
+      &quot;reason&quot;: &quot;requires approval&quot;,
+      &quot;createdAt&quot;: &quot;2026-06-18T02:46:29.622Z&quot;
+    }
+  ],
+  &quot;auditEvents&quot;: [
+    {
+      &quot;id&quot;: &quot;roak-run-1781750789621-evt-0001&quot;,
+      &quot;runId&quot;: &quot;roak-run-1781750789621&quot;,
+      &quot;sequence&quot;: 1,
+      &quot;type&quot;: &quot;run.created&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T02:46:29.622Z&quot;,
+      &quot;payload&quot;: {
+        &quot;app&quot;: &quot;RuleOak Technical Consultant Demo&quot;,
+        &quot;metadata&quot;: {
+          &quot;demo&quot;: &quot;technical-consultant-demo&quot;,
+          &quot;caseId&quot;: &quot;CASE-2026-001&quot;
+        },
+        &quot;boundary&quot;: &quot;local_only&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;roak-run-1781750789621-evt-0002&quot;,
+      &quot;runId&quot;: &quot;roak-run-1781750789621&quot;,
+      &quot;sequence&quot;: 2,
+      &quot;type&quot;: &quot;run.started&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T02:46:29.622Z&quot;,
+      &quot;payload&quot;: {
+        &quot;status&quot;: &quot;running&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;roak-run-1781750789621-evt-0003&quot;,
+      &quot;runId&quot;: &quot;roak-run-1781750789621&quot;,
+      &quot;sequence&quot;: 3,
+      &quot;type&quot;: &quot;evidence.added&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T02:46:29.622Z&quot;,
+      &quot;payload&quot;: {
+        &quot;evidenceId&quot;: &quot;E1&quot;,
+        &quot;source&quot;: &quot;case&quot;,
+        &quot;claim&quot;: &quot;checkout-service has high latency and elevated errors&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;roak-run-1781750789621-evt-0004&quot;,
+      &quot;runId&quot;: &quot;roak-run-1781750789621&quot;,
+      &quot;sequence&quot;: 4,
+      &quot;type&quot;: &quot;evidence.added&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T02:46:29.622Z&quot;,
+      &quot;payload&quot;: {
+        &quot;evidenceId&quot;: &quot;E2&quot;,
+        &quot;source&quot;: &quot;logs&quot;,
+        &quot;claim&quot;: &quot;Service logs show database connection wait and timeout messages&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;roak-run-1781750789621-evt-0005&quot;,
+      &quot;runId&quot;: &quot;roak-run-1781750789621&quot;,
+      &quot;sequence&quot;: 5,
+      &quot;type&quot;: &quot;evidence.added&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T02:46:29.622Z&quot;,
+      &quot;payload&quot;: {
+        &quot;evidenceId&quot;: &quot;E3&quot;,
+        &quot;source&quot;: &quot;metrics&quot;,
+        &quot;claim&quot;: &quot;Database pool pressure is high while service CPU and memory are not saturated&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;roak-run-1781750789621-evt-0006&quot;,
+      &quot;runId&quot;: &quot;roak-run-1781750789621&quot;,
+      &quot;sequence&quot;: 6,
+      &quot;type&quot;: &quot;evidence.added&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T02:46:29.622Z&quot;,
+      &quot;payload&quot;: {
+        &quot;evidenceId&quot;: &quot;E4&quot;,
+        &quot;source&quot;: &quot;metrics&quot;,
+        &quot;claim&quot;: &quot;External payment provider appears normal compared with the affected service&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;roak-run-1781750789621-evt-0007&quot;,
+      &quot;runId&quot;: &quot;roak-run-1781750789621&quot;,
+      &quot;sequence&quot;: 7,
+      &quot;type&quot;: &quot;evidence.added&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T02:46:29.622Z&quot;,
+      &quot;payload&quot;: {
+        &quot;evidenceId&quot;: &quot;E5&quot;,
+        &quot;source&quot;: &quot;notes&quot;,
+        &quot;claim&quot;: &quot;Known review notes identify database pool pressure as a matching pattern&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;roak-run-1781750789621-evt-0008&quot;,
+      &quot;runId&quot;: &quot;roak-run-1781750789621&quot;,
+      &quot;sequence&quot;: 8,
+      &quot;type&quot;: &quot;policy.evaluated&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T02:46:29.622Z&quot;,
+      &quot;payload&quot;: {
+        &quot;action&quot;: &quot;restart.service&quot;,
+        &quot;decision&quot;: &quot;approval_required&quot;,
+        &quot;allowedNow&quot;: false,
+        &quot;approvalRequired&quot;: true,
+        &quot;blocked&quot;: false,
+        &quot;reason&quot;: &quot;requires approval&quot;,
+        &quot;context&quot;: {
+          &quot;proposedBy&quot;: &quot;technical-consultant-demo&quot;,
+          &quot;caseId&quot;: &quot;CASE-2026-001&quot;,
+          &quot;severity&quot;: &quot;high&quot;,
+          &quot;evidenceIds&quot;: [
+            &quot;E1&quot;,
+            &quot;E2&quot;,
+            &quot;E3&quot;,
+            &quot;E4&quot;,
+            &quot;E5&quot;
+          ]
+        }
+      }
+    },
+    {
+      &quot;id&quot;: &quot;roak-run-1781750789621-evt-0009&quot;,
+      &quot;runId&quot;: &quot;roak-run-1781750789621&quot;,
+      &quot;sequence&quot;: 9,
+      &quot;type&quot;: &quot;approval.requested&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T02:46:29.622Z&quot;,
+      &quot;payload&quot;: {
+        &quot;id&quot;: &quot;restart.service-approval-1&quot;,
+        &quot;action&quot;: &quot;restart.service&quot;,
+        &quot;status&quot;: &quot;pending&quot;,
+        &quot;proposedBy&quot;: &quot;technical-consultant-demo&quot;,
+        &quot;reason&quot;: &quot;requires approval&quot;,
+        &quot;createdAt&quot;: &quot;2026-06-18T02:46:29.622Z&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;roak-run-1781750789621-evt-0010&quot;,
+      &quot;runId&quot;: &quot;roak-run-1781750789621&quot;,
+      &quot;sequence&quot;: 10,
+      &quot;type&quot;: &quot;run.completed&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T02:46:29.622Z&quot;,
+      &quot;payload&quot;: {
+        &quot;summary&quot;: {
+          &quot;title&quot;: &quot;Checkout service latency and error increase&quot;,
+          &quot;probableCause&quot;: &quot;Database connection pool saturation affecting checkout-service request handling.&quot;,
+          &quot;confidence&quot;: &quot;medium-high&quot;,
+          &quot;proposedAction&quot;: &quot;restart.service&quot;,
+          &quot;policyDecision&quot;: &quot;approval_required&quot;,
+          &quot;approvalStatus&quot;: &quot;pending&quot;
+        }
+      }
+    }
+  ],
+  &quot;ruleoakPattern&quot;: {
+    &quot;policy&quot;: &quot;Actions are evaluated against allow, block, and approval-required rules.&quot;,
+    &quot;evidence&quot;: &quot;Claims and recommendations are linked to evidence records.&quot;,
+    &quot;approval&quot;: &quot;Risky or publishing actions become pending approval requests.&quot;,
+    &quot;audit&quot;: &quot;Run lifecycle, evidence, policy decisions, and approval requests are recorded.&quot;
+  },
+  &quot;boundaryNote&quot;: &quot;Early runtime only. Not a mature enterprise platform, security-reviewed sandbox, or compliance-certified product.&quot;
+}</pre></section>
+</main>
+</body>
+</html>

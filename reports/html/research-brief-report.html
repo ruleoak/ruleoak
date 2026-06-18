@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RuleOak Research Brief Demo</title>
+  <style>
+    :root { color-scheme: dark; --bg:#08111f; --panel:#0d1b2e; --panel2:#13243b; --text:#eef5ff; --muted:#9fb3ca; --accent:#d6b56d; --ok:#9fd3b8; --line:#2a405e; }
+    body { margin:0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif; background: radial-gradient(circle at top left, #172a46, var(--bg)); color:var(--text); }
+    main { max-width:1080px; margin:0 auto; padding:40px 22px 80px; }
+    .hero { border:1px solid var(--line); background:rgba(13,27,46,.82); border-radius:26px; padding:28px; box-shadow:0 20px 80px rgba(0,0,0,.24); }
+    .eyebrow { color:var(--accent); text-transform:uppercase; letter-spacing:.12em; font-size:12px; font-weight:700; }
+    h1 { font-size:clamp(30px,5vw,54px); line-height:1; margin:10px 0; }
+    h2 { margin:0 0 12px; font-size:24px; }
+    p { color:var(--muted); line-height:1.65; }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; margin-top:18px; }
+    .card,.record { background:rgba(19,36,59,.88); border:1px solid var(--line); border-radius:18px; padding:18px; }
+    .section { margin-top:24px; }
+    code, pre { background:#07101d; border:1px solid #243853; color:#dbeafe; border-radius:12px; padding:10px; display:block; white-space:pre-wrap; overflow:auto; }
+    dl { display:grid; grid-template-columns:180px 1fr; gap:10px; }
+    dt { color:var(--accent); font-weight:700; } dd { margin:0; color:var(--text); }
+    ul { margin:0; padding-left:22px; } li { margin:8px 0; color:var(--muted); }
+    .muted { color:var(--muted); }
+    .badge { display:inline-block; padding:7px 10px; border-radius:999px; background:rgba(159,211,184,.12); color:var(--ok); border:1px solid rgba(159,211,184,.35); margin-right:8px; }
+    @media (max-width:760px){.grid{grid-template-columns:1fr;} dl{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<main>
+  <section class="hero">
+    <div class="eyebrow">RuleOak one-page report</div>
+    <h1>Should a small team start with a local-first AI research assistant before building a cloud collaboration product?</h1>
+    <p>Start with a local-first research assistant. Delay cloud collaboration until the local workflow proves repeated use and quality.</p>
+    <span class="badge">early-runtime</span>
+    <span class="badge">completed</span>
+    <p class="muted">Source: research-brief-report.json</p>
+  </section>
+
+  <section class="section grid">
+    <div class="card"><h2>Policy decisions</h2><dl><dt>Export</dt><dd>allowed</dd><dt>Publish</dt><dd>approval_required</dd><dt>Publish</dt><dd>approval_required</dd></dl></div>
+    <div class="card"><h2>Boundary</h2><p>local_only</p><p class="muted">This report is audit-style output, not compliance certification or production authority.</p></div>
+  </section>
+
+  <section class="section card"><h2>Recommendations</h2><ul><li>Start with a local-first research assistant. Delay cloud collaboration until the local workflow proves repeated use and quality.</li></ul></section>
+  <section class="section card"><h2>Evidence / Claims</h2><article class="record"><strong>SRC-001</strong><p>Customer Interview Notes</p><code>Early users prefer tools that run on their own machine when testing with notes, drafts, or customer documents.</code></article>
+<article class="record"><strong>SRC-002</strong><p>Prototype Usage Log Summary</p><code>Users completed local import and summarization more often than team-sharing setup. Most drop-offs happened when configuration required accounts or remote services.</code></article>
+<article class="record"><strong>SRC-003</strong><p>Founder Strategy Note</p><code>The initial product should prove quality and repeat use before introducing mobile, team, or marketplace complexity.</code></article>
+<article class="record"><strong>CLM-001</strong><p>A local-first research assistant is the lower-friction first product direction for this team.</p><code>Interview notes show privacy and local-first preferences. Prototype logs show higher completion for local import and summarization. Strategy note emphasizes quality before expansion.</code><p class="muted">Sources: SRC-001, SRC-002, SRC-003</p></article>
+<article class="record"><strong>CLM-002</strong><p>Cloud collaboration should be deferred until repeated local use is proven.</p><code>Drop-offs increased when remote setup or account configuration was required. Founder strategy note warns against overbuilding team and marketplace complexity.</code><p class="muted">Sources: SRC-002, SRC-003</p></article>
+<article class="record"><strong>CLM-003</strong><p>The current evidence is not enough to decide enterprise readiness.</p><code>The usage sample is small and may not represent enterprise buyers.</code><p class="muted">Sources: SRC-002</p></article></section>
+  <section class="section card"><h2>Audit trail</h2><article class="record"><strong>run.created</strong><p>{&quot;id&quot;:&quot;roak-run-1781750789890-evt-0001&quot;,&quot;runId&quot;:&quot;roak-run-1781750789890&quot;,&quot;sequence&quot;:1,&quot;type&quot;:&quot;run.created&quot;,&quot;timestamp&quot;:&quot;2026-06-18T02:46:29.891Z&quot;,&quot;payload&quot;:{&quot;app&quot;:&quot;RuleOak Research Brief Demo&quot;,&quot;metadata&quot;:{&quot;demo&quot;:&quot;research-brief-demo&quot;,&quot;caseId&quot;:&quot;RB-001&quot;},&quot;boundary&quot;:&quot;local_only&quot;}}</p></article>
+<article class="record"><strong>run.started</strong><p>{&quot;id&quot;:&quot;roak-run-1781750789890-evt-0002&quot;,&quot;runId&quot;:&quot;roak-run-1781750789890&quot;,&quot;sequence&quot;:2,&quot;type&quot;:&quot;run.started&quot;,&quot;timestamp&quot;:&quot;2026-06-18T02:46:29.891Z&quot;,&quot;payload&quot;:{&quot;status&quot;:&quot;running&quot;}}</p></article>
+<article class="record"><strong>evidence.added</strong><p>{&quot;id&quot;:&quot;roak-run-1781750789890-evt-0003&quot;,&quot;runId&quot;:&quot;roak-run-1781750789890&quot;,&quot;sequence&quot;:3,&quot;type&quot;:&quot;evidence.added&quot;,&quot;timestamp&quot;:&quot;2026-06-18T02:46:29.891Z&quot;,&quot;payload&quot;:{&quot;evidenceId&quot;:&quot;SRC-001&quot;,&quot;source&quot;:&quot;internal_notes&quot;,&quot;claim&quot;:&quot;Customer Interview Notes&quot;}}</p></article>
+<article class="record"><strong>evidence.added</strong><p>{&quot;id&quot;:&quot;roak-run-1781750789890-evt-0004&quot;,&quot;runId&quot;:&quot;roak-run-1781750789890&quot;,&quot;sequence&quot;:4,&quot;type&quot;:&quot;evidence.added&quot;,&quot;timestamp&quot;:&quot;2026-06-18T02:46:29.891Z&quot;,&quot;payload&quot;:{&quot;evidenceId&quot;:&quot;SRC-002&quot;,&quot;source&quot;:&quot;product_observation&quot;,&quot;claim&quot;:&quot;Prototype Usage Log Summary&quot;}}</p></article>
+<article class="record"><strong>evidence.added</strong><p>{&quot;id&quot;:&quot;roak-run-1781750789890-evt-0005&quot;,&quot;runId&quot;:&quot;roak-run-1781750789890&quot;,&quot;sequence&quot;:5,&quot;type&quot;:&quot;evidence.added&quot;,&quot;timestamp&quot;:&quot;2026-06-18T02:46:29.891Z&quot;,&quot;payload&quot;:{&quot;evidenceId&quot;:&quot;SRC-003&quot;,&quot;source&quot;:&quot;strategy_note&quot;,&quot;claim&quot;:&quot;Founder Strategy Note&quot;}}</p></article>
+<article class="record"><strong>evidence.added</strong><p>{&quot;id&quot;:&quot;roak-run-1781750789890-evt-0006&quot;,&quot;runId&quot;:&quot;roak-run-1781750789890&quot;,&quot;sequence&quot;:6,&quot;type&quot;:&quot;evidence.added&quot;,&quot;timestamp&quot;:&quot;2026-06-18T02:46:29.891Z&quot;,&quot;payload&quot;:{&quot;evidenceId&quot;:&quot;CLM-001&quot;,&quot;source&quot;:&quot;claim&quot;,&quot;claim&quot;:&quot;A local-first research assistant is the lower-friction first product direction for this team.&quot;}}</p></article>
+<article class="record"><strong>evidence.added</strong><p>{&quot;id&quot;:&quot;roak-run-1781750789890-evt-0007&quot;,&quot;runId&quot;:&quot;roak-run-1781750789890&quot;,&quot;sequence&quot;:7,&quot;type&quot;:&quot;evidence.added&quot;,&quot;timestamp&quot;:&quot;2026-06-18T02:46:29.891Z&quot;,&quot;payload&quot;:{&quot;evidenceId&quot;:&quot;CLM-002&quot;,&quot;source&quot;:&quot;claim&quot;,&quot;claim&quot;:&quot;Cloud collaboration should be deferred until repeated local use is proven.&quot;}}</p></article>
+<article class="record"><strong>evidence.added</strong><p>{&quot;id&quot;:&quot;roak-run-1781750789890-evt-0008&quot;,&quot;runId&quot;:&quot;roak-run-1781750789890&quot;,&quot;sequence&quot;:8,&quot;type&quot;:&quot;evidence.added&quot;,&quot;timestamp&quot;:&quot;2026-06-18T02:46:29.891Z&quot;,&quot;payload&quot;:{&quot;evidenceId&quot;:&quot;CLM-003&quot;,&quot;source&quot;:&quot;claim&quot;,&quot;claim&quot;:&quot;The current evidence is not enough to decide enterprise readiness.&quot;}}</p></article>
+<article class="record"><strong>policy.evaluated</strong><p>{&quot;id&quot;:&quot;roak-run-1781750789890-evt-0009&quot;,&quot;runId&quot;:&quot;roak-run-1781750789890&quot;,&quot;sequence&quot;:9,&quot;type&quot;:&quot;policy.evaluated&quot;,&quot;timestamp&quot;:&quot;2026-06-18T02:46:29.891Z&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;brief.export&quot;,&quot;decision&quot;:&quot;allowed&quot;,&quot;allowedNow&quot;:true,&quot;approvalRequired&quot;:false,&quot;blocked&quot;:false,&quot;reason&quot;:&quot;allowed by policy&quot;,&quot;context&quot;:{&quot;proposedBy&quot;:&quot;research-brief-demo&quot;,&quot;evidenceIds&quot;:[&quot;CLM-001&quot;,&quot;CLM-002&quot;,&quot;CLM-003&quot;]}}}</p></article>
+<article class="record"><strong>approval.not_required</strong><p>{&quot;id&quot;:&quot;roak-run-1781750789890-evt-0010&quot;,&quot;runId&quot;:&quot;roak-run-1781750789890&quot;,&quot;sequence&quot;:10,&quot;type&quot;:&quot;approval.not_required&quot;,&quot;timestamp&quot;:&quot;2026-06-18T02:46:29.891Z&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;brief.export&quot;,&quot;decision&quot;:&quot;allowed&quot;}}</p></article>
+<article class="record"><strong>policy.evaluated</strong><p>{&quot;id&quot;:&quot;roak-run-1781750789890-evt-0011&quot;,&quot;runId&quot;:&quot;roak-run-1781750789890&quot;,&quot;sequence&quot;:11,&quot;type&quot;:&quot;policy.evaluated&quot;,&quot;timestamp&quot;:&quot;2026-06-18T02:46:29.891Z&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;brief.publish&quot;,&quot;decision&quot;:&quot;approval_required&quot;,&quot;allowedNow&quot;:false,&quot;approvalRequired&quot;:true,&quot;blocked&quot;:false,&quot;reason&quot;:&quot;requires approval&quot;,&quot;context&quot;:{&quot;proposedBy&quot;:&quot;research-brief-demo&quot;,&quot;evidenceIds&quot;:[&quot;CLM-001&quot;,&quot;CLM-002&quot;,&quot;CLM-003&quot;]}}}</p></article>
+<article class="record"><strong>approval.requested</strong><p>{&quot;id&quot;:&quot;roak-run-1781750789890-evt-0012&quot;,&quot;runId&quot;:&quot;roak-run-1781750789890&quot;,&quot;sequence&quot;:12,&quot;type&quot;:&quot;approval.requested&quot;,&quot;timestamp&quot;:&quot;2026-06-18T02:46:29.891Z&quot;,&quot;payload&quot;:{&quot;id&quot;:&quot;brief.publish-approval-1&quot;,&quot;action&quot;:&quot;brief.publish&quot;,&quot;status&quot;:&quot;pending&quot;,&quot;proposedBy&quot;:&quot;research-brief-demo&quot;,&quot;reason&quot;:&quot;requires approval&quot;,&quot;createdAt&quot;:&quot;2026-06-18T02:46:29.891Z&quot;}}</p></article></section>
+
+  <section class="section card"><h2>Raw JSON</h2><pre>{
+  &quot;runtimeVersion&quot;: &quot;1.0.0&quot;,
+  &quot;runtimeStage&quot;: &quot;early-runtime&quot;,
+  &quot;run&quot;: {
+    &quot;id&quot;: &quot;roak-run-1781750789890&quot;,
+    &quot;app&quot;: &quot;RuleOak Research Brief Demo&quot;,
+    &quot;status&quot;: &quot;completed&quot;,
+    &quot;startedAt&quot;: &quot;2026-06-18T02:46:29.890Z&quot;,
+    &quot;completedAt&quot;: &quot;2026-06-18T02:46:29.891Z&quot;,
+    &quot;metadata&quot;: {
+      &quot;demo&quot;: &quot;research-brief-demo&quot;,
+      &quot;caseId&quot;: &quot;RB-001&quot;
+    }
+  },
+  &quot;boundary&quot;: &quot;local_only&quot;,
+  &quot;summary&quot;: {
+    &quot;question&quot;: &quot;Should a small team start with a local-first AI research assistant before building a cloud collaboration product?&quot;,
+    &quot;recommendation&quot;: &quot;Start with a local-first research assistant. Delay cloud collaboration until the local workflow proves repeated use and quality.&quot;,
+    &quot;exportDecision&quot;: &quot;allowed&quot;,
+    &quot;publishDecision&quot;: &quot;approval_required&quot;,
+    &quot;publishApprovalStatus&quot;: &quot;pending&quot;
+  },
+  &quot;output&quot;: {
+    &quot;demo&quot;: &quot;research-brief-demo&quot;,
+    &quot;developer_preview&quot;: false,
+    &quot;early_runtime&quot;: true,
+    &quot;question&quot;: {
+      &quot;case_id&quot;: &quot;RB-001&quot;,
+      &quot;question&quot;: &quot;Should a small team start with a local-first AI research assistant before building a cloud collaboration product?&quot;,
+      &quot;audience&quot;: &quot;product and engineering team&quot;,
+      &quot;decision_context&quot;: &quot;The team wants fast learning, low data exposure, and a focused first release without overbuilding.&quot;,
+      &quot;requested_output&quot;: &quot;A short evidence-backed research brief with a recommendation and approval boundary.&quot;
+    },
+    &quot;sources&quot;: [
+      {
+        &quot;id&quot;: &quot;SRC-001&quot;,
+        &quot;title&quot;: &quot;Customer Interview Notes&quot;,
+        &quot;type&quot;: &quot;internal_notes&quot;,
+        &quot;date&quot;: &quot;2026-06-01&quot;,
+        &quot;summary&quot;: &quot;Early users prefer tools that run on their own machine when testing with notes, drafts, or customer documents.&quot;,
+        &quot;signals&quot;: [
+          &quot;privacy&quot;,
+          &quot;low setup friction&quot;,
+          &quot;local-first&quot;
+        ],
+        &quot;risks&quot;: [
+          &quot;users may still expect sync later&quot;,
+          &quot;local setup can be confusing&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;SRC-002&quot;,
+        &quot;title&quot;: &quot;Prototype Usage Log Summary&quot;,
+        &quot;type&quot;: &quot;product_observation&quot;,
+        &quot;date&quot;: &quot;2026-06-07&quot;,
+        &quot;summary&quot;: &quot;Users completed local import and summarization more often than team-sharing setup. Most drop-offs happened when configuration required accounts or remote services.&quot;,
+        &quot;signals&quot;: [
+          &quot;local workflow completion&quot;,
+          &quot;setup friction&quot;
+        ],
+        &quot;risks&quot;: [
+          &quot;usage sample is small&quot;,
+          &quot;not representative of enterprise buyers&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;SRC-003&quot;,
+        &quot;title&quot;: &quot;Founder Strategy Note&quot;,
+        &quot;type&quot;: &quot;strategy_note&quot;,
+        &quot;date&quot;: &quot;2026-06-10&quot;,
+        &quot;summary&quot;: &quot;The initial product should prove quality and repeat use before introducing mobile, team, or marketplace complexity.&quot;,
+        &quot;signals&quot;: [
+          &quot;focus&quot;,
+          &quot;quality before expansion&quot;,
+          &quot;avoid overbuilding&quot;
+        ],
+        &quot;risks&quot;: [
+          &quot;slower collaboration features may reduce team adoption&quot;
+        ]
+      }
+    ],
+    &quot;notes_summary&quot;: &quot;General research demo showing sourced claims, confidence, approval boundary, and audit-style output.&quot;,
+    &quot;claims&quot;: [
+      {
+        &quot;id&quot;: &quot;CLM-001&quot;,
+        &quot;claim&quot;: &quot;A local-first research assistant is the lower-friction first product direction for this team.&quot;,
+        &quot;source_ids&quot;: [
+          &quot;SRC-001&quot;,
+          &quot;SRC-002&quot;,
+          &quot;SRC-003&quot;
+        ],
+        &quot;confidence&quot;: &quot;medium-high&quot;,
+        &quot;evidence&quot;: [
+          &quot;Interview notes show privacy and local-first preferences.&quot;,
+          &quot;Prototype logs show higher completion for local import and summarization.&quot;,
+          &quot;Strategy note emphasizes quality before expansion.&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;CLM-002&quot;,
+        &quot;claim&quot;: &quot;Cloud collaboration should be deferred until repeated local use is proven.&quot;,
+        &quot;source_ids&quot;: [
+          &quot;SRC-002&quot;,
+          &quot;SRC-003&quot;
+        ],
+        &quot;confidence&quot;: &quot;medium&quot;,
+        &quot;evidence&quot;: [
+          &quot;Drop-offs increased when remote setup or account configuration was required.&quot;,
+          &quot;Founder strategy note warns against overbuilding team and marketplace complexity.&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;CLM-003&quot;,
+        &quot;claim&quot;: &quot;The current evidence is not enough to decide enterprise readiness.&quot;,
+        &quot;source_ids&quot;: [
+          &quot;SRC-002&quot;
+        ],
+        &quot;confidence&quot;: &quot;high&quot;,
+        &quot;evidence&quot;: [
+          &quot;The usage sample is small and may not represent enterprise buyers.&quot;
+        ]
+      }
+    ],
+    &quot;recommendation&quot;: {
+      &quot;summary&quot;: &quot;Start with a local-first research assistant. Delay cloud collaboration until the local workflow proves repeated use and quality.&quot;,
+      &quot;rationale&quot;: [
+        &quot;This path matches user privacy concerns and reduces onboarding complexity.&quot;,
+        &quot;It keeps the first launch focused on quality and repeat use.&quot;,
+        &quot;It avoids prematurely building team and cloud infrastructure before evidence supports it.&quot;
+      ],
+      &quot;known_unknowns&quot;: [
+        &quot;The evidence does not yet prove enterprise demand.&quot;,
+        &quot;Future users may request sync, mobile, or collaboration once local quality is proven.&quot;,
+        &quot;Security and compliance needs must be reviewed before real sensitive data is used.&quot;
+      ]
+    },
+    &quot;policy_decisions&quot;: {
+      &quot;export&quot;: {
+        &quot;action&quot;: &quot;brief.export&quot;,
+        &quot;decision&quot;: &quot;allowed&quot;,
+        &quot;allowedNow&quot;: true,
+        &quot;approvalRequired&quot;: false,
+        &quot;blocked&quot;: false,
+        &quot;reason&quot;: &quot;allowed by policy&quot;,
+        &quot;context&quot;: {
+          &quot;proposedBy&quot;: &quot;research-brief-demo&quot;,
+          &quot;evidenceIds&quot;: [
+            &quot;CLM-001&quot;,
+            &quot;CLM-002&quot;,
+            &quot;CLM-003&quot;
+          ]
+        }
+      },
+      &quot;publish&quot;: {
+        &quot;action&quot;: &quot;brief.publish&quot;,
+        &quot;decision&quot;: &quot;approval_required&quot;,
+        &quot;allowedNow&quot;: false,
+        &quot;approvalRequired&quot;: true,
+        &quot;blocked&quot;: false,
+        &quot;reason&quot;: &quot;requires approval&quot;,
+        &quot;context&quot;: {
+          &quot;proposedBy&quot;: &quot;research-brief-demo&quot;,
+          &quot;evidenceIds&quot;: [
+            &quot;CLM-001&quot;,
+            &quot;CLM-002&quot;,
+            &quot;CLM-003&quot;
+          ]
+        }
+      }
+    },
+    &quot;approval_status&quot;: {
+      &quot;export&quot;: &quot;not_required&quot;,
+      &quot;publish&quot;: &quot;pending&quot;
+    },
+    &quot;boundary&quot;: &quot;Synthetic demo only. Not a production research, legal, medical, financial, or compliance system.&quot;
+  },
+  &quot;evidence&quot;: [
+    {
+      &quot;id&quot;: &quot;SRC-001&quot;,
+      &quot;source&quot;: &quot;internal_notes&quot;,
+      &quot;claim&quot;: &quot;Customer Interview Notes&quot;,
+      &quot;value&quot;: &quot;Early users prefer tools that run on their own machine when testing with notes, drafts, or customer documents.&quot;,
+      &quot;sourceIds&quot;: [],
+      &quot;metadata&quot;: {
+        &quot;date&quot;: &quot;2026-06-01&quot;,
+        &quot;signals&quot;: [
+          &quot;privacy&quot;,
+          &quot;low setup friction&quot;,
+          &quot;local-first&quot;
+        ],
+        &quot;risks&quot;: [
+          &quot;users may still expect sync later&quot;,
+          &quot;local setup can be confusing&quot;
+        ]
+      }
+    },
+    {
+      &quot;id&quot;: &quot;SRC-002&quot;,
+      &quot;source&quot;: &quot;product_observation&quot;,
+      &quot;claim&quot;: &quot;Prototype Usage Log Summary&quot;,
+      &quot;value&quot;: &quot;Users completed local import and summarization more often than team-sharing setup. Most drop-offs happened when configuration required accounts or remote services.&quot;,
+      &quot;sourceIds&quot;: [],
+      &quot;metadata&quot;: {
+        &quot;date&quot;: &quot;2026-06-07&quot;,
+        &quot;signals&quot;: [
+          &quot;local workflow completion&quot;,
+          &quot;setup friction&quot;
+        ],
+        &quot;risks&quot;: [
+          &quot;usage sample is small&quot;,
+          &quot;not representative of enterprise buyers&quot;
+        ]
+      }
+    },
+    {
+      &quot;id&quot;: &quot;SRC-003&quot;,
+      &quot;source&quot;: &quot;strategy_note&quot;,
+      &quot;claim&quot;: &quot;Founder Strategy Note&quot;,
+      &quot;value&quot;: &quot;The initial product should prove quality and repeat use before introducing mobile, team, or marketplace complexity.&quot;,
+      &quot;sourceIds&quot;: [],
+      &quot;metadata&quot;: {
+        &quot;date&quot;: &quot;2026-06-10&quot;,
+        &quot;signals&quot;: [
+          &quot;focus&quot;,
+          &quot;quality before expansion&quot;,
+          &quot;avoid overbuilding&quot;
+        ],
+        &quot;risks&quot;: [
+          &quot;slower collaboration features may reduce team adoption&quot;
+        ]
+      }
+    },
+    {
+      &quot;id&quot;: &quot;CLM-001&quot;,
+      &quot;source&quot;: &quot;claim&quot;,
+      &quot;claim&quot;: &quot;A local-first research assistant is the lower-friction first product direction for this team.&quot;,
+      &quot;value&quot;: &quot;Interview notes show privacy and local-first preferences. Prototype logs show higher completion for local import and summarization. Strategy note emphasizes quality before expansion.&quot;,
+      &quot;sourceIds&quot;: [
+        &quot;SRC-001&quot;,
+        &quot;SRC-002&quot;,
+        &quot;SRC-003&quot;
+      ],
+      &quot;confidence&quot;: &quot;medium-high&quot;,
+      &quot;metadata&quot;: {}
+    },
+    {
+      &quot;id&quot;: &quot;CLM-002&quot;,
+      &quot;source&quot;: &quot;claim&quot;,
+      &quot;claim&quot;: &quot;Cloud collaboration should be deferred until repeated local use is proven.&quot;,
+      &quot;value&quot;: &quot;Drop-offs increased when remote setup or account configuration was required. Founder strategy note warns against overbuilding team and marketplace complexity.&quot;,
+      &quot;sourceIds&quot;: [
+        &quot;SRC-002&quot;,
+        &quot;SRC-003&quot;
+      ],
+      &quot;confidence&quot;: &quot;medium&quot;,
+      &quot;metadata&quot;: {}
+    },
+    {
+      &quot;id&quot;: &quot;CLM-003&quot;,
+      &quot;source&quot;: &quot;claim&quot;,
+      &quot;claim&quot;: &quot;The current evidence is not enough to decide enterprise readiness.&quot;,
+      &quot;value&quot;: &quot;The usage sample is small and may not represent enterprise buyers.&quot;,
+      &quot;sourceIds&quot;: [
+        &quot;SRC-002&quot;
+      ],
+      &quot;confidence&quot;: &quot;high&quot;,
+      &quot;metadata&quot;: {}
+    }
+  ],
+  &quot;approvals&quot;: [
+    {
+      &quot;id&quot;: &quot;brief.publish-approval-1&quot;,
+      &quot;action&quot;: &quot;brief.publish&quot;,
+      &quot;status&quot;: &quot;pending&quot;,
+      &quot;proposedBy&quot;: &quot;research-brief-demo&quot;,
+      &quot;reason&quot;: &quot;requires approval&quot;,
+      &quot;createdAt&quot;: &quot;2026-06-18T02:46:29.891Z&quot;
+    }
+  ],
+  &quot;auditEvents&quot;: [
+    {
+      &quot;id&quot;: &quot;roak-run-1781750789890-evt-0001&quot;,
+      &quot;runId&quot;: &quot;roak-run-1781750789890&quot;,
+      &quot;sequence&quot;: 1,
+      &quot;type&quot;: &quot;run.created&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T02:46:29.891Z&quot;,
+      &quot;payload&quot;: {
+        &quot;app&quot;: &quot;RuleOak Research Brief Demo&quot;,
+        &quot;metadata&quot;: {
+          &quot;demo&quot;: &quot;research-brief-demo&quot;,
+          &quot;caseId&quot;: &quot;RB-001&quot;
+        },
+        &quot;boundary&quot;: &quot;local_only&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;roak-run-1781750789890-evt-0002&quot;,
+      &quot;runId&quot;: &quot;roak-run-1781750789890&quot;,
+      &quot;sequence&quot;: 2,
+      &quot;type&quot;: &quot;run.started&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T02:46:29.891Z&quot;,
+      &quot;payload&quot;: {
+        &quot;status&quot;: &quot;running&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;roak-run-1781750789890-evt-0003&quot;,
+      &quot;runId&quot;: &quot;roak-run-1781750789890&quot;,
+      &quot;sequence&quot;: 3,
+      &quot;type&quot;: &quot;evidence.added&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T02:46:29.891Z&quot;,
+      &quot;payload&quot;: {
+        &quot;evidenceId&quot;: &quot;SRC-001&quot;,
+        &quot;source&quot;: &quot;internal_notes&quot;,
+        &quot;claim&quot;: &quot;Customer Interview Notes&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;roak-run-1781750789890-evt-0004&quot;,
+      &quot;runId&quot;: &quot;roak-run-1781750789890&quot;,
+      &quot;sequence&quot;: 4,
+      &quot;type&quot;: &quot;evidence.added&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T02:46:29.891Z&quot;,
+      &quot;payload&quot;: {
+        &quot;evidenceId&quot;: &quot;SRC-002&quot;,
+        &quot;source&quot;: &quot;product_observation&quot;,
+        &quot;claim&quot;: &quot;Prototype Usage Log Summary&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;roak-run-1781750789890-evt-0005&quot;,
+      &quot;runId&quot;: &quot;roak-run-1781750789890&quot;,
+      &quot;sequence&quot;: 5,
+      &quot;type&quot;: &quot;evidence.added&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T02:46:29.891Z&quot;,
+      &quot;payload&quot;: {
+        &quot;evidenceId&quot;: &quot;SRC-003&quot;,
+        &quot;source&quot;: &quot;strategy_note&quot;,
+        &quot;claim&quot;: &quot;Founder Strategy Note&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;roak-run-1781750789890-evt-0006&quot;,
+      &quot;runId&quot;: &quot;roak-run-1781750789890&quot;,
+      &quot;sequence&quot;: 6,
+      &quot;type&quot;: &quot;evidence.added&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T02:46:29.891Z&quot;,
+      &quot;payload&quot;: {
+        &quot;evidenceId&quot;: &quot;CLM-001&quot;,
+        &quot;source&quot;: &quot;claim&quot;,
+        &quot;claim&quot;: &quot;A local-first research assistant is the lower-friction first product direction for this team.&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;roak-run-1781750789890-evt-0007&quot;,
+      &quot;runId&quot;: &quot;roak-run-1781750789890&quot;,
+      &quot;sequence&quot;: 7,
+      &quot;type&quot;: &quot;evidence.added&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T02:46:29.891Z&quot;,
+      &quot;payload&quot;: {
+        &quot;evidenceId&quot;: &quot;CLM-002&quot;,
+        &quot;source&quot;: &quot;claim&quot;,
+        &quot;claim&quot;: &quot;Cloud collaboration should be deferred until repeated local use is proven.&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;roak-run-1781750789890-evt-0008&quot;,
+      &quot;runId&quot;: &quot;roak-run-1781750789890&quot;,
+      &quot;sequence&quot;: 8,
+      &quot;type&quot;: &quot;evidence.added&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T02:46:29.891Z&quot;,
+      &quot;payload&quot;: {
+        &quot;evidenceId&quot;: &quot;CLM-003&quot;,
+        &quot;source&quot;: &quot;claim&quot;,
+        &quot;claim&quot;: &quot;The current evidence is not enough to decide enterprise readiness.&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;roak-run-1781750789890-evt-0009&quot;,
+      &quot;runId&quot;: &quot;roak-run-1781750789890&quot;,
+      &quot;sequence&quot;: 9,
+      &quot;type&quot;: &quot;policy.evaluated&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T02:46:29.891Z&quot;,
+      &quot;payload&quot;: {
+        &quot;action&quot;: &quot;brief.export&quot;,
+        &quot;decision&quot;: &quot;allowed&quot;,
+        &quot;allowedNow&quot;: true,
+        &quot;approvalRequired&quot;: false,
+        &quot;blocked&quot;: false,
+        &quot;reason&quot;: &quot;allowed by policy&quot;,
+        &quot;context&quot;: {
+          &quot;proposedBy&quot;: &quot;research-brief-demo&quot;,
+          &quot;evidenceIds&quot;: [
+            &quot;CLM-001&quot;,
+            &quot;CLM-002&quot;,
+            &quot;CLM-003&quot;
+          ]
+        }
+      }
+    },
+    {
+      &quot;id&quot;: &quot;roak-run-1781750789890-evt-0010&quot;,
+      &quot;runId&quot;: &quot;roak-run-1781750789890&quot;,
+      &quot;sequence&quot;: 10,
+      &quot;type&quot;: &quot;approval.not_required&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T02:46:29.891Z&quot;,
+      &quot;payload&quot;: {
+        &quot;action&quot;: &quot;brief.export&quot;,
+        &quot;decision&quot;: &quot;allowed&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;roak-run-1781750789890-evt-0011&quot;,
+      &quot;runId&quot;: &quot;roak-run-1781750789890&quot;,
+      &quot;sequence&quot;: 11,
+      &quot;type&quot;: &quot;policy.evaluated&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T02:46:29.891Z&quot;,
+      &quot;payload&quot;: {
+        &quot;action&quot;: &quot;brief.publish&quot;,
+        &quot;decision&quot;: &quot;approval_required&quot;,
+        &quot;allowedNow&quot;: false,
+        &quot;approvalRequired&quot;: true,
+        &quot;blocked&quot;: false,
+        &quot;reason&quot;: &quot;requires approval&quot;,
+        &quot;context&quot;: {
+          &quot;proposedBy&quot;: &quot;research-brief-demo&quot;,
+          &quot;evidenceIds&quot;: [
+            &quot;CLM-001&quot;,
+            &quot;CLM-002&quot;,
+            &quot;CLM-003&quot;
+          ]
+        }
+      }
+    },
+    {
+      &quot;id&quot;: &quot;roak-run-1781750789890-evt-0012&quot;,
+      &quot;runId&quot;: &quot;roak-run-1781750789890&quot;,
+      &quot;sequence&quot;: 12,
+      &quot;type&quot;: &quot;approval.requested&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T02:46:29.891Z&quot;,
+      &quot;payload&quot;: {
+        &quot;id&quot;: &quot;brief.publish-approval-1&quot;,
+        &quot;action&quot;: &quot;brief.publish&quot;,
+        &quot;status&quot;: &quot;pending&quot;,
+        &quot;proposedBy&quot;: &quot;research-brief-demo&quot;,
+        &quot;reason&quot;: &quot;requires approval&quot;,
+        &quot;createdAt&quot;: &quot;2026-06-18T02:46:29.891Z&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;roak-run-1781750789890-evt-0013&quot;,
+      &quot;runId&quot;: &quot;roak-run-1781750789890&quot;,
+      &quot;sequence&quot;: 13,
+      &quot;type&quot;: &quot;run.completed&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T02:46:29.891Z&quot;,
+      &quot;payload&quot;: {
+        &quot;summary&quot;: {
+          &quot;question&quot;: &quot;Should a small team start with a local-first AI research assistant before building a cloud collaboration product?&quot;,
+          &quot;recommendation&quot;: &quot;Start with a local-first research assistant. Delay cloud collaboration until the local workflow proves repeated use and quality.&quot;,
+          &quot;exportDecision&quot;: &quot;allowed&quot;,
+          &quot;publishDecision&quot;: &quot;approval_required&quot;,
+          &quot;publishApprovalStatus&quot;: &quot;pending&quot;
+        }
+      }
+    }
+  ],
+  &quot;ruleoakPattern&quot;: {
+    &quot;policy&quot;: &quot;Actions are evaluated against allow, block, and approval-required rules.&quot;,
+    &quot;evidence&quot;: &quot;Claims and recommendations are linked to evidence records.&quot;,
+    &quot;approval&quot;: &quot;Risky or publishing actions become pending approval requests.&quot;,
+    &quot;audit&quot;: &quot;Run lifecycle, evidence, policy decisions, and approval requests are recorded.&quot;
+  },
+  &quot;boundaryNote&quot;: &quot;Early runtime only. Not a mature enterprise platform, security-reviewed sandbox, or compliance-certified product.&quot;
+}</pre></section>
+</main>
+</body>
+</html>

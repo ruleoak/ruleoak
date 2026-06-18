@@ -37,5 +37,5 @@ RuleOak Core is an AGPL early runtime for governed AI workflows: policy, evidenc
 ## Discovery and contribution
 
 - [How RuleOak fits with other agent tools](comparisons.md)
-- [Good first issues](community/good-first-issues.md)
+- [Feedback tasks](community/feedback-tasks.md)
 - [Python SDK bridge](integrations/python-sdk.md)

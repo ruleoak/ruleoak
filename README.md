@@ -65,7 +65,7 @@ RuleOak is useful for technical diagnosis, research workflows, review systems, o
 | Launch UX | `npm run launch`, `npm run demo`, workflow chooser, templates, one-page HTML reports, local report viewer |
 | Python bridge | `ruleoak-py v0.1.0` companion SDK for RuleOak Core v1.0-compatible governance records |
 | Local LLM readiness | Hardware check, starter Ollama model recommendation, smoke test helpers |
-| Quality signals | Tests, CI workflow, demo GIF, threat model docs, good-first-issue list |
+| Quality signals | Tests, CI workflow, demo GIF, threat model docs, feedback task list |
 
 ## JavaScript/TypeScript and Python
 
@@ -142,11 +142,33 @@ RuleOak is not trying to replace orchestration, personal-assistant, or observabi
 
 Read [docs/comparisons.md](docs/comparisons.md).
 
-## Good first issues
+## Contributing and feedback
 
-New contributors can start with small documentation, example, and developer-experience tasks.
+RuleOak Core is currently in a **feedback-first contribution phase**.
 
-Read [docs/community/good-first-issues.md](docs/community/good-first-issues.md).
+Issues and Discussions are welcome. Pull requests are disabled while the project finalizes its contribution governance and licensing process.
+
+Useful feedback includes:
+
+- setup problems
+- broken commands
+- unclear README steps
+- confusing examples
+- policy or audit model questions
+- sandbox boundary questions
+- integration ideas
+- documentation improvements
+- security concerns reported privately
+
+At this stage, please do not send unsolicited code patches. External code contributions may require a Contributor License Agreement or equivalent contribution terms in the future.
+
+Start here:
+
+- Use Issues for concrete bugs or documentation problems.
+- Use Discussions for questions, design feedback, and integration ideas.
+- Use `SECURITY.md` for vulnerability reporting.
+
+Read [docs/community/feedback-tasks.md](docs/community/feedback-tasks.md).
 
 ## HTML reports and local viewer
 
@@ -205,7 +227,7 @@ The current release is a runtime foundation for learning, prototyping, and build
 | Sandbox foundation | [docs/sandbox-foundation.md](docs/sandbox-foundation.md) |
 | Python SDK bridge | [docs/integrations/python-sdk.md](docs/integrations/python-sdk.md) |
 | Comparison with other tools | [docs/comparisons.md](docs/comparisons.md) |
-| Good first issues | [docs/community/good-first-issues.md](docs/community/good-first-issues.md) |
+| Feedback tasks | [docs/community/feedback-tasks.md](docs/community/feedback-tasks.md) |
 | Threat model | [docs/security/threat-model.md](docs/security/threat-model.md) |
 | Build a vertical workflow | [docs/build-a-vertical.md](docs/build-a-vertical.md) |
 | Local LLM readiness | [docs/local-llm.md](docs/local-llm.md) |

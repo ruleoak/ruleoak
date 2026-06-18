@@ -1,0 +1,200 @@
+{
+  "generatedAt": "2026-06-18T02:46:30.172Z",
+  "stage": "security foundation",
+  "boundary": "deny-by-default sandbox foundation; not externally security-reviewed",
+  "checks": [
+    {
+      "label": "filesystem read allowed",
+      "subject": "filesystem",
+      "operation": "read",
+      "decision": "allow",
+      "allowed": true,
+      "approvalRequired": false,
+      "denied": false,
+      "reason": "path matched allow rule",
+      "matchedRule": "examples/**",
+      "metadata": {
+        "path": "examples/research-brief-demo/README.md",
+        "relativePath": "examples/research-brief-demo/README.md"
+      },
+      "stage": "security foundation"
+    },
+    {
+      "label": "filesystem read denied",
+      "subject": "filesystem",
+      "operation": "read",
+      "decision": "deny",
+      "allowed": false,
+      "approvalRequired": false,
+      "denied": true,
+      "reason": "path matched deny rule",
+      "matchedRule": ".env",
+      "metadata": {
+        "path": ".env",
+        "relativePath": ".env"
+      },
+      "stage": "security foundation"
+    },
+    {
+      "label": "filesystem escape denied",
+      "subject": "filesystem",
+      "operation": "read",
+      "decision": "deny",
+      "allowed": false,
+      "approvalRequired": false,
+      "denied": true,
+      "reason": "path escapes workspace boundary",
+      "matchedRule": null,
+      "metadata": {
+        "path": "../../secret.txt",
+        "resolved": "/mnt/data/secret.txt",
+        "real": "/mnt/data/secret.txt"
+      },
+      "stage": "security foundation"
+    },
+    {
+      "label": "filesystem write allowed",
+      "subject": "filesystem",
+      "operation": "write",
+      "decision": "allow",
+      "allowed": true,
+      "approvalRequired": false,
+      "denied": false,
+      "reason": "path matched allow rule",
+      "matchedRule": "out/**",
+      "metadata": {
+        "path": "out/sandbox-demo-report.json",
+        "relativePath": "out/sandbox-demo-report.json"
+      },
+      "stage": "security foundation"
+    },
+    {
+      "label": "network localhost allowed",
+      "subject": "network",
+      "operation": "connect",
+      "decision": "allow",
+      "allowed": true,
+      "approvalRequired": false,
+      "denied": false,
+      "reason": "host matched allowlist",
+      "matchedRule": "127.0.0.1",
+      "metadata": {
+        "target": "http://127.0.0.1:11434/api/generate",
+        "host": "127.0.0.1"
+      },
+      "stage": "security foundation"
+    },
+    {
+      "label": "network external denied",
+      "subject": "network",
+      "operation": "connect",
+      "decision": "deny",
+      "allowed": false,
+      "approvalRequired": false,
+      "denied": true,
+      "reason": "network is deny-by-default and host is not allowlisted",
+      "matchedRule": null,
+      "metadata": {
+        "target": "https://example.com",
+        "host": "example.com"
+      },
+      "stage": "security foundation"
+    },
+    {
+      "label": "command node allowed",
+      "subject": "command",
+      "operation": "execute",
+      "decision": "allow",
+      "allowed": true,
+      "approvalRequired": false,
+      "denied": false,
+      "reason": "command matched allow rule",
+      "matchedRule": "node",
+      "metadata": {
+        "command": "node --version",
+        "name": "node"
+      },
+      "stage": "security foundation"
+    },
+    {
+      "label": "command rm denied",
+      "subject": "command",
+      "operation": "execute",
+      "decision": "deny",
+      "allowed": false,
+      "approvalRequired": false,
+      "denied": true,
+      "reason": "command matched deny rule",
+      "matchedRule": "rm",
+      "metadata": {
+        "command": "rm -rf out",
+        "name": "rm"
+      },
+      "stage": "security foundation"
+    },
+    {
+      "label": "command kubectl approval",
+      "subject": "command",
+      "operation": "execute",
+      "decision": "approval_required",
+      "allowed": false,
+      "approvalRequired": true,
+      "denied": false,
+      "reason": "command requires approval",
+      "matchedRule": "kubectl",
+      "metadata": {
+        "command": "kubectl get pods",
+        "name": "kubectl"
+      },
+      "stage": "security foundation"
+    },
+    {
+      "label": "tool report.export allowed",
+      "subject": "tool",
+      "operation": "call",
+      "decision": "allow",
+      "allowed": true,
+      "approvalRequired": false,
+      "denied": false,
+      "reason": "tool allowed by sandbox policy",
+      "matchedRule": "report.export",
+      "metadata": {
+        "tool": "report.export",
+        "risk": "unknown"
+      },
+      "stage": "security foundation"
+    },
+    {
+      "label": "tool service.restart approval",
+      "subject": "tool",
+      "operation": "call",
+      "decision": "approval_required",
+      "allowed": false,
+      "approvalRequired": true,
+      "denied": false,
+      "reason": "tool requires approval by sandbox policy",
+      "matchedRule": "service.restart",
+      "metadata": {
+        "tool": "service.restart",
+        "risk": "unknown"
+      },
+      "stage": "security foundation"
+    },
+    {
+      "label": "tool shell.exec denied",
+      "subject": "tool",
+      "operation": "call",
+      "decision": "deny",
+      "allowed": false,
+      "approvalRequired": false,
+      "denied": true,
+      "reason": "tool denied by sandbox policy",
+      "matchedRule": "shell.exec",
+      "metadata": {
+        "tool": "shell.exec",
+        "risk": "unknown"
+      },
+      "stage": "security foundation"
+    }
+  ]
+}
