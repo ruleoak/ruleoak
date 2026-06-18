@@ -29,7 +29,7 @@ if (args.length === 0 || args.includes('--help') || args.includes('-h') || args[
 if (args[0] === 'inspect') {
   console.log(JSON.stringify({
     name: 'RuleOak Core',
-    version: '2.0.2',
+    version: '2.0.3',
     stage: 'v1.3 governed tool calls + MCP Guard + read-only evidence connectors + sandbox foundation + launch UX',
     boundary: 'AGPL open core for governed AI workflows',
     includes: ['runtime modules', 'sandbox foundation', 'contracts', 'schemas', 'copyable examples', 'local LLM readiness', 'tests', 'CI', 'launch UX', 'Tool Guard', 'MCP Guard Pack + read-only evidence connectors'],

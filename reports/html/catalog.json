@@ -1,15 +1,15 @@
 {
   "schema": "ruleoak.report_catalog.v1",
-  "generatedAt": "2026-06-18T14:29:43.500Z",
-  "reportCount": 8,
+  "generatedAt": "2026-06-18T14:54:58.579Z",
+  "reportCount": 7,
   "reports": [
     {
-      "id": "roak-run-1781792965533",
+      "id": "roak-run-1781794497901",
       "title": "Checkout service latency and error increase",
-      "sourcePath": "/mnt/data/fix_ruleoak/ruleoak-core-v2.0.1-polish/examples/technical-consultant-demo/out/case-report.json",
+      "sourcePath": "/Users/stanleysun/AI/ruleoak-core/examples/technical-consultant-demo/out/case-report.json",
       "status": "completed",
       "runtimeVersion": "2.0.0",
-      "generatedAt": "2026-06-18T14:29:43.498Z",
+      "generatedAt": "2026-06-18T14:54:58.578Z",
       "counts": {
         "evidence": 5,
         "auditEvents": 10,
@@ -25,12 +25,12 @@
       }
     },
     {
-      "id": "roak-run-1781792966085",
+      "id": "roak-run-1781794498009",
       "title": "Should a small team start with a local-first AI research assistant before building a cloud collaboration product?",
-      "sourcePath": "/mnt/data/fix_ruleoak/ruleoak-core-v2.0.1-polish/examples/research-brief-demo/out/research-brief-report.json",
+      "sourcePath": "/Users/stanleysun/AI/ruleoak-core/examples/research-brief-demo/out/research-brief-report.json",
       "status": "completed",
       "runtimeVersion": "2.0.0",
-      "generatedAt": "2026-06-18T14:29:43.498Z",
+      "generatedAt": "2026-06-18T14:54:58.578Z",
       "counts": {
         "evidence": 6,
         "auditEvents": 13,
@@ -48,10 +48,10 @@
     {
       "id": "tool-guard-demo-run",
       "title": "RuleOak Tool Guard Report",
-      "sourcePath": "/mnt/data/fix_ruleoak/ruleoak-core-v2.0.1-polish/examples/tool-guard-demo/out/tool-guard-report.json",
+      "sourcePath": "/Users/stanleysun/AI/ruleoak-core/examples/tool-guard-demo/out/tool-guard-report.json",
       "status": "completed",
       "runtimeVersion": "2.0.0",
-      "generatedAt": "2026-06-18T14:29:43.499Z",
+      "generatedAt": "2026-06-18T14:54:58.579Z",
       "counts": {
         "evidence": 3,
         "auditEvents": 13,
@@ -69,10 +69,10 @@
     {
       "id": "mcp-guard-demo-run",
       "title": "RuleOak MCP Guard Report",
-      "sourcePath": "/mnt/data/fix_ruleoak/ruleoak-core-v2.0.1-polish/examples/tool-guard-demo/out/mcp-guard-report.json",
+      "sourcePath": "/Users/stanleysun/AI/ruleoak-core/examples/tool-guard-demo/out/mcp-guard-report.json",
       "status": "completed",
       "runtimeVersion": "2.0.0",
-      "generatedAt": "2026-06-18T14:29:43.499Z",
+      "generatedAt": "2026-06-18T14:54:58.579Z",
       "counts": {
         "evidence": 1,
         "auditEvents": 5,
@@ -90,10 +90,10 @@
     {
       "id": "ruleoak-mcp-guard-demo",
       "title": "RuleOak MCP Guard Report",
-      "sourcePath": "/mnt/data/fix_ruleoak/ruleoak-core-v2.0.1-polish/examples/mcp-guard-demo/out/mcp-guard-report.json",
+      "sourcePath": "/Users/stanleysun/AI/ruleoak-core/examples/mcp-guard-demo/out/mcp-guard-report.json",
       "status": "completed",
       "runtimeVersion": "2.0.0",
-      "generatedAt": "2026-06-18T14:29:43.499Z",
+      "generatedAt": "2026-06-18T14:54:58.579Z",
       "counts": {
         "evidence": 3,
         "auditEvents": 13,
@@ -111,10 +111,10 @@
     {
       "id": "ruleoak-evidence-connectors-demo",
       "title": "RuleOak Read-only Evidence Connector Report",
-      "sourcePath": "/mnt/data/fix_ruleoak/ruleoak-core-v2.0.1-polish/examples/evidence-connectors-demo/out/evidence-connectors-report.json",
+      "sourcePath": "/Users/stanleysun/AI/ruleoak-core/examples/evidence-connectors-demo/out/evidence-connectors-report.json",
       "status": "completed",
       "runtimeVersion": "2.0.0",
-      "generatedAt": "2026-06-18T14:29:43.500Z",
+      "generatedAt": "2026-06-18T14:54:58.579Z",
       "counts": {
         "evidence": 6,
         "auditEvents": 7,
@@ -132,37 +132,16 @@
     {
       "id": "ruleoak-write-connectors-demo",
       "title": "RuleOak Approval-gated Write Connector Report",
-      "sourcePath": "/mnt/data/fix_ruleoak/ruleoak-core-v2.0.1-polish/examples/write-connectors-demo/out/write-connectors-report.json",
+      "sourcePath": "/Users/stanleysun/AI/ruleoak-core/examples/write-connectors-demo/out/write-connectors-report.json",
       "status": "completed",
       "runtimeVersion": "1.4.0",
-      "generatedAt": "2026-06-18T14:29:43.500Z",
+      "generatedAt": "2026-06-18T14:54:58.579Z",
       "counts": {
         "evidence": 5,
         "auditEvents": 28,
         "toolDecisions": 0,
         "policyDecisions": 0,
         "approvals": 3,
-        "records": 0
-      },
-      "decisions": {
-        "policyDecision": null,
-        "approvalDecision": null,
-        "publishDecision": null
-      }
-    },
-    {
-      "id": "roak-tool-run-1781792962704",
-      "title": "RuleOak Policy Packs Demo Report",
-      "sourcePath": "/mnt/data/fix_ruleoak/ruleoak-core-v2.0.1-polish/examples/policy-packs-demo/out/policy-packs-report.json",
-      "status": "completed",
-      "runtimeVersion": "2.0.0",
-      "generatedAt": "2026-06-18T14:29:43.500Z",
-      "counts": {
-        "evidence": 8,
-        "auditEvents": 33,
-        "toolDecisions": 8,
-        "policyDecisions": 0,
-        "approvals": 4,
         "records": 0
       },
       "decisions": {

@@ -14,7 +14,7 @@
   <header class="hero">
     <p class="eyebrow">RuleOak local audit report</p>
     <h1>RuleOak Tool Guard Report</h1>
-    <p class="muted">Source: <span class="source">/mnt/data/fix_ruleoak/ruleoak-core-v2.0.1-polish/examples/tool-guard-demo/out/tool-guard-report.json</span></p>
+    <p class="muted">Source: <span class="source">/Users/stanleysun/AI/ruleoak-core/examples/tool-guard-demo/out/tool-guard-report.json</span></p>
     <p><span class="pill">completed</span><span class="pill">2.0.0</span></p>
     <div class="grid">
       <div class="metric"><strong>3</strong>Evidence</div>
@@ -25,10 +25,10 @@
   <section class="card"><h2>Summary</h2><pre>{
   &quot;id&quot;: &quot;tool-guard-demo-run&quot;,
   &quot;title&quot;: &quot;RuleOak Tool Guard Report&quot;,
-  &quot;sourcePath&quot;: &quot;/mnt/data/fix_ruleoak/ruleoak-core-v2.0.1-polish/examples/tool-guard-demo/out/tool-guard-report.json&quot;,
+  &quot;sourcePath&quot;: &quot;/Users/stanleysun/AI/ruleoak-core/examples/tool-guard-demo/out/tool-guard-report.json&quot;,
   &quot;status&quot;: &quot;completed&quot;,
   &quot;runtimeVersion&quot;: &quot;2.0.0&quot;,
-  &quot;generatedAt&quot;: &quot;2026-06-18T14:29:43.486Z&quot;,
+  &quot;generatedAt&quot;: &quot;2026-06-18T14:54:58.577Z&quot;,
   &quot;counts&quot;: {
     &quot;evidence&quot;: 3,
     &quot;auditEvents&quot;: 13,
@@ -50,10 +50,10 @@
   &quot;status&quot;: &quot;pending&quot;,
   &quot;proposedBy&quot;: &quot;demo-agent&quot;,
   &quot;reason&quot;: &quot;requires approval&quot;,
-  &quot;createdAt&quot;: &quot;2026-06-18T14:29:27.267Z&quot;
+  &quot;createdAt&quot;: &quot;2026-06-18T14:54:58.230Z&quot;
 }</pre></div></section>
   <section class="card"><h2>Tool decisions</h2><div class="records"><pre>{
-  &quot;requestId&quot;: &quot;tool-ec6a2006-c7cb-4cbb-98e9-22005d4be8f5&quot;,
+  &quot;requestId&quot;: &quot;tool-ef41c5d5-c936-4726-826c-174e227bb51c&quot;,
   &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
   &quot;toolId&quot;: &quot;search_docs&quot;,
   &quot;tool&quot;: {
@@ -74,11 +74,11 @@
   &quot;approvalRequired&quot;: false,
   &quot;blocked&quot;: false,
   &quot;reason&quot;: &quot;allowed by policy&quot;,
-  &quot;evidenceId&quot;: &quot;tool-ec6a2006-c7cb-4cbb-98e9-22005d4be8f5-evidence&quot;,
+  &quot;evidenceId&quot;: &quot;tool-ef41c5d5-c936-4726-826c-174e227bb51c-evidence&quot;,
   &quot;approvalRequestId&quot;: null,
   &quot;metadata&quot;: {}
 }</pre><pre>{
-  &quot;requestId&quot;: &quot;tool-c4be84f6-c9ee-46c1-b584-d70860b739a2&quot;,
+  &quot;requestId&quot;: &quot;tool-82e51f7f-e363-4364-bd33-f5c2a18dbf45&quot;,
   &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
   &quot;toolId&quot;: &quot;send_external_message&quot;,
   &quot;tool&quot;: {
@@ -99,11 +99,11 @@
   &quot;approvalRequired&quot;: true,
   &quot;blocked&quot;: false,
   &quot;reason&quot;: &quot;requires approval&quot;,
-  &quot;evidenceId&quot;: &quot;tool-c4be84f6-c9ee-46c1-b584-d70860b739a2-evidence&quot;,
+  &quot;evidenceId&quot;: &quot;tool-82e51f7f-e363-4364-bd33-f5c2a18dbf45-evidence&quot;,
   &quot;approvalRequestId&quot;: &quot;send_external_message-approval-1&quot;,
   &quot;metadata&quot;: {}
 }</pre><pre>{
-  &quot;requestId&quot;: &quot;tool-4bcfb3c4-2c3d-4bfe-b6ae-459d6dd12e8c&quot;,
+  &quot;requestId&quot;: &quot;tool-9fb4eeb8-004f-493c-a474-d8bbb86ccdef&quot;,
   &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
   &quot;toolId&quot;: &quot;delete_workspace_file&quot;,
   &quot;tool&quot;: {
@@ -124,44 +124,44 @@
   &quot;approvalRequired&quot;: false,
   &quot;blocked&quot;: true,
   &quot;reason&quot;: &quot;blocked by policy&quot;,
-  &quot;evidenceId&quot;: &quot;tool-4bcfb3c4-2c3d-4bfe-b6ae-459d6dd12e8c-evidence&quot;,
+  &quot;evidenceId&quot;: &quot;tool-9fb4eeb8-004f-493c-a474-d8bbb86ccdef-evidence&quot;,
   &quot;approvalRequestId&quot;: null,
   &quot;metadata&quot;: {}
 }</pre></div></section>
   <section class="card"><h2>Evidence</h2><div class="records"><pre>{
-  &quot;id&quot;: &quot;tool-ec6a2006-c7cb-4cbb-98e9-22005d4be8f5-evidence&quot;,
+  &quot;id&quot;: &quot;tool-ef41c5d5-c936-4726-826c-174e227bb51c-evidence&quot;,
   &quot;source&quot;: &quot;tool_guard&quot;,
   &quot;claim&quot;: &quot;Tool call search_docs was evaluated before execution.&quot;,
   &quot;value&quot;: &quot;allowed&quot;,
   &quot;sourceIds&quot;: [],
   &quot;metadata&quot;: {
-    &quot;requestId&quot;: &quot;tool-ec6a2006-c7cb-4cbb-98e9-22005d4be8f5&quot;,
+    &quot;requestId&quot;: &quot;tool-ef41c5d5-c936-4726-826c-174e227bb51c&quot;,
     &quot;toolId&quot;: &quot;search_docs&quot;,
     &quot;risk&quot;: &quot;low&quot;,
     &quot;subject&quot;: &quot;local docs&quot;,
     &quot;inputPreview&quot;: &quot;query: governance audit&quot;
   }
 }</pre><pre>{
-  &quot;id&quot;: &quot;tool-c4be84f6-c9ee-46c1-b584-d70860b739a2-evidence&quot;,
+  &quot;id&quot;: &quot;tool-82e51f7f-e363-4364-bd33-f5c2a18dbf45-evidence&quot;,
   &quot;source&quot;: &quot;tool_guard&quot;,
   &quot;claim&quot;: &quot;Tool call send_external_message was evaluated before execution.&quot;,
   &quot;value&quot;: &quot;approval_required&quot;,
   &quot;sourceIds&quot;: [],
   &quot;metadata&quot;: {
-    &quot;requestId&quot;: &quot;tool-c4be84f6-c9ee-46c1-b584-d70860b739a2&quot;,
+    &quot;requestId&quot;: &quot;tool-82e51f7f-e363-4364-bd33-f5c2a18dbf45&quot;,
     &quot;toolId&quot;: &quot;send_external_message&quot;,
     &quot;risk&quot;: &quot;medium&quot;,
     &quot;subject&quot;: &quot;external recipient&quot;,
     &quot;inputPreview&quot;: &quot;message draft&quot;
   }
 }</pre><pre>{
-  &quot;id&quot;: &quot;tool-4bcfb3c4-2c3d-4bfe-b6ae-459d6dd12e8c-evidence&quot;,
+  &quot;id&quot;: &quot;tool-9fb4eeb8-004f-493c-a474-d8bbb86ccdef-evidence&quot;,
   &quot;source&quot;: &quot;tool_guard&quot;,
   &quot;claim&quot;: &quot;Tool call delete_workspace_file was evaluated before execution.&quot;,
   &quot;value&quot;: &quot;blocked&quot;,
   &quot;sourceIds&quot;: [],
   &quot;metadata&quot;: {
-    &quot;requestId&quot;: &quot;tool-4bcfb3c4-2c3d-4bfe-b6ae-459d6dd12e8c&quot;,
+    &quot;requestId&quot;: &quot;tool-9fb4eeb8-004f-493c-a474-d8bbb86ccdef&quot;,
     &quot;toolId&quot;: &quot;delete_workspace_file&quot;,
     &quot;risk&quot;: &quot;high&quot;,
     &quot;subject&quot;: &quot;workspace/report.json&quot;,
@@ -173,7 +173,7 @@
   &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
   &quot;sequence&quot;: 1,
   &quot;type&quot;: &quot;tool_guard.started&quot;,
-  &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.259Z&quot;,
+  &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.228Z&quot;,
   &quot;payload&quot;: {
     &quot;actor&quot;: &quot;demo-agent&quot;,
     &quot;boundary&quot;: &quot;local_guard_demo&quot;,
@@ -184,9 +184,9 @@
   &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
   &quot;sequence&quot;: 2,
   &quot;type&quot;: &quot;evidence.added&quot;,
-  &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.266Z&quot;,
+  &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
   &quot;payload&quot;: {
-    &quot;evidenceId&quot;: &quot;tool-ec6a2006-c7cb-4cbb-98e9-22005d4be8f5-evidence&quot;,
+    &quot;evidenceId&quot;: &quot;tool-ef41c5d5-c936-4726-826c-174e227bb51c-evidence&quot;,
     &quot;source&quot;: &quot;tool_guard&quot;,
     &quot;claim&quot;: &quot;Tool call search_docs was evaluated before execution.&quot;
   }
@@ -195,9 +195,9 @@
   &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
   &quot;sequence&quot;: 3,
   &quot;type&quot;: &quot;tool.requested&quot;,
-  &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.266Z&quot;,
+  &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
   &quot;payload&quot;: {
-    &quot;requestId&quot;: &quot;tool-ec6a2006-c7cb-4cbb-98e9-22005d4be8f5&quot;,
+    &quot;requestId&quot;: &quot;tool-ef41c5d5-c936-4726-826c-174e227bb51c&quot;,
     &quot;toolId&quot;: &quot;search_docs&quot;,
     &quot;subject&quot;: &quot;local docs&quot;,
     &quot;risk&quot;: &quot;low&quot;,
@@ -208,9 +208,9 @@
   &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
   &quot;sequence&quot;: 4,
   &quot;type&quot;: &quot;tool.policy_decision&quot;,
-  &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.266Z&quot;,
+  &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
   &quot;payload&quot;: {
-    &quot;requestId&quot;: &quot;tool-ec6a2006-c7cb-4cbb-98e9-22005d4be8f5&quot;,
+    &quot;requestId&quot;: &quot;tool-ef41c5d5-c936-4726-826c-174e227bb51c&quot;,
     &quot;toolId&quot;: &quot;search_docs&quot;,
     &quot;decision&quot;: &quot;allowed&quot;,
     &quot;reason&quot;: &quot;allowed by policy&quot;,
@@ -221,7 +221,7 @@
   &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
   &quot;sequence&quot;: 5,
   &quot;type&quot;: &quot;approval.not_required&quot;,
-  &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.266Z&quot;,
+  &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
   &quot;payload&quot;: {
     &quot;action&quot;: &quot;search_docs&quot;,
     &quot;decision&quot;: &quot;allowed&quot;
@@ -231,9 +231,9 @@
   &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
   &quot;sequence&quot;: 6,
   &quot;type&quot;: &quot;evidence.added&quot;,
-  &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.267Z&quot;,
+  &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
   &quot;payload&quot;: {
-    &quot;evidenceId&quot;: &quot;tool-c4be84f6-c9ee-46c1-b584-d70860b739a2-evidence&quot;,
+    &quot;evidenceId&quot;: &quot;tool-82e51f7f-e363-4364-bd33-f5c2a18dbf45-evidence&quot;,
     &quot;source&quot;: &quot;tool_guard&quot;,
     &quot;claim&quot;: &quot;Tool call send_external_message was evaluated before execution.&quot;
   }
@@ -242,9 +242,9 @@
   &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
   &quot;sequence&quot;: 7,
   &quot;type&quot;: &quot;tool.requested&quot;,
-  &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.267Z&quot;,
+  &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
   &quot;payload&quot;: {
-    &quot;requestId&quot;: &quot;tool-c4be84f6-c9ee-46c1-b584-d70860b739a2&quot;,
+    &quot;requestId&quot;: &quot;tool-82e51f7f-e363-4364-bd33-f5c2a18dbf45&quot;,
     &quot;toolId&quot;: &quot;send_external_message&quot;,
     &quot;subject&quot;: &quot;external recipient&quot;,
     &quot;risk&quot;: &quot;medium&quot;,
@@ -255,9 +255,9 @@
   &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
   &quot;sequence&quot;: 8,
   &quot;type&quot;: &quot;tool.policy_decision&quot;,
-  &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.267Z&quot;,
+  &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
   &quot;payload&quot;: {
-    &quot;requestId&quot;: &quot;tool-c4be84f6-c9ee-46c1-b584-d70860b739a2&quot;,
+    &quot;requestId&quot;: &quot;tool-82e51f7f-e363-4364-bd33-f5c2a18dbf45&quot;,
     &quot;toolId&quot;: &quot;send_external_message&quot;,
     &quot;decision&quot;: &quot;approval_required&quot;,
     &quot;reason&quot;: &quot;requires approval&quot;,
@@ -268,23 +268,23 @@
   &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
   &quot;sequence&quot;: 9,
   &quot;type&quot;: &quot;approval.requested&quot;,
-  &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.267Z&quot;,
+  &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
   &quot;payload&quot;: {
     &quot;id&quot;: &quot;send_external_message-approval-1&quot;,
     &quot;action&quot;: &quot;send_external_message&quot;,
     &quot;status&quot;: &quot;pending&quot;,
     &quot;proposedBy&quot;: &quot;demo-agent&quot;,
     &quot;reason&quot;: &quot;requires approval&quot;,
-    &quot;createdAt&quot;: &quot;2026-06-18T14:29:27.267Z&quot;
+    &quot;createdAt&quot;: &quot;2026-06-18T14:54:58.230Z&quot;
   }
 }</pre><pre>{
   &quot;id&quot;: &quot;tool-guard-demo-run-evt-0010&quot;,
   &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
   &quot;sequence&quot;: 10,
   &quot;type&quot;: &quot;evidence.added&quot;,
-  &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.267Z&quot;,
+  &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
   &quot;payload&quot;: {
-    &quot;evidenceId&quot;: &quot;tool-4bcfb3c4-2c3d-4bfe-b6ae-459d6dd12e8c-evidence&quot;,
+    &quot;evidenceId&quot;: &quot;tool-9fb4eeb8-004f-493c-a474-d8bbb86ccdef-evidence&quot;,
     &quot;source&quot;: &quot;tool_guard&quot;,
     &quot;claim&quot;: &quot;Tool call delete_workspace_file was evaluated before execution.&quot;
   }
@@ -293,9 +293,9 @@
   &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
   &quot;sequence&quot;: 11,
   &quot;type&quot;: &quot;tool.requested&quot;,
-  &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.267Z&quot;,
+  &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
   &quot;payload&quot;: {
-    &quot;requestId&quot;: &quot;tool-4bcfb3c4-2c3d-4bfe-b6ae-459d6dd12e8c&quot;,
+    &quot;requestId&quot;: &quot;tool-9fb4eeb8-004f-493c-a474-d8bbb86ccdef&quot;,
     &quot;toolId&quot;: &quot;delete_workspace_file&quot;,
     &quot;subject&quot;: &quot;workspace/report.json&quot;,
     &quot;risk&quot;: &quot;high&quot;,
@@ -306,9 +306,9 @@
   &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
   &quot;sequence&quot;: 12,
   &quot;type&quot;: &quot;tool.policy_decision&quot;,
-  &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.267Z&quot;,
+  &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
   &quot;payload&quot;: {
-    &quot;requestId&quot;: &quot;tool-4bcfb3c4-2c3d-4bfe-b6ae-459d6dd12e8c&quot;,
+    &quot;requestId&quot;: &quot;tool-9fb4eeb8-004f-493c-a474-d8bbb86ccdef&quot;,
     &quot;toolId&quot;: &quot;delete_workspace_file&quot;,
     &quot;decision&quot;: &quot;blocked&quot;,
     &quot;reason&quot;: &quot;blocked by policy&quot;,
@@ -319,7 +319,7 @@
   &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
   &quot;sequence&quot;: 13,
   &quot;type&quot;: &quot;approval.not_required&quot;,
-  &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.267Z&quot;,
+  &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
   &quot;payload&quot;: {
     &quot;action&quot;: &quot;delete_workspace_file&quot;,
     &quot;decision&quot;: &quot;blocked&quot;
@@ -343,7 +343,7 @@
   },
   &quot;toolDecisions&quot;: [
     {
-      &quot;requestId&quot;: &quot;tool-ec6a2006-c7cb-4cbb-98e9-22005d4be8f5&quot;,
+      &quot;requestId&quot;: &quot;tool-ef41c5d5-c936-4726-826c-174e227bb51c&quot;,
       &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
       &quot;toolId&quot;: &quot;search_docs&quot;,
       &quot;tool&quot;: {
@@ -364,12 +364,12 @@
       &quot;approvalRequired&quot;: false,
       &quot;blocked&quot;: false,
       &quot;reason&quot;: &quot;allowed by policy&quot;,
-      &quot;evidenceId&quot;: &quot;tool-ec6a2006-c7cb-4cbb-98e9-22005d4be8f5-evidence&quot;,
+      &quot;evidenceId&quot;: &quot;tool-ef41c5d5-c936-4726-826c-174e227bb51c-evidence&quot;,
       &quot;approvalRequestId&quot;: null,
       &quot;metadata&quot;: {}
     },
     {
-      &quot;requestId&quot;: &quot;tool-c4be84f6-c9ee-46c1-b584-d70860b739a2&quot;,
+      &quot;requestId&quot;: &quot;tool-82e51f7f-e363-4364-bd33-f5c2a18dbf45&quot;,
       &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
       &quot;toolId&quot;: &quot;send_external_message&quot;,
       &quot;tool&quot;: {
@@ -390,12 +390,12 @@
       &quot;approvalRequired&quot;: true,
       &quot;blocked&quot;: false,
       &quot;reason&quot;: &quot;requires approval&quot;,
-      &quot;evidenceId&quot;: &quot;tool-c4be84f6-c9ee-46c1-b584-d70860b739a2-evidence&quot;,
+      &quot;evidenceId&quot;: &quot;tool-82e51f7f-e363-4364-bd33-f5c2a18dbf45-evidence&quot;,
       &quot;approvalRequestId&quot;: &quot;send_external_message-approval-1&quot;,
       &quot;metadata&quot;: {}
     },
     {
-      &quot;requestId&quot;: &quot;tool-4bcfb3c4-2c3d-4bfe-b6ae-459d6dd12e8c&quot;,
+      &quot;requestId&quot;: &quot;tool-9fb4eeb8-004f-493c-a474-d8bbb86ccdef&quot;,
       &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
       &quot;toolId&quot;: &quot;delete_workspace_file&quot;,
       &quot;tool&quot;: {
@@ -416,20 +416,20 @@
       &quot;approvalRequired&quot;: false,
       &quot;blocked&quot;: true,
       &quot;reason&quot;: &quot;blocked by policy&quot;,
-      &quot;evidenceId&quot;: &quot;tool-4bcfb3c4-2c3d-4bfe-b6ae-459d6dd12e8c-evidence&quot;,
+      &quot;evidenceId&quot;: &quot;tool-9fb4eeb8-004f-493c-a474-d8bbb86ccdef-evidence&quot;,
       &quot;approvalRequestId&quot;: null,
       &quot;metadata&quot;: {}
     }
   ],
   &quot;evidence&quot;: [
     {
-      &quot;id&quot;: &quot;tool-ec6a2006-c7cb-4cbb-98e9-22005d4be8f5-evidence&quot;,
+      &quot;id&quot;: &quot;tool-ef41c5d5-c936-4726-826c-174e227bb51c-evidence&quot;,
       &quot;source&quot;: &quot;tool_guard&quot;,
       &quot;claim&quot;: &quot;Tool call search_docs was evaluated before execution.&quot;,
       &quot;value&quot;: &quot;allowed&quot;,
       &quot;sourceIds&quot;: [],
       &quot;metadata&quot;: {
-        &quot;requestId&quot;: &quot;tool-ec6a2006-c7cb-4cbb-98e9-22005d4be8f5&quot;,
+        &quot;requestId&quot;: &quot;tool-ef41c5d5-c936-4726-826c-174e227bb51c&quot;,
         &quot;toolId&quot;: &quot;search_docs&quot;,
         &quot;risk&quot;: &quot;low&quot;,
         &quot;subject&quot;: &quot;local docs&quot;,
@@ -437,13 +437,13 @@
       }
     },
     {
-      &quot;id&quot;: &quot;tool-c4be84f6-c9ee-46c1-b584-d70860b739a2-evidence&quot;,
+      &quot;id&quot;: &quot;tool-82e51f7f-e363-4364-bd33-f5c2a18dbf45-evidence&quot;,
       &quot;source&quot;: &quot;tool_guard&quot;,
       &quot;claim&quot;: &quot;Tool call send_external_message was evaluated before execution.&quot;,
       &quot;value&quot;: &quot;approval_required&quot;,
       &quot;sourceIds&quot;: [],
       &quot;metadata&quot;: {
-        &quot;requestId&quot;: &quot;tool-c4be84f6-c9ee-46c1-b584-d70860b739a2&quot;,
+        &quot;requestId&quot;: &quot;tool-82e51f7f-e363-4364-bd33-f5c2a18dbf45&quot;,
         &quot;toolId&quot;: &quot;send_external_message&quot;,
         &quot;risk&quot;: &quot;medium&quot;,
         &quot;subject&quot;: &quot;external recipient&quot;,
@@ -451,13 +451,13 @@
       }
     },
     {
-      &quot;id&quot;: &quot;tool-4bcfb3c4-2c3d-4bfe-b6ae-459d6dd12e8c-evidence&quot;,
+      &quot;id&quot;: &quot;tool-9fb4eeb8-004f-493c-a474-d8bbb86ccdef-evidence&quot;,
       &quot;source&quot;: &quot;tool_guard&quot;,
       &quot;claim&quot;: &quot;Tool call delete_workspace_file was evaluated before execution.&quot;,
       &quot;value&quot;: &quot;blocked&quot;,
       &quot;sourceIds&quot;: [],
       &quot;metadata&quot;: {
-        &quot;requestId&quot;: &quot;tool-4bcfb3c4-2c3d-4bfe-b6ae-459d6dd12e8c&quot;,
+        &quot;requestId&quot;: &quot;tool-9fb4eeb8-004f-493c-a474-d8bbb86ccdef&quot;,
         &quot;toolId&quot;: &quot;delete_workspace_file&quot;,
         &quot;risk&quot;: &quot;high&quot;,
         &quot;subject&quot;: &quot;workspace/report.json&quot;,
@@ -472,7 +472,7 @@
       &quot;status&quot;: &quot;pending&quot;,
       &quot;proposedBy&quot;: &quot;demo-agent&quot;,
       &quot;reason&quot;: &quot;requires approval&quot;,
-      &quot;createdAt&quot;: &quot;2026-06-18T14:29:27.267Z&quot;
+      &quot;createdAt&quot;: &quot;2026-06-18T14:54:58.230Z&quot;
     }
   ],
   &quot;auditEvents&quot;: [
@@ -481,7 +481,7 @@
       &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
       &quot;sequence&quot;: 1,
       &quot;type&quot;: &quot;tool_guard.started&quot;,
-      &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.259Z&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.228Z&quot;,
       &quot;payload&quot;: {
         &quot;actor&quot;: &quot;demo-agent&quot;,
         &quot;boundary&quot;: &quot;local_guard_demo&quot;,
@@ -493,9 +493,9 @@
       &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
       &quot;sequence&quot;: 2,
       &quot;type&quot;: &quot;evidence.added&quot;,
-      &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.266Z&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
       &quot;payload&quot;: {
-        &quot;evidenceId&quot;: &quot;tool-ec6a2006-c7cb-4cbb-98e9-22005d4be8f5-evidence&quot;,
+        &quot;evidenceId&quot;: &quot;tool-ef41c5d5-c936-4726-826c-174e227bb51c-evidence&quot;,
         &quot;source&quot;: &quot;tool_guard&quot;,
         &quot;claim&quot;: &quot;Tool call search_docs was evaluated before execution.&quot;
       }
@@ -505,9 +505,9 @@
       &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
       &quot;sequence&quot;: 3,
       &quot;type&quot;: &quot;tool.requested&quot;,
-      &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.266Z&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
       &quot;payload&quot;: {
-        &quot;requestId&quot;: &quot;tool-ec6a2006-c7cb-4cbb-98e9-22005d4be8f5&quot;,
+        &quot;requestId&quot;: &quot;tool-ef41c5d5-c936-4726-826c-174e227bb51c&quot;,
         &quot;toolId&quot;: &quot;search_docs&quot;,
         &quot;subject&quot;: &quot;local docs&quot;,
         &quot;risk&quot;: &quot;low&quot;,
@@ -519,9 +519,9 @@
       &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
       &quot;sequence&quot;: 4,
       &quot;type&quot;: &quot;tool.policy_decision&quot;,
-      &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.266Z&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
       &quot;payload&quot;: {
-        &quot;requestId&quot;: &quot;tool-ec6a2006-c7cb-4cbb-98e9-22005d4be8f5&quot;,
+        &quot;requestId&quot;: &quot;tool-ef41c5d5-c936-4726-826c-174e227bb51c&quot;,
         &quot;toolId&quot;: &quot;search_docs&quot;,
         &quot;decision&quot;: &quot;allowed&quot;,
         &quot;reason&quot;: &quot;allowed by policy&quot;,
@@ -533,7 +533,7 @@
       &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
       &quot;sequence&quot;: 5,
       &quot;type&quot;: &quot;approval.not_required&quot;,
-      &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.266Z&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
       &quot;payload&quot;: {
         &quot;action&quot;: &quot;search_docs&quot;,
         &quot;decision&quot;: &quot;allowed&quot;
@@ -544,9 +544,9 @@
       &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
       &quot;sequence&quot;: 6,
       &quot;type&quot;: &quot;evidence.added&quot;,
-      &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.267Z&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
       &quot;payload&quot;: {
-        &quot;evidenceId&quot;: &quot;tool-c4be84f6-c9ee-46c1-b584-d70860b739a2-evidence&quot;,
+        &quot;evidenceId&quot;: &quot;tool-82e51f7f-e363-4364-bd33-f5c2a18dbf45-evidence&quot;,
         &quot;source&quot;: &quot;tool_guard&quot;,
         &quot;claim&quot;: &quot;Tool call send_external_message was evaluated before execution.&quot;
       }
@@ -556,9 +556,9 @@
       &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
       &quot;sequence&quot;: 7,
       &quot;type&quot;: &quot;tool.requested&quot;,
-      &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.267Z&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
       &quot;payload&quot;: {
-        &quot;requestId&quot;: &quot;tool-c4be84f6-c9ee-46c1-b584-d70860b739a2&quot;,
+        &quot;requestId&quot;: &quot;tool-82e51f7f-e363-4364-bd33-f5c2a18dbf45&quot;,
         &quot;toolId&quot;: &quot;send_external_message&quot;,
         &quot;subject&quot;: &quot;external recipient&quot;,
         &quot;risk&quot;: &quot;medium&quot;,
@@ -570,9 +570,9 @@
       &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
       &quot;sequence&quot;: 8,
       &quot;type&quot;: &quot;tool.policy_decision&quot;,
-      &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.267Z&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
       &quot;payload&quot;: {
-        &quot;requestId&quot;: &quot;tool-c4be84f6-c9ee-46c1-b584-d70860b739a2&quot;,
+        &quot;requestId&quot;: &quot;tool-82e51f7f-e363-4364-bd33-f5c2a18dbf45&quot;,
         &quot;toolId&quot;: &quot;send_external_message&quot;,
         &quot;decision&quot;: &quot;approval_required&quot;,
         &quot;reason&quot;: &quot;requires approval&quot;,
@@ -584,14 +584,14 @@
       &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
       &quot;sequence&quot;: 9,
       &quot;type&quot;: &quot;approval.requested&quot;,
-      &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.267Z&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
       &quot;payload&quot;: {
         &quot;id&quot;: &quot;send_external_message-approval-1&quot;,
         &quot;action&quot;: &quot;send_external_message&quot;,
         &quot;status&quot;: &quot;pending&quot;,
         &quot;proposedBy&quot;: &quot;demo-agent&quot;,
         &quot;reason&quot;: &quot;requires approval&quot;,
-        &quot;createdAt&quot;: &quot;2026-06-18T14:29:27.267Z&quot;
+        &quot;createdAt&quot;: &quot;2026-06-18T14:54:58.230Z&quot;
       }
     },
     {
@@ -599,9 +599,9 @@
       &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
       &quot;sequence&quot;: 10,
       &quot;type&quot;: &quot;evidence.added&quot;,
-      &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.267Z&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
       &quot;payload&quot;: {
-        &quot;evidenceId&quot;: &quot;tool-4bcfb3c4-2c3d-4bfe-b6ae-459d6dd12e8c-evidence&quot;,
+        &quot;evidenceId&quot;: &quot;tool-9fb4eeb8-004f-493c-a474-d8bbb86ccdef-evidence&quot;,
         &quot;source&quot;: &quot;tool_guard&quot;,
         &quot;claim&quot;: &quot;Tool call delete_workspace_file was evaluated before execution.&quot;
       }
@@ -611,9 +611,9 @@
       &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
       &quot;sequence&quot;: 11,
       &quot;type&quot;: &quot;tool.requested&quot;,
-      &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.267Z&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
       &quot;payload&quot;: {
-        &quot;requestId&quot;: &quot;tool-4bcfb3c4-2c3d-4bfe-b6ae-459d6dd12e8c&quot;,
+        &quot;requestId&quot;: &quot;tool-9fb4eeb8-004f-493c-a474-d8bbb86ccdef&quot;,
         &quot;toolId&quot;: &quot;delete_workspace_file&quot;,
         &quot;subject&quot;: &quot;workspace/report.json&quot;,
         &quot;risk&quot;: &quot;high&quot;,
@@ -625,9 +625,9 @@
       &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
       &quot;sequence&quot;: 12,
       &quot;type&quot;: &quot;tool.policy_decision&quot;,
-      &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.267Z&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
       &quot;payload&quot;: {
-        &quot;requestId&quot;: &quot;tool-4bcfb3c4-2c3d-4bfe-b6ae-459d6dd12e8c&quot;,
+        &quot;requestId&quot;: &quot;tool-9fb4eeb8-004f-493c-a474-d8bbb86ccdef&quot;,
         &quot;toolId&quot;: &quot;delete_workspace_file&quot;,
         &quot;decision&quot;: &quot;blocked&quot;,
         &quot;reason&quot;: &quot;blocked by policy&quot;,
@@ -639,7 +639,7 @@
       &quot;runId&quot;: &quot;tool-guard-demo-run&quot;,
       &quot;sequence&quot;: 13,
       &quot;type&quot;: &quot;approval.not_required&quot;,
-      &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.267Z&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
       &quot;payload&quot;: {
         &quot;action&quot;: &quot;delete_workspace_file&quot;,
         &quot;decision&quot;: &quot;blocked&quot;

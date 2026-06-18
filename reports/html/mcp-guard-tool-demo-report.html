@@ -14,7 +14,7 @@
   <header class="hero">
     <p class="eyebrow">RuleOak local audit report</p>
     <h1>RuleOak MCP Guard Report</h1>
-    <p class="muted">Source: <span class="source">/mnt/data/fix_ruleoak/ruleoak-core-v2.0.1-polish/examples/tool-guard-demo/out/mcp-guard-report.json</span></p>
+    <p class="muted">Source: <span class="source">/Users/stanleysun/AI/ruleoak-core/examples/tool-guard-demo/out/mcp-guard-report.json</span></p>
     <p><span class="pill">completed</span><span class="pill">2.0.0</span></p>
     <div class="grid">
       <div class="metric"><strong>1</strong>Evidence</div>
@@ -25,10 +25,10 @@
   <section class="card"><h2>Summary</h2><pre>{
   &quot;id&quot;: &quot;mcp-guard-demo-run&quot;,
   &quot;title&quot;: &quot;RuleOak MCP Guard Report&quot;,
-  &quot;sourcePath&quot;: &quot;/mnt/data/fix_ruleoak/ruleoak-core-v2.0.1-polish/examples/tool-guard-demo/out/mcp-guard-report.json&quot;,
+  &quot;sourcePath&quot;: &quot;/Users/stanleysun/AI/ruleoak-core/examples/tool-guard-demo/out/mcp-guard-report.json&quot;,
   &quot;status&quot;: &quot;completed&quot;,
   &quot;runtimeVersion&quot;: &quot;2.0.0&quot;,
-  &quot;generatedAt&quot;: &quot;2026-06-18T14:29:43.488Z&quot;,
+  &quot;generatedAt&quot;: &quot;2026-06-18T14:54:58.577Z&quot;,
   &quot;counts&quot;: {
     &quot;evidence&quot;: 1,
     &quot;auditEvents&quot;: 5,
@@ -50,10 +50,10 @@
   &quot;status&quot;: &quot;pending&quot;,
   &quot;proposedBy&quot;: &quot;demo-mcp-client&quot;,
   &quot;reason&quot;: &quot;requires approval&quot;,
-  &quot;createdAt&quot;: &quot;2026-06-18T14:29:27.268Z&quot;
+  &quot;createdAt&quot;: &quot;2026-06-18T14:54:58.230Z&quot;
 }</pre></div></section>
   <section class="card"><h2>Tool decisions</h2><div class="records"><pre>{
-  &quot;requestId&quot;: &quot;tool-989a68db-6dce-4c56-b131-8e38299433f0&quot;,
+  &quot;requestId&quot;: &quot;tool-30498fff-eaa8-4619-bf1f-179a339e1a9f&quot;,
   &quot;runId&quot;: &quot;mcp-guard-demo-run&quot;,
   &quot;toolId&quot;: &quot;send_external_message&quot;,
   &quot;tool&quot;: {
@@ -79,7 +79,7 @@
   &quot;approvalRequired&quot;: true,
   &quot;blocked&quot;: false,
   &quot;reason&quot;: &quot;requires approval&quot;,
-  &quot;evidenceId&quot;: &quot;tool-989a68db-6dce-4c56-b131-8e38299433f0-evidence&quot;,
+  &quot;evidenceId&quot;: &quot;tool-30498fff-eaa8-4619-bf1f-179a339e1a9f-evidence&quot;,
   &quot;approvalRequestId&quot;: &quot;send_external_message-approval-1&quot;,
   &quot;metadata&quot;: {
     &quot;mcp&quot;: true,
@@ -91,13 +91,13 @@
   }
 }</pre></div></section>
   <section class="card"><h2>Evidence</h2><div class="records"><pre>{
-  &quot;id&quot;: &quot;tool-989a68db-6dce-4c56-b131-8e38299433f0-evidence&quot;,
+  &quot;id&quot;: &quot;tool-30498fff-eaa8-4619-bf1f-179a339e1a9f-evidence&quot;,
   &quot;source&quot;: &quot;tool_guard&quot;,
   &quot;claim&quot;: &quot;Tool call send_external_message was evaluated before execution.&quot;,
   &quot;value&quot;: &quot;approval_required&quot;,
   &quot;sourceIds&quot;: [],
   &quot;metadata&quot;: {
-    &quot;requestId&quot;: &quot;tool-989a68db-6dce-4c56-b131-8e38299433f0&quot;,
+    &quot;requestId&quot;: &quot;tool-30498fff-eaa8-4619-bf1f-179a339e1a9f&quot;,
     &quot;toolId&quot;: &quot;send_external_message&quot;,
     &quot;risk&quot;: &quot;medium&quot;,
     &quot;subject&quot;: &quot;external communication&quot;,
@@ -112,7 +112,7 @@
   &quot;runId&quot;: &quot;mcp-guard-demo-run&quot;,
   &quot;sequence&quot;: 1,
   &quot;type&quot;: &quot;tool_guard.started&quot;,
-  &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.268Z&quot;,
+  &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
   &quot;payload&quot;: {
     &quot;actor&quot;: &quot;demo-mcp-client&quot;,
     &quot;boundary&quot;: &quot;local_guard_demo&quot;,
@@ -123,9 +123,9 @@
   &quot;runId&quot;: &quot;mcp-guard-demo-run&quot;,
   &quot;sequence&quot;: 2,
   &quot;type&quot;: &quot;evidence.added&quot;,
-  &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.268Z&quot;,
+  &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
   &quot;payload&quot;: {
-    &quot;evidenceId&quot;: &quot;tool-989a68db-6dce-4c56-b131-8e38299433f0-evidence&quot;,
+    &quot;evidenceId&quot;: &quot;tool-30498fff-eaa8-4619-bf1f-179a339e1a9f-evidence&quot;,
     &quot;source&quot;: &quot;tool_guard&quot;,
     &quot;claim&quot;: &quot;Tool call send_external_message was evaluated before execution.&quot;
   }
@@ -134,9 +134,9 @@
   &quot;runId&quot;: &quot;mcp-guard-demo-run&quot;,
   &quot;sequence&quot;: 3,
   &quot;type&quot;: &quot;tool.requested&quot;,
-  &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.268Z&quot;,
+  &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
   &quot;payload&quot;: {
-    &quot;requestId&quot;: &quot;tool-989a68db-6dce-4c56-b131-8e38299433f0&quot;,
+    &quot;requestId&quot;: &quot;tool-30498fff-eaa8-4619-bf1f-179a339e1a9f&quot;,
     &quot;toolId&quot;: &quot;send_external_message&quot;,
     &quot;subject&quot;: &quot;external communication&quot;,
     &quot;risk&quot;: &quot;medium&quot;,
@@ -147,9 +147,9 @@
   &quot;runId&quot;: &quot;mcp-guard-demo-run&quot;,
   &quot;sequence&quot;: 4,
   &quot;type&quot;: &quot;tool.policy_decision&quot;,
-  &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.268Z&quot;,
+  &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
   &quot;payload&quot;: {
-    &quot;requestId&quot;: &quot;tool-989a68db-6dce-4c56-b131-8e38299433f0&quot;,
+    &quot;requestId&quot;: &quot;tool-30498fff-eaa8-4619-bf1f-179a339e1a9f&quot;,
     &quot;toolId&quot;: &quot;send_external_message&quot;,
     &quot;decision&quot;: &quot;approval_required&quot;,
     &quot;reason&quot;: &quot;requires approval&quot;,
@@ -160,14 +160,14 @@
   &quot;runId&quot;: &quot;mcp-guard-demo-run&quot;,
   &quot;sequence&quot;: 5,
   &quot;type&quot;: &quot;approval.requested&quot;,
-  &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.268Z&quot;,
+  &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
   &quot;payload&quot;: {
     &quot;id&quot;: &quot;send_external_message-approval-1&quot;,
     &quot;action&quot;: &quot;send_external_message&quot;,
     &quot;status&quot;: &quot;pending&quot;,
     &quot;proposedBy&quot;: &quot;demo-mcp-client&quot;,
     &quot;reason&quot;: &quot;requires approval&quot;,
-    &quot;createdAt&quot;: &quot;2026-06-18T14:29:27.268Z&quot;
+    &quot;createdAt&quot;: &quot;2026-06-18T14:54:58.230Z&quot;
   }
 }</pre></div></section>
   <section class="card"><h2>Raw report</h2><pre>{
@@ -188,7 +188,7 @@
   },
   &quot;toolDecisions&quot;: [
     {
-      &quot;requestId&quot;: &quot;tool-989a68db-6dce-4c56-b131-8e38299433f0&quot;,
+      &quot;requestId&quot;: &quot;tool-30498fff-eaa8-4619-bf1f-179a339e1a9f&quot;,
       &quot;runId&quot;: &quot;mcp-guard-demo-run&quot;,
       &quot;toolId&quot;: &quot;send_external_message&quot;,
       &quot;tool&quot;: {
@@ -214,7 +214,7 @@
       &quot;approvalRequired&quot;: true,
       &quot;blocked&quot;: false,
       &quot;reason&quot;: &quot;requires approval&quot;,
-      &quot;evidenceId&quot;: &quot;tool-989a68db-6dce-4c56-b131-8e38299433f0-evidence&quot;,
+      &quot;evidenceId&quot;: &quot;tool-30498fff-eaa8-4619-bf1f-179a339e1a9f-evidence&quot;,
       &quot;approvalRequestId&quot;: &quot;send_external_message-approval-1&quot;,
       &quot;metadata&quot;: {
         &quot;mcp&quot;: true,
@@ -228,13 +228,13 @@
   ],
   &quot;evidence&quot;: [
     {
-      &quot;id&quot;: &quot;tool-989a68db-6dce-4c56-b131-8e38299433f0-evidence&quot;,
+      &quot;id&quot;: &quot;tool-30498fff-eaa8-4619-bf1f-179a339e1a9f-evidence&quot;,
       &quot;source&quot;: &quot;tool_guard&quot;,
       &quot;claim&quot;: &quot;Tool call send_external_message was evaluated before execution.&quot;,
       &quot;value&quot;: &quot;approval_required&quot;,
       &quot;sourceIds&quot;: [],
       &quot;metadata&quot;: {
-        &quot;requestId&quot;: &quot;tool-989a68db-6dce-4c56-b131-8e38299433f0&quot;,
+        &quot;requestId&quot;: &quot;tool-30498fff-eaa8-4619-bf1f-179a339e1a9f&quot;,
         &quot;toolId&quot;: &quot;send_external_message&quot;,
         &quot;risk&quot;: &quot;medium&quot;,
         &quot;subject&quot;: &quot;external communication&quot;,
@@ -252,7 +252,7 @@
       &quot;status&quot;: &quot;pending&quot;,
       &quot;proposedBy&quot;: &quot;demo-mcp-client&quot;,
       &quot;reason&quot;: &quot;requires approval&quot;,
-      &quot;createdAt&quot;: &quot;2026-06-18T14:29:27.268Z&quot;
+      &quot;createdAt&quot;: &quot;2026-06-18T14:54:58.230Z&quot;
     }
   ],
   &quot;auditEvents&quot;: [
@@ -261,7 +261,7 @@
       &quot;runId&quot;: &quot;mcp-guard-demo-run&quot;,
       &quot;sequence&quot;: 1,
       &quot;type&quot;: &quot;tool_guard.started&quot;,
-      &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.268Z&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
       &quot;payload&quot;: {
         &quot;actor&quot;: &quot;demo-mcp-client&quot;,
         &quot;boundary&quot;: &quot;local_guard_demo&quot;,
@@ -273,9 +273,9 @@
       &quot;runId&quot;: &quot;mcp-guard-demo-run&quot;,
       &quot;sequence&quot;: 2,
       &quot;type&quot;: &quot;evidence.added&quot;,
-      &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.268Z&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
       &quot;payload&quot;: {
-        &quot;evidenceId&quot;: &quot;tool-989a68db-6dce-4c56-b131-8e38299433f0-evidence&quot;,
+        &quot;evidenceId&quot;: &quot;tool-30498fff-eaa8-4619-bf1f-179a339e1a9f-evidence&quot;,
         &quot;source&quot;: &quot;tool_guard&quot;,
         &quot;claim&quot;: &quot;Tool call send_external_message was evaluated before execution.&quot;
       }
@@ -285,9 +285,9 @@
       &quot;runId&quot;: &quot;mcp-guard-demo-run&quot;,
       &quot;sequence&quot;: 3,
       &quot;type&quot;: &quot;tool.requested&quot;,
-      &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.268Z&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
       &quot;payload&quot;: {
-        &quot;requestId&quot;: &quot;tool-989a68db-6dce-4c56-b131-8e38299433f0&quot;,
+        &quot;requestId&quot;: &quot;tool-30498fff-eaa8-4619-bf1f-179a339e1a9f&quot;,
         &quot;toolId&quot;: &quot;send_external_message&quot;,
         &quot;subject&quot;: &quot;external communication&quot;,
         &quot;risk&quot;: &quot;medium&quot;,
@@ -299,9 +299,9 @@
       &quot;runId&quot;: &quot;mcp-guard-demo-run&quot;,
       &quot;sequence&quot;: 4,
       &quot;type&quot;: &quot;tool.policy_decision&quot;,
-      &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.268Z&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
       &quot;payload&quot;: {
-        &quot;requestId&quot;: &quot;tool-989a68db-6dce-4c56-b131-8e38299433f0&quot;,
+        &quot;requestId&quot;: &quot;tool-30498fff-eaa8-4619-bf1f-179a339e1a9f&quot;,
         &quot;toolId&quot;: &quot;send_external_message&quot;,
         &quot;decision&quot;: &quot;approval_required&quot;,
         &quot;reason&quot;: &quot;requires approval&quot;,
@@ -313,14 +313,14 @@
       &quot;runId&quot;: &quot;mcp-guard-demo-run&quot;,
       &quot;sequence&quot;: 5,
       &quot;type&quot;: &quot;approval.requested&quot;,
-      &quot;timestamp&quot;: &quot;2026-06-18T14:29:27.268Z&quot;,
+      &quot;timestamp&quot;: &quot;2026-06-18T14:54:58.230Z&quot;,
       &quot;payload&quot;: {
         &quot;id&quot;: &quot;send_external_message-approval-1&quot;,
         &quot;action&quot;: &quot;send_external_message&quot;,
         &quot;status&quot;: &quot;pending&quot;,
         &quot;proposedBy&quot;: &quot;demo-mcp-client&quot;,
         &quot;reason&quot;: &quot;requires approval&quot;,
-        &quot;createdAt&quot;: &quot;2026-06-18T14:29:27.268Z&quot;
+        &quot;createdAt&quot;: &quot;2026-06-18T14:54:58.230Z&quot;
       }
     }
   ],
@@ -350,7 +350,7 @@
         &quot;method&quot;: &quot;tools/call&quot;,
         &quot;tool&quot;: &quot;send_external_message&quot;,
         &quot;decision&quot;: &quot;approval_required&quot;,
-        &quot;requestId&quot;: &quot;tool-989a68db-6dce-4c56-b131-8e38299433f0&quot;
+        &quot;requestId&quot;: &quot;tool-30498fff-eaa8-4619-bf1f-179a339e1a9f&quot;
       }
     ]
   }

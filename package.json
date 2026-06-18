@@ -1,6 +1,6 @@
 {
   "name": "@ruleoak/core",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "private": false,
   "type": "module",
   "description": "AGPL governance layer for AI tool calls with policy checks, evidence records, approval gates, audit reports, protocol conformance, adapters, MCP Guard, policy packs, and local approval inbox.",
@@ -55,7 +55,7 @@
     "inspect": "node src/cli/index.js inspect",
     "example:consultant": "node examples/technical-consultant-demo/run.js",
     "create:app": "node scripts/create-app.js",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "node ./node_modules/typescript/bin/tsc --noEmit",
     "test": "npm run typecheck && npm run test:runtime && npm run test:examples && npm run test:sandbox && npm run test:guard && npm run test:mcp && npm run test:connectors && npm run test:writes && npm run test:reports && npm run test:telemetry && npm run test:protocol && npm run test:adapters && npm run test:mcp-proxy && npm run test:policy-packs && npm run test:approval-inbox && npm run test:polish && npm run test:ux",
     "llm:doctor": "node scripts/local-llm-doctor.js",
     "llm:pull": "node scripts/local-llm-pull.js",

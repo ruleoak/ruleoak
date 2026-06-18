@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-18T14:29:26.683Z",
+  "generatedAt": "2026-06-18T14:54:58.121Z",
   "stage": "security foundation",
   "boundary": "deny-by-default sandbox foundation; not externally security-reviewed",
   "checks": [
@@ -47,8 +47,8 @@
       "matchedRule": null,
       "metadata": {
         "path": "../../secret.txt",
-        "resolved": "/mnt/data/secret.txt",
-        "real": "/mnt/data/secret.txt"
+        "resolved": "/Users/stanleysun/secret.txt",
+        "real": "/Users/stanleysun/secret.txt"
       },
       "stage": "security foundation"
     },

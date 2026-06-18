@@ -33,7 +33,7 @@ Read [docs/integrations/govern-ai-tool-call-in-10-minutes.md](docs/integrations/
 
 ## v2.0.2 report HTML hotfix
 
-RuleOak Core v2.0.2 restores the packaged HTML report renderer used by `npm run report:html`, `npm run report:view`, and `npm run viewer:build`. It keeps the v2.0.1 polish release behavior and fixes a missing `src/reports/html-report.js` module in the previous package.
+RuleOak Core v2.0.3 restores the packaged HTML report renderer used by `npm run report:html`, `npm run report:view`, and `npm run viewer:build`. It keeps the v2.0.1 polish release behavior and fixes a missing `src/reports/html-report.js` module in the previous package.
 
 ## v2.0.1 polish release
 
@@ -434,3 +434,16 @@ npm run approval:inbox
 ```
 
 The inbox is local-first and file-backed. It does not call external services.
+
+## v2.0.3 TypeScript bin hotfix
+
+RuleOak Core v2.0.3 makes the TypeScript check more robust by calling TypeScript directly from `node_modules/typescript/bin/tsc` instead of relying on a potentially broken `.bin/tsc` shim.
+
+If `npm test` fails with `Cannot find module ../lib/tsc.js`, clean and reinstall dependencies:
+
+```bash
+rm -rf node_modules
+npm install
+npm test
+```
+

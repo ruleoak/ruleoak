@@ -1,6 +1,6 @@
 {
   "version": "2.0.0",
-  "generatedAt": "2026-06-18T14:29:23.629Z",
+  "generatedAt": "2026-06-18T14:54:57.507Z",
   "requests": [
     {
       "id": "restart.service-approval-1",
@@ -11,8 +11,8 @@
       "status": "pending",
       "risk": "unknown",
       "evidenceId": null,
-      "reportSource": "/mnt/data/fix_ruleoak/ruleoak-core-v2.0.1-polish/examples/technical-consultant-demo/out/case-report.json",
-      "createdAt": "2026-06-18T14:29:14.829Z",
+      "reportSource": "/Users/stanleysun/AI/ruleoak-core/examples/technical-consultant-demo/out/case-report.json",
+      "createdAt": "2026-06-18T14:54:55.657Z",
       "decidedAt": null,
       "decidedBy": null,
       "decisionReason": null,
@@ -27,8 +27,8 @@
       "status": "pending",
       "risk": "unknown",
       "evidenceId": null,
-      "reportSource": "/mnt/data/fix_ruleoak/ruleoak-core-v2.0.1-polish/examples/research-brief-demo/out/research-brief-report.json",
-      "createdAt": "2026-06-18T14:29:15.504Z",
+      "reportSource": "/Users/stanleysun/AI/ruleoak-core/examples/research-brief-demo/out/research-brief-report.json",
+      "createdAt": "2026-06-18T14:54:55.797Z",
       "decidedAt": null,
       "decidedBy": null,
       "decisionReason": null,
@@ -42,15 +42,15 @@
       "reason": "requires approval",
       "status": "pending",
       "risk": "medium",
-      "evidenceId": "tool-e87e1c4f-c3d0-4f6a-bbe5-081cc9f296a5-evidence",
-      "reportSource": "/mnt/data/fix_ruleoak/ruleoak-core-v2.0.1-polish/examples/mcp-guard-demo/out/mcp-guard-report.json",
-      "createdAt": "2026-06-18T14:29:23.625Z",
+      "evidenceId": "tool-5d8dcbc9-4913-45e2-8bdf-d64b19ab84bb-evidence",
+      "reportSource": "/Users/stanleysun/AI/ruleoak-core/examples/mcp-guard-demo/out/mcp-guard-report.json",
+      "createdAt": "2026-06-18T14:54:57.507Z",
       "decidedAt": null,
       "decidedBy": null,
       "decisionReason": null,
       "metadata": {
         "decision": {
-          "requestId": "tool-e87e1c4f-c3d0-4f6a-bbe5-081cc9f296a5",
+          "requestId": "tool-5d8dcbc9-4913-45e2-8bdf-d64b19ab84bb",
           "runId": "ruleoak-mcp-guard-demo",
           "toolId": "send_external_message",
           "tool": {
@@ -86,7 +86,7 @@
           "approvalRequired": true,
           "blocked": false,
           "reason": "requires approval",
-          "evidenceId": "tool-e87e1c4f-c3d0-4f6a-bbe5-081cc9f296a5-evidence",
+          "evidenceId": "tool-5d8dcbc9-4913-45e2-8bdf-d64b19ab84bb-evidence",
           "approvalRequestId": "send_external_message-approval-1",
           "metadata": {
             "requestId": 2,
@@ -111,8 +111,8 @@
       "status": "pending",
       "risk": "unknown",
       "evidenceId": "wi-github_write-564a779d56ab12aa-evidence",
-      "reportSource": "/mnt/data/fix_ruleoak/ruleoak-core-v2.0.1-polish/examples/write-connectors-demo/out/write-connectors-report.json",
-      "createdAt": "2026-06-18T14:29:23.628Z",
+      "reportSource": "/Users/stanleysun/AI/ruleoak-core/examples/write-connectors-demo/out/write-connectors-report.json",
+      "createdAt": "2026-06-18T14:54:57.507Z",
       "decidedAt": null,
       "decidedBy": null,
       "decisionReason": null,
@@ -144,8 +144,8 @@
       "status": "pending",
       "risk": "unknown",
       "evidenceId": "wi-jira_write-967dfe1e710b2b5e-evidence",
-      "reportSource": "/mnt/data/fix_ruleoak/ruleoak-core-v2.0.1-polish/examples/write-connectors-demo/out/write-connectors-report.json",
-      "createdAt": "2026-06-18T14:29:23.628Z",
+      "reportSource": "/Users/stanleysun/AI/ruleoak-core/examples/write-connectors-demo/out/write-connectors-report.json",
+      "createdAt": "2026-06-18T14:54:57.507Z",
       "decidedAt": null,
       "decidedBy": null,
       "decisionReason": null,
@@ -177,8 +177,8 @@
       "status": "pending",
       "risk": "unknown",
       "evidenceId": "wi-jira_write-198496be6bf0d3ab-evidence",
-      "reportSource": "/mnt/data/fix_ruleoak/ruleoak-core-v2.0.1-polish/examples/write-connectors-demo/out/write-connectors-report.json",
-      "createdAt": "2026-06-18T14:29:23.628Z",
+      "reportSource": "/Users/stanleysun/AI/ruleoak-core/examples/write-connectors-demo/out/write-connectors-report.json",
+      "createdAt": "2026-06-18T14:54:57.507Z",
       "decidedAt": null,
       "decidedBy": null,
       "decisionReason": null,
@@ -209,16 +209,16 @@
       "reason": "requires approval",
       "status": "pending",
       "risk": "medium",
-      "evidenceId": "tool-b4fb50b2-ff67-4f1c-a8e8-6730a1be000d-evidence",
-      "reportSource": "/mnt/data/fix_ruleoak/ruleoak-core-v2.0.1-polish/examples/policy-packs-demo/out/policy-packs-report.json",
-      "createdAt": "2026-06-18T14:29:23.629Z",
+      "evidenceId": "tool-495cde7f-edf6-44bb-b401-39250c98f025-evidence",
+      "reportSource": "/Users/stanleysun/AI/ruleoak-core/examples/policy-packs-demo/out/policy-packs-report.json",
+      "createdAt": "2026-06-18T14:54:57.507Z",
       "decidedAt": null,
       "decidedBy": null,
       "decisionReason": null,
       "metadata": {
         "decision": {
-          "requestId": "tool-b4fb50b2-ff67-4f1c-a8e8-6730a1be000d",
-          "runId": "roak-tool-run-1781792962704",
+          "requestId": "tool-495cde7f-edf6-44bb-b401-39250c98f025",
+          "runId": "roak-tool-run-1781794497316",
           "toolId": "write_workspace_file",
           "tool": {
             "id": "write_workspace_file",
@@ -238,7 +238,7 @@
           "approvalRequired": true,
           "blocked": false,
           "reason": "requires approval",
-          "evidenceId": "tool-b4fb50b2-ff67-4f1c-a8e8-6730a1be000d-evidence",
+          "evidenceId": "tool-495cde7f-edf6-44bb-b401-39250c98f025-evidence",
           "approvalRequestId": "write_workspace_file-approval-1",
           "metadata": {}
         }
@@ -252,16 +252,16 @@
       "reason": "requires approval",
       "status": "pending",
       "risk": "high",
-      "evidenceId": "tool-3ce2e0c5-c437-4fde-a862-c30569e15f5b-evidence",
-      "reportSource": "/mnt/data/fix_ruleoak/ruleoak-core-v2.0.1-polish/examples/policy-packs-demo/out/policy-packs-report.json",
-      "createdAt": "2026-06-18T14:29:23.629Z",
+      "evidenceId": "tool-e355aba2-173a-46f3-9bdb-9474ddd2a5d1-evidence",
+      "reportSource": "/Users/stanleysun/AI/ruleoak-core/examples/policy-packs-demo/out/policy-packs-report.json",
+      "createdAt": "2026-06-18T14:54:57.507Z",
       "decidedAt": null,
       "decidedBy": null,
       "decisionReason": null,
       "metadata": {
         "decision": {
-          "requestId": "tool-3ce2e0c5-c437-4fde-a862-c30569e15f5b",
-          "runId": "roak-tool-run-1781792962704",
+          "requestId": "tool-e355aba2-173a-46f3-9bdb-9474ddd2a5d1",
+          "runId": "roak-tool-run-1781794497316",
           "toolId": "send_external_message",
           "tool": {
             "id": "send_external_message",
@@ -281,7 +281,7 @@
           "approvalRequired": true,
           "blocked": false,
           "reason": "requires approval",
-          "evidenceId": "tool-3ce2e0c5-c437-4fde-a862-c30569e15f5b-evidence",
+          "evidenceId": "tool-e355aba2-173a-46f3-9bdb-9474ddd2a5d1-evidence",
           "approvalRequestId": "send_external_message-approval-2",
           "metadata": {}
         }
@@ -295,16 +295,16 @@
       "reason": "requires approval",
       "status": "pending",
       "risk": "high",
-      "evidenceId": "tool-2dc7cc4c-7f95-4287-88e6-71b1797a8b90-evidence",
-      "reportSource": "/mnt/data/fix_ruleoak/ruleoak-core-v2.0.1-polish/examples/policy-packs-demo/out/policy-packs-report.json",
-      "createdAt": "2026-06-18T14:29:23.629Z",
+      "evidenceId": "tool-9186689f-51d4-4efe-8bc9-e3687b399a3e-evidence",
+      "reportSource": "/Users/stanleysun/AI/ruleoak-core/examples/policy-packs-demo/out/policy-packs-report.json",
+      "createdAt": "2026-06-18T14:54:57.507Z",
       "decidedAt": null,
       "decidedBy": null,
       "decisionReason": null,
       "metadata": {
         "decision": {
-          "requestId": "tool-2dc7cc4c-7f95-4287-88e6-71b1797a8b90",
-          "runId": "roak-tool-run-1781792962704",
+          "requestId": "tool-9186689f-51d4-4efe-8bc9-e3687b399a3e",
+          "runId": "roak-tool-run-1781794497316",
           "toolId": "comment_ticket",
           "tool": {
             "id": "comment_ticket",
@@ -324,7 +324,7 @@
           "approvalRequired": true,
           "blocked": false,
           "reason": "requires approval",
-          "evidenceId": "tool-2dc7cc4c-7f95-4287-88e6-71b1797a8b90-evidence",
+          "evidenceId": "tool-9186689f-51d4-4efe-8bc9-e3687b399a3e-evidence",
           "approvalRequestId": "comment_ticket-approval-3",
           "metadata": {}
         }
@@ -338,16 +338,16 @@
       "reason": "requires approval",
       "status": "pending",
       "risk": "high",
-      "evidenceId": "tool-c6e2ce00-231c-4890-8b67-9db595a75642-evidence",
-      "reportSource": "/mnt/data/fix_ruleoak/ruleoak-core-v2.0.1-polish/examples/policy-packs-demo/out/policy-packs-report.json",
-      "createdAt": "2026-06-18T14:29:23.629Z",
+      "evidenceId": "tool-f515bced-1115-455a-b23c-85f7745a2582-evidence",
+      "reportSource": "/Users/stanleysun/AI/ruleoak-core/examples/policy-packs-demo/out/policy-packs-report.json",
+      "createdAt": "2026-06-18T14:54:57.507Z",
       "decidedAt": null,
       "decidedBy": null,
       "decisionReason": null,
       "metadata": {
         "decision": {
-          "requestId": "tool-c6e2ce00-231c-4890-8b67-9db595a75642",
-          "runId": "roak-tool-run-1781792962704",
+          "requestId": "tool-f515bced-1115-455a-b23c-85f7745a2582",
+          "runId": "roak-tool-run-1781794497316",
           "toolId": "cloud_llm_generate",
           "tool": {
             "id": "cloud_llm_generate",
@@ -367,7 +367,7 @@
           "approvalRequired": true,
           "blocked": false,
           "reason": "requires approval",
-          "evidenceId": "tool-c6e2ce00-231c-4890-8b67-9db595a75642-evidence",
+          "evidenceId": "tool-f515bced-1115-455a-b23c-85f7745a2582-evidence",
           "approvalRequestId": "cloud_llm_generate-approval-4",
           "metadata": {}
         }
