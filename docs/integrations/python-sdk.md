@@ -1,6 +1,6 @@
 # Python SDK Bridge
 
-RuleOak Core v1.3 is the canonical governed AI runtime. The companion Python SDK, `ruleoak-py`, is currently a **private-preview bridge** for Python applications that need RuleOak Core v1.3-compatible governance records and governed LLM calls.
+RuleOak Core is the canonical governed AI runtime. The companion Python SDK, `ruleoak-py`, is currently a **Python bridge** for Python applications that need RuleOak Core-compatible governance records and governed LLM calls.
 
 Do not describe `ruleoak-py` as a public stable SDK yet. It is useful for private validation, integration testing, and proving that RuleOak governance can fit Python vertical-app workflows without embedding the TypeScript runtime.
 
@@ -24,8 +24,8 @@ Use the Python bridge when an application is already written in Python and needs
 
 | Layer | Role |
 |---|---|
-| RuleOak Core v1.3 | Canonical governed runtime and policy/sandbox foundation |
-| ruleoak-py v0.2.1 private preview | Python SDK bridge for RuleOak-compatible governance records and governed LLM calls |
+| RuleOak Core | Canonical governed runtime and policy/sandbox foundation |
+| ruleoak-py v0.3 private-preview SDK bridge | Python SDK bridge for RuleOak-compatible governance records and governed LLM calls |
 | Vertical app | Performs domain work and calls the SDK at governance boundaries |
 
 ## Typical integration pattern
@@ -67,9 +67,9 @@ The optional smoke test is local only. It does not download packages and does no
 
 The SDK version is separate from RuleOak Core:
 
-- RuleOak Core: v1.0 product line
-- ruleoak-py: v0.2.1 private preview
-- Record compatibility: RuleOak Core v1.3
+- RuleOak Core: latest public release v2.1.0
+- ruleoak-py: v0.3 private-preview SDK bridge
+- Record compatibility: RuleOak Core
 
 The SDK should stay private until:
 
@@ -83,6 +83,6 @@ The SDK should stay private until:
 
 Safe public wording:
 
-> A private-preview Python bridge is being validated for RuleOak Core v1.3-compatible governance records and governed LLM calls from Python vertical applications.
+> A SDK-preview Python bridge is being validated for RuleOak Core-compatible governance records and governed LLM calls from Python vertical applications.
 
 Avoid describing it as a full Python port, a public stable SDK, a sandbox, or a cloud service.

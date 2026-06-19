@@ -1,0 +1,11 @@
+{
+  "savedSearches": [
+    { "name": "production-error-spike", "enabled": true },
+    { "name": "governed-agent-denied-actions", "enabled": true }
+  ],
+  "events": [
+    { "severity": "error", "service": "checkout" },
+    { "severity": "warning", "service": "checkout" },
+    { "severity": "info", "service": "catalog" }
+  ]
+}

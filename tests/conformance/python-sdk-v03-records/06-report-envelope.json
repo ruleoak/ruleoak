@@ -1,0 +1,15 @@
+{
+  "protocol": "ruleoak.governance.v1",
+  "kind": "ReportRecord",
+  "record": {
+    "report_id": "py-v03-report-001",
+    "run_id": "py-v03-run-001",
+    "title": "Python SDK Governance Report",
+    "summary": "Python SDK v0.3 records passed RuleOak Core bridge validation.",
+    "created_at": "2026-06-19T05:01:46.000000Z",
+    "records": ["py-v03-run-001", "py-v03-decision-001", "py-v03-evidence-001", "py-v03-approval-001", "py-v03-event-001"],
+    "metadata": { "protocol": "ruleoak.governance.v1" }
+  },
+  "sdk": "ruleoak-py",
+  "sdk_version": "0.3.0"
+}

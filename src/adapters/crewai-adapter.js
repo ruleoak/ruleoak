@@ -1,24 +1,41 @@
 import { ToolGuard } from "../guard/tool-guard.js";
+import { createAdapterGuard, runGovernedAdapterTool } from "./adapter-conformance.js";
 
-export function createCrewAiToolGuard({ guard, manifest, policy, actor = "crewai-agent" } = {}) {
-  return guard instanceof ToolGuard ? guard : new ToolGuard({ manifest, policy, actor });
+export function createCrewAiToolGuard({ guard, manifest, policy, actor = "crewai-agent", runId } = {}) {
+  return guard instanceof ToolGuard ? guard : createAdapterGuard({ guard, manifest, policy, actor, runId });
 }
 
-export function createCrewAiGovernedTool({ name, description = "Governed CrewAI-style tool", func, guard, subject = "crewai-tool", metadata = {} } = {}) {
+export function createCrewAiGovernedTool({ name, description = "Governed CrewAI-style tool", func, guard, manifest, policy, subject = "crewai-tool", actor = "crewai-agent", metadata = {}, mode = "return_decision" } = {}) {
   if (!name) throw new Error("createCrewAiGovernedTool requires name");
   if (typeof func !== "function") throw new Error("createCrewAiGovernedTool requires func");
-  const activeGuard = createCrewAiToolGuard({ guard });
+  const activeGuard = createCrewAiToolGuard({ guard, manifest, policy, actor });
   return {
     name,
     description,
+    schema: "ruleoak.crewai_tool_spec.v1",
+    ruleoak: {
+      adapter: "crewai",
+      boundary: "RuleOak evaluates tool call before CrewAI-style tool execution",
+      mode
+    },
     async run(input = {}, context = {}) {
-      const decision = activeGuard.evaluateToolCall({ toolId: name, subject, actor: context.actor || "crewai-agent", inputPreview: Object.keys(input).slice(0, 12), metadata: { adapter: "crewai", ...metadata } });
-      if (decision.blocked || decision.approvalRequired) {
-        return { ruleoak: decision, skipped: true, result: null };
-      }
-      const result = await func(input, context);
-      activeGuard.auditLog.record("adapter.crewai.tool_completed", { toolId: name, requestId: decision.requestId });
-      return { ruleoak: decision, skipped: false, result };
+      return runGovernedAdapterTool({
+        adapter: "crewai",
+        framework: "CrewAI",
+        toolId: name,
+        tool: func,
+        guard: activeGuard,
+        subject,
+        actor,
+        input,
+        context,
+        metadata,
+        mode
+      });
     }
   };
+}
+
+export function createCrewAiToolSpec(args = {}) {
+  return createCrewAiGovernedTool(args);
 }

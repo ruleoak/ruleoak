@@ -1,6 +1,6 @@
 # Approval-gated Write Connectors Demo
 
-This demo shows the v1.4 RuleOak pattern for write connectors:
+This demo shows the RuleOak Core v2.1.0 pattern for write connectors:
 
 1. propose a write intent
 2. evaluate policy

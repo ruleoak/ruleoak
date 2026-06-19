@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "ruleoak.governance.v1",
+  "recordType": "ApprovalRecord",
+  "approvalId": "py-approval-001",
+  "runId": "py-run-001",
+  "action": "send_external_message",
+  "subject": "customer-update-draft",
+  "decision": "pending",
+  "actor": "python-local-user",
+  "reason": "External communication requires human review",
+  "createdAt": "2026-01-01T00:00:20.000Z",
+  "metadata": {
+    "emittedBy": "ruleoak-py",
+    "risk": "medium"
+  }
+}

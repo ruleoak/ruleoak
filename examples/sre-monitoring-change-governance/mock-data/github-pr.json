@@ -1,0 +1,14 @@
+{
+  "id": "PR-884",
+  "repository": "bank-observability/alert-rules",
+  "branch": "sre-4312-payments-latency-threshold",
+  "filesChanged": ["prometheus/payments-api.rules.yaml"],
+  "diffSummary": "warning threshold 800ms -> 1200ms; critical threshold unchanged at 2000ms; expiry annotation added",
+  "checks": {
+    "lint": "passed",
+    "unitTests": "passed",
+    "policySimulation": "passed"
+  },
+  "reviewers": ["payments-sre", "sre-lead"],
+  "merged": false
+}

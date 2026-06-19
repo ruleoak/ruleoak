@@ -1,4 +1,4 @@
-"""Generic Python bridge sample for RuleOak Core v1.0.
+"""Generic Python bridge sample for RuleOak Core.
 
 Requires the companion ruleoak-py SDK:
 

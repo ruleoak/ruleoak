@@ -2,7 +2,7 @@
 
 RuleOak Core includes an optional local-LLM readiness path for developers who want to run a vertical app locally.
 
-This is useful for consultant-style workflows where private notes, logs, documents, or customer context should not be sent to a cloud model during early prototyping.
+This is useful for consultant-style workflows where private notes, logs, documents, or customer context should not be sent to a cloud model during local prototyping.
 
 ## What this does
 

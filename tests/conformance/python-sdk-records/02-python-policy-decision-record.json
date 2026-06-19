@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "ruleoak.governance.v1",
+  "recordType": "PolicyDecisionRecord",
+  "decisionId": "py-decision-001",
+  "runId": "py-run-001",
+  "action": "send_external_message",
+  "subject": "customer-update-draft",
+  "effect": "approval_required",
+  "decision": "approval_required",
+  "matchedRuleIds": [
+    "external-communication.approval-required"
+  ],
+  "reason": "External communication requires approval",
+  "createdAt": "2026-01-01T00:00:10.000Z",
+  "metadata": {
+    "emittedBy": "ruleoak-py"
+  }
+}

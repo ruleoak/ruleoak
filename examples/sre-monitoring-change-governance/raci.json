@@ -1,0 +1,17 @@
+{
+  "process": "SRE monitoring threshold change",
+  "roles": {
+    "serviceOwner": "Responsible for request context, business impact, and success criteria",
+    "sreLead": "Accountable for approving or rejecting the production monitoring change",
+    "observabilityEngineer": "Responsible for implementing the alert-rule change after approval",
+    "riskOrAuditReviewer": "Consulted for evidence completeness and governance traceability",
+    "operationsDutyManager": "Informed when the change is approved, rejected, implemented, or rolled back"
+  },
+  "steps": [
+    { "step": "Receive threshold-change request", "R": ["serviceOwner"], "A": ["sreLead"], "C": ["operationsDutyManager"], "I": ["riskOrAuditReviewer"] },
+    { "step": "Collect ticket, metric baseline, current policy, runbook, and PR evidence", "R": ["observabilityEngineer"], "A": ["sreLead"], "C": ["serviceOwner"], "I": ["riskOrAuditReviewer"] },
+    { "step": "Evaluate policy before production write", "R": ["observabilityEngineer"], "A": ["sreLead"], "C": ["riskOrAuditReviewer"], "I": ["serviceOwner"] },
+    { "step": "Approve or reject the change", "R": ["sreLead"], "A": ["sreLead"], "C": ["serviceOwner", "riskOrAuditReviewer"], "I": ["operationsDutyManager"] },
+    { "step": "Implement only after approval and retain evidence bundle", "R": ["observabilityEngineer"], "A": ["sreLead"], "C": ["serviceOwner"], "I": ["operationsDutyManager", "riskOrAuditReviewer"] }
+  ]
+}

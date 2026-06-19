@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "ruleoak.integrity.v1",
+  "trustRootType": "RuleOakTrustRoot",
+  "rootId": "ruleoak-v2.1.0-local-trust-root",
+  "createdAt": "2026-06-19T00:00:00.000Z",
+  "latestPublicCoreRelease": "v2.1.0",
+  "earlierPublicBaseline": "v1.0.1",
+  "developmentTrack": "public developer release",
+  "keys": [
+    {
+      "keyId": "ruleoak-v2.1.0-local-demo-ed25519",
+      "algorithm": "ed25519",
+      "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAimIP/5+1P/se5yyKCCOsvYPqvz+1V7fYx/3w5nXztho=\n-----END PUBLIC KEY-----\n",
+      "status": "trusted",
+      "purpose": "policy-pack-and-evidence-integrity",
+      "notBefore": null,
+      "notAfter": null
+    }
+  ],
+  "metadata": {
+    "note": "Demo trust root for RuleOak Core v2.1.0 local integrity checks. Replace this key in production.",
+    "privateKeyStored": false
+  },
+  "previousPublicRelease": "v2.0.3"
+}

@@ -1,10 +1,10 @@
 # Threat Model
 
-RuleOak Core v1.3 includes a sandbox foundation. It is not yet externally security-reviewed.
+RuleOak Core includes a sandbox foundation. It is not yet externally security-reviewed.
 
 ## Primary risks
 
-| Risk | Description | v1.0 control direction |
+| Risk | Description | control direction |
 |---|---|---|
 | Prompt injection | Untrusted content tries to override workflow instructions | Treat retrieved content as untrusted; keep policy decisions outside the model |
 | Tool overreach | Agent proposes or calls tools beyond intended scope | Tool registry and policy evaluation |
@@ -20,4 +20,4 @@ The model can propose. The runtime and sandbox decide. Risky actions require app
 
 ## Review boundary
 
-The v1.3 threat model is a starting point for engineering review. It is not a certification or security audit.
+The RuleOak threat model is a starting point for engineering review. It is not a certification or security audit.

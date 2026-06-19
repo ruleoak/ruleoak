@@ -1,8 +1,8 @@
-# RuleOak v1.3 Early Runtime Lifecycle
+# RuleOak Runtime Lifecycle
 
-RuleOak Core v1.3 moves from demo scripts plus contracts to an **early runtime**.
+RuleOak Core provides a local-first governance runtime for AI tool-call workflows.
 
-It is still not a mature enterprise runtime, but the demos now run through real runtime modules:
+The runtime wires the core governance loop:
 
 ```text
 RunManager
@@ -36,23 +36,18 @@ create run
 | `AuditLog` | Records run, evidence, policy, approval, and completion events. |
 | `ReportExporter` | Writes structured runtime reports to disk. |
 
-## What v1.3 proves
+## What the runtime proves
 
-v1.0 proves that the RuleOak pattern is executable as a small runtime:
+RuleOak makes the governance pattern executable:
 
 ```text
 policy-bound actions
 + evidence-backed recommendations
 + approval gates
 + audit-style outputs
++ local report generation
 ```
 
-## What v1.3 does not claim
+## Boundary
 
-v1.0 is not yet:
-
-- mature enterprise runtime;
-- security-reviewed sandbox;
-- certified compliance product;
-- hosted cloud service;
-- finished commercial vertical app.
+RuleOak Core is a developer-oriented, local-first governance runtime. It is not a certified compliance product, hosted cloud service, or externally security-reviewed sandbox.

@@ -1,0 +1,11 @@
+{
+  "project": { "path": "group/governed-agent", "defaultBranch": "main", "visibility": "private" },
+  "mergeRequests": [
+    { "iid": 11, "state": "opened", "approvals": 1, "requiredApprovals": 2 },
+    { "iid": 12, "state": "merged", "approvals": 2, "requiredApprovals": 2 }
+  ],
+  "pipelines": [
+    { "id": 201, "status": "success" },
+    { "id": 202, "status": "failed" }
+  ]
+}

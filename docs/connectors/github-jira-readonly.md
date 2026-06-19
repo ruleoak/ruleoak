@@ -1,6 +1,6 @@
 # GitHub and Jira Read-only Connector Pattern
 
-RuleOak Core v1.3 includes local fixture connectors that model how GitHub and Jira evidence can be collected safely.
+RuleOak Core includes local fixture connectors that model how GitHub and Jira evidence can be collected safely.
 
 These are not production API connectors yet. They are a tested connector boundary:
 

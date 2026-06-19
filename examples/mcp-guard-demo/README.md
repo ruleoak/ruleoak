@@ -1,6 +1,6 @@
 # MCP Guard Demo
 
-This demo shows RuleOak Core v1.3 evaluating MCP-style `tools/call` requests before execution.
+This demo shows RuleOak Core evaluating MCP-style `tools/call` requests before execution.
 
 ```bash
 npm run mcp:demo

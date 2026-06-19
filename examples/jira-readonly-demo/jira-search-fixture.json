@@ -1,0 +1,77 @@
+{
+  "startAt": 0,
+  "maxResults": 3,
+  "total": 3,
+  "issues": [
+    {
+      "id": "10001",
+      "key": "PLAT-101",
+      "fields": {
+        "summary": "Investigate governed tool-call audit trail",
+        "status": {
+          "name": "In Progress"
+        },
+        "issuetype": {
+          "name": "Task"
+        },
+        "priority": {
+          "name": "Medium"
+        },
+        "assignee": {
+          "displayName": "Platform Engineer"
+        },
+        "reporter": {
+          "displayName": "Product Owner"
+        },
+        "updated": "2026-06-18T10:00:00.000+0000",
+        "created": "2026-06-16T10:00:00.000+0000"
+      }
+    },
+    {
+      "id": "10002",
+      "key": "PLAT-102",
+      "fields": {
+        "summary": "Add approval-required policy for external messages",
+        "status": {
+          "name": "To Do"
+        },
+        "issuetype": {
+          "name": "Story"
+        },
+        "priority": {
+          "name": "High"
+        },
+        "assignee": null,
+        "reporter": {
+          "displayName": "SRE Lead"
+        },
+        "updated": "2026-06-18T11:00:00.000+0000",
+        "created": "2026-06-17T09:00:00.000+0000"
+      }
+    },
+    {
+      "id": "10003",
+      "key": "PLAT-103",
+      "fields": {
+        "summary": "Review read-only evidence connector output",
+        "status": {
+          "name": "Done"
+        },
+        "issuetype": {
+          "name": "Task"
+        },
+        "priority": {
+          "name": "Low"
+        },
+        "assignee": {
+          "displayName": "Developer"
+        },
+        "reporter": {
+          "displayName": "Architect"
+        },
+        "updated": "2026-06-18T12:00:00.000+0000",
+        "created": "2026-06-15T09:00:00.000+0000"
+      }
+    }
+  ]
+}

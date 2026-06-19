@@ -1,0 +1,23 @@
+{
+  "requestId": "CHG-2026-0619-001",
+  "ticketKey": "SRE-4312",
+  "service": "payments-api",
+  "environment": "production",
+  "requestedBy": "service-owner-payments",
+  "requestedAt": "2026-06-19T01:10:00.000Z",
+  "changeType": "monitoring-threshold-change",
+  "alertId": "payments-api-p95-latency-warning",
+  "currentThresholdMs": 800,
+  "requestedThresholdMs": 1200,
+  "duration": "business-hours-only",
+  "reason": "Reduce repeated warning alerts during a known traffic campaign while retaining critical alert coverage.",
+  "riskLevel": "medium",
+  "businessImpact": "Missed or delayed latency warnings could hide customer payment degradation.",
+  "rollbackPlan": "Revert warning threshold to 800ms and confirm alert fires on synthetic latency test.",
+  "successCriteria": [
+    "Critical threshold remains unchanged at 2000ms",
+    "Warning threshold change has an expiry and owner",
+    "Payment success-rate and error-rate alerts remain enabled",
+    "Evidence bundle includes ticket, metric baseline, runbook, and peer approval"
+  ]
+}

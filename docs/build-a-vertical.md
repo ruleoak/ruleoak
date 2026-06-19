@@ -1,6 +1,6 @@
 # Build a Vertical Workflow
 
-RuleOak Core v1.3 is designed to help developers build governed vertical workflows without starting from a blank project.
+RuleOak Core is designed to help developers build governed vertical workflows without starting from a blank project.
 
 The core pattern stays the same across domains:
 

@@ -1,42 +1,34 @@
-# RuleOak Governance Protocol v1 compatibility statement
+# RuleOak Governance Protocol Compatibility Statement
 
-RuleOak Core v2.0.1 uses the governance record protocol identifier:
+RuleOak Governance Protocol v1 is the stable record contract for RuleOak Core v2.x and future major releases.
+
+The protocol identifier remains:
 
 ```text
 ruleoak.governance.v1
 ```
 
-The protocol covers the core records used by RuleOak and compatible SDKs:
+This is expected. Product releases and protocol releases are separate compatibility surfaces.
 
-- run records
-- evidence records
-- approval records
-- audit events
-- policy decision records
-- report records
+## Compatibility rules
 
-## Compatibility intent
+Within protocol v1:
 
-RuleOak Core v2.x should keep `ruleoak.governance.v1` records backward-compatible unless a breaking change is explicitly documented.
+- required fields remain readable
+- enum meanings remain stable
+- optional fields may be added
+- deprecations must be documented
+- breaking record-shape changes require protocol v2
 
-Compatible changes may include:
-
-- adding optional fields
-- adding new record examples
-- adding stricter conformance fixtures that do not invalidate existing required fields
-- improving documentation
-
-Breaking changes should require either:
-
-- a new protocol identifier, or
-- a documented migration path.
-
-## Conformance
-
-Run:
+## Validation
 
 ```bash
+npm run protocol:status
 npm run protocol:conformance
+npm run protocol:python
+npm run docs:protocol:lint
 ```
 
-This validates golden governance records against the bundled schemas and helps keep TypeScript Core, Python SDKs, adapters, and report exporters aligned.
+## Boundary
+
+Protocol v1 is an engineering compatibility contract for governance records. It is not a legal compliance standard and does not certify a workflow.

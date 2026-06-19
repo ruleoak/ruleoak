@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "ruleoak.policy_pack.v1",
+  "id": "sre-monitoring-change",
+  "name": "SRE Monitoring Change Governance",
+  "version": "1.0.0",
+  "category": "sre",
+  "description": "Policy pack for production monitoring threshold changes: read evidence locally, require approval for writes, block alert disable/delete bypasses.",
+  "compatibility": {
+    "policyPackSchema": "ruleoak.policy_pack.v1",
+    "governanceProtocol": "ruleoak.governance.v1",
+    "latestPublicCoreRelease": "v2.1.0",
+    "earlierPublicBaseline": "v1.0.1",
+    "developmentTrack": "RuleOak Core v2.1.0 release",
+    "supportsCoreMajor": [
+      "2",
+      "future-3"
+    ]
+  },
+  "policy": {
+    "boundary": "local_first_approval_required_for_production_writes",
+    "allowedTools": [
+      "read.change_ticket",
+      "read.metric_baseline",
+      "read.alert_policy",
+      "read.runbook",
+      "read.pull_request",
+      "generate.audit_report"
+    ],
+    "approvalRequired": [
+      "write.monitoring_threshold",
+      "merge.alert_rule_pr",
+      "notify.production_change"
+    ],
+    "blockedTools": [
+      "disable.production_alert",
+      "delete.alert_policy",
+      "write.monitoring_threshold_without_ticket",
+      "bypass.approval"
+    ]
+  },
+  "scenarioTests": [
+    {
+      "id": "sre-monitoring-change-default-scenario",
+      "title": "SRE Monitoring Change Governance default scenario",
+      "description": "Pack-local scenario used by RuleOak Policy Pack Maturity checks. It evaluates declared allow, approval, and deny decisions without executing tools.",
+      "calls": [
+        {
+          "toolId": "read.change_ticket",
+          "subject": "sre-monitoring-change scenario: read.change_ticket",
+          "expectedDecision": "allowed"
+        },
+        {
+          "toolId": "read.metric_baseline",
+          "subject": "sre-monitoring-change scenario: read.metric_baseline",
+          "expectedDecision": "allowed"
+        },
+        {
+          "toolId": "read.alert_policy",
+          "subject": "sre-monitoring-change scenario: read.alert_policy",
+          "expectedDecision": "allowed"
+        },
+        {
+          "toolId": "write.monitoring_threshold",
+          "subject": "sre-monitoring-change scenario: write.monitoring_threshold",
+          "expectedDecision": "approval_required"
+        },
+        {
+          "toolId": "merge.alert_rule_pr",
+          "subject": "sre-monitoring-change scenario: merge.alert_rule_pr",
+          "expectedDecision": "approval_required"
+        },
+        {
+          "toolId": "notify.production_change",
+          "subject": "sre-monitoring-change scenario: notify.production_change",
+          "expectedDecision": "approval_required"
+        },
+        {
+          "toolId": "disable.production_alert",
+          "subject": "sre-monitoring-change scenario: disable.production_alert",
+          "expectedDecision": "blocked"
+        },
+        {
+          "toolId": "delete.alert_policy",
+          "subject": "sre-monitoring-change scenario: delete.alert_policy",
+          "expectedDecision": "blocked"
+        },
+        {
+          "toolId": "write.monitoring_threshold_without_ticket",
+          "subject": "sre-monitoring-change scenario: write.monitoring_threshold_without_ticket",
+          "expectedDecision": "blocked"
+        }
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "id": "read.metric_baseline",
+      "risk": "low"
+    },
+    {
+      "id": "write.monitoring_threshold",
+      "risk": "high"
+    },
+    {
+      "id": "disable.production_alert",
+      "risk": "critical"
+    }
+  ],
+  "metadata": {
+    "requiredEvidence": [
+      "change request",
+      "ticket state",
+      "metric baseline",
+      "current alert policy",
+      "runbook control",
+      "pull request diff/checks",
+      "RACI"
+    ],
+    "examples": [
+      "examples/sre-monitoring-change-governance"
+    ],
+    "maturity": "reference-vertical",
+    "owner": "RuleOak maintainers",
+    "status": "public-release",
+    "publicCoreBaseline": "v2.1.0"
+  }
+}

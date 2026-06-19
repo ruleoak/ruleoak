@@ -5,3 +5,5 @@ export { McpGuard } from "./mcp-guard.js";
 
 export { McpServerManifest, normalizeMcpTool } from "./mcp-manifest.js";
 export { McpGuardProxy } from "./mcp-proxy.js";
+
+export { McpGuardProxyServer } from "./mcp-proxy-server.js";

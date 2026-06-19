@@ -1,6 +1,6 @@
 # RuleOak MCP Guard Proxy Prototype
 
-RuleOak Core v1.8 adds a local in-process MCP Guard Proxy prototype.
+RuleOak Core v2.1.0 includes a local in-process MCP Guard Proxy prototype.
 
 The pattern:
 

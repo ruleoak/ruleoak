@@ -1,6 +1,6 @@
 # RuleOak Local Approval Inbox
 
-RuleOak Core v2.0 adds a local approval inbox for reviewing actions that were paused by policy.
+RuleOak Core v2.1.0 includes a local approval inbox for reviewing actions that were paused by policy.
 
 The inbox collects approval requests from existing RuleOak reports and builds a local HTML viewer plus a JSON state file.
 
@@ -28,4 +28,4 @@ The local server listens on `127.0.0.1:8788` and does not call external services
 
 ## Boundary
 
-The v2.0 inbox is local-first and file-backed. It is an approval UX foundation, not an enterprise workflow engine, identity system, or compliance-certified approval platform.
+The v2.1.0 inbox is local-first and file-backed. It is an approval UX foundation, not an enterprise workflow engine, identity system, or compliance-certified approval platform.

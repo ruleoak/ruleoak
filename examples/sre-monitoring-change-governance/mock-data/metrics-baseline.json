@@ -1,0 +1,29 @@
+{
+  "service": "payments-api",
+  "window": "2026-06-18T01:00:00.000Z/2026-06-19T01:00:00.000Z",
+  "p95LatencyMs": {
+    "min": 420,
+    "median": 710,
+    "p90": 930,
+    "p99": 1680,
+    "max": 2250
+  },
+  "errorRatePct": {
+    "median": 0.04,
+    "max": 0.21
+  },
+  "paymentSuccessRatePct": {
+    "median": 99.93,
+    "min": 99.61
+  },
+  "alertNoise": {
+    "warningPages24h": 18,
+    "criticalPages24h": 0,
+    "knownCampaign": true
+  },
+  "relatedAlertsEnabled": [
+    "payments-api-error-rate-critical",
+    "payments-api-success-rate-critical",
+    "payments-api-p95-latency-critical"
+  ]
+}

@@ -2,7 +2,7 @@
 
 Thank you for your interest in RuleOak.
 
-RuleOak Core is currently in a **feedback-first contribution phase**. The repository is public so developers can inspect the code, run the examples, open issues, discuss use cases, and evaluate the governance model.
+RuleOak Core is currently in a **feedback-first contribution stage**. The repository is public so developers can inspect the code, run the examples, open issues, discuss use cases, and evaluate the governance model.
 
 At this stage, external pull requests are not accepted.
 
@@ -70,6 +70,22 @@ Feedback that improves clarity, safety, usability, or integration design is espe
 
 ## Current status
 
-RuleOak Core v1.0 is an AGPL early runtime with sandbox foundation for governed AI workflows. It is suitable for evaluation, local experiments, examples, and design feedback.
+RuleOak Core is an AGPL local-first governance runtime with sandbox foundation for governed AI workflows. It is suitable for evaluation, local experiments, examples, and design feedback.
 
 It is not yet a mature enterprise platform, externally security-reviewed sandbox, hosted cloud service, or certified compliance product.
+
+
+## Trust-focused contribution rules
+
+RuleOak is a governance project, so contribution quality is part of the product trust boundary.
+
+Before opening a pull request:
+
+- use synthetic data in examples and tests;
+- avoid real secrets, customer tickets, personal data, or proprietary logs;
+- keep public version wording aligned with `docs/release-versioning.md`;
+- add or update tests for policy, protocol, adapter, or report behavior;
+- avoid claims of formal compliance certification unless backed by a real external certificate;
+- run `npm test`, `npm run release:consistency`, and `npm run trust:check`.
+
+Policy-pack contributions should include scenario tests. Adapter contributions should include conformance examples. Reference-vertical contributions should generate evidence and reports, not only README text.

@@ -7,6 +7,7 @@ import { createInterface } from "node:readline/promises";
 import { stdin as input, stdout as output } from "node:process";
 import { renderReportFile } from "../reports/html-report.js";
 import { writeReportCatalog } from "../reports/report-catalog.js";
+import { buildAuditViewerV2 } from "../reports/audit-viewer-v2.js";
 
 const root = resolve(".");
 const reportsDir = join(root, "reports", "html");
@@ -36,7 +37,12 @@ function findReports() {
     join(root, "examples", "tool-guard-demo", "out", "mcp-guard-report.json"),
     join(root, "examples", "mcp-guard-demo", "out", "mcp-guard-report.json"),
     join(root, "examples", "evidence-connectors-demo", "out", "evidence-connectors-report.json"),
-    join(root, "examples", "write-connectors-demo", "out", "write-connectors-report.json")
+    join(root, "examples", "write-connectors-demo", "out", "write-connectors-report.json"),
+    join(root, "examples", "jira-readonly-demo", "out", "jira-readonly-report.json"),
+    join(root, "examples", "connector-reliability-demo", "out", "connector-reliability-report.json"),
+    join(root, "reports", "policy-lab", "policy-test-report.json"),
+    join(root, "reports", "policy-lab", "policy-explain.json"),
+    join(root, "reports", "policy-lab", "policy-diff.json")
   ];
   return paths.filter(existsSync);
 }
@@ -46,7 +52,7 @@ function htmlReports() {
   const rendered = [];
   for (const reportPath of reports) {
     const normalizedPath = reportPath.replaceAll("\\", "/");
-    const name = normalizedPath.includes("/write-connectors-demo/") ? "write-connectors-report.html" : normalizedPath.includes("/evidence-connectors-demo/") ? "evidence-connectors-report.html" : normalizedPath.includes("/mcp-guard-demo/") ? "mcp-guard-report.html" : normalizedPath.includes("/tool-guard-demo/") && basename(reportPath).includes("mcp") ? "mcp-guard-tool-demo-report.html" : normalizedPath.includes("/tool-guard-demo/") ? "tool-guard-report.html" : normalizedPath.includes("/research-brief-demo/") ? "research-brief-report.html" : "technical-consultant-report.html";
+    const name = normalizedPath.includes("/policy-lab/") && basename(reportPath).includes("policy-test") ? "policy-lab-test-report.html" : normalizedPath.includes("/policy-lab/") && basename(reportPath).includes("policy-explain") ? "policy-lab-explain-report.html" : normalizedPath.includes("/policy-lab/") && basename(reportPath).includes("policy-diff") ? "policy-lab-diff-report.html" : normalizedPath.includes("/connector-reliability-demo/") ? "connector-reliability-report.html" : normalizedPath.includes("/jira-readonly-demo/") ? "jira-readonly-report.html" : normalizedPath.includes("/write-connectors-demo/") ? "write-connectors-report.html" : normalizedPath.includes("/evidence-connectors-demo/") ? "evidence-connectors-report.html" : normalizedPath.includes("/mcp-guard-demo/") ? "mcp-guard-report.html" : normalizedPath.includes("/tool-guard-demo/") && basename(reportPath).includes("mcp") ? "mcp-guard-tool-demo-report.html" : normalizedPath.includes("/tool-guard-demo/") ? "tool-guard-report.html" : normalizedPath.includes("/research-brief-demo/") ? "research-brief-report.html" : "technical-consultant-report.html";
     rendered.push(renderReportFile(reportPath, join(reportsDir, name)));
   }
   const index = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RuleOak Reports</title><style>body{font-family:system-ui;background:#08111f;color:#eef5ff;padding:40px}a{color:#d6b56d;font-size:20px}li{margin:14px 0}.card{max-width:780px;border:1px solid #2a405e;border-radius:20px;background:#0d1b2e;padding:26px}</style></head><body><div class="card"><h1>RuleOak local report viewer</h1><p>Generated one-page reports:</p><ul>${rendered.map(p => `<li><a href="./${basename(p)}">${basename(p)}</a></li>`).join("")}</ul><p>Run <code>npm run report:view</code> to serve this folder locally.</p></div></body></html>`;
@@ -182,6 +188,7 @@ async function main() {
     console.log("  roak onboard             choose your first workflow");
     console.log("  roak init <dir>          copy a governed workflow template");
     console.log("  roak report html         generate one-page HTML reports");
+    console.log("  roak report audit        build Audit Report Viewer v2");
     console.log("  roak report view         start browser-based local report viewer");
     console.log("  npm run mcp:demo         run MCP Guard demo");
     console.log("  npm run connector:demo   run read-only evidence connectors demo");
@@ -214,6 +221,7 @@ async function main() {
   }
   if (cmd === "init") { initApp([sub, ...rest].filter(Boolean)); return; }
   if (cmd === "report" && sub === "html") { banner("report html"); htmlReports().forEach(p => ok(p)); return; }
+  if (cmd === "report" && sub === "audit") { banner("audit viewer v2"); const result = buildAuditViewerV2({ root, outputDir: join(root, "reports", "audit-viewer-v2") }); ok(`Audit viewer: ${result.indexPath}`); ok(`Reports indexed: ${result.reportCount}`); return; }
   if (cmd === "report" && sub === "view") { serveReports(rest); return; }
   throw new Error(`Unknown command: ${[cmd, sub].filter(Boolean).join(" ")}`);
 }

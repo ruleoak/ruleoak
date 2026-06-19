@@ -51,8 +51,8 @@ export class RunManager {
 
   report({ summary = {}, output = {} } = {}) {
     return {
-      runtimeVersion: "2.0.0",
-      runtimeStage: "early-runtime",
+      runtimeVersion: "2.1.0",
+      runtimeStage: "governed-runtime",
       run: { ...this.run },
       boundary: this.policyEngine.boundary(),
       summary,
@@ -66,7 +66,7 @@ export class RunManager {
         approval: "Risky or publishing actions become pending approval requests.",
         audit: "Run lifecycle, evidence, policy decisions, and approval requests are recorded."
       },
-      boundaryNote: "Early runtime only. Not a mature enterprise platform, security-reviewed sandbox, or compliance-certified product."
+      boundaryNote: "Local-first governance runtime. Not a certified compliance product or externally security-reviewed sandbox."
     };
   }
 }

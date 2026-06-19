@@ -9,6 +9,7 @@ const root = process.cwd();
 const registry = PolicyPackRegistry.fromDirectory(join(root, "policy-packs"));
 assert.ok(registry.get("filesystem-safe"));
 assert.ok(registry.get("cloud-llm-approval"));
+assert.ok(registry.get("sre-monitoring-change"));
 assert.ok(registry.list().length >= 5);
 
 const combined = registry.combine(["filesystem-safe", "external-communication"]);
@@ -29,6 +30,11 @@ const manifest = ToolManifest.fromObject({ tools: [{ id: "delete_workspace_file"
 const guard = new ToolGuard({ manifest, policy: combined.policy });
 assert.equal(guard.evaluateToolCall({ toolId: "search_docs" }).decision, "allowed");
 assert.equal(guard.evaluateToolCall({ toolId: "delete_workspace_file" }).decision, "blocked");
+
+const srePack = registry.combine(["sre-monitoring-change"]);
+assert.ok(srePack.policy.allowedTools.includes("read.metric_baseline"));
+assert.ok(srePack.policy.approvalRequired.includes("write.monitoring_threshold"));
+assert.ok(srePack.policy.blockedTools.includes("disable.production_alert"));
 
 execFileSync(process.execPath, [join(root, "examples", "policy-packs-demo", "run.js")], { stdio: "pipe" });
 console.log("policy-packs tests passed");

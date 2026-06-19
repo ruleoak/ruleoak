@@ -1,0 +1,12 @@
+{
+  "instance": { "name": "bank-ops-servicenow", "environment": "uat-fixture" },
+  "changes": [
+    { "number": "CHG001001", "state": "Scheduled", "risk": "Medium", "approval": "approved" },
+    { "number": "CHG001002", "state": "Assess", "risk": "High", "approval": "requested" },
+    { "number": "CHG001003", "state": "Closed", "risk": "Low", "approval": "approved" }
+  ],
+  "incidents": [
+    { "number": "INC1001", "state": "Resolved", "priority": "P3" },
+    { "number": "INC1002", "state": "In Progress", "priority": "P2" }
+  ]
+}

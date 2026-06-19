@@ -1,0 +1,62 @@
+[
+  {
+    "schemaVersion": "ruleoak.governance.v1",
+    "recordType": "AuditEvent",
+    "eventId": "conformance-audit-001",
+    "runId": "conformance-run-001",
+    "eventType": "run_started",
+    "action": null,
+    "subject": null,
+    "actor": "ruleoak",
+    "policyDecision": null,
+    "evidenceId": null,
+    "approvalId": null,
+    "metadata": {
+      "workflow": "protocol-v1-fixture"
+    },
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "sequence": 0,
+    "previousHash": null,
+    "eventHash": "7eff25822467b59e1823fcf6a1dc16319b2b195a811ca683e7635e0cd8620671"
+  },
+  {
+    "schemaVersion": "ruleoak.governance.v1",
+    "recordType": "AuditEvent",
+    "eventId": "conformance-audit-002",
+    "runId": "conformance-run-001",
+    "eventType": "policy_decision_recorded",
+    "action": "write.production_change",
+    "subject": "service://checkout/threshold",
+    "actor": "ruleoak",
+    "policyDecision": "approval_required",
+    "evidenceId": null,
+    "approvalId": null,
+    "metadata": {
+      "decisionId": "conformance-decision-approval-001"
+    },
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "sequence": 1,
+    "previousHash": "7eff25822467b59e1823fcf6a1dc16319b2b195a811ca683e7635e0cd8620671",
+    "eventHash": "bcb06202df957b4463e07378ff253df6e59db32ee35d022e5046472edf2c8f5a"
+  },
+  {
+    "schemaVersion": "ruleoak.governance.v1",
+    "recordType": "AuditEvent",
+    "eventId": "conformance-audit-003",
+    "runId": "conformance-run-001",
+    "eventType": "approval_recorded",
+    "action": "write.production_change",
+    "subject": "service://checkout/threshold",
+    "actor": "human-reviewer",
+    "policyDecision": null,
+    "evidenceId": null,
+    "approvalId": "conformance-approval-001",
+    "metadata": {
+      "decision": "approved"
+    },
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "sequence": 2,
+    "previousHash": "bcb06202df957b4463e07378ff253df6e59db32ee35d022e5046472edf2c8f5a",
+    "eventHash": "e80c40cdf46090c19e047fff2776925d30ca972d84cec93754cd85ed27da14e2"
+  }
+]

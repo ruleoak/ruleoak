@@ -1,0 +1,7 @@
+[
+  { "action": "read_docs", "expected": "allow", "reason": "read-only documentation lookup" },
+  { "action": "delete_workspace_file", "expected": "deny", "reason": "destructive filesystem action" },
+  { "action": "read_secret_file", "expected": "deny", "reason": "secret file access" },
+  { "action": "send_external_message", "expected": "approval_required", "reason": "external communication" },
+  { "action": "cloud_llm_call", "expected": "approval_required", "reason": "cloud LLM boundary" }
+]

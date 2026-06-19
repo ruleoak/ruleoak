@@ -2,18 +2,21 @@
 console.log("RuleOak examples");
 console.log("----------------");
 console.log("");
-console.log("1. technical-consultant-demo");
-console.log("   Command: npm run example:consultant");
-console.log("   Shows: case analysis, evidence, recommended action, approval boundary, audit-style report");
-console.log("");
-console.log("2. research-brief-demo");
-console.log("   Command: npm run example:research");
-console.log("   Shows: non-IT evidence review, sourced claims, confidence, publication approval boundary");
-console.log("");
-console.log("3. tool-guard-demo");
-console.log("   Command: npm run guard:demo");
-console.log("   Shows: governed AI tool calls: allow, approval-required, blocked, plus MCP Guard prototype");
-console.log("");
+const rows = [
+  ["technical-consultant-demo", "npm run example:consultant", "case analysis, evidence, recommended action, approval boundary, audit-style report"],
+  ["research-brief-demo", "npm run example:research", "non-IT evidence review, sourced claims, confidence, publication approval boundary"],
+  ["tool-guard-demo", "npm run guard:demo", "governed AI tool calls: allow, approval-required, blocked, plus MCP Guard prototype"],
+  ["sre-monitoring-change-governance", "npm run sre:monitoring-change", "SRE threshold change governance with evidence bundle and replay verification"],
+  ["ai-coding-agent-governance", "npm run coding:agent-governance", "coding-agent file/git/shell governance with source-edit approval and destructive-command blocking"],
+  ["enterprise-rag-answer-governance", "npm run rag:answer-governance", "evidence-backed RAG with restricted-document approval and unsupported-answer blocking"],
+  ["personal-local-first-assistant-governance", "npm run personal:local-assistant-governance", "local-first assistant governance with external-send approval and private-upload blocking"]
+];
+for (const [name, command, shows] of rows) {
+  console.log(`${name}`);
+  console.log(`   Command: ${command}`);
+  console.log(`   Shows: ${shows}`);
+  console.log("");
+}
 console.log("Optional local LLM paths:");
 console.log("   npm run llm:doctor");
 console.log("   npm run example:consultant:llm");

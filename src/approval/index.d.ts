@@ -1,28 +1,20 @@
-export type ApprovalInboxRequest = {
-  id: string;
-  action: string;
-  subject?: string | null;
-  actor: string;
-  reason: string;
-  status: "pending" | "approved" | "rejected";
-  risk?: string;
-  evidenceId?: string | null;
-  reportSource?: string;
-  createdAt: string;
-  decidedAt?: string | null;
-  decidedBy?: string | null;
-  decisionReason?: string | null;
-  metadata?: Record<string, unknown>;
-};
+export type ApprovalStatus = "pending" | "approved" | "rejected" | "evidence_requested" | "cancelled";
+export interface ApprovalDecisionOptions { actor?: string; reason?: string; note?: string }
+export interface ApprovalEvidenceRequestOptions extends ApprovalDecisionOptions { evidence?: string[] | string }
 export declare class ApprovalInboxStore {
-  constructor(input?: { path?: string });
+  constructor(options?: { path?: string });
   static fromReports(reportPaths?: string[], options?: { path?: string }): ApprovalInboxStore;
-  ingestReport(report: Record<string, unknown>, reportSource?: string): this;
-  add(request: Partial<ApprovalInboxRequest>): ApprovalInboxRequest;
-  list(status?: string): ApprovalInboxRequest[];
-  approve(id: string, options?: { actor?: string; reason?: string }): ApprovalInboxRequest;
-  reject(id: string, options?: { actor?: string; reason?: string }): ApprovalInboxRequest;
-  summary(): { total: number; pending: number; approved: number; rejected: number };
-  save(): Record<string, unknown>;
+  ingestReport(report: unknown, reportSource?: string): this;
+  add(request: unknown): unknown;
+  list(status?: ApprovalStatus | string): unknown[];
+  get(id: string): unknown | null;
+  assign(id: string, options: { reviewer: string; reviewerRole?: string | null; actor?: string; reason?: string }): unknown;
+  requestEvidence(id: string, options?: ApprovalEvidenceRequestOptions): unknown;
+  approve(id: string, options?: ApprovalDecisionOptions): unknown;
+  reject(id: string, options?: ApprovalDecisionOptions): unknown;
+  summary(): { version: string; total: number; pending: number; approved: number; rejected: number; evidenceRequested: number; overdue: number; risks: Record<string, number>; priorities: Record<string, number> };
+  exportDecisionLog(path?: string): string;
+  exportApprovalPacket(id: string, path?: string): { path: string; packet: unknown };
+  save(): unknown;
 }
-export declare function renderApprovalInboxHtml(state: { requests: ApprovalInboxRequest[] }): string;
+export declare function renderApprovalInboxHtml(state?: { requests?: unknown[] }): string;

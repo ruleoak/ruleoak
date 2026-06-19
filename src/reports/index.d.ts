@@ -1,0 +1,12 @@
+export function renderReport(report: unknown, options?: { sourcePath?: string }): string;
+export function renderReportFile(inputPath: string, outputPath: string): string;
+export function summarizeReport(report: any, sourcePath?: string): any;
+export function buildReportCatalog(reportPaths?: string[]): any;
+export function writeReportCatalog(reportPaths?: string[], outputPath?: string): any;
+export function summarizeAuditReportV2(report: any, sourcePath: string, options?: { root?: string }): any;
+export function buildAuditViewerCatalog(reportPaths?: string[], options?: { root?: string }): any;
+export function buildAuditViewerV2(options?: { root?: string; outputDir?: string; reportPaths?: string[] }): any;
+export function createAuditPacket(reportPath: string, outputPath?: string, options?: { root?: string }): any;
+export function compareAuditReports(reportAPath: string, reportBPath: string, options?: { root?: string }): any;
+export function discoverReportPaths(root?: string): string[];
+export function writeZipFile(entries: Array<{ name: string; data: string | Buffer }>, outputPath: string): string;

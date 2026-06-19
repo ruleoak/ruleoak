@@ -1,13 +1,21 @@
 # RuleOak Protocol Compatibility
 
-RuleOak Core v1.6 defines `ruleoak.governance.v1` as the first governance record protocol.
+RuleOak Core uses `ruleoak.governance.v1` as its stable governance record protocol.
 
-Compatibility rules:
+RuleOak Core v2.x and future major releases are expected to remain compatible with Protocol v1 unless a future release explicitly introduces Protocol v2.
 
-- Required fields must remain stable within protocol v1.
-- New optional fields may be added.
-- Existing enum values should not be removed within protocol v1.
-- Breaking changes require a future protocol version.
-- SDKs and adapters should include conformance fixtures before public release.
+## Commands
 
-The package version and the protocol version are related but separate. RuleOak Core can move from v1.6 to later releases while still emitting `ruleoak.governance.v1` records.
+```bash
+npm run protocol:status
+npm run protocol:conformance
+npm run compatibility:matrix
+```
+
+## Compatibility matrix
+
+The generated matrix is written to:
+
+```text
+reports/compatibility/matrix.json
+```

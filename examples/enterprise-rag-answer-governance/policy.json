@@ -1,0 +1,50 @@
+{
+  "name": "enterprise-rag-answer-governance",
+  "version": "1.0.0",
+  "boundary": "evidence_required_rag_answer_boundary",
+  "allowedTools": [
+    "read.user_question",
+    "read.corpus_manifest",
+    "search.knowledge_base",
+    "read.policy_doc",
+    "check.citation_coverage",
+    "scan.redaction",
+    "generate.cited_answer",
+    "generate.audit_report"
+  ],
+  "approvalRequired": [
+    "read.restricted_document",
+    "export.answer_bundle",
+    "send.external_answer"
+  ],
+  "blockedTools": [
+    "answer.without_evidence",
+    "reveal.redacted_pii",
+    "cite.unapproved_source"
+  ],
+  "rules": [
+    {
+      "id": "rag.search.knowledge.allowed",
+      "effect": "allow",
+      "description": "Searching declared enterprise corpus is allowed."
+    },
+    {
+      "id": "rag.restricted.doc.needs_approval",
+      "effect": "approval_required",
+      "description": "Restricted document use requires approval."
+    },
+    {
+      "id": "rag.unsupported.answer.blocked",
+      "effect": "deny",
+      "description": "Answers without evidence are blocked."
+    }
+  ],
+  "requiredEvidence": [
+    "user question",
+    "corpus manifest",
+    "retrieved documents",
+    "restricted document approval",
+    "citation coverage",
+    "redaction check"
+  ]
+}

@@ -1,8 +1,8 @@
 # ruleoak-py Private Preview Notes
 
-`ruleoak-py v0.2.1` is a private-preview companion SDK. It should be used to validate Python integration patterns before public release.
+`ruleoak-py v0.3` is a SDK-preview companion SDK. It should be used to validate Python integration patterns before public release.
 
-Current private-preview scope:
+Current SDK-preview scope:
 
 - RuleOak-compatible governance records;
 - filesystem-backed run/evidence/approval/audit/report records;

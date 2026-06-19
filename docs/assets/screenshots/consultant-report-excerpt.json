@@ -1,6 +1,6 @@
 {
   "runtimeVersion": "1.0.0",
-  "runtimeStage": "early-runtime",
+  "runtimeStage": "governed-runtime",
   "run": {
     "id": "roak-run-1781707481519",
     "app": "RuleOak Technical Consultant Demo",

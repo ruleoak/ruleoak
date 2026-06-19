@@ -1,0 +1,19 @@
+{
+  "protocol": "ruleoak.governance.v1",
+  "manifestType": "RuleOakRedactionManifest",
+  "manifestId": "conformance-redaction-001",
+  "runId": "conformance-run-001",
+  "fields": [
+    {
+      "path": "records[*].metadata.customerEmail",
+      "method": "remove",
+      "reason": "PII must not be shipped in conformance fixtures."
+    }
+  ],
+  "reason": "Fixture demonstrates redaction metadata without containing live secrets.",
+  "actor": "conformance-tester",
+  "createdAt": "2026-01-01T00:00:00.000Z",
+  "metadata": {
+    "fixture": true
+  }
+}

@@ -2,7 +2,7 @@
 
 RuleOak Core is the canonical runtime and protocol reference.
 
-The private-preview `ruleoak-py` SDK should emit records compatible with:
+The SDK-preview `ruleoak-py` SDK should emit records compatible with:
 
 ```text
 ruleoak.governance.v1
@@ -17,4 +17,4 @@ Recommended validation path:
 
 `ruleoak-py` should remain a bridge, not a fork of the runtime. Its highest-value role is enabling Python vertical apps to emit RuleOak-compatible policy, evidence, approval, audit, report, and governed LLM records.
 
-Public note: the Python SDK remains private preview until licensing, API stability, and contribution boundaries are finalized.
+Public note: the Python SDK remains SDK preview until licensing, API stability, and contribution boundaries are finalized.

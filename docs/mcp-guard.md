@@ -1,6 +1,6 @@
 # MCP Guard Pack + read-only evidence connectors
 
-RuleOak Core v1.3 adds a practical MCP Guard Pack + read-only evidence connectors for MCP-style tool requests.
+RuleOak Core adds a practical MCP Guard Pack + read-only evidence connectors for MCP-style tool requests.
 
 MCP Guard is not an MCP server. It is a local governance layer that can evaluate MCP-style `tools/call` requests before execution.
 
@@ -40,7 +40,7 @@ Tool protocols make it easier for AI systems to reach external capabilities. Rul
 
 ## MCP Guard Proxy Prototype
 
-RuleOak Core v1.8 includes a local in-process MCP Guard Proxy prototype for JSON-RPC `tools/call` requests.
+RuleOak Core v2.1.0 includes a local in-process MCP Guard Proxy prototype for JSON-RPC `tools/call` requests.
 
 ```bash
 npm run mcp:proxy:demo

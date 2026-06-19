@@ -12,8 +12,8 @@ const reportPath = join(root, "examples", "research-brief-demo", "out", "researc
 assert.equal(existsSync(reportPath), true, "research-brief-report.json should be generated");
 const report = JSON.parse(readFileSync(reportPath, "utf8"));
 
-assert.equal(report.runtimeVersion, "2.0.0");
-assert.equal(report.runtimeStage, "early-runtime");
+assert.equal(report.runtimeVersion, "2.1.0");
+assert.equal(report.runtimeStage, "governed-runtime");
 assert.equal(report.run.app, "RuleOak Research Brief Demo");
 assert.ok(report.output.question?.case_id, "report should include question case_id");
 assert.ok(Array.isArray(report.output.claims), "report should include claims");

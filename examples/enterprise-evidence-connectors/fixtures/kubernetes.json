@@ -1,0 +1,13 @@
+{
+  "cluster": { "name": "ocp-nonprod-1", "distribution": "openshift", "version": "4.x-fixture" },
+  "namespaces": ["checkout", "catalog"],
+  "workloads": [
+    { "namespace": "checkout", "name": "checkout-api", "ready": true },
+    { "namespace": "catalog", "name": "catalog-api", "ready": true },
+    { "namespace": "catalog", "name": "legacy-worker", "ready": false }
+  ],
+  "events": [
+    { "type": "Normal", "reason": "Pulled" },
+    { "type": "Warning", "reason": "BackOff" }
+  ]
+}

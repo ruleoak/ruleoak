@@ -1,10 +1,10 @@
 # Read-only Evidence Connectors
 
-RuleOak Core v1.3 introduces read-only evidence connector patterns.
+RuleOak Core introduces read-only evidence connector patterns.
 
 The purpose is to let governed workflows collect context from systems such as source-control, ticketing, and local documentation without giving the agent write access.
 
-## Included in v1.3
+## Included in v2.1.0
 
 - local file evidence connector
 - GitHub read-only fixture connector
@@ -16,7 +16,7 @@ The purpose is to let governed workflows collect context from systems such as so
 
 ## Boundary
 
-The v1.3 connectors are intentionally conservative.
+The v2.1.0 connectors are intentionally conservative.
 
 They do not:
 
@@ -46,3 +46,19 @@ The demo uses local fixtures under `examples/evidence-connectors-demo/fixtures/`
 ## Why read-only first
 
 Read-only evidence connectors are safer than write connectors. They help an agent reason with context while keeping external systems protected. Future write connectors should be approval-gated and should keep clear audit records before any external update occurs.
+
+
+## Jira read-only evidence connector
+
+RuleOak Core v2.1.0 includes a real Jira read-only evidence connector. Use `npm run jira:demo` for fixture mode and `npm run jira:demo:real` with `RULEOAK_JIRA_BASE_URL` plus a JQL/project setting for live GET-only collection. The connector does not write to Jira.
+
+## Enterprise evidence connector path
+
+RuleOak now includes a RuleOak Core v2.1.0 reference for broader enterprise evidence connectors. See `docs/connectors/enterprise-evidence-connectors.md` and run:
+
+```bash
+npm run enterprise:connectors
+```
+
+The reference keeps the same read-only boundary: collect evidence, summarize sensitive/high-volume data, avoid credential storage, and avoid writes.
+

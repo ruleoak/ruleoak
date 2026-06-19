@@ -1,6 +1,6 @@
 # RuleOak LangGraph and CrewAI Adapter Samples
 
-RuleOak Core v1.7 adds dependency-free adapter samples for LangGraph-style and CrewAI-style tool calls.
+RuleOak Core v2.1.0 includes dependency-free adapter samples for LangGraph-style and CrewAI-style tool calls.
 
 The goal is not to replace agent frameworks. The goal is to wrap tool execution with RuleOak governance:
 

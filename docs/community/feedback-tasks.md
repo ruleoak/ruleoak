@@ -1,6 +1,6 @@
 # Feedback tasks
 
-RuleOak Core is currently in a feedback-first contribution phase. Issues and Discussions are welcome. Pull requests are disabled while contribution governance and licensing terms are finalized.
+RuleOak Core is currently in a feedback-first contribution stage. Issues and Discussions are welcome. Pull requests are disabled while contribution governance and licensing terms are finalized.
 
 The tasks below are good first ways to help without submitting code.
 

@@ -1,6 +1,6 @@
 # Tool Guard Demo
 
-This demo shows RuleOak Core v1.3 governing AI tool calls before execution.
+This demo shows RuleOak Core governing AI tool calls before execution.
 
 It evaluates three generic tool calls:
 

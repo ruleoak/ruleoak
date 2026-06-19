@@ -29,11 +29,11 @@ if (args.length === 0 || args.includes('--help') || args.includes('-h') || args[
 if (args[0] === 'inspect') {
   console.log(JSON.stringify({
     name: 'RuleOak Core',
-    version: '2.0.3',
-    stage: 'v2.0.3: governed AI tool calls + protocol v1 + MCP guard + policy packs + approval inbox',
-    boundary: 'AGPL open core for governed AI workflows',
-    includes: ['runtime modules', 'sandbox foundation', 'contracts', 'schemas', 'copyable examples', 'local LLM readiness', 'tests', 'CI', 'launch UX', 'Tool Guard', 'MCP Guard Proxy', 'connectors', 'policy packs', 'local approval inbox', 'report viewer', 'telemetry export', 'Governance Protocol v1', '10-minute integration guide', 'adapter samples'],
-    excludes: ['mature enterprise runtime', 'security-reviewed sandbox', 'certified compliance product', 'hosted cloud service', 'finished hosted products']
+    version: '2.1.0',
+    stage: 'v2.1: Python SDK compatibility bridge on stable local-first governance layer',
+    boundary: 'AGPL open core for local-first AI tool-call governance',
+    includes: ['runtime modules', 'sandbox foundation', 'contracts', 'schemas', 'copyable examples', 'local LLM readiness', 'tests', 'CI', 'launch UX', 'Tool Guard', 'MCP Guard Proxy', 'connectors', 'policy packs', 'local approval inbox', 'report viewer', 'telemetry export', 'Governance Protocol v1 stable contract', 'release readiness command', 'protocol status command', 'protocol docs lint', '10-minute integration guide', 'adapter samples', 'real local MCP proxy server mode', 'real read-only GitHub evidence connector', 'real read-only Jira evidence connector', 'release validation', 'compatibility matrix', 'security boundary test corpus', 'connector safety test corpus', 'real adapter pack', 'optional LangGraph example', 'optional CrewAI example', 'real MCP local client example', 'Policy Test Lab', 'policy test/explain/diff commands'],
+    excludes: ['security-reviewed sandbox', 'certified compliance product', 'hosted cloud service']
   }, null, 2));
   process.exit(0);
 }

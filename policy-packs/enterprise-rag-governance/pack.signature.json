@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "ruleoak.integrity.v1",
+  "purpose": "policy-pack-integrity",
+  "algorithm": "ed25519",
+  "hashAlgorithm": "sha256",
+  "keyId": "ruleoak-v2.1.0-local-demo-ed25519",
+  "signedAt": "2026-06-19T00:00:00.000Z",
+  "payloadHash": "8a75744cd1856400671a0fe3483f4f4c4414e0de4cb6229d870ba27f948209d9",
+  "signature": "kpZuDeLRnOiB/JkW9gQEiGTKM+F/YGFrJMbcLK6oT4zCZEDGNMEI7ZzkT8UccQvKJ65Qj7xZeNrDeS2fiOndDg==",
+  "target": {
+    "type": "RuleOakPolicyPackManifest",
+    "policyPackId": "enterprise-rag-governance",
+    "policyPackVersion": "1.0.0",
+    "manifestHash": "8a75744cd1856400671a0fe3483f4f4c4414e0de4cb6229d870ba27f948209d9"
+  },
+  "latestPublicCoreRelease": "v2.1.0",
+  "earlierPublicBaseline": "v1.0.1",
+  "developmentTrack": "RuleOak Core v2.1.0 release"
+}

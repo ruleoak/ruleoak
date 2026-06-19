@@ -123,7 +123,7 @@ export class ApprovalGatedWriteRunner {
         credentials: "not required by fixture connectors",
         writes: this.dryRun ? "simulated local outbox only" : "connector applyWrite implementation only"
       },
-      boundaryNote: "v1.4 write connectors are approval-gated demos. They create local outbox records and do not update GitHub, Jira, or external systems."
+      boundaryNote: "The v2.1.0 write-connector pattern are approval-gated demos. They create local outbox records and do not update GitHub, Jira, or external systems."
     };
   }
 }

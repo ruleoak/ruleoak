@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "ruleoak.governance.v1",
+  "recordType": "RunRecord",
+  "runId": "conformance-run-001",
+  "domain": "conformance",
+  "workflow": "protocol-v1-fixture",
+  "actor": "conformance-tester",
+  "status": "completed",
+  "createdAt": "2026-01-01T00:00:00.000Z",
+  "updatedAt": "2026-01-01T00:00:00.000Z",
+  "metadata": {
+    "fixture": true,
+    "purpose": "golden-record"
+  }
+}

@@ -1,6 +1,6 @@
 # Release Boundaries
 
-RuleOak Core v1.3 is an early runtime foundation for governed AI workflows.
+RuleOak Core is an local-first governance runtime foundation for governed AI workflows.
 
 It demonstrates and implements a practical control path:
 
@@ -8,7 +8,7 @@ It demonstrates and implements a practical control path:
 policy → evidence → approval → audit
 ```
 
-## Included in v1.3
+## Included in v2.1.0
 
 - runtime lifecycle modules;
 - deny-by-default sandbox foundation;
@@ -21,9 +21,9 @@ policy → evidence → approval → audit
 - tests and CI workflow;
 - threat-model and sandbox-boundary documentation.
 
-## Not claimed in v1.3
+## Not claimed in v2.1.0
 
-RuleOak Core v1.3 is not yet:
+RuleOak Core is not yet:
 
 - a mature enterprise platform;
 - an externally security-reviewed sandbox;
@@ -35,7 +35,7 @@ RuleOak Core v1.3 is not yet:
 
 Use this wording:
 
-> RuleOak Core v1.3 is an AGPL early runtime with a deny-by-default sandbox foundation for governed AI workflows.
+> RuleOak Core is an AGPL local-first governance runtime with a deny-by-default sandbox foundation for governed AI workflows.
 
 Avoid wording such as:
 
@@ -50,6 +50,6 @@ security-reviewed
 unless those capabilities are later implemented, tested, reviewed, and documented.
 
 
-## v1.3 Tool Guard boundary
+## v2.1.0 Tool Guard boundary
 
 Tool Guard evaluates proposed tool calls and records governance decisions before execution. It is not a tool executor, production proxy, externally security-reviewed sandbox, or compliance certification.

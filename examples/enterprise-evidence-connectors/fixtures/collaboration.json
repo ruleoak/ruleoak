@@ -1,0 +1,11 @@
+{
+  "workspace": { "name": "engineering-approvals", "system": "slack-teams-fixture" },
+  "approvals": [
+    { "actor": "service-owner", "decision": "approved" },
+    { "actor": "risk-reviewer", "decision": "needs_evidence" }
+  ],
+  "messages": [
+    { "channel": "#change-review", "ticket": "CHG001001" },
+    { "channel": "#agent-governance", "ticket": "GOV-12" }
+  ]
+}

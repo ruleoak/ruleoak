@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/redaction-manifest.schema.json",
+  "title": "RuleOak RedactionManifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocol",
+    "manifestType",
+    "manifestId",
+    "runId",
+    "fields",
+    "reason",
+    "actor",
+    "createdAt"
+  ],
+  "properties": {
+    "protocol": {
+      "const": "ruleoak.governance.v1"
+    },
+    "manifestType": {
+      "const": "RuleOakRedactionManifest"
+    },
+    "manifestId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "runId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "method",
+          "reason"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "method": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "actor": {
+      "type": "string",
+      "minLength": 1
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  }
+}

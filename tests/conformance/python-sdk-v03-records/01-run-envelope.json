@@ -1,0 +1,16 @@
+{
+  "protocol": "ruleoak.governance.v1",
+  "kind": "RunRecord",
+  "record": {
+    "run_id": "py-v03-run-001",
+    "domain": "python-sdk",
+    "workflow": "governed-tool-call",
+    "actor": "python-local-user",
+    "status": "running",
+    "created_at": "2026-06-19T05:01:41.554428Z",
+    "updated_at": "2026-06-19T05:01:41.554435Z",
+    "metadata": { "source": "ruleoak-py-v0.3" }
+  },
+  "sdk": "ruleoak-py",
+  "sdk_version": "0.3.0"
+}

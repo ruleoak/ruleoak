@@ -18,6 +18,10 @@ npm run create:app -- my-consultant-app
 |---|---|
 | `technical-consultant-demo` | Copyable generic consultant workflow with policy, evidence, approval, and audit output |
 | `basic-domain-pack` | Minimal domain pack structure |
+| `sre-monitoring-change-governance` | Serious reference vertical for production monitoring threshold change governance |
+| `ai-coding-agent-governance` | Reference vertical for governing coding-agent file, git, shell, secret, approval, and audit actions |
+| `enterprise-rag-answer-governance` | Reference vertical for evidence-backed RAG answers with restricted-document approval and unsupported-answer blocking |
+| `personal-local-first-assistant-governance` | Reference vertical for local-first assistant reads, external-send approval, and private-upload blocking |
 
 Examples use synthetic data only.
 
@@ -32,12 +36,12 @@ Shows a non-IT workflow: sourced claims, confidence, known unknowns, recommendat
 
 ## Python bridge example
 
-`python-bridge/` shows how a Python application can use the private-preview companion `ruleoak-py` SDK to emit RuleOak Core v1.0-compatible governance records. The example is generic and local-first.
+`python-bridge/` shows how a Python application can use the SDK-preview companion `ruleoak-py` SDK to emit RuleOak Core-compatible governance records. The example is generic and local-first.
 
 
-## RuleOak Core v1.3: Governed Tool Calls
+## RuleOak Core: Governed Tool Calls
 
-RuleOak Core v1.3 adds Tool Guard and an MCP Guard prototype. Start with `npm run guard:demo`, then read `docs/tool-guard.md` and `docs/mcp-guard.md`.
+RuleOak Core adds Tool Guard and an MCP Guard prototype. Start with `npm run guard:demo`, then read `docs/tool-guard.md` and `docs/mcp-guard.md`.
 
 ## Tool Guard demo
 
@@ -60,3 +64,38 @@ See `docs/approval-gated-write-connectors.md`.
 Run `npm run viewer:build` to build a local report catalog and `npm run telemetry:export` to export local OpenTelemetry-style governance events.
 
 See `docs/observability/report-viewer-and-telemetry.md`.
+
+- `jira-readonly-demo/` — read-only Jira evidence connector fixture and live GET-only mode.
+
+## SRE Monitoring Change Governance
+
+```bash
+npm run sre:monitoring-change
+```
+
+Shows a complete request → evidence → policy → approval → audit report → replay verification loop for a production monitoring threshold change.
+
+
+## AI Coding Agent Governance
+
+```bash
+npm run coding:agent-governance
+```
+
+Shows governed coding-agent reads, source-edit approval, destructive-command blocking, and replayable evidence.
+
+## Enterprise RAG Answer Governance
+
+```bash
+npm run rag:answer-governance
+```
+
+Shows evidence-backed answers, restricted-document approval, unsupported-answer blocking, and redaction evidence.
+
+## Personal Local-First Assistant Governance
+
+```bash
+npm run personal:local-assistant-governance
+```
+
+Shows local-first personal assistant reads, draft creation, external-send approval, private-upload blocking, and audit output.

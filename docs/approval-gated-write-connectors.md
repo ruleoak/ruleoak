@@ -1,6 +1,6 @@
 # Approval-gated Write Connectors
 
-RuleOak Core v1.4 adds a conservative pattern for write connectors.
+RuleOak Core v2.1.0 includes a conservative pattern for write connectors.
 
 The goal is not to let an agent freely update external systems. The goal is to create a governed write path:
 
@@ -34,6 +34,6 @@ Generated files:
 
 ## Boundary
 
-v1.4 write connectors are local dry-run connectors. They do not change external systems.
+The v2.1.0 write-connector pattern are local dry-run connectors. They do not change external systems.
 
 Future production connectors should keep the same governance lifecycle while adding real connector authentication, permission scoping, and explicit human approval UX.

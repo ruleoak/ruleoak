@@ -1,0 +1,187 @@
+{
+  "runtimeVersion": "2.4.0",
+  "runtimeStage": "async-read-only-evidence-connectors",
+  "run": {
+    "id": "connector-run-e78ebeb6-24bb-44e5-8b27-a33d72e25fba",
+    "app": "RuleOak Async Evidence Connector Runner",
+    "status": "completed"
+  },
+  "summary": {
+    "title": "Jira test",
+    "summary": "Read-only evidence was collected from configured connectors.",
+    "evidenceCount": 3,
+    "connectorCount": 1
+  },
+  "evidence": [
+    {
+      "id": "ev-jira_api_readonly-255a13fb5435cbdb",
+      "connector": "jira_api_readonly",
+      "source": "https://example.atlassian.net",
+      "subject": "jira_search",
+      "claim": "Jira issues were collected through paginated read-only Jira Cloud REST API requests.",
+      "value": {
+        "jql": "project = PLAT ORDER BY updated DESC",
+        "sampled": 2,
+        "maxResults": 2,
+        "total": null
+      },
+      "hash": "255a13fb5435cbdbbcb80ba7cfe18d2dd774aa70e18622cf93461a67be88dae4",
+      "createdAt": "2026-06-19T14:41:07.262Z",
+      "metadata": {
+        "readOnly": true,
+        "mode": "read_only",
+        "api": "jira",
+        "writes": false,
+        "endpoint": "/rest/api/3/search/jql",
+        "reliability": {
+          "schema": "ruleoak.connector_reliability_policy.v1",
+          "readOnlyMethods": [
+            "GET",
+            "HEAD"
+          ],
+          "timeoutMs": 10000,
+          "maxAttempts": 2,
+          "pageSize": 2,
+          "maxPages": 5,
+          "maxRecords": 2,
+          "tokenRedaction": true,
+          "writesAllowed": false
+        }
+      }
+    },
+    {
+      "id": "ev-jira_api_readonly-1958960d844a4340",
+      "connector": "jira_api_readonly",
+      "source": "https://example.atlassian.net/rest/api/3/search/jql",
+      "subject": "jira_issues",
+      "claim": "Jira issue metadata was collected for evidence without creating, updating, transitioning, or commenting on issues.",
+      "value": {
+        "issues": [
+          {
+            "id": "1",
+            "key": "PLAT-1",
+            "summary": "One",
+            "status": "To Do",
+            "issueType": "Task",
+            "priority": "High",
+            "assignee": null,
+            "reporter": null,
+            "updated": "2026-06-18T00:00:00.000+0000",
+            "created": "2026-06-17T00:00:00.000+0000"
+          },
+          {
+            "id": "2",
+            "key": "PLAT-2",
+            "summary": "Two",
+            "status": "Done",
+            "issueType": "Bug",
+            "priority": "Low",
+            "assignee": null,
+            "reporter": null,
+            "updated": "2026-06-18T01:00:00.000+0000",
+            "created": "2026-06-17T01:00:00.000+0000"
+          }
+        ]
+      },
+      "hash": "1958960d844a434058c7a741ede0f718cdbf06d2f4987949e10ea52a0b31c6e9",
+      "createdAt": "2026-06-19T14:41:07.262Z",
+      "metadata": {
+        "readOnly": true,
+        "mode": "read_only",
+        "api": "jira",
+        "writes": false,
+        "jql": "project = PLAT ORDER BY updated DESC",
+        "pagination": {
+          "pageSize": 2,
+          "maxPages": 5
+        }
+      }
+    },
+    {
+      "id": "ev-jira_api_readonly-b3a95c4f2272b028",
+      "connector": "jira_api_readonly",
+      "source": "https://example.atlassian.net",
+      "subject": "connector_diagnostics",
+      "claim": "Jira connector reliability diagnostics were captured with credential redaction and read-only boundaries.",
+      "value": {
+        "schema": "ruleoak.connector_diagnostic.v1",
+        "connector": "jira_api_readonly",
+        "mode": "read_only",
+        "writes": false,
+        "requestCount": 2,
+        "pageCount": 2,
+        "recordCount": 2,
+        "errorCount": 0,
+        "errors": [],
+        "rateLimit": null,
+        "timeoutMs": 10000,
+        "maxAttempts": 2,
+        "generatedAt": "2026-06-19T14:41:07.262Z"
+      },
+      "hash": "b3a95c4f2272b028d881f4558bc5f2639788032472f3847df64b44dbbfe797e2",
+      "createdAt": "2026-06-19T14:41:07.262Z",
+      "metadata": {
+        "readOnly": true,
+        "mode": "read_only",
+        "api": "jira",
+        "writes": false,
+        "diagnostic": true
+      }
+    }
+  ],
+  "auditEvents": [
+    {
+      "id": "connector-run-e78ebeb6-24bb-44e5-8b27-a33d72e25fba-evt-0001",
+      "runId": "connector-run-e78ebeb6-24bb-44e5-8b27-a33d72e25fba",
+      "sequence": 1,
+      "type": "connectors.started",
+      "timestamp": "2026-06-19T14:41:07.262Z",
+      "payload": {
+        "actor": "async-connector-runner",
+        "connectorCount": 1
+      }
+    },
+    {
+      "id": "connector-run-e78ebeb6-24bb-44e5-8b27-a33d72e25fba-evt-0002",
+      "runId": "connector-run-e78ebeb6-24bb-44e5-8b27-a33d72e25fba",
+      "sequence": 2,
+      "type": "connector.evidence_recorded",
+      "timestamp": "2026-06-19T14:41:07.262Z",
+      "payload": {
+        "connector": "jira_api_readonly",
+        "evidenceId": "ev-jira_api_readonly-255a13fb5435cbdb",
+        "subject": "jira_search"
+      }
+    },
+    {
+      "id": "connector-run-e78ebeb6-24bb-44e5-8b27-a33d72e25fba-evt-0003",
+      "runId": "connector-run-e78ebeb6-24bb-44e5-8b27-a33d72e25fba",
+      "sequence": 3,
+      "type": "connector.evidence_recorded",
+      "timestamp": "2026-06-19T14:41:07.262Z",
+      "payload": {
+        "connector": "jira_api_readonly",
+        "evidenceId": "ev-jira_api_readonly-1958960d844a4340",
+        "subject": "jira_issues"
+      }
+    },
+    {
+      "id": "connector-run-e78ebeb6-24bb-44e5-8b27-a33d72e25fba-evt-0004",
+      "runId": "connector-run-e78ebeb6-24bb-44e5-8b27-a33d72e25fba",
+      "sequence": 4,
+      "type": "connector.evidence_recorded",
+      "timestamp": "2026-06-19T14:41:07.262Z",
+      "payload": {
+        "connector": "jira_api_readonly",
+        "evidenceId": "ev-jira_api_readonly-b3a95c4f2272b028",
+        "subject": "connector_diagnostics"
+      }
+    }
+  ],
+  "connectorBoundary": {
+    "mode": "read_only",
+    "writes": "not supported by evidence connectors",
+    "credentials": "optional for authenticated read APIs"
+  },
+  "boundaryNote": "Read-only connectors may call external APIs only when explicitly configured. They do not perform writes."
+}

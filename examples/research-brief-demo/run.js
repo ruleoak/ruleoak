@@ -84,7 +84,7 @@ const recommendation = {
   rationale: [
     "This path matches user privacy concerns and reduces onboarding complexity.",
     "It keeps the first launch focused on quality and repeat use.",
-    "It avoids prematurely building team and cloud infrastructure before evidence supports it."
+    "It avoids too soon building team and cloud infrastructure before evidence supports it."
   ],
   known_unknowns: [
     "The evidence does not yet prove enterprise demand.",
@@ -99,7 +99,7 @@ const publishDecision = runtime.evaluateAction("brief.publish", { proposedBy: "r
 const output = {
   demo: "research-brief-demo",
   developer_preview: false,
-  early_runtime: true,
+  governance_runtime: true,
   question,
   sources,
   notes_summary: "General research demo showing sourced claims, confidence, approval boundary, and audit-style output.",

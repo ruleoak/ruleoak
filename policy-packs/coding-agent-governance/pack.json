@@ -1,0 +1,147 @@
+{
+  "schemaVersion": "ruleoak.policy_pack.v1",
+  "id": "coding-agent-governance",
+  "name": "AI Coding Agent Governance",
+  "version": "1.0.0",
+  "category": "coding",
+  "description": "Govern coding-agent repository, git, shell, and secret-sensitive actions.",
+  "compatibility": {
+    "policyPackSchema": "ruleoak.policy_pack.v1",
+    "governanceProtocol": "ruleoak.governance.v1",
+    "latestPublicCoreRelease": "v2.1.0",
+    "earlierPublicBaseline": "v1.0.1",
+    "developmentTrack": "RuleOak Core v2.1.0 release",
+    "supportsCoreMajor": [
+      "2",
+      "future-3"
+    ]
+  },
+  "policy": {
+    "boundary": "local_first_coding_agent_tool_boundary",
+    "allowedTools": [
+      "read.task_brief",
+      "read.workspace_policy",
+      "read.repo_file",
+      "read.git_status",
+      "inspect.diff_plan",
+      "scan.secrets",
+      "run.test_suite",
+      "read.review_policy",
+      "generate.audit_report"
+    ],
+    "approvalRequired": [
+      "write.source_file",
+      "delete.workspace_file",
+      "git.push_main",
+      "install.dependency"
+    ],
+    "blockedTools": [
+      "run.destructive_shell",
+      "read.env_secret",
+      "exfiltrate.repository",
+      "bypass.git_review"
+    ]
+  },
+  "scenarioTests": [
+    {
+      "id": "coding-agent-governance-default-scenario",
+      "title": "AI Coding Agent Governance default scenario",
+      "description": "Pack-local scenario used by RuleOak Policy Pack Maturity checks. It evaluates declared allow, approval, and deny decisions without executing tools.",
+      "calls": [
+        {
+          "toolId": "read.task_brief",
+          "subject": "coding-agent-governance scenario: read.task_brief",
+          "expectedDecision": "allowed"
+        },
+        {
+          "toolId": "read.workspace_policy",
+          "subject": "coding-agent-governance scenario: read.workspace_policy",
+          "expectedDecision": "allowed"
+        },
+        {
+          "toolId": "read.repo_file",
+          "subject": "coding-agent-governance scenario: read.repo_file",
+          "expectedDecision": "allowed"
+        },
+        {
+          "toolId": "write.source_file",
+          "subject": "coding-agent-governance scenario: write.source_file",
+          "expectedDecision": "approval_required"
+        },
+        {
+          "toolId": "delete.workspace_file",
+          "subject": "coding-agent-governance scenario: delete.workspace_file",
+          "expectedDecision": "approval_required"
+        },
+        {
+          "toolId": "git.push_main",
+          "subject": "coding-agent-governance scenario: git.push_main",
+          "expectedDecision": "approval_required"
+        },
+        {
+          "toolId": "run.destructive_shell",
+          "subject": "coding-agent-governance scenario: run.destructive_shell",
+          "expectedDecision": "blocked"
+        },
+        {
+          "toolId": "read.env_secret",
+          "subject": "coding-agent-governance scenario: read.env_secret",
+          "expectedDecision": "blocked"
+        },
+        {
+          "toolId": "exfiltrate.repository",
+          "subject": "coding-agent-governance scenario: exfiltrate.repository",
+          "expectedDecision": "blocked"
+        }
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "id": "read.task_brief",
+      "risk": "low"
+    },
+    {
+      "id": "read.workspace_policy",
+      "risk": "low"
+    },
+    {
+      "id": "read.repo_file",
+      "risk": "low"
+    },
+    {
+      "id": "write.source_file",
+      "risk": "high"
+    },
+    {
+      "id": "delete.workspace_file",
+      "risk": "high"
+    },
+    {
+      "id": "run.destructive_shell",
+      "risk": "critical"
+    },
+    {
+      "id": "read.env_secret",
+      "risk": "critical"
+    }
+  ],
+  "metadata": {
+    "requiredEvidence": [
+      "task brief",
+      "workspace policy",
+      "git status",
+      "diff plan",
+      "secret scan",
+      "test result",
+      "review boundary"
+    ],
+    "examples": [
+      "examples/ai-coding-agent-governance"
+    ],
+    "maturity": "reference-vertical",
+    "owner": "RuleOak maintainers",
+    "status": "public-release",
+    "publicCoreBaseline": "v2.1.0"
+  }
+}

@@ -1,6 +1,6 @@
 # RuleOak Tool Guard
 
-RuleOak Core v1.3 adds **Tool Guard**: a small governance layer for AI tool calls.
+RuleOak Core adds **Tool Guard**: a small governance layer for AI tool calls.
 
 The purpose is simple:
 

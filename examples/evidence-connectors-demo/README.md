@@ -1,6 +1,6 @@
 # Evidence Connectors Demo
 
-RuleOak Core v1.3 adds read-only evidence connector patterns.
+RuleOak Core adds read-only evidence connector patterns.
 
 ```bash
 npm run connector:demo

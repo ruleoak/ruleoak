@@ -1,6 +1,6 @@
 # Python Bridge Example
 
-This example shows how a Python application can emit RuleOak Core v1.0-compatible governance records through the companion `ruleoak-py` SDK.
+This example shows how a Python application can emit RuleOak Core-compatible governance records through the companion `ruleoak-py` SDK.
 
 It is intentionally generic. It does not depend on a specific vertical app.
 

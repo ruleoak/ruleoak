@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "ruleoak.governance.v1",
+  "recordType": "EvidenceRecord",
+  "evidenceId": "py-evidence-001",
+  "runId": "py-run-001",
+  "action": "search_docs",
+  "subject": "support-notes",
+  "subjectType": "document-set",
+  "createdAt": "2026-01-01T00:00:15.000Z",
+  "hash": "sha256:python-sdk-fixture-evidence-hash",
+  "source": "local-fixture",
+  "metadata": {
+    "emittedBy": "ruleoak-py",
+    "path": "fixtures/support-notes.md"
+  }
+}
