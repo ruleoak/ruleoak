@@ -2,7 +2,7 @@
   "runtimeVersion": "2.4.0",
   "runtimeStage": "async-read-only-evidence-connectors",
   "run": {
-    "id": "connector-run-272c02bd-a22e-4c1c-8dda-e450ca869fa5",
+    "id": "connector-run-34e7eff9-abd5-477d-ac58-43cd5056c6c3",
     "app": "RuleOak Async Evidence Connector Runner",
     "status": "completed"
   },
@@ -26,7 +26,7 @@
         "total": null
       },
       "hash": "255a13fb5435cbdbbcb80ba7cfe18d2dd774aa70e18622cf93461a67be88dae4",
-      "createdAt": "2026-06-20T01:27:12.396Z",
+      "createdAt": "2026-06-20T01:32:58.979Z",
       "metadata": {
         "readOnly": true,
         "mode": "read_only",
@@ -84,7 +84,7 @@
         ]
       },
       "hash": "1958960d844a434058c7a741ede0f718cdbf06d2f4987949e10ea52a0b31c6e9",
-      "createdAt": "2026-06-20T01:27:12.396Z",
+      "createdAt": "2026-06-20T01:32:58.979Z",
       "metadata": {
         "readOnly": true,
         "mode": "read_only",
@@ -98,7 +98,7 @@
       }
     },
     {
-      "id": "ev-jira_api_readonly-0b6b4c95b29fe79a",
+      "id": "ev-jira_api_readonly-6dd0f52cda726409",
       "connector": "jira_api_readonly",
       "source": "https://example.atlassian.net",
       "subject": "connector_diagnostics",
@@ -116,10 +116,10 @@
         "rateLimit": null,
         "timeoutMs": 10000,
         "maxAttempts": 2,
-        "generatedAt": "2026-06-20T01:27:12.396Z"
+        "generatedAt": "2026-06-20T01:32:58.979Z"
       },
-      "hash": "0b6b4c95b29fe79aa80010f163955e596246904a1ad5204b115b6778f391caf4",
-      "createdAt": "2026-06-20T01:27:12.396Z",
+      "hash": "6dd0f52cda726409016f54e3ea10c49458f2b3018383e8cc5520ed3f5234ba53",
+      "createdAt": "2026-06-20T01:32:58.979Z",
       "metadata": {
         "readOnly": true,
         "mode": "read_only",
@@ -131,22 +131,22 @@
   ],
   "auditEvents": [
     {
-      "id": "connector-run-272c02bd-a22e-4c1c-8dda-e450ca869fa5-evt-0001",
-      "runId": "connector-run-272c02bd-a22e-4c1c-8dda-e450ca869fa5",
+      "id": "connector-run-34e7eff9-abd5-477d-ac58-43cd5056c6c3-evt-0001",
+      "runId": "connector-run-34e7eff9-abd5-477d-ac58-43cd5056c6c3",
       "sequence": 1,
       "type": "connectors.started",
-      "timestamp": "2026-06-20T01:27:12.396Z",
+      "timestamp": "2026-06-20T01:32:58.979Z",
       "payload": {
         "actor": "async-connector-runner",
         "connectorCount": 1
       }
     },
     {
-      "id": "connector-run-272c02bd-a22e-4c1c-8dda-e450ca869fa5-evt-0002",
-      "runId": "connector-run-272c02bd-a22e-4c1c-8dda-e450ca869fa5",
+      "id": "connector-run-34e7eff9-abd5-477d-ac58-43cd5056c6c3-evt-0002",
+      "runId": "connector-run-34e7eff9-abd5-477d-ac58-43cd5056c6c3",
       "sequence": 2,
       "type": "connector.evidence_recorded",
-      "timestamp": "2026-06-20T01:27:12.396Z",
+      "timestamp": "2026-06-20T01:32:58.979Z",
       "payload": {
         "connector": "jira_api_readonly",
         "evidenceId": "ev-jira_api_readonly-255a13fb5435cbdb",
@@ -154,11 +154,11 @@
       }
     },
     {
-      "id": "connector-run-272c02bd-a22e-4c1c-8dda-e450ca869fa5-evt-0003",
-      "runId": "connector-run-272c02bd-a22e-4c1c-8dda-e450ca869fa5",
+      "id": "connector-run-34e7eff9-abd5-477d-ac58-43cd5056c6c3-evt-0003",
+      "runId": "connector-run-34e7eff9-abd5-477d-ac58-43cd5056c6c3",
       "sequence": 3,
       "type": "connector.evidence_recorded",
-      "timestamp": "2026-06-20T01:27:12.396Z",
+      "timestamp": "2026-06-20T01:32:58.979Z",
       "payload": {
         "connector": "jira_api_readonly",
         "evidenceId": "ev-jira_api_readonly-1958960d844a4340",
@@ -166,14 +166,14 @@
       }
     },
     {
-      "id": "connector-run-272c02bd-a22e-4c1c-8dda-e450ca869fa5-evt-0004",
-      "runId": "connector-run-272c02bd-a22e-4c1c-8dda-e450ca869fa5",
+      "id": "connector-run-34e7eff9-abd5-477d-ac58-43cd5056c6c3-evt-0004",
+      "runId": "connector-run-34e7eff9-abd5-477d-ac58-43cd5056c6c3",
       "sequence": 4,
       "type": "connector.evidence_recorded",
-      "timestamp": "2026-06-20T01:27:12.396Z",
+      "timestamp": "2026-06-20T01:32:58.979Z",
       "payload": {
         "connector": "jira_api_readonly",
-        "evidenceId": "ev-jira_api_readonly-0b6b4c95b29fe79a",
+        "evidenceId": "ev-jira_api_readonly-6dd0f52cda726409",
         "subject": "connector_diagnostics"
       }
     }
