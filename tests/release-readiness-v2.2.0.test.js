@@ -7,7 +7,7 @@ assert.equal(pkg.version, "2.2.0");
 const readme = readFileSync("README.md", "utf8");
 assert.match(readme, /Agent Firewall \+ Flight Recorder/);
 assert.match(readme, /AGPL-3\.0-or-later/);
-assert.match(readme, /stanleysunsg@gmail\.com/);
+assert.match(readme, /hello@ruleoak\.com/);
 for (const file of [
   "docs/DEVELOPER-GUIDE.md",
   "docs/agentic/api-reference.md",

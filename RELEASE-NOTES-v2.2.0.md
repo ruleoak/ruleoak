@@ -14,7 +14,7 @@ RuleOak Core v2.2.0 positions RuleOak as an **Agent Firewall and Flight Recorder
 
 ## License
 
-RuleOak Core is open-source under AGPL-3.0-or-later for open-source projects, learning, evaluation, and compatible deployments. For enterprise production use, proprietary vertical application building, closed-source embedding, hosted service use, or compliance without copyleft restrictions, commercial licenses are available. Contact: stanleysunsg@gmail.com.
+RuleOak Core is open-source under AGPL-3.0-or-later for open-source projects, learning, evaluation, and compatible deployments. For enterprise production use, proprietary vertical application building, closed-source embedding, hosted service use, or compliance without copyleft restrictions, commercial licenses are available. Contact: **hello@ruleoak.com**
 
 ## Public demo update: high-risk agent actions
 

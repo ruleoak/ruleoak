@@ -94,7 +94,7 @@ See `examples/high-risk-agent-actions/` and `docs/use-cases/high-risk-agent-acti
 
 ## License
 
-RuleOak Core is open-source under **AGPL-3.0-or-later** for open-source projects, learning, evaluation, and compatible deployments. For enterprise production use, proprietary vertical application building, closed-source embedding, hosted service use, or compliance without copyleft restrictions, commercial licenses are available. Contact: **stanleysunsg@gmail.com**.
+RuleOak Core is open-source under **AGPL-3.0-or-later** for open-source projects, learning, evaluation, and compatible deployments. For enterprise production use, proprietary vertical application building, closed-source embedding, hosted service use, or compliance without copyleft restrictions, commercial licenses are available. Contact: **hello@ruleoak.com**.
 
 Protocol schemas, fixtures, badge specifications, and conformance samples may be provided under MIT where marked so external projects can emit RuleOak-compatible evidence without adopting the full runtime.
 
@@ -150,4 +150,4 @@ You may use, study, modify, and distribute RuleOak Core under the terms of the A
 
 For closed-source embedding, proprietary vertical applications, hosted services, enterprise deployments, or use cases where AGPL obligations are not suitable, commercial licenses are available.
 
-Contact: stanleysunsg@gmail.com
+Contact: hello@ruleoak.com

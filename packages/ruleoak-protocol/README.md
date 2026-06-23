@@ -6,4 +6,4 @@ This package is intentionally permissive. It lets third-party agent projects emi
 
 Use this when you want compatibility. Use `@ruleoak/core` when you want the full Agent Firewall, Flight Recorder, approval, dry-run, replay, and enforcement runtime.
 
-Commercial licenses are available for closed-source embedding of RuleOak Core. Contact: stanleysunsg@gmail.com.
+Commercial licenses are available for closed-source embedding of RuleOak Core. Contact: hello@ruleoak.com.

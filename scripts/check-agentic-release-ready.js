@@ -22,7 +22,7 @@ for (const file of required) if (!existsSync(file)) failures.push(`missing ${fil
 const pkg = JSON.parse(readFileSync("package.json", "utf8"));
 if (pkg.version !== "2.2.0") failures.push(`package version must be 2.2.0, got ${pkg.version}`);
 const readme = readFileSync("README.md", "utf8");
-for (const needle of ["Agent Firewall + Flight Recorder", "AGPL-3.0-or-later", "stanleysunsg@gmail.com"]) {
+for (const needle of ["Agent Firewall + Flight Recorder", "AGPL-3.0-or-later", "hello@ruleoak.com"]) {
   if (!readme.includes(needle)) failures.push(`README missing ${needle}`);
 }
 const evidence = validateEvidenceJsonlText(readFileSync("fixtures/agentic/evidence/v1/valid-agentic-evidence.jsonl", "utf8"), { allowUnknownTypes: false });

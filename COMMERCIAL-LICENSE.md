@@ -13,4 +13,4 @@ A commercial license may be appropriate if you want to:
 - avoid AGPL copyleft obligations
 - receive commercial support or custom integration terms
 
-Contact: stanleysunsg@gmail.com
+Contact: hello@ruleoak.com

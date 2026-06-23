@@ -38,7 +38,7 @@ for (const file of [
 const readme = readFileSync("README.md", "utf8");
 assert.match(readme, /Agent Firewall \+ Flight Recorder/);
 assert.match(readme, /AGPL-3\.0-or-later/);
-assert.match(readme, /stanleysunsg@gmail\.com/);
+assert.match(readme, /hello@ruleoak\.com/);
 execFileSync("node", ["quickstart/06-agent-firewall-flight-recorder/run.js"], { stdio: "pipe" });
 execFileSync("node", ["examples/public-agentic-demo/run.js"], { stdio: "pipe" });
 console.log("agentic release readiness tests passed");

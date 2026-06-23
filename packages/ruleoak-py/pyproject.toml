@@ -5,7 +5,7 @@ description = "Python bridge for RuleOak Evidence JSONL v1, manifests, and local
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "AGPL-3.0-or-later; schemas and fixtures may be MIT where marked" }
-authors = [{ name = "Stanley Sun", email = "stanleysunsg@gmail.com" }]
+authors = [{ name = "Stanley Sun", email = "hello@ruleoak.com" }]
 keywords = ["ruleoak", "ai-agents", "evidence-jsonl", "flight-recorder", "agent-firewall"]
 
 [project.scripts]

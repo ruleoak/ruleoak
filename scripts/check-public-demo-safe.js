@@ -6,7 +6,7 @@ const banned = [
   /NRIC\b/i,
   /passport\s*number\s*[:=]/i,
   /\b[A-Z][0-9]{7}[A-Z]\b/,
-  /stanleysunsg@gmail\.com/i,
+  /hello@ruleoak\.com/i,
   /real\s+address/i,
   /api[_-]?key\s*[:=]/i,
   /bearer\s+[A-Za-z0-9._-]+/i,

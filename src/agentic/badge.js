@@ -7,7 +7,7 @@ export const BADGE_LEVELS = Object.freeze({
   replayable: { label: "replayable", requires: ["replay"] }
 });
 
-export function generateRuleOakBadgeMarkdown(level = "recorded", { label = "RuleOak", link = "https://github.com/stanleysunsg/ruleoak-core" } = {}) {
+export function generateRuleOakBadgeMarkdown(level = "recorded", { label = "RuleOak", link = "https://github.com/ruleoak/ruleoak-core" } = {}) {
   const cfg = BADGE_LEVELS[level];
   if (!cfg) throw new Error(`unknown RuleOak badge level: ${level}`);
   const message = encodeURIComponent(cfg.label);
