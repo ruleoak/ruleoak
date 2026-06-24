@@ -254,7 +254,7 @@
     "product:surface:packet": "node scripts/approval-audit-product-surface.js packet",
     "product:surface:check:json": "node scripts/approval-audit-product-surface.js check",
     "test:approval-audit-product-surface": "node tests/approval-audit-product-surface.test.js",
-    "test:docs-public-message": "node tests/docs-public-message.test.js",
+    "test:docs-public-message": "node tests/docs-public-message.test.js && npm run test:agentic-diagrams",
     "agentic:demo": "node examples/agentic-foundation/run.js",
     "test:agentic": "node tests/agentic-foundation.test.js && node tests/agentic-ecosystem.test.js && node tests/agentic-release-readiness.test.js && node tests/agentic-conformance-kit.test.js && node tests/ruleoak-py-100.test.js && node tests/agentic-skills-100.test.js && node tests/agentic-stable-api.test.js && node tests/release-readiness-v2.2.0.test.js && npm run test:adoption-guards",
     "agentic:dangerous-demo": "node examples/dangerous-action-demos/run.js",
@@ -298,7 +298,8 @@
     "test:private-safedesk-ready": "node private-packages/ruleoak-safedesk/tests/safedesk-private-ready.test.js",
     "test:public-private-boundary": "npm run test:public-demo-safe && npm run test:no-private-product-leak && npm run test:public-artifact-boundary",
     "agentic:high-risk-demos": "node examples/high-risk-agent-actions/run.js",
-    "test:high-risk-demos": "node tests/high-risk-agent-actions.test.js"
+    "test:high-risk-demos": "node tests/high-risk-agent-actions.test.js",
+    "test:agentic-diagrams": "node scripts/check-agentic-diagram-arrow-targets.js"
   },
   "dependencies": {
     "zod": "^3.23.8",
