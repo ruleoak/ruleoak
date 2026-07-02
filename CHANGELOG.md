@@ -1,5 +1,11 @@
 # Changelog
 
+### CI workflow path update
+
+- The GitHub Actions workflow is provided at `.github/workflows/ci.yml`.
+- The workflow runs publish-readiness checks and REUSE lint on pushes and pull requests.
+
+
 ## Version-lineage note
 
 v2.2.0 was the last release of the single-package ruleoak-core line (license: AGPL-3.0); the project was restructured into a monorepo and versioning restarted at 0.1.0 to reflect the new package boundaries and license model.

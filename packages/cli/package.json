@@ -26,11 +26,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stanleysun/ruleoak.git",
+    "url": "git+https://github.com/ruleoak/ruleoak.git",
     "directory": "packages/cli"
   },
-  "homepage": "https://github.com/stanleysun/ruleoak/tree/main/packages/cli#readme",
+  "homepage": "https://github.com/ruleoak/ruleoak/tree/main/packages/cli#readme",
   "bugs": {
-    "url": "https://github.com/stanleysun/ruleoak/issues"
+    "url": "https://github.com/ruleoak/ruleoak/issues"
   }
 }

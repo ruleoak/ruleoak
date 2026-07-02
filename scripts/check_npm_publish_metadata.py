@@ -23,7 +23,7 @@ import sys
 from pathlib import Path
 
 VERSION = "0.1.0"
-REPO_URL = "git+https://github.com/stanleysun/ruleoak.git"
+REPO_URL = "git+https://github.com/ruleoak/ruleoak.git"
 PACKAGES = {
     "packages/protocol": {"name": "@ruleoak/protocol", "license": "MIT", "deps": {}},
     "packages/core": {"name": "@ruleoak/core", "license": "Apache-2.0", "deps": {"@ruleoak/protocol": "^0.1.0"}},
