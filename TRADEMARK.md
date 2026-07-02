@@ -1,6 +1,6 @@
 # RuleOak Trademark Policy
 
-RuleOak™ is a product name and brand used by Sun Shaobin for the RuleOak governance runtime and related materials.
+RuleOak™ is a product name and brand used for the RuleOak governance runtime and related materials.
 
 The open-source licenses in this repository grant rights to use, copy, modify, and distribute covered code. They do **not** grant permission to use the RuleOak name, RuleOak logo, product marks, certification marks, or confusingly similar branding except as described below.
 
@@ -30,7 +30,7 @@ Forks and modified distributions must use a clearly different name and must not 
 
 ## Certification and compatibility claims
 
-Do not claim "RuleOak Certified", "official RuleOak compatible", or similar certification status unless Sun Shaobin or a future RuleOak legal entity has granted that status in writing.
+Do not claim "RuleOak Certified", "official RuleOak compatible", or similar certification status unless the RuleOak project maintainer or a future RuleOak legal entity has granted that status in writing.
 
 ## Contact
 

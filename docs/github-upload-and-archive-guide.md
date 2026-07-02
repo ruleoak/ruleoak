@@ -115,7 +115,7 @@ The RuleOak name and branding are not licensed by MIT or Apache-2.0. Forks and m
 
 ## Contribution clarification
 
-RuleOak currently uses DCO sign-off, not a CLA. DCO is lightweight and adoption-friendly, but it does not automatically give Sun Shaobin or a future RuleOak legal entity proprietary relicensing rights over contributor-owned code.
+RuleOak currently uses DCO sign-off, not a CLA. DCO is lightweight and adoption-friendly, but it does not automatically give The RuleOak Authors or a future RuleOak legal entity proprietary relicensing rights over contributor-owned code.
 ```
 
 ## 4. Website repo upload
@@ -156,7 +156,7 @@ Do this for each old repo such as `ruleoak-adapters-ts`, `ruleoak-openclaw-adapt
 
 ### Route A: relicense to Apache-2.0, then archive
 
-Use only if Sun Shaobin owns all relevant code and no third-party terms block relicensing.
+Use only if The RuleOak Authors owns all relevant code and no third-party terms block relicensing.
 
 1. Replace root `LICENSE` with Apache-2.0.
 2. Add `TRADEMARK.md` from this monorepo.

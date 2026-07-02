@@ -1,6 +1,6 @@
 /*
- * Copyright © 2026 Sun Shaobin.
- * SPDX-FileCopyrightText: 2026 Sun Shaobin
+ * Copyright © 2026 The RuleOak Authors.
+ * SPDX-FileCopyrightText: 2026 The RuleOak Authors
  * SPDX-License-Identifier: MIT
  */
 

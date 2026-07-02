@@ -75,6 +75,29 @@ See:
 
 Adapters, Python bridge, OpenClaw-style adapter, Agentic Skills, SafeDesk, and proof apps are not part of the supported public launch surface for this sprint. See `ARCHIVED_REPOS.md` before publishing or archiving any old adapter repository.
 
+
+## Package metadata and first public npm version
+
+The public RuleOak packages use clean version `0.1.0`. Internal sprint labels are intentionally not used in npm package versions.
+
+Before publishing to npm, run:
+
+```bash
+npm install --ignore-scripts
+npm run check:publish
+npm pack --dry-run --workspace @ruleoak/protocol
+npm pack --dry-run --workspace @ruleoak/core
+npm pack --dry-run --workspace @ruleoak/cli
+```
+
+Each package has its own `LICENSE` file and npm metadata:
+
+| Package | Version | License | Internal dependency specifiers |
+|---|---:|---|---|
+| `@ruleoak/protocol` | `0.1.0` | MIT | none |
+| `@ruleoak/core` | `0.1.0` | Apache-2.0 | `@ruleoak/protocol: ^0.1.0` |
+| `@ruleoak/cli` | `0.1.0` | Apache-2.0 | `@ruleoak/core: ^0.1.0`, `@ruleoak/protocol: ^0.1.0` |
+
 ## Licensing, trademark, and contributions
 
 This repository is intentionally not licensed under one blanket root license.
@@ -90,4 +113,4 @@ See `LICENSE.md` for the repository license map, `LICENSES/` for full license te
 
 The RuleOak name, logo, and related branding are not licensed under the code licenses. Forks and modified distributions must be clearly renamed and must not imply official status. See `TRADEMARK.md`.
 
-Contributions require DCO sign-off. DCO is lightweight but does not automatically give Sun Shaobin, or a future RuleOak legal entity, future proprietary relicensing rights for contributor-owned code. See `DCO.md` and `CONTRIBUTING.md`.
+Contributions require DCO sign-off. DCO is lightweight but does not automatically give the RuleOak project maintainer, or a future RuleOak legal entity, future proprietary relicensing rights for contributor-owned code. See `DCO.md` and `CONTRIBUTING.md`.

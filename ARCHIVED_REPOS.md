@@ -1,5 +1,10 @@
 # Archived and frozen RuleOak repositories
 
+
+## Version-lineage note
+
+v2.2.0 was the last release of the single-package ruleoak-core line (license: AGPL-3.0); the project was restructured into a monorepo and versioning restarted at 0.1.0 to reflect the new package boundaries and license model.
+
 The following repositories are outside the supported public launch surface for this sprint unless they are explicitly brought back and relicensed/reviewed:
 
 - `ruleoak-adapters-ts`
@@ -23,7 +28,7 @@ Use one of these two paths before making an archived repository public:
 
 ### Preferred path: relicense then archive
 
-Use this when Sun Shaobin owns all required rights and no third-party license blocks relicensing.
+Use this when The RuleOak Authors owns all required rights and no third-party license blocks relicensing.
 
 1. Replace the repository `LICENSE` with Apache-2.0.
 2. Add a top README banner:

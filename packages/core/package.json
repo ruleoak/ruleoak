@@ -7,7 +7,7 @@
   "exports": "./src/index.js",
   "license": "Apache-2.0",
   "dependencies": {
-    "@ruleoak/protocol": "file:../protocol"
+    "@ruleoak/protocol": "^0.1.0"
   },
   "files": [
     "src",
@@ -20,5 +20,14 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stanleysun/ruleoak.git",
+    "directory": "packages/core"
+  },
+  "homepage": "https://github.com/stanleysun/ruleoak/tree/main/packages/core#readme",
+  "bugs": {
+    "url": "https://github.com/stanleysun/ruleoak/issues"
   }
 }

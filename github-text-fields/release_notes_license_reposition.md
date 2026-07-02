@@ -26,4 +26,4 @@ The RuleOak name and branding are not licensed by MIT or Apache-2.0. Forks and m
 
 ## Contribution clarification
 
-RuleOak currently uses DCO sign-off, not a CLA. DCO is lightweight and adoption-friendly, but it does not automatically give Sun Shaobin or a future RuleOak legal entity proprietary relicensing rights over contributor-owned code.
+RuleOak currently uses DCO sign-off, not a CLA. DCO is lightweight and adoption-friendly, but it does not automatically give The RuleOak Authors or a future RuleOak legal entity proprietary relicensing rights over contributor-owned code.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright © 2026 Sun Shaobin.
+# Copyright © 2026 The RuleOak Authors.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# SPDX-FileCopyrightText: 2026 Sun Shaobin
+# SPDX-FileCopyrightText: 2026 The RuleOak Authors
 # SPDX-License-Identifier: Apache-2.0
 
 """Basic RuleOak licensing hygiene checks. Run from repository root."""
@@ -30,6 +30,8 @@ REQUIRED = [
     'CONTRIBUTING.md',
     'NOTICE.md',
     'REUSE.toml',
+    'AUTHORS.md',
+    '.github/workflows/ci.yml',
     'packages/protocol/LICENSE',
     'packages/core/LICENSE',
     'packages/cli/LICENSE',
@@ -78,14 +80,19 @@ def main() -> int:
         head = '\n'.join(path.read_text(encoding='utf-8', errors='replace').splitlines()[:50])
         if f'SPDX-License-Identifier: {exp}' not in head:
             errors.append(f'Missing/wrong SPDX header in {rel}; expected {exp}')
-        if 'SPDX-FileCopyrightText: 2026 Sun Shaobin' not in head:
+        if 'SPDX-FileCopyrightText: 2026 The RuleOak Authors' not in head:
             errors.append(f'Missing SPDX-FileCopyrightText in {rel}')
-    for candidate in ['LICENSE.md', 'packages/core/LICENSE', 'packages/cli/LICENSE', 'packages/protocol/LICENSE']:
+    for candidate in ['LICENSE.md', 'NOTICE.md', 'TRADEMARK.md', 'REUSE.toml', 'packages/core/LICENSE', 'packages/cli/LICENSE', 'packages/protocol/LICENSE']:
         text = (root / candidate).read_text(encoding='utf-8', errors='replace') if (root / candidate).exists() else ''
         if 'RuleOak contributors' in text:
             errors.append(f'Ambiguous contributor copyright wording remains in {candidate}')
         if 'RuleOak, Inc.' in text:
             errors.append(f'Unformed entity copyright wording found in {candidate}')
+        if 'Copyright © 2026 Sun Shaobin' in text or 'Copyright 2026 Sun Shaobin' in text or 'Copyright (c) 2026 Sun Shaobin' in text:
+            errors.append(f'Personal-name copyright holder remains in {candidate}; use The RuleOak Authors')
+    ci = root / '.github/workflows/ci.yml'
+    if ci.exists() and 'fsfe/reuse-action@v6' not in ci.read_text(encoding='utf-8', errors='replace'):
+        errors.append('CI workflow must include fsfe/reuse-action@v6')
     if errors:
         print('RuleOak licensing check FAILED:')
         for e in errors:

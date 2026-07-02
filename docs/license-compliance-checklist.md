@@ -27,7 +27,7 @@ python3 scripts/check_ruleoak_licensing.py
 
 - ambiguous root `LICENSE` file that makes the whole monorepo look Apache-2.0 or MIT
 - `RuleOak, Inc.` copyright wording before the legal entity exists
-- `Sun Shaobin and RuleOak contributors` as the primary copyright holder
+- `The RuleOak Authors and RuleOak contributors` as the primary copyright holder
 
 ## Source headers
 

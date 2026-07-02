@@ -1,6 +1,6 @@
 {
   "name": "ruleoak",
-  "version": "0.1.0-phase5.2",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "workspaces": [
@@ -19,9 +19,21 @@
     "check:phase1-4": "node tests/phase1-4-check.js",
     "test:performance": "npm --workspace @ruleoak/core run test:performance",
     "check:phase5": "node tests/phase5-check.js",
-    "replay:demo:html": "node packages/cli/bin/ruleoak.js replay --html .ruleoak-demo-output/mock-project/.ruleoak/report.html --dir .ruleoak-demo-output/mock-project"
+    "replay:demo:html": "node packages/cli/bin/ruleoak.js replay --html .ruleoak-demo-output/mock-project/.ruleoak/report.html --dir .ruleoak-demo-output/mock-project",
+    "check:licensing": "python3 scripts/check_ruleoak_licensing.py",
+    "check:npm-metadata": "python3 scripts/check_npm_publish_metadata.py",
+    "check:publish": "npm run check:licensing && npm run check:npm-metadata && npm run check:phase1-4 && npm run check:phase5 && npm test && npm run check:pack",
+    "check:pack": "python3 scripts/check_npm_pack_contents.py"
   },
   "engines": {
     "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stanleysun/ruleoak.git"
+  },
+  "homepage": "https://github.com/stanleysun/ruleoak#readme",
+  "bugs": {
+    "url": "https://github.com/stanleysun/ruleoak/issues"
   }
 }

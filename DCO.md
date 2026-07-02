@@ -20,7 +20,7 @@ git commit -s -m "Your commit message"
 
 DCO is deliberately lightweight. It is good for early public adoption because it avoids CLA friction.
 
-However, DCO does not automatically assign copyright to Sun Shaobin or to any future RuleOak legal entity. A contribution accepted under DCO remains under the license of the package or file to which it was contributed. If RuleOak later needs to relicense meaningful contributor-owned code for a proprietary, dual-license, or commercial variant, the project may need contributor-by-contributor consent or a separate CLA.
+However, DCO does not automatically assign copyright to the RuleOak project maintainer or to any future RuleOak legal entity. A contribution accepted under DCO remains under the license of the package or file to which it was contributed. If RuleOak later needs to relicense meaningful contributor-owned code for a proprietary, dual-license, or commercial variant, the project may need contributor-by-contributor consent or a separate CLA.
 
 This is an accepted trade-off for the current stage: maximize adoption now, revisit CLA only if commercial relicensing of contributed code becomes a real path.
 

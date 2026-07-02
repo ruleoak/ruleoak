@@ -2,7 +2,7 @@
 
 This repository contains multiple packages with different open-source licenses. This file is a license map for the repository. It is not intended to relicense every file in the repository under one blanket license.
 
-Copyright © 2026 Sun Shaobin.
+Copyright © 2026 The RuleOak Authors.
 
 ## Package license map
 
@@ -18,14 +18,14 @@ Copyright © 2026 Sun Shaobin.
 Source files should include file-level SPDX notices, for example:
 
 ```text
-SPDX-FileCopyrightText: 2026 Sun Shaobin
+SPDX-FileCopyrightText: 2026 The RuleOak Authors
 SPDX-License-Identifier: Apache-2.0
 ```
 
 or, for protocol files:
 
 ```text
-SPDX-FileCopyrightText: 2026 Sun Shaobin
+SPDX-FileCopyrightText: 2026 The RuleOak Authors
 SPDX-License-Identifier: MIT
 ```
 
@@ -39,7 +39,7 @@ The RuleOak name, RuleOak logo, and related branding are not licensed under the 
 
 Contributions are accepted under the license of the package or file being changed. Contributors must certify their contributions using the Developer Certificate of Origin sign-off process described in `DCO.md` and `CONTRIBUTING.md`.
 
-Important: DCO is intentionally lightweight, but it does not automatically give Sun Shaobin, or any future RuleOak legal entity, a separate right to relicense contributor-owned code under a future proprietary or dual-license model. If RuleOak later needs commercial relicensing of externally contributed code, contributor consent or a CLA may be required.
+Important: DCO is intentionally lightweight, but it does not automatically give the RuleOak project maintainer, or any future RuleOak legal entity, a separate right to relicense contributor-owned code under a future proprietary or dual-license model. If RuleOak later needs commercial relicensing of externally contributed code, contributor consent or a CLA may be required.
 
 ## Third-party dependencies
 
@@ -47,4 +47,4 @@ Third-party dependencies retain their own licenses. This repository's license ma
 
 ## Archived repositories and legacy code
 
-Archived RuleOak adapter repositories are not automatically part of the supported project. Each archived repository should contain a visible archive banner and a clear license statement at the time of archive. Prefer Apache-2.0 for inert old adapter code only if Sun Shaobin owns all required rights and no third-party terms block relicensing.
+Archived RuleOak adapter repositories are not automatically part of the supported project. Each archived repository should contain a visible archive banner and a clear license statement at the time of archive. Prefer Apache-2.0 for inert old adapter code only if the relevant rights holder owns all required rights and no third-party terms block relicensing.
