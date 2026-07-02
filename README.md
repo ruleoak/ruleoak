@@ -1,164 +1,93 @@
-# RuleOak Core v2.2.0
+# RuleOak
 
-## Agent Firewall + Flight Recorder for AI agents
+## Agent Firewall + Flight Recorder for AI Agents
 
-RuleOak is an **Agent Firewall** and **Flight Recorder** for AI agents. Before an agent sends, deletes, spends, deploys, or changes production, RuleOak can **block, approve, record, and replay** the action.
+Your AI agent can delete files, run shell commands, and call tools now. Most people have no idea what it actually did until it is too late. RuleOak blocks dangerous actions before they happen and gives you a black-box recording of every action.
 
-![RuleOak Agentic Stack](docs/assets/agentic-diagrams/agentic-stack.svg)
+```text
+$ npx @ruleoak/cli demo agent-delete
 
-## Why RuleOak exists
+RuleOak demo: agent-delete
+scripted client sends a JSON-RPC tools/call into child stdin
 
-Modern agents can call tools, touch files, send messages, run commands, and use MCP-style tool servers. That creates a new operational question:
+🛑 [RuleOak Blocked Before Forward]: mcp.filesystem.delete was denied before it reached the child process.
+Hash chain: intact
+HTML report: .ruleoak/report.html
+```
 
-> What did the agent try to do, who approved it, what policy applied, what evidence was recorded, and can we replay the timeline?
-
-RuleOak answers this with a local-first developer runtime:
-
-- **Agent Firewall** — evaluate tool actions before execution.
-- **Flight Recorder** — write append-only Evidence JSONL for actions and decisions.
-- **Approval gates** — pause risky actions before they execute.
-- **Dry-run mode** — preview dangerous actions without side effects.
-- **MCP Permission Gateway** — inventory and govern MCP-style tools.
-- **Action Replay** — reconstruct what happened from evidence.
-- **Safety CI** — fail unsafe agent/tool configurations.
-- **Trust score and badges** — communicate integration maturity without claiming certification.
-
-## 10-minute quickstart
+## Quickstart
 
 ```bash
-npm install
-npm run agentic:quickstart
-npm run agentic:public-demo
-npm run agentic:conformance
+npx @ruleoak/cli init
 ```
 
-Minimal API example:
-
-```js
-import { AgentFirewall, FlightRecorder } from "@ruleoak/core/agentic";
-
-const recorder = new FlightRecorder({ runId: "demo-run" });
-const firewall = new AgentFirewall({ recorder });
-
-await firewall.guardAction(
-  { toolName: "filesystem", operation: "delete", target: "/important/file" },
-  async () => ({ deleted: true })
-);
-```
-
-By default, dangerous unknown actions fail closed or require approval depending on policy.
-
-## Stable developer surfaces in v2.2.0
-
-- Evidence JSONL v1: `ruleoak.agentic.evidence.v1`
-- `.ruleoak.yml` v1: `ruleoak.manifest.v1`
-- Agentic public API: `@ruleoak/core/agentic`
-- RuleOak Python bridge v1.0.0 package source under `packages/ruleoak-py/`
-- RuleOak Agentic Skills v1.0.0 package source under `packages/ruleoak-agentic-skills/`
-
-## Diagrams
-
-- [Agentic stack](docs/assets/agentic-diagrams/agentic-stack.svg)
-- [Flight recorder lifecycle](docs/assets/agentic-diagrams/flight-recorder-lifecycle.svg)
-- [MCP permission gateway](docs/assets/agentic-diagrams/mcp-permission-gateway.svg)
-- [Approval and dry-run flow](docs/assets/agentic-diagrams/approval-dry-run-flow.svg)
-- [Manifest and Safety CI flow](docs/assets/agentic-diagrams/manifest-safety-ci-flow.svg)
-- [Agentic skill integration](docs/assets/agentic-diagrams/agentic-skill-integration.svg)
-- [License boundary](docs/assets/agentic-diagrams/license-boundary.svg)
-- [Developer adoption loop](docs/assets/agentic-diagrams/developer-adoption-loop.svg)
-
-## Developer docs
-
-Start here:
-
-- [Developer Guide](docs/DEVELOPER-GUIDE.md)
-- [Agentic Guide](docs/agentic/README.md)
-- [API Reference](docs/agentic/api-reference.md)
-- [Evidence JSONL v1](docs/agentic/evidence-jsonl-v1.md)
-- [`.ruleoak.yml` v1](docs/agentic/ruleoak-yml-v1.md)
-- [Security and privacy](docs/agentic/security-privacy.md)
-- [Conformance kit](docs/agentic/conformance-kit.md)
-- [Release notes v2.2.0](docs/agentic/release-notes-v2.2.0.md)
-
-
-### High-risk agent action demos
-
-RuleOak Core v2.2.0 includes public, local, deterministic demos for seven common risky agent actions: protected-folder delete, shell command, database mutation, dangerous MCP tool, external email-like action, poisoned retrieved context, and risky skill/plugin install.
+For this source tree before npm publication:
 
 ```bash
-npm run agentic:high-risk-demos
-npm run test:high-risk-demos
+npm install --ignore-scripts
+npm run demo:agent-delete
+npm test
 ```
 
-See `examples/high-risk-agent-actions/` and `docs/use-cases/high-risk-agent-action-demos.md`.
+## Stdio / JSON-RPC stream interceptor
 
-## License
-
-RuleOak Core is open-source under **AGPL-3.0-or-later** for open-source projects, learning, evaluation, and compatible deployments. For enterprise production use, proprietary vertical application building, closed-source embedding, hosted service use, or compliance without copyleft restrictions, commercial licenses are available. Contact: **hello@ruleoak.com**.
-
-Protocol schemas, fixtures, badge specifications, and conformance samples may be provided under MIT where marked so external projects can emit RuleOak-compatible evidence without adopting the full runtime.
-
-## What RuleOak is not
-
-RuleOak is not a legal/compliance certification, not an LLM provider, not a hosted monitoring system by default, and not a replacement for security review. It is a developer-first local governance and evidence layer for agent actions.
-
-## Release status
-
-Latest public release: **v2.2.0**.
-
-## Public core, private SafeDesk product boundary
-
-RuleOak Core is the public AGPL/commercial runtime for Agent Firewall, Flight Recorder, evidence, approval, replay, and adapters. Public examples include SafeDesk and consumer vertical demos with synthetic data.
-
-The full RuleOak SafeDesk consumer application, polished UI, installers, premium report templates, paid features, customer/license logic, and full vertical workflows are private/commercial product assets.
-
-This lets developers inspect and adopt the trust layer while keeping the packaged consumer product commercially sustainable.
-
-## Public repositories
-
-The public RuleOak ecosystem is split so developers can adopt the protocol and adapters without taking a dependency on the full AGPL runtime unless they need enforcement.
-
-| Repository | Version | License | Use when you need |
-|---|---:|---|---|
-| [`ruleoak-core`](https://github.com/ruleoak/ruleoak-core) | `2.2.0` | AGPL-3.0-or-later + commercial option | Agent Firewall, Flight Recorder, approval gates, dry-run, replay, runtime enforcement. |
-| [`ruleoak-protocol`](https://github.com/ruleoak/ruleoak-protocol) | `1.0.0` | MIT | Evidence JSONL, `.ruleoak.yml`, action envelopes, schemas, badges, and conformance fixtures. |
-| [`ruleoak-adapters-ts`](https://github.com/ruleoak/ruleoak-adapters-ts) | `1.0.0` | Apache-2.0 | TypeScript adapters for MCP-style, tool-calling, OpenAI Agents JS-style, LangChain.js-style, Vercel AI SDK-style, coding-agent, and OpenClaw-style workflows. |
-| [`ruleoak-py`](https://github.com/ruleoak/ruleoak-py) | `1.0.0` | Apache-2.0 | Python bridge/adapters for LangGraph and Python agentic workflows. |
-| [`ruleoak-openclaw-adapter`](https://github.com/ruleoak/ruleoak-openclaw-adapter) | `1.0.0` | MIT | Optional OpenClaw-style compatibility adapter. Not official or endorsed by OpenClaw maintainers. |
-| [`ruleoak-agentic-skills`](https://github.com/ruleoak/ruleoak-agentic-skills) | `1.0.0` | Apache-2.0 | Agentic skill manifests, safety scanner, permission summaries, and examples. |
-
-SafeDesk and the consumer/prosumer vertical apps are private/commercial products powered by RuleOak Core. They are not published as public source code.
-
-
-
-### High-risk agent action demos
-
-RuleOak Core v2.2.0 includes public, local, deterministic demos for seven common risky agent actions: protected-folder delete, shell command, database mutation, dangerous MCP tool, external email-like action, poisoned retrieved context, and risky skill/plugin install.
+Phase 5 removes the old launch-path dependency on process hooks. `ruleoak run -- <command>` now uses a cross-platform stdio/JSON-RPC line interceptor:
 
 ```bash
-npm run agentic:high-risk-demos
-npm run test:high-risk-demos
+ruleoak run -- node your-agent-loop.js
 ```
 
-See `examples/high-risk-agent-actions/` and `docs/use-cases/high-risk-agent-action-demos.md`.
+It watches JSON-RPC `tools/call` requests on the inbound parent/client → child/server path, evaluates the proposed action before forwarding, writes hash-chained evidence, and emits a JSON-RPC error response when a denied action is blocked. Child stdout is passed through untouched.
 
-## License
+The parser handles pretty-printed JSON, JSON-RPC batch arrays, and non-JSON noise on the same stream. Malformed policy fails closed before the child starts.
 
-RuleOak Core is open source under the GNU Affero General Public License v3.0 or later (`AGPL-3.0-or-later`).
+Scope honesty: this is not kernel-level syscall interception. It does not observe arbitrary in-process function calls that never cross filesystem, network, subprocess, or JSON-RPC stream boundaries. MCP server gateway interception is a roadmap item, not a Phase 5 claim.
 
-You may use, study, modify, and distribute RuleOak Core under the terms of the AGPL. If you modify or run RuleOak Core as part of a network service, the AGPL may require you to make the corresponding source code available under the same license.
+## Incident-report format
 
-For closed-source embedding, proprietary vertical applications, hosted services, enterprise deployments, or use cases where AGPL obligations are not suitable, commercial licenses are available.
+RuleOak writes hash-chained evidence JSONL and can print a Markdown incident report:
 
-Contact: hello@ruleoak.com
+```bash
+node packages/cli/bin/ruleoak.js replay --verify --dir .ruleoak-demo-output/mock-project
+```
 
-## Policy precedence
+It can also generate a single-file visual HTML timeline:
 
-RuleOak Core follows the RuleOak policy model:
+```bash
+node packages/cli/bin/ruleoak.js replay --html .ruleoak-demo-output/mock-project/.ruleoak/report.html --dir .ruleoak-demo-output/mock-project
+```
 
-1. `blockedActions` always wins.
-2. `allowedActions` and `approvalRequired` are compared by pattern specificity.
-3. If allow and approval match with the same specificity, `needs_approval` wins.
-4. `defaultAction` applies only when no explicit policy pattern matches.
+See:
 
-Exact action keys such as `filesystem.read` are more specific than namespace wildcards such as `filesystem.*`, and `*` is the least-specific catch-all.
+- [`docs/incident-report-format.md`](./docs/incident-report-format.md)
+- [`docs/html-timeline-report.md`](./docs/html-timeline-report.md)
+- [`docs/security-boundary.md`](./docs/security-boundary.md)
+- [`docs/telemetry.md`](./docs/telemetry.md)
+
+## Monorepo packages
+
+| Package | License | Role |
+|---|---|---|
+| `@ruleoak/protocol` | MIT | schemas, fixtures, validators, evidence/action model |
+| `@ruleoak/core` | Apache-2.0 | policy evaluator and hash-chained recorder |
+| `@ruleoak/cli` | Apache-2.0 | `init`, `run`, `replay`, `demo agent-delete` |
+
+
+Adapters, Python bridge, OpenClaw-style adapter, Agentic Skills, SafeDesk, and proof apps are not part of the supported public launch surface for this sprint. See `ARCHIVED_REPOS.md` before publishing or archiving any old adapter repository.
+
+## Licensing, trademark, and contributions
+
+This repository is intentionally not licensed under one blanket root license.
+
+| Area | License |
+|---|---:|
+| `packages/protocol/` | MIT |
+| `packages/core/` | Apache-2.0 |
+| `packages/cli/` | Apache-2.0 |
+| `docs/`, `site/`, `tests/`, `.github/`, `scripts/` | Apache-2.0 unless a file says otherwise |
+
+See `LICENSE.md` for the repository license map, `LICENSES/` for full license texts, and each package-local `LICENSE` file for the package license.
+
+The RuleOak name, logo, and related branding are not licensed under the code licenses. Forks and modified distributions must be clearly renamed and must not imply official status. See `TRADEMARK.md`.
+
+Contributions require DCO sign-off. DCO is lightweight but does not automatically give Sun Shaobin, or a future RuleOak legal entity, future proprietary relicensing rights for contributor-owned code. See `DCO.md` and `CONTRIBUTING.md`.

@@ -1,0 +1,4 @@
+{
+  "type": "filesystem.read",
+  "target": "./README.md"
+}

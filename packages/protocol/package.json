@@ -1,0 +1,23 @@
+{
+  "name": "@ruleoak/protocol",
+  "version": "0.1.0",
+  "description": "RuleOak protocol schemas, validators, and fixtures for agent action evidence.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": "./src/index.js",
+  "license": "MIT",
+  "files": [
+    "src",
+    "schemas",
+    "fixtures",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node tests/protocol.test.js",
+    "validate:fixtures": "node tests/protocol.test.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,1 +1,0 @@
-I released RuleOak Core v2.2.0: Agent Firewall + Flight Recorder for AI agents. It helps developers block, approve, record, and replay risky agent actions before they send, delete, deploy, or touch production.

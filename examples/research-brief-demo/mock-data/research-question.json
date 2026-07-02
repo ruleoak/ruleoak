@@ -1,7 +1,0 @@
-{
-  "case_id": "RB-001",
-  "question": "Should a small team start with a local-first AI research assistant before building a cloud collaboration product?",
-  "audience": "product and engineering team",
-  "decision_context": "The team wants fast learning, low data exposure, and a focused first release without overbuilding.",
-  "requested_output": "A short evidence-backed research brief with a recommendation and approval boundary."
-}

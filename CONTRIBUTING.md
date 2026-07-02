@@ -1,91 +1,46 @@
 # Contributing to RuleOak
 
-Thank you for your interest in RuleOak.
+Issues, questions, reproduction cases, documentation feedback, compatibility reports, and small pull requests are welcome.
 
-RuleOak Core is currently in a **feedback-first contribution stage**. The repository is public so developers can inspect the code, run the examples, open issues, discuss use cases, and evaluate the governance model.
+Core architecture is locked during the current stabilization sprint. Large pull requests may be held, split, or redirected until the sprint closes, but forks and external contributions are not restricted by license terms.
 
-At this stage, external pull requests are not accepted.
+## Contribution license
 
-## What is welcome now
+Contributions are accepted under the license of the package or file being changed:
 
-You are welcome to contribute through:
+| Path | Contribution license |
+|---|---:|
+| `packages/protocol/` | MIT |
+| `packages/core/` | Apache-2.0 |
+| `packages/cli/` | Apache-2.0 |
+| `docs/`, `site/`, `tests/`, `scripts/`, `.github/` | Apache-2.0 unless a file says otherwise |
 
-- bug reports
-- documentation feedback
-- usability feedback
-- questions
-- design discussions
-- security reports
-- example requests
-- integration ideas
-- issue comments
+## DCO sign-off required
 
-Please use GitHub Issues for concrete bugs or documentation problems, and GitHub Discussions for broader questions, ideas, and use cases.
+Every commit must include a Developer Certificate of Origin sign-off:
 
-## Why pull requests are disabled
+```bash
+git commit -s -m "Describe your change"
+```
 
-RuleOak Core is AGPL-licensed and may later require a formal contribution process, such as a Contributor License Agreement or equivalent contribution terms.
+This adds:
 
-Until that process is finalized, the project is not accepting external code contributions. This keeps the copyright, licensing, and long-term maintenance model clear for users, future contributors, and downstream adopters.
+```text
+Signed-off-by: Your Name <your.email@example.com>
+```
 
-## Code contribution policy
+See `DCO.md` for the full text and the limitation: DCO is not a CLA and does not automatically give the project owner future proprietary relicensing rights for contributor-owned code.
 
-At this time:
+## Do not submit sensitive material
 
-- external code pull requests are not accepted
-- unsolicited code patches may be closed or not reviewed
-- maintainers may manually implement fixes or suggestions based on issues and discussions
-- future code contributions may require a Contributor License Agreement or equivalent contribution terms
+Do not submit:
 
-Please do not submit large code patches until the contribution process is announced.
+- secrets, private keys, tokens, payment keys, or signing keys;
+- private evidence records or customer data;
+- proprietary SafeDesk source;
+- confidential bank, employer, or client material;
+- data that you do not have the right to publish.
 
-## Documentation and typo feedback
+## Trademark
 
-Small documentation suggestions are welcome through Issues.
-
-If you notice a typo, unclear wording, missing setup step, broken command, or confusing example, please open an issue with:
-
-- the page or file name
-- the confusing text or command
-- your suggested improvement
-
-## Security reports
-
-Please do not report security vulnerabilities in public issues.
-
-See `SECURITY.md` for the current security reporting process.
-
-## Project direction
-
-RuleOak focuses on governed AI workflows:
-
-- policy
-- evidence
-- approval
-- audit
-- sandbox boundaries
-- local-first developer workflows
-
-Feedback that improves clarity, safety, usability, or integration design is especially valuable.
-
-## Current status
-
-RuleOak Core is an AGPL local-first governance runtime with sandbox foundation for governed AI workflows. It is suitable for evaluation, local experiments, examples, and design feedback.
-
-It is not yet a mature enterprise platform, externally security-reviewed sandbox, hosted cloud service, or certified compliance product.
-
-
-## Trust-focused contribution rules
-
-RuleOak is a governance project, so contribution quality is part of the product trust boundary.
-
-Before opening a pull request:
-
-- use synthetic data in examples and tests;
-- avoid real secrets, customer tickets, personal data, or proprietary logs;
-- keep public version wording aligned with `docs/release-versioning.md`;
-- add or update tests for policy, protocol, adapter, or report behavior;
-- avoid claims of formal compliance certification unless backed by a real external certificate;
-- run `npm test`, `npm run release:consistency`, and `npm run trust:check`.
-
-Policy-pack contributions should include scenario tests. Adapter contributions should include conformance examples. Reference-vertical contributions should generate evidence and reports, not only README text.
+The RuleOak name and logo are not licensed by the code licenses. Forks and modified distributions must be clearly renamed and must not imply official status. See `TRADEMARK.md`.

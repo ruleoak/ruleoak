@@ -1,8 +1,0 @@
-{
-  "space": { "key": "GOV", "name": "Governed Agent Runbooks" },
-  "pages": [
-    { "title": "AI Coding Agent Runbook", "labels": ["ai", "runbook"], "reviewed": true, "stale": false },
-    { "title": "RAG Answer Evidence Standard", "labels": ["rag", "evidence"], "reviewed": true, "stale": false },
-    { "title": "Legacy Approval Procedure", "labels": ["approval"], "reviewed": false, "stale": true }
-  ]
-}
