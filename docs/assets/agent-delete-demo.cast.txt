@@ -1,0 +1,20 @@
+$ npx @ruleoak/cli demo agent-delete
+
+RuleOak demo: agent-delete
+mock project: .ruleoak-demo-output/mock-project
+scripted agent will emit a JSON-RPC tools/call attempting unsafe delete
+
+scripted agent: planning delete outside workspace
+
+🛑 [RuleOak Blocked]: mcp.filesystem.delete execution was dropped safely.
+scripted agent observed RuleOak response: {"jsonrpc":"2.0","id":1,"error":{"code":-32603,"message":"[RuleOak Firewall] Action denied by policy rule: mcp.filesystem.delete"}}
+
+# RuleOak Incident Report
+
+Generated: 2026-01-01T00:00:00.000Z
+Hash chain: intact
+
+- Events: 1
+- Denied: 1
+
+HTML report: .ruleoak/report.html

@@ -1,0 +1,27 @@
+{
+  "name": "@ruleoak/cli",
+  "version": "0.1.0",
+  "description": "RuleOak command line interface: init, run, replay, demo.",
+  "type": "module",
+  "bin": {
+    "ruleoak": "bin/ruleoak.js"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@ruleoak/core": "file:../core",
+    "@ruleoak/protocol": "file:../protocol"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "bin",
+    "src",
+    "tests"
+  ],
+  "scripts": {
+    "test": "node tests/cli.test.js && node tests/stream-gate.test.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

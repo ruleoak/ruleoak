@@ -1,0 +1,24 @@
+{
+  "name": "@ruleoak/core",
+  "version": "0.1.0",
+  "description": "RuleOak policy evaluator and hash-chained evidence recorder.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": "./src/index.js",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@ruleoak/protocol": "file:../protocol"
+  },
+  "files": [
+    "src",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node tests/evaluator.test.js && node tests/recorder.test.js && node tests/performance.test.js",
+    "test:performance": "node tests/performance.test.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

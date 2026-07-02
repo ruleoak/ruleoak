@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RuleOak — Agent Firewall + Flight Recorder</title>
+<style>
+body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;margin:0;background:#0a0d12;color:#f0f2f5;line-height:1.6}main{max-width:980px;margin:0 auto;padding:72px 24px}h1{font-size:clamp(40px,7vw,76px);line-height:1.02;margin:0 0 24px}h2{margin-top:48px}p{color:#9aa8bf;font-size:20px}.cta{display:flex;gap:16px;flex-wrap:wrap;margin:32px 0}.btn{background:#c8ff41;color:#0a0d12;text-decoration:none;padding:14px 20px;border-radius:10px;font-weight:700}.ghost{border:1px solid #26334a;color:#f0f2f5;background:transparent}.terminal{background:#111520;border:1px solid #26334a;border-radius:14px;padding:22px;font-family:ui-monospace,Menlo,monospace;white-space:pre-wrap;color:#dce6f8;overflow:auto}.ok{color:#c8ff41}.deny{color:#ff6464}.muted{color:#9aa8bf}code{font-family:ui-monospace,Menlo,monospace}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.card{border:1px solid #26334a;border-radius:14px;padding:18px;background:#111520}.card p{font-size:15px}</style>
+</head>
+<body><main>
+<h1>Agent Firewall + Flight Recorder for AI Agents.</h1>
+<p>Your AI agent can delete files, run shell commands, and call tools now. RuleOak blocks dangerous JSON-RPC tool calls on the inbound stream before the tool server sees them, then gives you a black-box recording of every action.</p>
+<div class="terminal">$ npx @ruleoak/cli demo agent-delete
+
+scripted client sends tools/call into child stdin
+<span class="deny">DENY</span> mcp.filesystem.delete ../outside-workspace/secret.env
+blocked before child execution
+Evidence written: .ruleoak/evidence.jsonl
+Hash chain: intact
+HTML timeline: .ruleoak/report.html</div>
+<div class="cta"><a class="btn" href="#quickstart">Quickstart</a><a class="btn ghost" href="./incident-report-format.html">Incident-report format</a><a class="btn ghost" href="./html-timeline-report.html">Safe HTML timeline</a></div>
+<h2 id="quickstart">Quickstart</h2>
+<div class="terminal">npx @ruleoak/cli init
+ruleoak run -- node your-mcp-like-server.js
+ruleoak replay --verify
+ruleoak replay --html .ruleoak/report.html</div>
+<p>No signup. No hosted service. Protocol package remains standalone and permissive.</p>
+<h2>What changed in the security path</h2>
+<div class="grid">
+  <div class="card"><strong>Block before forward</strong><p>RuleOak now evaluates JSON-RPC <code>tools/call</code> requests on the client → server stdin path before forwarding them to the child process.</p></div>
+  <div class="card"><strong>Safe to open offline</strong><p>HTML reports use inline CSS only and escape evidence-derived fields, including adversarial tool arguments.</p></div>
+  <div class="card"><strong>Honest boundary</strong><p>RuleOak is a stdio/JSON-RPC stream gate. It does not claim kernel-level syscall interception or full MCP gateway support yet.</p></div>
+</div>
+</main></body></html>

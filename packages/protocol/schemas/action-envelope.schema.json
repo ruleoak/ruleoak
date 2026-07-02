@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RuleOak Action Envelope",
+  "type": "object",
+  "anyOf": [
+    { "required": ["type"] },
+    { "required": ["action"] }
+  ],
+  "properties": {
+    "type": { "type": "string" },
+    "action": { "type": "string" },
+    "target": { "type": "string" },
+    "arguments": { "type": "object" },
+    "metadata": { "type": "object" }
+  },
+  "additionalProperties": true
+}

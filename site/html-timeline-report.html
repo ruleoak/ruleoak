@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>RuleOak HTML Timeline Report</title><style>body{font-family:Inter,system-ui;margin:0;background:#f8fafc;color:#0f172a;line-height:1.65}main{max-width:880px;margin:0 auto;padding:56px 24px}code,pre{font-family:ui-monospace,Menlo,monospace}pre{background:#0f172a;color:#e2e8f0;border-radius:14px;padding:18px;overflow:auto}.good{color:#15803d;font-weight:700}</style></head><body><main>
+<h1>Safe single-file HTML timeline</h1>
+<p><code>ruleoak replay --html .ruleoak/report.html</code> creates a local evidence timeline from hash-chained Evidence JSONL.</p>
+<p class="good">The generated report is self-contained: no Tailwind CDN, no remote scripts, no external fonts, and no network resources.</p>
+<p>Every evidence-derived field is HTML-escaped before interpolation, including action names, matched rules, decision reasons, hashes, metadata, and tool arguments. This matters because poisoned tool arguments may contain strings such as <code>&lt;script&gt;alert(1)&lt;/script&gt;</code>. The report must show that as text, not execute it.</p>
+<pre>ruleoak replay --verify
+ruleoak replay --html .ruleoak/report.html</pre>
+</main></body></html>

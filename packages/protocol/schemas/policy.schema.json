@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RuleOak Policy",
+  "type": "object",
+  "properties": {
+    "defaultAction": {
+      "enum": [
+        "allow",
+        "deny",
+        "block",
+        "needs_approval",
+        "dry_run_only"
+      ]
+    },
+    "allowedActions": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "approvalRequired": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "blockedActions": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}

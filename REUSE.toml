@@ -1,0 +1,16 @@
+version = 1
+
+[[annotations]]
+path = ["packages/protocol/**"]
+SPDX-FileCopyrightText = "2026 Sun Shaobin"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = ["packages/core/**", "packages/cli/**", "docs/**", "site/**", "tests/**", "scripts/**", ".github/**", "archive-pointers/**"]
+SPDX-FileCopyrightText = "2026 Sun Shaobin"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = ["package.json", "package-lock.json", "README.md", "LICENSE.md", "NOTICE.md", "TRADEMARK.md", "DCO.md", "CONTRIBUTING.md", "ARCHIVED_REPOS.md"]
+SPDX-FileCopyrightText = "2026 Sun Shaobin"
+SPDX-License-Identifier = "Apache-2.0"

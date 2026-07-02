@@ -1,5 +1,0 @@
-[
-  { "connector": "github_api_readonly", "writes": false, "allowedMethods": ["GET"] },
-  { "connector": "jira_api_readonly", "writes": false, "allowedMethods": ["GET"] },
-  { "connector": "local_file", "writes": false, "allowedMethods": ["READ"] }
-]

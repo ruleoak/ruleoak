@@ -1,0 +1,14 @@
+{
+  "defaultAction": "needs_approval",
+  "allowedActions": [
+    "filesystem.read"
+  ],
+  "approvalRequired": [
+    "filesystem.*",
+    "network.*"
+  ],
+  "blockedActions": [
+    "filesystem.delete",
+    "shell.run"
+  ]
+}
