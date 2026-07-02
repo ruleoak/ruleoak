@@ -360,7 +360,7 @@
     "approval-gates",
     "agentic-governance"
   ],
-  "homepage": "https://ruleoak.com",
+  "homepage": "https://ruleoak.com/core.html",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ruleoak/ruleoak-core.git"
