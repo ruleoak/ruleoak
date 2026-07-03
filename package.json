@@ -16,13 +16,13 @@
     "demo:agent-delete": "node packages/cli/bin/ruleoak.js demo agent-delete",
     "demo": "npm run demo:agent-delete",
     "replay:demo": "node packages/cli/bin/ruleoak.js replay --verify --dir .ruleoak-demo-output/mock-project",
-    "check:phase1-4": "node tests/phase1-4-check.js",
+    "check:structure": "node tests/repository-structure-check.js",
     "test:performance": "npm --workspace @ruleoak/core run test:performance",
-    "check:phase5": "node tests/phase5-check.js",
+    "check:runtime-boundary": "node tests/runtime-boundary-check.js",
     "replay:demo:html": "node packages/cli/bin/ruleoak.js replay --html .ruleoak-demo-output/mock-project/.ruleoak/report.html --dir .ruleoak-demo-output/mock-project",
     "check:licensing": "python3 scripts/check_ruleoak_licensing.py",
     "check:npm-metadata": "python3 scripts/check_npm_publish_metadata.py",
-    "check:publish": "npm run check:licensing && npm run check:npm-metadata && npm run check:phase1-4 && npm run check:phase5 && npm test && npm run check:pack",
+    "check:publish": "npm run check:licensing && npm run check:npm-metadata && npm run check:structure && npm run check:runtime-boundary && npm test && npm run check:pack",
     "check:pack": "python3 scripts/check_npm_pack_contents.py"
   },
   "engines": {

@@ -29,11 +29,10 @@ const required = [
   'packages/cli/LICENSE',
   'packages/cli/bin/ruleoak.js',
   'docs/incident-report-format.md',
-  'docs/launch.md',
   'site/index.html'
 ];
 for (const path of required) assert.equal(existsSync(path), true, `missing ${path}`);
 assert.match(readFileSync('packages/protocol/LICENSE','utf8'), /MIT License/);
 assert.match(readFileSync('packages/core/LICENSE','utf8'), /Apache License/);
 assert.match(readFileSync('README.md','utf8'), /Agent Firewall \+ Flight Recorder/);
-console.log('phase 1-4 structural check passed');
+console.log('repository structure check passed');

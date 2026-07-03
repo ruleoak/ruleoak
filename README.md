@@ -79,8 +79,8 @@ This validates:
 
 - licensing metadata
 - npm package metadata
-- phase 1-4 structure
-- phase 5 structure
+- repository structure
+- runtime boundary structure
 - test suite
 - npm pack contents
 

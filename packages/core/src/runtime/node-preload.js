@@ -17,7 +17,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-// Deprecated in Phase 5.
-// RuleOak no longer uses Node preload/process hooks for the flagship launch path.
+// Deprecated legacy preload path.
+// RuleOak no longer uses Node preload/process hooks for the primary launch path.
 // `ruleoak run -- <command>` now uses a cross-platform stdio/JSON-RPC stream interceptor.
 export {};

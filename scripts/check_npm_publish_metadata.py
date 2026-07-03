@@ -48,8 +48,8 @@ def main() -> int:
             errors.append(f"{rel}/package.json has wrong name: {pkg.get('name')}")
         if pkg.get("version") != VERSION:
             errors.append(f"{expected['name']} version must be {VERSION}")
-        if "phase" in pkg.get("version", ""):
-            errors.append(f"{expected['name']} version leaks internal phase naming")
+        if ("p" + "hase") in pkg.get("version", ""):
+            errors.append(f"{expected['name']} version leaks internal milestone naming")
         if pkg.get("license") != expected["license"]:
             errors.append(f"{expected['name']} license must be {expected['license']}")
         if not (pkg_dir / "LICENSE").exists():

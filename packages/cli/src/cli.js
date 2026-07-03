@@ -98,7 +98,7 @@ export function renderIncidentReport(events, verification, generatedAt = process
   lines.push('');
   lines.push('## Limitations');
   lines.push('');
-  lines.push('RuleOak evidence records decisions made by RuleOak-controlled flows. The Phase 5 run wrapper is a cross-platform stdio/JSON-RPC line interceptor. It does not claim kernel-level syscall interception and does not observe in-process function calls that never cross filesystem, network, subprocess, or JSON-RPC stream boundaries.');
+  lines.push('RuleOak evidence records decisions made by RuleOak-controlled flows. The current run wrapper is a cross-platform stdio/JSON-RPC line interceptor. It does not claim kernel-level syscall interception and does not observe in-process function calls that never cross filesystem, network, subprocess, or JSON-RPC stream boundaries.');
   return lines.join('\n');
 }
 

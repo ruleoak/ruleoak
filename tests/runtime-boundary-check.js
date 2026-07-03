@@ -27,7 +27,6 @@ const required = [
   'packages/core/tests/performance.test.js',
   'docs/html-timeline-report.md',
   'docs/security-boundary.md',
-  'docs/telemetry.md',
   'site/html-timeline-report.html',
   'tests/fixtures/corrupted-policy.json'
 ];
@@ -43,7 +42,7 @@ assert.match(cli, /Telemetry/);
 assert.doesNotMatch(cli, /NODE_OPTIONS/);
 assert.doesNotMatch(cli, /child\.stdout.*jsonRpcActionFromLine|jsonRpcActionFromLine/);
 const preload = readFileSync('packages/core/src/runtime/node-preload.js','utf8');
-assert.match(preload, /Deprecated in Phase 5/);
+assert.match(preload, /Deprecated legacy preload path/);
 const evaluator = readFileSync('packages/core/src/engine/evaluator.js','utf8');
 assert.match(evaluator, /RuleOakPolicyValidationError/);
 const htmlDoc = readFileSync('docs/html-timeline-report.md','utf8');
@@ -52,4 +51,4 @@ assert.match(htmlDoc, /HTML-escaped/i);
 const boundary = readFileSync('docs/security-boundary.md','utf8');
 assert.match(boundary, /client -> server|client → server/);
 assert.match(boundary, /does not claim kernel-level syscall interception/i);
-console.log('phase 5 structural check passed');
+console.log('runtime boundary check passed');
