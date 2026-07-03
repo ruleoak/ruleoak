@@ -1,6 +1,6 @@
 # RuleOak stream interception boundary
 
-RuleOak's Phase 5 runner is a stdio / JSON-RPC stream gate.
+RuleOak's runner is a stdio / JSON-RPC stream gate.
 
 ## What it intercepts
 
