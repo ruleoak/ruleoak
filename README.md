@@ -29,20 +29,6 @@ npm run demo:agent-delete
 npm test
 ```
 
-## Stdio / JSON-RPC stream interceptor
-
-Phase 5 removes the old launch-path dependency on process hooks. `ruleoak run -- <command>` now uses a cross-platform stdio/JSON-RPC line interceptor:
-
-```bash
-ruleoak run -- node your-agent-loop.js
-```
-
-It watches JSON-RPC `tools/call` requests on the inbound parent/client → child/server path, evaluates the proposed action before forwarding, writes hash-chained evidence, and emits a JSON-RPC error response when a denied action is blocked. Child stdout is passed through untouched.
-
-The parser handles pretty-printed JSON, JSON-RPC batch arrays, and non-JSON noise on the same stream. Malformed policy fails closed before the child starts.
-
-Scope honesty: this is not kernel-level syscall interception. It does not observe arbitrary in-process function calls that never cross filesystem, network, subprocess, or JSON-RPC stream boundaries. MCP server gateway interception is a roadmap item, not a Phase 5 claim.
-
 ## Incident-report format
 
 RuleOak writes hash-chained evidence JSONL and can print a Markdown incident report:
@@ -73,44 +59,54 @@ See:
 | `@ruleoak/cli` | Apache-2.0 | `init`, `run`, `replay`, `demo agent-delete` |
 
 
-Adapters, Python bridge, OpenClaw-style adapter, Agentic Skills, SafeDesk, and proof apps are not part of the supported public launch surface for this sprint. See `ARCHIVED_REPOS.md` before publishing or archiving any old adapter repository.
+## Licensing model
 
+- `@ruleoak/protocol`: MIT
+- `@ruleoak/core`: Apache-2.0
+- `@ruleoak/cli`: Apache-2.0
+- Repository docs, tests, site source, and maintenance scripts: Apache-2.0 unless a file says otherwise
 
-## Package metadata and first public npm version
+## Compliance files added or strengthened
 
-The public RuleOak packages use clean version `0.1.0`. Internal sprint labels are intentionally not used in npm package versions.
+- `LICENSE.md` repository license map
+- `LICENSES/Apache-2.0.txt` and `LICENSES/MIT.txt`
+- package-local `LICENSE` files in every npm package directory
+- `AUTHORS.md` using `The RuleOak Authors` pattern
+- `REUSE.toml`
+- file-level SPDX headers
+- `.github/workflows/ci.yml` with REUSE lint
+- `TRADEMARK.md`
+- `DCO.md`
+- strengthened `CONTRIBUTING.md`
 
-Before publishing to npm, run:
+## npm publication metadata
 
-```bash
-npm install --ignore-scripts
-npm run check:publish
-npm pack --dry-run --workspace @ruleoak/protocol
-npm pack --dry-run --workspace @ruleoak/core
-npm pack --dry-run --workspace @ruleoak/cli
-```
+Each package now has:
 
-Each package has its own `LICENSE` file and npm metadata:
+- clean version `0.1.0`;
+- correct `license` field;
+- `repository` field pointing to the monorepo and package subdirectory;
+- package-local `LICENSE` included in `files`;
+- no `file:../...` dependency specifiers.
 
-| Package | Version | License | Internal dependency specifiers |
-|---|---:|---|---|
-| `@ruleoak/protocol` | `0.1.0` | MIT | none |
-| `@ruleoak/core` | `0.1.0` | Apache-2.0 | `@ruleoak/protocol: ^0.1.0` |
-| `@ruleoak/cli` | `0.1.0` | Apache-2.0 | `@ruleoak/core: ^0.1.0`, `@ruleoak/protocol: ^0.1.0` |
+Internal package dependencies now use semver ranges:
 
-## Licensing, trademark, and contributions
+- `@ruleoak/core` depends on `@ruleoak/protocol: ^0.1.0`;
+- `@ruleoak/cli` depends on `@ruleoak/core: ^0.1.0` and `@ruleoak/protocol: ^0.1.0`.
 
-This repository is intentionally not licensed under one blanket root license.
+## Trademark clarification
 
-| Area | License |
-|---|---:|
-| `packages/protocol/` | MIT |
-| `packages/core/` | Apache-2.0 |
-| `packages/cli/` | Apache-2.0 |
-| `docs/`, `site/`, `tests/`, `.github/`, `scripts/` | Apache-2.0 unless a file says otherwise |
+The RuleOak name and branding are not licensed by MIT or Apache-2.0. Forks and modified distributions must be clearly renamed and must not imply official RuleOak status.
 
-See `LICENSE.md` for the repository license map, `LICENSES/` for full license texts, and each package-local `LICENSE` file for the package license.
+## Contribution clarification
 
-The RuleOak name, logo, and related branding are not licensed under the code licenses. Forks and modified distributions must be clearly renamed and must not imply official status. See `TRADEMARK.md`.
+RuleOak currently uses DCO sign-off, not a CLA. DCO is lightweight and adoption-friendly, but it does not automatically give the RuleOak project maintainer or a future RuleOak legal entity proprietary relicensing rights over contributor-owned code.
 
-Contributions require DCO sign-off. DCO is lightweight but does not automatically give the RuleOak project maintainer, or a future RuleOak legal entity, future proprietary relicensing rights for contributor-owned code. See `DCO.md` and `CONTRIBUTING.md`.
+## Validation
+
+- `npm test` passed.
+- `python3 scripts/check_ruleoak_licensing.py` passed.
+- `python3 scripts/check_npm_publish_metadata.py` passed.
+- `npm run check:phase1-4` passed.
+- `npm run check:phase5` passed.
+- `npm run check:pack` passed.
