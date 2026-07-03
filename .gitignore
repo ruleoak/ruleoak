@@ -12,5 +12,4 @@ reports/
 packages/ruleoak-py/src/ruleoak_py/__pycache__/
 packages/ruleoak-py/src/ruleoak_py/examples/__pycache__/
 
-.DS_Store
-node_modules/
+scripts/__pycache__/

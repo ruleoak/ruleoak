@@ -39,6 +39,8 @@ REQUIRED = [
 FORBIDDEN = ['LICENSE']
 SKIP_DIRS = {'.git', 'node_modules', 'dist', 'build', 'coverage', '.venv', 'venv', '__pycache__', 'vendor'}
 EXTS = {'.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs', '.py'}
+SPDX_COPYRIGHT_FIELD = 'SPDX-' + 'FileCopyrightText:'
+SPDX_LICENSE_FIELD = 'SPDX-' + 'License-Identifier:'
 MAPPED_PREFIXES = {
     'packages/protocol/': 'MIT',
     'packages/core/': 'Apache-2.0',
@@ -78,9 +80,9 @@ def main() -> int:
         if not exp:
             continue
         head = '\n'.join(path.read_text(encoding='utf-8', errors='replace').splitlines()[:50])
-        if f'SPDX-License-Identifier: {exp}' not in head:
+        if f'{SPDX_LICENSE_FIELD} {exp}' not in head:
             errors.append(f'Missing/wrong SPDX header in {rel}; expected {exp}')
-        if 'SPDX-FileCopyrightText: 2026 The RuleOak Authors' not in head:
+        if f'{SPDX_COPYRIGHT_FIELD} 2026 The RuleOak Authors' not in head:
             errors.append(f'Missing SPDX-FileCopyrightText in {rel}')
     for candidate in ['LICENSE.md', 'NOTICE.md', 'TRADEMARK.md', 'REUSE.toml', 'packages/core/LICENSE', 'packages/cli/LICENSE', 'packages/protocol/LICENSE']:
         text = (root / candidate).read_text(encoding='utf-8', errors='replace') if (root / candidate).exists() else ''

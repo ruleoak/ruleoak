@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-FileCopyrightText: 2026 The RuleOak Authors
+# SPDX-License-Identifier: Apache-2.0
 """
 Add RuleOak SPDX headers to source files.
 
@@ -8,7 +10,7 @@ Run from the repository root:
     python3 scripts/add_ruleoak_spdx_headers.py --write
 
 The script is intentionally conservative:
-- skips files that already contain SPDX-License-Identifier near the top;
+- skips files that already contain an SPDX license identifier near the top;
 - preserves shebang lines;
 - skips node_modules, dist, build, coverage, .git, and vendor directories;
 - maps packages/protocol to MIT and core/cli/tests/docs/site/scripts to Apache-2.0.
@@ -20,8 +22,10 @@ from pathlib import Path
 
 SKIP_DIRS = {'.git', 'node_modules', 'dist', 'build', 'coverage', '.venv', 'venv', '__pycache__', 'vendor'}
 EXTS = {'.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs', '.py'}
+SPDX_COPYRIGHT_FIELD = 'SPDX-' + 'FileCopyrightText:'
+SPDX_LICENSE_FIELD = 'SPDX-' + 'License-Identifier:'
 
-APACHE_BLOCK = """Copyright © 2026 The RuleOak Authors.
+APACHE_BLOCK = f"""Copyright © 2026 The RuleOak Authors.
 
 Licensed under the Apache License, Version 2.0 (the \"License\");
 you may not use this file except in compliance with the License.
@@ -35,13 +39,13 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-SPDX-FileCopyrightText: 2026 The RuleOak Authors
-SPDX-License-Identifier: Apache-2.0
+{SPDX_COPYRIGHT_FIELD} 2026 The RuleOak Authors
+{SPDX_LICENSE_FIELD} Apache-2.0
 """
 
-MIT_BLOCK = """Copyright © 2026 The RuleOak Authors.
-SPDX-FileCopyrightText: 2026 The RuleOak Authors
-SPDX-License-Identifier: MIT
+MIT_BLOCK = f"""Copyright © 2026 The RuleOak Authors.
+{SPDX_COPYRIGHT_FIELD} 2026 The RuleOak Authors
+{SPDX_LICENSE_FIELD} MIT
 """
 
 def license_for(path: Path) -> str | None:
@@ -63,7 +67,7 @@ def should_skip(path: Path) -> bool:
 
 def has_spdx(text: str) -> bool:
     first = '\n'.join(text.splitlines()[:40])
-    return 'SPDX-License-Identifier:' in first
+    return SPDX_LICENSE_FIELD in first
 
 def main() -> int:
     ap = argparse.ArgumentParser()
