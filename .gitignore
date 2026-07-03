@@ -13,3 +13,4 @@ packages/ruleoak-py/src/ruleoak_py/__pycache__/
 packages/ruleoak-py/src/ruleoak_py/examples/__pycache__/
 
 scripts/__pycache__/
+.ruleoak
