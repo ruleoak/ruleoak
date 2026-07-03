@@ -102,11 +102,3 @@ The RuleOak name and branding are not licensed by MIT or Apache-2.0. Forks and m
 
 RuleOak currently uses DCO sign-off, not a CLA. DCO is lightweight and adoption-friendly, but it does not automatically give the RuleOak project maintainer or a future RuleOak legal entity proprietary relicensing rights over contributor-owned code.
 
-## Validation
-
-- `npm test` passed.
-- `python3 scripts/check_ruleoak_licensing.py` passed.
-- `python3 scripts/check_npm_publish_metadata.py` passed.
-- `npm run check:phase1-4` passed.
-- `npm run check:phase5` passed.
-- `npm run check:pack` passed.
