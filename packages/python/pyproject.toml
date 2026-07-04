@@ -1,0 +1,24 @@
+[project]
+name = "ruleoak-py"
+version = "2.0.0"
+description = "Python bridge aligned with RuleOak protocol/core: action envelopes, policy evaluation, hash-chained evidence, and agent integrations."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Sun Shaobin", email = "hello@ruleoak.com" }]
+keywords = ["ruleoak", "ai-agents", "evidence-jsonl", "flight-recorder", "agent-firewall"]
+
+[project.scripts]
+ruleoak-py = "ruleoak_py.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project.urls]
+Homepage = "https://ruleoak.com/developer-ecosystem.html#ruleoak-py"
+Repository = "https://github.com/ruleoak/ruleoak"
+Issues = "https://github.com/ruleoak/ruleoak/issues"
+
+[project.optional-dependencies]
+dev = ["pytest"]
