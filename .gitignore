@@ -3,6 +3,12 @@ dist/
 coverage/
 .DS_Store
 
+__pycache__
+.pytest_cache
+dist
+build
+.venv
+
 # Generated reports and copied local apps
 examples/**/out/
 apps/
@@ -14,3 +20,26 @@ packages/ruleoak-py/src/ruleoak_py/examples/__pycache__/
 
 scripts/__pycache__/
 .ruleoak
+
+packages/python/src/ruleoak_py/__pycache__
+
+# Python generated files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+.venv/
+venv/
+env/
+
+# RuleOak demo/runtime output
+.ruleoak/
+.ruleoak-py-demo/
+.ruleoak-example/
