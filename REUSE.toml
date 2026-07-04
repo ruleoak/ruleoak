@@ -1,6 +1,11 @@
 version = 1
 
 [[annotations]]
+path = ["packages/python/**"]
+SPDX-FileCopyrightText = "2026 The RuleOak Authors"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
 path = ["packages/protocol/**"]
 SPDX-FileCopyrightText = "2026 The RuleOak Authors"
 SPDX-License-Identifier = "MIT"
