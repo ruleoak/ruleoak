@@ -86,7 +86,7 @@ jobs:
             release-candidate/sbom.cdx.json
 
       - name: Upload release-candidate artifact
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: ruleoak-v${{ inputs.confirm_version }}-release-candidate
           path: release-candidate/
