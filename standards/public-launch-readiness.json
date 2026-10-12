@@ -1,0 +1,80 @@
+{
+  "benchmark_version": "1.0",
+  "as_of": "2026-09-03",
+  "scope": "fresh-GitHub/public-launch readiness",
+  "score_definition": "10.0 applies only to source-verifiable launch readiness within the declared Effect Boundary scope. External hosted controls, certifications, external adoption and real artifact provenance are never auto-scored as passed.",
+  "source_verifiable_readiness_score": 10.0,
+  "checks": [
+    {
+      "area": "Effect Boundary implementation",
+      "status": "PASS",
+      "evidence": "fresh 79-test source qualification"
+    },
+    {
+      "area": "MCP 2026-07-28 intercepted surfaces",
+      "status": "PASS_SUBSET",
+      "evidence": "protocol/current compatibility tests",
+      "non_claim": "not a complete MCP SDK"
+    },
+    {
+      "area": "OWASP Agentic Top 10 2026",
+      "status": "CROSSWALK_PASS",
+      "non_claim": "not full risk coverage or certification"
+    },
+    {
+      "area": "OWASP Agent Control Standard",
+      "status": "CROSSWALK_ONLY",
+      "external_required": "stable conformance target and explicit conformance suite"
+    },
+    {
+      "area": "OpenSSF OSPS Baseline 2026.08.28",
+      "status": "SOURCE_LEVEL_READY",
+      "external_required": "live GitHub settings and project-state verification"
+    },
+    {
+      "area": "OpenSSF Scorecard",
+      "status": "WORKFLOW_READY",
+      "external_required": "score from fresh public repository"
+    },
+    {
+      "area": "SLSA 1.2",
+      "status": "PROVENANCE_WORKFLOW_READY",
+      "external_required": "actual attested release; no source-only level claim"
+    },
+    {
+      "area": "GitHub artifact attestations",
+      "status": "WORKFLOW_READY",
+      "external_required": "run and verify real attestations"
+    },
+    {
+      "area": "npm trusted publishing",
+      "status": "WORKFLOW_READY",
+      "external_required": "configure publisher and verify registry provenance"
+    },
+    {
+      "area": "REUSE 3.3 / SPDX license hygiene",
+      "status": "PASS",
+      "evidence": "licensing gates and Apache-2.0 metadata"
+    },
+    {
+      "area": "CycloneDX SBOM",
+      "status": "PASS",
+      "evidence": "deterministic CycloneDX 1.6 generator integrated into release candidate"
+    },
+    {
+      "area": "NIST SSDF",
+      "status": "PRACTICE_CROSSWALK",
+      "non_claim": "not certification"
+    },
+    {
+      "area": "Website launch artifact",
+      "status": "PASS_SEPARATE_ARTIFACT",
+      "evidence": "static website validator"
+    },
+    {
+      "area": "External adoption",
+      "status": "UNPROVEN",
+      "external_required": "independent activation, D7/D30 retention, willingness to pay, paid retention"
+    }
+  ]
+}

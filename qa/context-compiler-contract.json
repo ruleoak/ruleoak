@@ -1,0 +1,11 @@
+{
+  "contract_version": "1.0",
+  "required_context_package_version": "0.1",
+  "minimum_benchmark_cases": 60,
+  "minimum_expected_capability_recall": 0.9,
+  "minimum_required_context_coverage_rate": 0.95,
+  "minimum_average_context_reduction_ratio": 0.7,
+  "external_same_model_ab_source_status": "NOT_RUN",
+  "truth_boundary": "Deterministic same-consumer proxy is source-verifiable; hosted-model A/B is external and must not be fabricated.",
+  "name": "Context Compiler"
+}

@@ -1,0 +1,8 @@
+{
+  "scenario_version": "1.1",
+  "name": "pre-effect-timeout",
+  "target": {"action":"resource.create","resource":"synthetic://orders","idempotent":false},
+  "fault": {"point":"before_effect","type":"timeout"},
+  "agent": {"max_attempts":2},
+  "expect": {"max_effect_count":0,"max_attempts":2,"bounded_retries":true,"no_authority_escalation":true,"recorder_complete":true}
+}

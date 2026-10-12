@@ -1,0 +1,37 @@
+name: Compatibility report
+description: Report interoperability with an agent, MCP client, server, or framework
+title: "[Compatibility]: "
+labels: [compatibility]
+body:
+  - type: input
+    id: product
+    attributes:
+      label: Product or framework
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Versions tested
+      placeholder: RuleOak 0.50.0, Node.js 24, product version
+    validations:
+      required: true
+  - type: dropdown
+    id: transport
+    attributes:
+      label: Integration path
+      options:
+        - Node.js SDK
+        - CLI protect
+        - MCP stdio
+        - MCP Streamable HTTP
+        - REST authorization API
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Result and sanitized reproduction
+    validations:
+      required: true

@@ -1,0 +1,89 @@
+{
+  "contract_version": "1.0",
+  "description": "Automatic QA authority for the current RuleOak reliability contracts.",
+  "contracts": {
+    "concurrency_staleness": {
+      "name": "Concurrency & Staleness",
+      "scenario_version": "2.1",
+      "introduced_failure_classes": [
+        "token_expiry",
+        "revocation_race",
+        "concurrent_race",
+        "stale_capability",
+        "stale_policy",
+        "stale_approved_baseline",
+        "eventual_consistency"
+      ],
+      "required_invariants": [
+        "one_use_authority",
+        "stale_state_rejection",
+        "eventual_consistency_handling"
+      ],
+      "required_authority_expectations": [
+        "one_winner"
+      ],
+      "tests": [
+        "packages/core/tests/concurrency-staleness.test.js"
+      ],
+      "source_anchors": {
+        "packages/core/tests/concurrency-staleness.test.js": [
+          "concurrent_race",
+          "revocation_race",
+          "stale_capability",
+          "stale_policy",
+          "stale_approved_baseline",
+          "eventual_consistency",
+          "consumeExecutionLease",
+          "lease.replayed",
+          "ready-1",
+          "waitForReady",
+          "Promise.all([first.result,second.result])"
+        ],
+        "packages/core/src/crashlab/index.js": [
+          "runV21ConcurrentScenario",
+          "runV21StaleScenario",
+          "runV21EventualConsistencyScenario"
+        ]
+      }
+    },
+    "scorecard_ci": {
+      "name": "Reliability Scorecard & CI",
+      "scorecard_version": "1.0",
+      "dimensions": [
+        "duplicate_effect_resistance",
+        "revocation_compliance",
+        "ambiguity_handling",
+        "retry_boundedness",
+        "evidence_completeness",
+        "recovery_correctness"
+      ],
+      "ci_exit_codes": {
+        "PASS": 0,
+        "FAIL": 2
+      },
+      "required_outputs": [
+        "serializeReliabilityScorecardJson",
+        "serializeReliabilityScorecardJUnit",
+        "serializeReliabilityScorecardSarif",
+        "renderReliabilityScorecardSummary"
+      ],
+      "tests": [
+        "packages/core/tests/reliability-scorecard-ci.test.js",
+        "packages/cli/tests/reliability-scorecard-cli.test.js"
+      ],
+      "schema": "packages/protocol/schemas/reliability-scorecard.schema.json",
+      "source_anchors": {
+        "packages/core/src/crashlab/scorecard.js": [
+          "RELIABILITY_CI_EXIT_CODES",
+          "failing_invariants",
+          "buildReliabilityScorecardSarif"
+        ],
+        "packages/core/tests/reliability-scorecard-ci.test.js": [
+          "scorecard must not expose one opaque safety score",
+          "must not fabricate source locations",
+          "report identity must not be caller-overridable"
+        ]
+      }
+    }
+  }
+}

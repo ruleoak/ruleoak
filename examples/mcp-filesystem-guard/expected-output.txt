@@ -1,0 +1,7 @@
+RuleOak MCP filesystem guard
+stdio public/private reads forwarded: yes
+stdio protected delete forwarded: no
+Streamable HTTP public read: forwarded
+Streamable HTTP private read: approval <id>
+Streamable HTTP protected delete: denied
+Approval lifecycle: pending -> allow_once

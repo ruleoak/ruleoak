@@ -1,0 +1,1611 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/crashlab-scenario.schema.json",
+  "title": "RuleOak CrashLab Scenario",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": [
+        "scenario_version",
+        "name",
+        "target",
+        "fault",
+        "expect"
+      ],
+      "properties": {
+        "scenario_version": {
+          "enum": [
+            "1.0",
+            "1.1"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target": {
+          "type": "object",
+          "required": [
+            "action"
+          ],
+          "properties": {
+            "action": {
+              "type": "string"
+            },
+            "resource": {
+              "type": "string"
+            },
+            "idempotent": {
+              "type": "boolean"
+            },
+            "idempotency_key": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "fault": {
+          "type": "object",
+          "required": [
+            "point",
+            "type"
+          ],
+          "properties": {
+            "point": {
+              "enum": [
+                "before_authorization",
+                "after_authorization_before_effect",
+                "before_effect",
+                "after_effect_before_response",
+                "partial_effect",
+                "before_response"
+              ]
+            },
+            "type": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "agent": {
+          "type": "object",
+          "properties": {
+            "max_attempts": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "additionalProperties": false
+        },
+        "expect": {
+          "type": "object",
+          "properties": {
+            "max_effect_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "bounded_retries": {
+              "type": "boolean"
+            },
+            "no_authority_escalation": {
+              "type": "boolean"
+            },
+            "recorder_complete": {
+              "type": "boolean"
+            },
+            "max_attempts": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "authority_denied_after_attempt": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "ambiguous_failure_handled": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        "authority": {
+          "type": "object",
+          "properties": {
+            "revoke_on_attempt": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": [
+        "scenario_version",
+        "scenario_id",
+        "name",
+        "target",
+        "authority",
+        "fault",
+        "retry",
+        "expect"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "scenario_version": {
+          "const": "2.0"
+        },
+        "scenario_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-z0-9][a-z0-9._-]*$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "target": {
+          "type": "object",
+          "required": [
+            "adapter_id",
+            "domain",
+            "action",
+            "idempotency"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "adapter_id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            "domain": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            "action": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "resource": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024
+            },
+            "idempotency": {
+              "enum": [
+                "none",
+                "supported",
+                "required"
+              ]
+            },
+            "idempotency_key": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 256
+            }
+          }
+        },
+        "authority": {
+          "type": "object",
+          "required": [
+            "initial_state"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "initial_state": {
+              "enum": [
+                "valid",
+                "denied",
+                "revoked"
+              ]
+            },
+            "revoke_on_attempt": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "fault": {
+          "type": "object",
+          "required": [
+            "phase",
+            "class",
+            "on_attempt",
+            "repeat"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "phase": {
+              "enum": [
+                "before_authorization",
+                "after_authorization_before_effect",
+                "before_effect",
+                "after_effect_before_response",
+                "partial_effect",
+                "before_response"
+              ]
+            },
+            "class": {
+              "enum": [
+                "timeout",
+                "response_loss",
+                "token_expiry",
+                "revocation_race",
+                "concurrent_race",
+                "stale_capability",
+                "stale_policy",
+                "stale_approved_baseline",
+                "eventual_consistency",
+                "transport_failure",
+                "local_process_crash",
+                "duplicate_retry",
+                "synthetic_error"
+              ]
+            },
+            "on_attempt": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "repeat": {
+              "enum": [
+                "once",
+                "every_attempt"
+              ]
+            }
+          }
+        },
+        "retry": {
+          "type": "object",
+          "required": [
+            "max_attempts",
+            "strategy",
+            "preserve_idempotency_key"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "max_attempts": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "strategy": {
+              "enum": [
+                "none",
+                "immediate"
+              ]
+            },
+            "preserve_idempotency_key": {
+              "type": "boolean"
+            }
+          }
+        },
+        "expect": {
+          "type": "object",
+          "required": [
+            "effect_count",
+            "authority_behavior",
+            "evidence",
+            "invariants"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "effect_count": {
+              "type": "object",
+              "required": [
+                "min",
+                "max"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "min": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "max": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            },
+            "authority_behavior": {
+              "enum": [
+                "allow",
+                "deny",
+                "deny_after_revoke",
+                "unchanged"
+              ]
+            },
+            "evidence": {
+              "type": "object",
+              "required": [
+                "quality",
+                "status",
+                "ambiguity"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "quality": {
+                  "enum": [
+                    "none_observed",
+                    "requested_only",
+                    "process_return_observed",
+                    "local_state_observed",
+                    "remote_response_observed",
+                    "complete_for_adapter",
+                    "partial",
+                    "ambiguous"
+                  ]
+                },
+                "status": {
+                  "enum": [
+                    "none",
+                    "success",
+                    "failure",
+                    "partial",
+                    "unknown"
+                  ]
+                },
+                "ambiguity": {
+                  "enum": [
+                    "none",
+                    "preserve"
+                  ]
+                }
+              }
+            },
+            "invariants": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "enum": [
+                  "duplicate_effect_resistance",
+                  "retry_boundedness",
+                  "authority_containment",
+                  "revocation_compliance",
+                  "ambiguity_preservation",
+                  "evidence_completeness",
+                  "recovery_correctness"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "retry": {
+                "properties": {
+                  "strategy": {
+                    "const": "none"
+                  }
+                },
+                "required": [
+                  "strategy"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "retry": {
+                "properties": {
+                  "max_attempts": {
+                    "const": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "target": {
+                "properties": {
+                  "idempotency": {
+                    "const": "required"
+                  }
+                },
+                "required": [
+                  "idempotency"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "required": [
+                  "idempotency_key"
+                ]
+              },
+              "retry": {
+                "properties": {
+                  "preserve_idempotency_key": {
+                    "const": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "class": {
+                    "const": "response_loss"
+                  }
+                },
+                "required": [
+                  "class"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "phase": {
+                    "enum": [
+                      "after_effect_before_response",
+                      "before_response"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "class": {
+                    "const": "token_expiry"
+                  }
+                },
+                "required": [
+                  "class"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "phase": {
+                    "enum": [
+                      "before_authorization",
+                      "after_authorization_before_effect",
+                      "before_effect"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "class": {
+                    "const": "revocation_race"
+                  }
+                },
+                "required": [
+                  "class"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "phase": {
+                    "enum": [
+                      "after_authorization_before_effect",
+                      "before_effect"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "class": {
+                    "const": "concurrent_race"
+                  }
+                },
+                "required": [
+                  "class"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "phase": {
+                    "enum": [
+                      "before_effect",
+                      "after_effect_before_response",
+                      "partial_effect"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "class": {
+                    "const": "stale_capability"
+                  }
+                },
+                "required": [
+                  "class"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "phase": {
+                    "enum": [
+                      "before_authorization",
+                      "after_authorization_before_effect",
+                      "before_effect"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "class": {
+                    "const": "stale_policy"
+                  }
+                },
+                "required": [
+                  "class"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "phase": {
+                    "enum": [
+                      "before_authorization",
+                      "after_authorization_before_effect",
+                      "before_effect"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "class": {
+                    "const": "transport_failure"
+                  }
+                },
+                "required": [
+                  "class"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "phase": {
+                    "enum": [
+                      "before_effect",
+                      "after_effect_before_response",
+                      "before_response"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "class": {
+                    "const": "duplicate_retry"
+                  }
+                },
+                "required": [
+                  "class"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "phase": {
+                    "enum": [
+                      "after_effect_before_response",
+                      "before_response"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "class": {
+                    "const": "stale_approved_baseline"
+                  }
+                },
+                "required": [
+                  "class"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "phase": {
+                    "enum": [
+                      "before_authorization",
+                      "after_authorization_before_effect",
+                      "before_effect"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "class": {
+                    "const": "eventual_consistency"
+                  }
+                },
+                "required": [
+                  "class"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "phase": {
+                    "enum": [
+                      "after_effect_before_response",
+                      "before_response"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "object",
+      "required": [
+        "scenario_version",
+        "scenario_id",
+        "name",
+        "target",
+        "authority",
+        "fault",
+        "retry",
+        "expect"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "scenario_version": {
+          "const": "2.1"
+        },
+        "scenario_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-z0-9][a-z0-9._-]*$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "target": {
+          "type": "object",
+          "required": [
+            "adapter_id",
+            "domain",
+            "action",
+            "idempotency"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "adapter_id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            "domain": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            "action": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "resource": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024
+            },
+            "idempotency": {
+              "enum": [
+                "none",
+                "supported",
+                "required"
+              ]
+            },
+            "idempotency_key": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 256
+            }
+          }
+        },
+        "authority": {
+          "type": "object",
+          "required": [
+            "initial_state"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "initial_state": {
+              "enum": [
+                "valid",
+                "denied",
+                "revoked"
+              ]
+            },
+            "revoke_on_attempt": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "fault": {
+          "type": "object",
+          "required": [
+            "phase",
+            "class",
+            "on_attempt",
+            "repeat"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "phase": {
+              "enum": [
+                "before_authorization",
+                "after_authorization_before_effect",
+                "before_effect",
+                "after_effect_before_response",
+                "partial_effect",
+                "before_response"
+              ]
+            },
+            "class": {
+              "enum": [
+                "timeout",
+                "response_loss",
+                "token_expiry",
+                "revocation_race",
+                "concurrent_race",
+                "stale_capability",
+                "stale_policy",
+                "stale_approved_baseline",
+                "eventual_consistency",
+                "transport_failure",
+                "local_process_crash",
+                "duplicate_retry",
+                "synthetic_error"
+              ]
+            },
+            "on_attempt": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "repeat": {
+              "enum": [
+                "once",
+                "every_attempt"
+              ]
+            }
+          }
+        },
+        "retry": {
+          "type": "object",
+          "required": [
+            "max_attempts",
+            "strategy",
+            "preserve_idempotency_key"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "max_attempts": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "strategy": {
+              "enum": [
+                "none",
+                "immediate"
+              ]
+            },
+            "preserve_idempotency_key": {
+              "type": "boolean"
+            }
+          }
+        },
+        "expect": {
+          "type": "object",
+          "required": [
+            "effect_count",
+            "authority_behavior",
+            "evidence",
+            "invariants"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "effect_count": {
+              "type": "object",
+              "required": [
+                "min",
+                "max"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "min": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "max": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            },
+            "authority_behavior": {
+              "enum": [
+                "allow",
+                "deny",
+                "deny_after_revoke",
+                "unchanged",
+                "one_winner"
+              ]
+            },
+            "evidence": {
+              "type": "object",
+              "required": [
+                "quality",
+                "status",
+                "ambiguity"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "quality": {
+                  "enum": [
+                    "none_observed",
+                    "requested_only",
+                    "process_return_observed",
+                    "local_state_observed",
+                    "remote_response_observed",
+                    "complete_for_adapter",
+                    "partial",
+                    "ambiguous"
+                  ]
+                },
+                "status": {
+                  "enum": [
+                    "none",
+                    "success",
+                    "failure",
+                    "partial",
+                    "unknown"
+                  ]
+                },
+                "ambiguity": {
+                  "enum": [
+                    "none",
+                    "preserve"
+                  ]
+                }
+              }
+            },
+            "invariants": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "enum": [
+                  "duplicate_effect_resistance",
+                  "retry_boundedness",
+                  "authority_containment",
+                  "revocation_compliance",
+                  "ambiguity_preservation",
+                  "evidence_completeness",
+                  "recovery_correctness",
+                  "one_use_authority",
+                  "stale_state_rejection",
+                  "eventual_consistency_handling"
+                ]
+              }
+            }
+          }
+        },
+        "concurrency": {
+          "type": "object",
+          "required": [
+            "actors",
+            "schedule",
+            "shared_authority"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "actors": {
+              "type": "integer",
+              "minimum": 2,
+              "maximum": 16
+            },
+            "schedule": {
+              "const": "deterministic_barrier"
+            },
+            "shared_authority": {
+              "enum": [
+                "one_use",
+                "revocable"
+              ]
+            }
+          }
+        },
+        "state": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "capability": {
+              "type": "object",
+              "required": [
+                "expected",
+                "current"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "expected": {
+                  "type": "string",
+                  "pattern": "^sha256:[a-f0-9]{64}$"
+                },
+                "current": {
+                  "type": "string",
+                  "pattern": "^sha256:[a-f0-9]{64}$"
+                }
+              }
+            },
+            "policy": {
+              "type": "object",
+              "required": [
+                "expected",
+                "current"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "expected": {
+                  "type": "string",
+                  "pattern": "^sha256:[a-f0-9]{64}$"
+                },
+                "current": {
+                  "type": "string",
+                  "pattern": "^sha256:[a-f0-9]{64}$"
+                }
+              }
+            },
+            "approved_baseline": {
+              "type": "object",
+              "required": [
+                "expected",
+                "current"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "expected": {
+                  "type": "string",
+                  "pattern": "^sha256:[a-f0-9]{64}$"
+                },
+                "current": {
+                  "type": "string",
+                  "pattern": "^sha256:[a-f0-9]{64}$"
+                }
+              }
+            },
+            "consistency": {
+              "type": "object",
+              "required": [
+                "visible_on_attempt"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "visible_on_attempt": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "retry": {
+                "properties": {
+                  "strategy": {
+                    "const": "none"
+                  }
+                },
+                "required": [
+                  "strategy"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "retry": {
+                "properties": {
+                  "max_attempts": {
+                    "const": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "target": {
+                "properties": {
+                  "idempotency": {
+                    "const": "required"
+                  }
+                },
+                "required": [
+                  "idempotency"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "required": [
+                  "idempotency_key"
+                ]
+              },
+              "retry": {
+                "properties": {
+                  "preserve_idempotency_key": {
+                    "const": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "class": {
+                    "const": "response_loss"
+                  }
+                },
+                "required": [
+                  "class"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "phase": {
+                    "enum": [
+                      "after_effect_before_response",
+                      "before_response"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "class": {
+                    "const": "token_expiry"
+                  }
+                },
+                "required": [
+                  "class"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "phase": {
+                    "enum": [
+                      "before_authorization",
+                      "after_authorization_before_effect",
+                      "before_effect"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "class": {
+                    "const": "revocation_race"
+                  }
+                },
+                "required": [
+                  "class"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "phase": {
+                    "enum": [
+                      "after_authorization_before_effect",
+                      "before_effect"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "class": {
+                    "const": "concurrent_race"
+                  }
+                },
+                "required": [
+                  "class"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "phase": {
+                    "enum": [
+                      "before_effect",
+                      "after_effect_before_response",
+                      "partial_effect"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "class": {
+                    "const": "stale_capability"
+                  }
+                },
+                "required": [
+                  "class"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "phase": {
+                    "enum": [
+                      "before_authorization",
+                      "after_authorization_before_effect",
+                      "before_effect"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "class": {
+                    "const": "stale_policy"
+                  }
+                },
+                "required": [
+                  "class"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "phase": {
+                    "enum": [
+                      "before_authorization",
+                      "after_authorization_before_effect",
+                      "before_effect"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "class": {
+                    "const": "transport_failure"
+                  }
+                },
+                "required": [
+                  "class"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "phase": {
+                    "enum": [
+                      "before_effect",
+                      "after_effect_before_response",
+                      "before_response"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "class": {
+                    "const": "duplicate_retry"
+                  }
+                },
+                "required": [
+                  "class"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "phase": {
+                    "enum": [
+                      "after_effect_before_response",
+                      "before_response"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "class": {
+                    "const": "stale_approved_baseline"
+                  }
+                },
+                "required": [
+                  "class"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "phase": {
+                    "enum": [
+                      "before_authorization",
+                      "after_authorization_before_effect",
+                      "before_effect"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "class": {
+                    "const": "eventual_consistency"
+                  }
+                },
+                "required": [
+                  "class"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "phase": {
+                    "enum": [
+                      "after_effect_before_response",
+                      "before_response"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "class": {
+                    "const": "concurrent_race"
+                  }
+                },
+                "required": [
+                  "class"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "concurrency"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "class": {
+                    "const": "revocation_race"
+                  }
+                },
+                "required": [
+                  "class"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "concurrency"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "class": {
+                    "const": "stale_capability"
+                  }
+                },
+                "required": [
+                  "class"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "state"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "class": {
+                    "const": "stale_policy"
+                  }
+                },
+                "required": [
+                  "class"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "state"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "class": {
+                    "const": "stale_approved_baseline"
+                  }
+                },
+                "required": [
+                  "class"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "state"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fault": {
+                "properties": {
+                  "class": {
+                    "const": "eventual_consistency"
+                  }
+                },
+                "required": [
+                  "class"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "state"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "pilot_version": "external-validation-v1",
+  "status": "NOT_RUN",
+  "reason": "Network access and independently pinned external repository snapshots are unavailable in source qualification; do not fabricate external validation.",
+  "targets": [
+    {
+      "id": "express",
+      "url": "https://github.com/expressjs/express",
+      "ecosystem": "node"
+    },
+    {
+      "id": "fastify",
+      "url": "https://github.com/fastify/fastify",
+      "ecosystem": "node"
+    },
+    {
+      "id": "flask",
+      "url": "https://github.com/pallets/flask",
+      "ecosystem": "python"
+    },
+    {
+      "id": "requests",
+      "url": "https://github.com/psf/requests",
+      "ecosystem": "python"
+    },
+    {
+      "id": "httpx",
+      "url": "https://github.com/encode/httpx",
+      "ecosystem": "python"
+    },
+    {
+      "id": "spring-petclinic",
+      "url": "https://github.com/spring-projects/spring-petclinic",
+      "ecosystem": "java"
+    },
+    {
+      "id": "ktor",
+      "url": "https://github.com/ktorio/ktor",
+      "ecosystem": "kotlin"
+    },
+    {
+      "id": "gin",
+      "url": "https://github.com/gin-gonic/gin",
+      "ecosystem": "go"
+    },
+    {
+      "id": "ripgrep",
+      "url": "https://github.com/BurntSushi/ripgrep",
+      "ecosystem": "rust"
+    },
+    {
+      "id": "vscode",
+      "url": "https://github.com/microsoft/vscode",
+      "ecosystem": "typescript"
+    }
+  ]
+}

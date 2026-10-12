@@ -1,0 +1,10 @@
+{
+  "binding_version": "0.1",
+  "intent_manifest_id": "manifest.radio-playback.v01",
+  "implementation_id": "impl.android-kotlin",
+  "language": "Kotlin",
+  "capability_bindings": [
+    {"capability_id": "cap.playback.switch", "modules": ["app/playback/StationCoordinator.kt", "app/playback/PlayerSession.kt"]},
+    {"capability_id": "cap.playback.background", "modules": ["app/playback/PlaybackService.kt"]}
+  ]
+}

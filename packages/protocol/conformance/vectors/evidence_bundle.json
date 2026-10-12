@@ -1,0 +1,102 @@
+{
+  "vector_version": "1.0",
+  "contract_id": "evidence_bundle",
+  "contract_versions": [
+    "3.0"
+  ],
+  "cases": [
+    {
+      "case_id": "evidence_bundle.valid",
+      "expectation": "valid",
+      "input": {
+        "bundle_version": "3.0",
+        "bundle_id": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-08-28T00:30:00.000Z",
+        "privacy_profile": "minimal",
+        "source": {
+          "evidence_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "event_count": 0,
+          "final_hash": "GENESIS",
+          "first_event_at": null,
+          "last_event_at": null,
+          "chain_verified_at_export": true,
+          "raw_evidence_included": false
+        },
+        "graphs": {
+          "authority_graph_id": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "evidence_graph_id": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+        },
+        "adapters": [],
+        "files": [
+          {
+            "path": "evidence/minimal.jsonl",
+            "size": 0,
+            "sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "role": "minimal_timeline"
+          }
+        ],
+        "verification": {
+          "source_chain": "verified_at_export_only",
+          "graphs": "verified_at_export_only",
+          "instructions": [
+            "verify"
+          ]
+        },
+        "privacy": {
+          "includes_raw_evidence": false,
+          "includes_policy": false,
+          "includes_workspace_state": false,
+          "includes_approval_state": false,
+          "includes_session_state": false
+        }
+      },
+      "canonical_json": "{\"adapters\":[],\"bundle_id\":\"sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"bundle_version\":\"3.0\",\"created_at\":\"2026-08-28T00:30:00.000Z\",\"files\":[{\"path\":\"evidence/minimal.jsonl\",\"role\":\"minimal_timeline\",\"sha256\":\"sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\",\"size\":0}],\"graphs\":{\"authority_graph_id\":\"sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc\",\"evidence_graph_id\":\"sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\"},\"privacy\":{\"includes_approval_state\":false,\"includes_policy\":false,\"includes_raw_evidence\":false,\"includes_session_state\":false,\"includes_workspace_state\":false},\"privacy_profile\":\"minimal\",\"source\":{\"chain_verified_at_export\":true,\"event_count\":0,\"evidence_sha256\":\"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\",\"final_hash\":\"GENESIS\",\"first_event_at\":null,\"last_event_at\":null,\"raw_evidence_included\":false},\"verification\":{\"graphs\":\"verified_at_export_only\",\"instructions\":[\"verify\"],\"source_chain\":\"verified_at_export_only\"}}"
+    },
+    {
+      "case_id": "evidence_bundle.invalid",
+      "expectation": "invalid",
+      "input": {
+        "bundle_version": "3.0",
+        "bundle_id": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-08-28T00:30:00.000Z",
+        "privacy_profile": "minimal",
+        "source": {
+          "evidence_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "event_count": 0,
+          "final_hash": "GENESIS",
+          "first_event_at": null,
+          "last_event_at": null,
+          "chain_verified_at_export": true,
+          "raw_evidence_included": false
+        },
+        "graphs": {
+          "authority_graph_id": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "evidence_graph_id": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+        },
+        "adapters": [],
+        "files": [
+          {
+            "path": "../escape",
+            "size": 0,
+            "sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "role": "minimal_timeline"
+          }
+        ],
+        "verification": {
+          "source_chain": "verified_at_export_only",
+          "graphs": "verified_at_export_only",
+          "instructions": [
+            "verify"
+          ]
+        },
+        "privacy": {
+          "includes_raw_evidence": false,
+          "includes_policy": false,
+          "includes_workspace_state": false,
+          "includes_approval_state": false,
+          "includes_session_state": false
+        }
+      }
+    }
+  ]
+}

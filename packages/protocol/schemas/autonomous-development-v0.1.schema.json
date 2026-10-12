@@ -1,0 +1,18 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://ruleoak.com/schemas/autonomous-development-v0.1.schema.json",
+  "title":"RuleOak Autonomous Development Report v0.1",
+  "type":"object",
+  "additionalProperties":true,
+  "required":["autonomous_development_version","run_id","outcome","status","stop_reason","stages","attempts","human_interaction","authority","summary"],
+  "properties":{
+    "autonomous_development_version":{"const":"0.1"},
+    "run_id":{"type":"string","minLength":1},
+    "outcome":{"type":"string","minLength":1},
+    "status":{"enum":["PLAN_ONLY","BLOCKED","IMPLEMENTER_UNAVAILABLE","FAILED","VERIFICATION_REQUIRED","VERIFIED","STOPPED"]},
+    "stop_reason":{"enum":["NONE","AUTHORITY_GAP","PLAN_BLOCKED","IMPLEMENTER_UNAVAILABLE","PROPOSAL_REJECTED","TOOL_FAILURE","REPEATED_FAILURE","REPAIR_LIMIT","VERIFICATION_INCOMPLETE","PROTECTED_INTENT_CONFLICT"]},
+    "stages":{"type":"array"},"attempts":{"type":"array"},
+    "human_interaction":{"type":"object","required":["manual_ruleoak_subcommands","manual_file_targets","manual_context_construction","manual_build_invocations","manual_evidence_bundles","interventions"]},
+    "authority":{"type":"object"},"summary":{"type":"object"}
+  }
+}

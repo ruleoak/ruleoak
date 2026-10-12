@@ -1,0 +1,20 @@
+{
+  "contract_version": "1.0",
+  "required_capability": "cap.intent-driven-change",
+  "required_invariants": [
+    "inv.intent-delta-before-mutation",
+    "inv.change-scope-bounded",
+    "inv.implementer-not-evidence-authority"
+  ],
+  "required_cli": "change",
+  "required_protocol_entrypoint": "./intent-change",
+  "required_schemas": [
+    "packages/protocol/schemas/intent-change-v0.1.schema.json",
+    "packages/protocol/schemas/implementation-proposal-v0.1.schema.json"
+  ],
+  "benchmark_cases_min": 60,
+  "ready_rate_min": 0.9,
+  "expected_capability_recall_min": 0.9,
+  "file_target_independence_rate_min": 0.9,
+  "name": "Intent-Driven Change"
+}

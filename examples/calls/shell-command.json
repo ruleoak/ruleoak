@@ -1,0 +1,9 @@
+{
+  "call_id": "call_shell_command",
+  "timestamp": "2026-01-01T00:00:00.000Z",
+  "actor": { "type": "agent", "name": "example-agent", "session_id": "sess_example" },
+  "tool": { "name": "shell.run", "category": "shell", "operation": "execute" },
+  "target": { "resource": "local shell", "scope": "local", "sensitivity": "unknown" },
+  "arguments": { "command": "ls -la" },
+  "context": { "user_intent": "Agent wants to run a local shell command", "app": "ruleoak-example" }
+}

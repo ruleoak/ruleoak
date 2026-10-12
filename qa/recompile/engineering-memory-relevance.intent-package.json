@@ -1,0 +1,72 @@
+{
+  "intent_recompile_version": "0.1",
+  "package_id": "recompile.engineering-memory-relevance.intent-recompile",
+  "component_id": "component.engineering-memory-relevance",
+  "target_module": "packages/cli/src/generated/engineering-memory-relevance.generated.js",
+  "baseline": {
+    "source_sha256": "sha256:c170a801214ae1a3cd07ed5530d6acecde12fe4c06cc22f2c6999ebd8b9e785f",
+    "source_path": "packages/cli/src/engineering-memory.js",
+    "source_bytes": 8133,
+    "source_lines": 27
+  },
+  "interface_contract": {
+    "export": "matchEngineeringMemoryRecords",
+    "input": [
+      "graph",
+      "requestText",
+      "affectedCapabilityIds",
+      "at",
+      "tokenize",
+      "validity"
+    ],
+    "output": [
+      "records",
+      "regressions",
+      "required_evidence_types",
+      "plan_actions",
+      "protecting_invariant_ids",
+      "summary"
+    ]
+  },
+  "invariants": [
+    "Only active/current memory can influence selection.",
+    "Trigger terms dominate general lexical overlap.",
+    "Capability linkage may strengthen ranking but cannot create a match alone.",
+    "Historical memory can add evidence requirements and plan actions but cannot become current proof.",
+    "Selection order is deterministic."
+  ],
+  "history_record_ids": [
+    "memory.reg.effect-blind-retry",
+    "memory.reg.evidence-self-certification",
+    "memory.reg.repository-import-false-positive",
+    "memory.reg.semantic-impact-incidental-match",
+    "memory.reg.semantic-diff-overclaim",
+    "memory.reg.change-stale-scope",
+    "memory.reg.context-stuffing",
+    "memory.reg.context-exclusion-proof",
+    "memory.reg.evidence-stale-contradiction",
+    "memory.reg.execution-lease-contention"
+  ],
+  "evidence_contract": [
+    "packages/cli/tests/engineering-memory.test.js",
+    "scripts/benchmark_engineering_memory.mjs",
+    "scripts/check_engineering_memory.mjs",
+    "scripts/check_semantic_impact.mjs",
+    "scripts/check_intent_change.mjs",
+    "scripts/check_context_compiler.mjs"
+  ],
+  "synthesis": {
+    "strategy": "weighted-trigger-gate-v1",
+    "minimum_distinct_structure_signals": 4,
+    "weights": {
+      "trigger": 7,
+      "content": 2,
+      "capability": 5,
+      "regression_capability_bonus": 3
+    },
+    "thresholds": {
+      "minimum_score": 6,
+      "fallback_content_matches": 2
+    }
+  }
+}

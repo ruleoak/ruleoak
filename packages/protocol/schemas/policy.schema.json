@@ -1,0 +1,286 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RuleOak Policy",
+  "type": "object",
+  "properties": {
+    "policyVersion": {
+      "type": "integer",
+      "enum": [
+        1,
+        2
+      ]
+    },
+    "defaultAction": {
+      "enum": [
+        "allow",
+        "deny",
+        "block",
+        "needs_approval",
+        "dry_run_only"
+      ]
+    },
+    "allowedActions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "approvalRequired": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "blockedActions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "exactActionRules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "effect",
+          "decision_key"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "effect": {
+            "enum": [
+              "allow",
+              "deny",
+              "block",
+              "needs_approval"
+            ]
+          },
+          "decision_key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "tool": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string"
+          },
+          "source_suggestion_id": {
+            "type": "string"
+          },
+          "source_approval_id": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "allowCritical": {
+            "type": "boolean"
+          },
+          "disabled": {
+            "type": "boolean"
+          },
+          "status": {
+            "enum": [
+              "enabled",
+              "disabled"
+            ]
+          },
+          "disabled_at": {
+            "type": "string"
+          },
+          "reenabled_at": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "effect"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string"
+          },
+          "effect": {
+            "enum": [
+              "allow",
+              "deny",
+              "block",
+              "needs_approval",
+              "dry_run_only"
+            ]
+          },
+          "priority": {
+            "type": "integer"
+          },
+          "actions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "resources": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "riskAtLeast": {
+            "enum": [
+              "safe",
+              "low",
+              "medium",
+              "high",
+              "critical"
+            ]
+          },
+          "riskAtMost": {
+            "enum": [
+              "safe",
+              "low",
+              "medium",
+              "high",
+              "critical"
+            ]
+          },
+          "allowCritical": {
+            "type": "boolean"
+          },
+          "disabled": {
+            "type": "boolean"
+          },
+          "status": {
+            "enum": [
+              "enabled",
+              "disabled"
+            ]
+          },
+          "conditions": {
+            "type": "object",
+            "properties": {
+              "categories": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "file",
+                    "filesystem",
+                    "shell",
+                    "email",
+                    "web",
+                    "memory",
+                    "payment",
+                    "calendar",
+                    "custom"
+                  ]
+                }
+              },
+              "operations": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "read",
+                    "write",
+                    "delete",
+                    "send",
+                    "execute",
+                    "search",
+                    "create",
+                    "update",
+                    "run"
+                  ]
+                }
+              },
+              "sensitivities": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "public",
+                    "internal",
+                    "private",
+                    "secret",
+                    "unknown"
+                  ]
+                }
+              },
+              "dataFlows": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "local",
+                    "external",
+                    "unknown"
+                  ]
+                }
+              },
+              "sideEffects": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "read_only",
+                    "mutating",
+                    "destructive",
+                    "unknown"
+                  ]
+                }
+              },
+              "actorTypes": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "agent",
+                    "user",
+                    "script"
+                  ]
+                }
+              },
+              "scopes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "actorNames": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "sessionIds": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

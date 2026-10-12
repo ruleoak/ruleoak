@@ -1,0 +1,32 @@
+{
+  "fixture_version": "1.0",
+  "transport": "stdio",
+  "protocol": "JSON-RPC 2.0 / MCP-style",
+  "cases": [
+    {
+      "id": "initialize-pass-through",
+      "input": {"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"fixture","version":"1.0.0"}}},
+      "expect": "forward"
+    },
+    {
+      "id": "initialized-notification-pass-through",
+      "input": {"jsonrpc":"2.0","method":"notifications/initialized","params":{}},
+      "expect": "forward"
+    },
+    {
+      "id": "public-read-forward",
+      "input": {"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"filesystem.read","arguments":{"path":"./public/readme.txt","sensitivity":"public"}}},
+      "expect": "forward"
+    },
+    {
+      "id": "delete-denied",
+      "input": {"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"filesystem.delete","arguments":{"path":"./private/secret.txt","sensitivity":"private"}}},
+      "expect": "deny-response"
+    },
+    {
+      "id": "denied-notification-no-response",
+      "input": {"jsonrpc":"2.0","method":"tools/call","params":{"name":"filesystem.delete","arguments":{"path":"./private/secret.txt","sensitivity":"private"}}},
+      "expect": "drop-without-response"
+    }
+  ]
+}

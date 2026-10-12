@@ -1,0 +1,185 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/evidence-graph-v1.json",
+  "title": "RuleOak Evidence Graph v1",
+  "type": "object",
+  "required": [
+    "evidence_graph_version",
+    "graph_id",
+    "generated_at",
+    "source",
+    "nodes",
+    "edges",
+    "unresolved_references"
+  ],
+  "properties": {
+    "evidence_graph_version": {
+      "const": "1.0"
+    },
+    "graph_id": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "generated_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "authority_graph_id",
+        "evidence_event_count",
+        "evidence_chain_final_hash",
+        "evidence_verified"
+      ],
+      "properties": {
+        "authority_graph_id": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "evidence_event_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "evidence_chain_final_hash": {
+          "type": "string",
+          "pattern": "^(GENESIS|[a-f0-9]{64})$"
+        },
+        "evidence_verified": {
+          "const": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "node_id",
+          "kind",
+          "ref_id",
+          "occurred_at",
+          "data"
+        ],
+        "properties": {
+          "node_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "kind": {
+            "enum": [
+              "principal",
+              "grant",
+              "envelope",
+              "decision",
+              "approval",
+              "lease",
+              "adapter",
+              "effect",
+              "recorder_event"
+            ]
+          },
+          "ref_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "occurred_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "data": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "edge_id",
+          "from",
+          "to",
+          "relation"
+        ],
+        "properties": {
+          "edge_id": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
+          },
+          "from": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "to": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "relation": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "unresolved_references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "source_node_id",
+          "relation",
+          "target_kind",
+          "target_ref_id"
+        ],
+        "properties": {
+          "source_node_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "relation": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "target_kind": {
+            "enum": [
+              "principal",
+              "grant",
+              "envelope",
+              "decision",
+              "approval",
+              "lease",
+              "adapter",
+              "effect",
+              "recorder_event"
+            ]
+          },
+          "target_ref_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

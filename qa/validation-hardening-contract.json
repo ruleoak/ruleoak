@@ -1,0 +1,21 @@
+{
+  "contract_version": "1.0",
+  "capability_id": "cap.ivd-validation-hardening",
+  "graduation": {
+    "frozen_cases_min": 16,
+    "frozen_exact_rate_min": 1.0,
+    "adversarial_cases_min": 30,
+    "adversarial_exact_rate_min": 0.9,
+    "hostile_critical_containment_rate_min": 1.0,
+    "attested_ci_required": true,
+    "scale_files_min": 100000,
+    "scale_relationships_min": 400000,
+    "hosted_provider_adapters_min": 3,
+    "external_repo_targets_min": 10,
+    "external_repo_execution": "NOT_RUN_ALLOWED_WITH_REASON",
+    "same_model_ab": "NOT_RUN_ALLOWED_WITH_REASON",
+    "implicit_authority_promotions_max": 0,
+    "existing_intent_stack_regressions_required": true
+  },
+  "name": "Validation Hardening"
+}

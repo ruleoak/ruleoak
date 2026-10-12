@@ -1,0 +1,6 @@
+/* SPDX-FileCopyrightText: 2026 RuleOak Pte. Ltd.
+ * SPDX-License-Identifier: Apache-2.0 */
+import assert from 'node:assert/strict';import {execFileSync,spawnSync} from 'node:child_process';import {resolve} from 'node:path';const root=resolve(new URL('../../..',import.meta.url).pathname),bin=resolve(root,'packages/cli/bin/ruleoak.js');
+const providers=JSON.parse(execFileSync(process.execPath,[bin,'model','providers','--json'],{encoding:'utf8'}));assert(providers.some(x=>x.provider_id==='openai-responses'));
+const result=JSON.parse(execFileSync(process.execPath,[bin,'model','execute','--role','planner','--provider','deterministic-reference-a','--task','review evidence authority','--json'],{encoding:'utf8'}));assert.equal(result.status,'COMPLETED');assert.equal(result.authority,'NON_AUTHORITATIVE');assert.equal(result.tool_authority,'EXTERNAL_TO_MODEL_EXECUTION');
+const hostedRun=spawnSync(process.execPath,[bin,'model','execute','--role','planner','--provider','openai-responses','--task','review evidence authority','--json'],{encoding:'utf8'});assert.equal(hostedRun.status,4);const hosted=JSON.parse(hostedRun.stdout);assert.equal(hosted.status,'NOT_RUN');console.log('Model-Independent Execution CLI tests passed');

@@ -1,0 +1,26 @@
+{
+  "contract_version": "1.0",
+  "capability_id": "cap.oakspec-interoperability",
+  "oakspec_version": "1.0",
+  "ecosystem_maturity": "preview",
+  "external_standard_status": "NOT_CLAIMED",
+  "external_adoption_evidence": "NOT_RUN",
+  "adapters": [
+    "openapi",
+    "tests",
+    "ci",
+    "git",
+    "agents",
+    "docs",
+    "mcp"
+  ],
+  "graduation": {
+    "benchmark_cases_min": 70,
+    "exact_rate_min": 1.0,
+    "all_adapters_nonempty": true,
+    "authority_promotions_max": 0,
+    "deterministic_export_runs": 10,
+    "candidate_import_only": true
+  },
+  "name": "OakSpec Interoperability"
+}

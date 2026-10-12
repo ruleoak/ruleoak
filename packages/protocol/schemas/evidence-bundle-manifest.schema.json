@@ -1,0 +1,254 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/evidence-bundle-manifest.schema.json",
+  "title": "RuleOak Evidence Bundle Manifest v3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "bundle_version",
+    "bundle_id",
+    "created_at",
+    "privacy_profile",
+    "source",
+    "graphs",
+    "adapters",
+    "files",
+    "verification",
+    "privacy"
+  ],
+  "properties": {
+    "bundle_version": {
+      "const": "3.0"
+    },
+    "bundle_id": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "privacy_profile": {
+      "enum": [
+        "minimal",
+        "operational",
+        "forensic_local"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_sha256",
+        "event_count",
+        "final_hash",
+        "first_event_at",
+        "last_event_at",
+        "chain_verified_at_export",
+        "raw_evidence_included"
+      ],
+      "properties": {
+        "evidence_sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "event_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "final_hash": {
+          "type": "string",
+          "pattern": "^(GENESIS|[a-f0-9]{64})$"
+        },
+        "first_event_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "last_event_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "chain_verified_at_export": {
+          "const": true
+        },
+        "raw_evidence_included": {
+          "type": "boolean"
+        }
+      }
+    },
+    "graphs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority_graph_id",
+        "evidence_graph_id"
+      ],
+      "properties": {
+        "authority_graph_id": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "evidence_graph_id": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        }
+      }
+    },
+    "adapters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "adapter_id",
+          "adapter_contract_version"
+        ],
+        "properties": {
+          "adapter_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "adapter_contract_version": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 32
+          }
+        }
+      }
+    },
+    "files": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "size",
+          "sha256",
+          "role"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
+          },
+          "role": {
+            "enum": [
+              "minimal_timeline",
+              "raw_evidence",
+              "graph_summary",
+              "authority_graph",
+              "evidence_graph",
+              "policy",
+              "workspace",
+              "approval_state",
+              "session_state",
+              "authority_state",
+              "supporting_state",
+              "report",
+              "other"
+            ]
+          }
+        }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_chain",
+        "graphs",
+        "instructions"
+      ],
+      "properties": {
+        "source_chain": {
+          "enum": [
+            "reverify_from_bundle",
+            "verified_at_export_only"
+          ]
+        },
+        "graphs": {
+          "enum": [
+            "reverify_from_bundle",
+            "verified_at_export_only"
+          ]
+        },
+        "instructions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "includes_raw_evidence",
+        "includes_policy",
+        "includes_workspace_state",
+        "includes_approval_state",
+        "includes_session_state"
+      ],
+      "properties": {
+        "includes_raw_evidence": {
+          "type": "boolean"
+        },
+        "includes_policy": {
+          "type": "boolean"
+        },
+        "includes_workspace_state": {
+          "type": "boolean"
+        },
+        "includes_approval_state": {
+          "type": "boolean"
+        },
+        "includes_session_state": {
+          "type": "boolean"
+        }
+      }
+    },
+    "signature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "key_hint",
+        "value"
+      ],
+      "properties": {
+        "algorithm": {
+          "const": "hmac-sha256"
+        },
+        "key_hint": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string",
+          "pattern": "^hmac-sha256:[a-f0-9]{64}$"
+        }
+      }
+    }
+  }
+}

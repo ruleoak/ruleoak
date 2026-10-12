@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/intent-recompile-report-v0.1.schema.json",
+  "title": "RuleOak Intent Recompile Report v0.1",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "intent_recompile_version",
+    "experiment_id",
+    "status",
+    "synthesis_authority",
+    "baseline",
+    "replacement",
+    "equivalence",
+    "model_execution"
+  ],
+  "properties": {
+    "intent_recompile_version": {
+      "const": "0.1"
+    },
+    "experiment_id": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "DRY_RUN_READY",
+        "GENERATED",
+        "VERIFIED",
+        "FAILED"
+      ]
+    },
+    "synthesis_authority": {
+      "const": "NON_AUTHORITATIVE_SYNTHESIS"
+    },
+    "baseline": {
+      "type": "object"
+    },
+    "replacement": {
+      "type": "object"
+    },
+    "equivalence": {
+      "type": "object"
+    },
+    "model_execution": {
+      "type": "object"
+    }
+  }
+}

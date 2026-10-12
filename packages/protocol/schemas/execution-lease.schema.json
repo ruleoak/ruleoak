@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/execution-lease-v1.json",
+  "title": "RuleOak Execution Lease v1",
+  "type": "object",
+  "required": [
+    "lease_version",
+    "lease_id",
+    "decision_id",
+    "principal_id",
+    "action_digest",
+    "policy_digest",
+    "canonical_action",
+    "canonical_resource",
+    "issued_at",
+    "not_before",
+    "expires_at",
+    "max_uses",
+    "nonce"
+  ],
+  "properties": {
+    "lease_version": {
+      "enum": [
+        "1.0",
+        "1.1",
+        "1.2"
+      ]
+    },
+    "lease_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "decision_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "principal_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority_envelope_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "authority_grant_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "action_digest": {
+      "type": "string",
+      "minLength": 1
+    },
+    "policy_digest": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canonical_action": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canonical_resource": {
+      "type": "string",
+      "minLength": 1
+    },
+    "issued_at": {
+      "type": "string",
+      "minLength": 1,
+      "format": "date-time"
+    },
+    "not_before": {
+      "type": "string",
+      "minLength": 1,
+      "format": "date-time"
+    },
+    "expires_at": {
+      "type": "string",
+      "minLength": 1,
+      "format": "date-time"
+    },
+    "max_uses": {
+      "const": 1
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "max_objects": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_amount": {
+          "type": "number",
+          "minimum": 0
+        },
+        "max_external_calls": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_executions": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "obligations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "enum": [
+              "require_approval",
+              "require_effect_receipt",
+              "require_recorder",
+              "execution_before",
+              "target_verified"
+            ]
+          },
+          "deadline": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "execution_before"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            "then": {
+              "required": [
+                "deadline"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "nonce": {
+      "type": "string",
+      "minLength": 1
+    },
+    "signature": {
+      "type": "string"
+    },
+    "authority_ancestor_grant_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "authority_principal_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "approval_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "approval_result_id": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "lease_version": {
+            "const": "1.1"
+          }
+        },
+        "required": [
+          "lease_version"
+        ]
+      },
+      "then": {
+        "required": [
+          "authority_ancestor_grant_ids",
+          "authority_principal_ids"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "lease_version": {
+            "const": "1.2"
+          }
+        },
+        "required": [
+          "lease_version"
+        ]
+      },
+      "then": {
+        "required": [
+          "approval_id",
+          "approval_result_id",
+          "authority_ancestor_grant_ids",
+          "authority_principal_ids"
+        ]
+      }
+    }
+  ]
+}

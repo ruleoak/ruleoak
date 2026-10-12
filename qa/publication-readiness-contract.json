@@ -1,0 +1,25 @@
+{
+  "contract_version": "1.0",
+  "ruleoak_release": "0.50.0",
+  "scope": "Source-verifiable publication readiness and external-adoption truth boundary",
+  "capabilities": [
+    "exact-version zero-account quickstart",
+    "privacy-preserving activation stage and next action",
+    "review-before-share aggregate adoption snapshot",
+    "no automatic adoption telemetry upload",
+    "deterministic release publish plan",
+    "explicit first-publication trusted OIDC direct mode",
+    "explicit subsequent staged-publishing mode with human 2FA approval",
+    "source gate that prevents external-adoption claims from replacing external evidence"
+  ],
+  "external_evidence_required": [
+    "actual GitHub repository security settings",
+    "actual npm trusted-publisher configuration",
+    "actual registry publication and provenance",
+    "independent activation and time-to-first-value",
+    "repeat-use and retention",
+    "Effect Profile coverage in real consequential workflows",
+    "user-reported removal pain or willingness to pay"
+  ],
+  "external_adoption_proven": false
+}

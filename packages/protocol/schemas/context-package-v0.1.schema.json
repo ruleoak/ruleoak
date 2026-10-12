@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/context-package-v0.1.schema.json",
+  "title": "RuleOak Context Package v0.1",
+  "type": "object",
+  "required": [
+    "context_package_version",
+    "package_id",
+    "task",
+    "compiler",
+    "source",
+    "budget",
+    "intent",
+    "source_slices",
+    "test_slices",
+    "exclusions",
+    "accounting",
+    "sufficiency",
+    "uncertainties"
+  ],
+  "properties": {
+    "context_package_version": {
+      "const": "0.1"
+    },
+    "package_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task": {
+      "type": "string",
+      "minLength": 1
+    },
+    "compiler": {
+      "type": "object"
+    },
+    "source": {
+      "type": "object"
+    },
+    "budget": {
+      "type": "object"
+    },
+    "intent": {
+      "type": "object"
+    },
+    "source_slices": {
+      "type": "array"
+    },
+    "test_slices": {
+      "type": "array"
+    },
+    "exclusions": {
+      "type": "object"
+    },
+    "accounting": {
+      "type": "object"
+    },
+    "sufficiency": {
+      "type": "object"
+    },
+    "uncertainties": {
+      "type": "array"
+    },
+    "engineering_memory": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

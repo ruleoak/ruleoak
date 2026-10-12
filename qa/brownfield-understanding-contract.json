@@ -1,0 +1,25 @@
+{
+  "contract_version": "1.0",
+  "name": "Brownfield Understanding / Intent Overlay",
+  "understanding_version": "0.1",
+  "required_cli_commands": [
+    "understand",
+    "explain",
+    "trace"
+  ],
+  "required_provenance_classes": [
+    "OBSERVED",
+    "DECLARED",
+    "INFERRED"
+  ],
+  "required_capabilities": [
+    "cap.effect-boundary",
+    "cap.evidence-authority",
+    "cap.mcp-boundary"
+  ],
+  "minimum_explicit_implementation_bindings_per_capability": 3,
+  "minimum_candidate_tests_per_capability": 1,
+  "semantic_inference_default": "none",
+  "unknown_status": "UNKNOWN",
+  "agent_assertion_is_evidence": false
+}

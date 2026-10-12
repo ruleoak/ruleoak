@@ -1,0 +1,9 @@
+{
+  "name": "basic RuleOak policy suite",
+  "cases": [
+    { "name": "public read allowed", "call": "examples/calls/read-public.json", "expectDecision": "allow" },
+    { "name": "private note requires approval", "call": "examples/calls/read-private-note.json", "expectDecision": "needs_approval" },
+    { "name": "protected delete blocked", "call": "examples/calls/delete-protected.json", "expectDecision": "deny" },
+    { "name": "secret exfiltration blocked", "call": "examples/calls/exfiltrate-secret.json", "expectDecision": "deny" }
+  ]
+}

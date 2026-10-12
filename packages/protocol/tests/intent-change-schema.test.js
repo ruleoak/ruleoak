@@ -1,0 +1,9 @@
+/* SPDX-FileCopyrightText: 2026 RuleOak Pte. Ltd.
+ * SPDX-License-Identifier: Apache-2.0 */
+import assert from 'node:assert/strict';
+import { INTENT_CHANGE_ROLES,INTENT_CHANGE_STATUSES,INTENT_CHANGE_VERSIONS,IMPLEMENTATION_PRODUCER_KINDS,validateImplementationProposal,validateIntentChangePlan } from '../src/intent-change.js';
+assert.deepEqual(INTENT_CHANGE_VERSIONS,['0.1']);assert.ok(INTENT_CHANGE_ROLES.includes('evidence_adjudicator'));assert.ok(INTENT_CHANGE_STATUSES.includes('APPLIED_VERIFICATION_REQUIRED'));assert.ok(IMPLEMENTATION_PRODUCER_KINDS.includes('agent'));
+const plan={intent_change_version:'0.1',change_id:'change:abc',plan_id:'plan:abc',request:'improve demo',mode:'dry-run',status:'READY',intent_delta:{delta_version:'0.1',delta_id:'delta:abc',digest:`sha256:${'a'.repeat(64)}`,operations:[],affected_capability_ids:[]},impact:{digest:`sha256:${'b'.repeat(64)}`,affected_capability_ids:[],conflicts:[],uncertainties:[]},allowed_scope:{existing_paths:['src/a.js'],new_file_prefixes:['src'],denied_prefixes:['.git'],max_files:32},roles:{planner:{authority:'planner'},implementer:{authority:'implementer'},reviewer:{authority:'reviewer'},evidence_adjudicator:{authority:'evidence'}},gates:{},plan_steps:[],blockers:[],warnings:[]};
+assert.equal(validateIntentChangePlan(plan).valid,true);const bad=structuredClone(plan);bad.roles.evidence_adjudicator=null;assert.equal(validateIntentChangePlan(bad).valid,false);
+const proposal={implementation_proposal_version:'0.1',proposal_id:'proposal:abc',plan_id:'plan:abc',producer:{kind:'agent',id:'agent.demo'},changes:[{path:'src/a.js',operation:'write',before_sha256:`sha256:${'c'.repeat(64)}`,content:'x'}],assertions:[{claim:'tests pass'}]};assert.equal(validateImplementationProposal(proposal).valid,true);proposal.producer.kind='judge';assert.equal(validateImplementationProposal(proposal).valid,false);
+console.log('Intent Change v0.1 protocol tests passed');

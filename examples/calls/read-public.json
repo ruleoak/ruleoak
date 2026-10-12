@@ -1,0 +1,26 @@
+{
+  "call_id": "call_read_public",
+  "timestamp": "2026-01-01T00:00:00.000Z",
+  "actor": {
+    "type": "agent",
+    "name": "example-agent",
+    "session_id": "sess_example"
+  },
+  "tool": {
+    "name": "filesystem.read",
+    "category": "file",
+    "operation": "read"
+  },
+  "target": {
+    "resource": "./examples/sample-workspace/public/readme.txt",
+    "scope": "sample-workspace",
+    "sensitivity": "public"
+  },
+  "arguments": {
+    "path": "./examples/sample-workspace/public/readme.txt"
+  },
+  "context": {
+    "user_intent": "Read public sample file",
+    "app": "ruleoak-example"
+  }
+}

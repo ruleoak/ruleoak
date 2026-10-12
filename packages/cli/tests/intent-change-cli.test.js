@@ -1,0 +1,15 @@
+/* SPDX-FileCopyrightText: 2026 RuleOak Pte. Ltd.
+ * SPDX-License-Identifier: Apache-2.0 */
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { execFileSync,spawnSync } from 'node:child_process';
+import { mkdtempSync,mkdirSync,readFileSync,writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join,resolve } from 'node:path';
+const repoRoot=resolve(new URL('../../..',import.meta.url).pathname),cli=resolve(repoRoot,'packages/cli/bin/ruleoak.js'),root=mkdtempSync(join(tmpdir(),'ruleoak-intent-change-cli-'));mkdirSync(join(root,'.ruleoak','intent'),{recursive:true});mkdirSync(join(root,'src'),{recursive:true});
+const manifest={intent_manifest_version:'0.1',manifest_id:'manifest.cli',product:{id:'product.cli',name:'CLI'},capabilities:[{id:'cap.change',name:'Change planning',tags:['change','planning','intent'],evidence_requirement_ids:['evidence.change']}],evidence_requirements:[{id:'evidence.change',statement:'Change requires integration evidence.',evidence_types:['integration'],capability_ids:['cap.change']}],claims:[{id:'claim.change',statement:'Change is qualified.',capability_ids:['cap.change'],evidence_requirement_ids:['evidence.change']}]};writeFileSync(join(root,'.ruleoak','intent','cli.intent.json'),JSON.stringify(manifest));writeFileSync(join(root,'.ruleoak','intent','cli.binding.json'),JSON.stringify({binding_version:'0.1',intent_manifest_id:'manifest.cli',implementation_id:'impl.cli',language:'JavaScript',capability_bindings:[{capability_id:'cap.change',modules:['src/change.js']}]}));writeFileSync(join(root,'src','change.js'),'export const x=1;\n');
+const dry=JSON.parse(execFileSync(process.execPath,[cli,'change','improve intent change planning','--dir',root,'--json'],{encoding:'utf8'}));assert.equal(dry.mode,'dry-run');assert.equal(dry.status,'READY');assert.ok(dry.allowed_scope.existing_paths.includes('src/change.js'));
+const before=readFileSync(join(root,'src','change.js'));const digest=`sha256:${createHash('sha256').update(before).digest('hex')}`;const proposal={implementation_proposal_version:'0.1',proposal_id:'proposal.cli',plan_id:dry.plan_id,producer:{kind:'agent',id:'agent.cli'},changes:[{path:'src/change.js',operation:'write',before_sha256:digest,content:'export const x=2;\n'}],assertions:[{claim:'tests pass'}]};const pp=join(root,'proposal.json');writeFileSync(pp,JSON.stringify(proposal));
+// apply plans use the same deterministic plan_id because mode is not part of the planning identity
+const applied=spawnSync(process.execPath,[cli,'change','improve intent change planning','--dir',root,'--apply','--proposal',pp,'--json'],{encoding:'utf8'});assert.equal(applied.status,4,applied.stderr);const report=JSON.parse(applied.stdout);assert.equal(report.status,'APPLIED_VERIFICATION_REQUIRED');assert.equal(report.post_change.evidence_verification.overall_status,'NOT_RUN');assert.equal(readFileSync(join(root,'src','change.js'),'utf8'),'export const x=2;\n');
+console.log('Intent-Driven Change CLI tests passed');

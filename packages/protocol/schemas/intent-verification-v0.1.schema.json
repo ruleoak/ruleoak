@@ -1,0 +1,15 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://ruleoak.com/schemas/intent-verification-v0.1.schema.json",
+  "title":"RuleOak Intent Verification Result v0.1",
+  "description":"Experimental adjudication result mapping Intent claims and evidence requirements to independently supported evidence.",
+  "type":"object","additionalProperties":false,
+  "required":["evidence_authority_version","intent_manifest_id","evaluated_at","evidence_bundle_ids","overall_status","requirements","claims","coverage","contradictions","evidence_records","observations","summary"],
+  "properties":{
+    "evidence_authority_version":{"const":"0.1"},"intent_manifest_id":{"type":"string"},"evaluated_at":{"type":"string"},"evidence_bundle_ids":{"type":"array","items":{"type":"string"},"uniqueItems":true},
+    "overall_status":{"enum":["PASS","FAIL","UNKNOWN","NOT_RUN","STALE","CONFLICTED"]},
+    "requirements":{"type":"array"},"claims":{"type":"array"},"contradictions":{"type":"array"},"evidence_records":{"type":"array"},"observations":{"type":"array"},
+    "coverage":{"type":"object","required":["required_type_slots","satisfied_type_slots","percent"],"properties":{"required_type_slots":{"type":"integer","minimum":0},"satisfied_type_slots":{"type":"integer","minimum":0},"percent":{"type":"number","minimum":0,"maximum":100}},"additionalProperties":true},
+    "summary":{"type":"object"}
+  }
+}

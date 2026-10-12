@@ -1,0 +1,17 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://ruleoak.com/schemas/verify-product-v0.1.schema.json",
+  "title":"RuleOak Verify Product Report v0.1",
+  "type":"object",
+  "additionalProperties":true,
+  "required":["verify_product_version","mode","decision","base","candidate","semantic","evidence","historical_regressions","findings","summary"],
+  "properties":{
+    "verify_product_version":{"const":"0.1"},
+    "mode":{"enum":["OBSERVE","VERIFY","GOVERN"]},
+    "decision":{"enum":["PASS","REVIEW","BLOCK"]},
+    "base":{"type":"object"},"candidate":{"type":"object"},"semantic":{"type":"object"},"evidence":{"type":"object"},
+    "historical_regressions":{"type":"array","items":{"type":"object"}},
+    "findings":{"type":"array","items":{"type":"object","required":["code","severity","blocking","provenance","statement"],"properties":{"provenance":{"enum":["DETERMINISTIC","OBSERVED","INFERRED","UNKNOWN"]}}}},
+    "summary":{"type":"object"}
+  }
+}

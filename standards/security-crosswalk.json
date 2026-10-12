@@ -1,0 +1,144 @@
+{
+  "crosswalk_version": "1.0",
+  "as_of": "2026-09-05",
+  "scope": "RuleOak public Effect Boundary repository",
+  "non_claim": "This crosswalk is implementation evidence and repository-readiness guidance. It is not certification, legal advice, formal compliance attestation, or a claim that RuleOak alone satisfies every control in any external framework.",
+  "frameworks": [
+    {
+      "id": "mcp-2026-07-28",
+      "name": "Model Context Protocol 2026-07-28",
+      "status": "implemented_and_tested_subset",
+      "evidence": [
+        "packages/core/src/mcp/protocol.js",
+        "packages/core/tests/mcp-protocol.test.js",
+        "packages/cli/src/inspector.js",
+        "packages/cli/tests/mcp-http-hardening.test.js",
+        "docs/protocols/MCP.md"
+      ],
+      "limitations": "RuleOak is an execution/interception boundary, not a complete general-purpose MCP client/server SDK. Compatibility is limited to the protocol surfaces RuleOak actually intercepts/inspects.",
+      "reference": "https://blog.modelcontextprotocol.io/posts/2026-07-28/"
+    },
+    {
+      "id": "owasp-agentic-top10-2026",
+      "name": "OWASP Top 10 for Agentic Applications 2026",
+      "status": "control_crosswalk_not_full_coverage",
+      "mappings": {
+        "ASI01 Agent Goal Hijack": "indirect: deterministic policy boundary limits executable consequences but does not solve prompt/goal hijack",
+        "ASI02 Tool Misuse & Exploitation": "direct: exact policy, approvals, one-use authority, capability inspection and effect evidence",
+        "ASI03 Identity & Privilege Abuse": "direct/partial: bounded authority, grants/envelopes/revocation; identity systems outside RuleOak remain external",
+        "ASI04 Agentic Supply Chain Vulnerabilities": "partial: capability drift, MCP inspection, dependency/release controls; not a universal software supply-chain scanner",
+        "ASI05 Unexpected Code Execution": "partial: deny/approval boundaries and bounded adapters; not an OS sandbox",
+        "ASI06 Memory & Context Poisoning": "out_of_scope_directly: evidence/policy can constrain consequences but RuleOak is not a memory-security product",
+        "ASI07 Insecure Inter-Agent Communication": "out_of_scope_directly: RuleOak does not provide a complete inter-agent secure messaging protocol",
+        "ASI08 Cascading Failures": "direct/partial: CrashLab, bounded authority, evidence-safe retry and duplicate-effect prevention reduce propagation risk",
+        "ASI09 Human-Agent Trust Exploitation": "partial: explicit approvals/evidence improve operator visibility but do not solve social/psychological trust exploitation",
+        "ASI10 Rogue Agents": "direct/partial: hard execution boundaries, deny override, revocation and one-use authority constrain actions that cross RuleOak"
+      },
+      "reference": "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/"
+    },
+    {
+      "id": "owasp-agent-control-standard-preview",
+      "name": "OWASP Agent Control Standard (public preview, 2026-09-01)",
+      "status": "crosswalk_only_no_conformance_claim",
+      "evidence": [
+        "policy/interception hooks",
+        "tamper-evident execution/effect evidence",
+        "capability inspection",
+        "extension SPI"
+      ],
+      "limitations": "ACS is newly published and evolving. RuleOak does not claim ACS conformance until a stable conformance target and explicit adapter/test suite are implemented.",
+      "reference": "https://genai.owasp.org/resource/agent-control-standard-acs/"
+    },
+    {
+      "id": "openssf-osps-2026-08-28",
+      "name": "OpenSSF OSPS Baseline 2026.08.28",
+      "status": "level1_exact_control_matrix_source_and_external_states_explicit",
+      "evidence": [
+        "LICENSE",
+        "SECURITY.md",
+        "CONTRIBUTING.md",
+        "DCO.md",
+        ".github/workflows/ci.yml",
+        ".github/workflows/codeql.yml",
+        ".github/workflows/dependency-review.yml",
+        ".github/workflows/scorecard.yml",
+        ".github/dependabot.yml",
+        ".github/CODEOWNERS",
+        "docs/security/OPEN_SOURCE_SECURITY_BASELINE.md",
+        "standards/openssf-osps-level1-2026-08-28.json",
+        "scripts/check_workflow_security.mjs",
+        "security-insights.yml"
+      ],
+      "limitations": "The exact 24 Level-1 controls are tracked individually. Source-pass, hybrid, not-applicable and external-required states are distinct; hosted controls must be verified on the authoritative repository.",
+      "reference": "https://baseline.openssf.org/versions/2026-08-28"
+    },
+    {
+      "id": "slsa-1.2",
+      "name": "SLSA 1.2",
+      "status": "release_workflow_ready_for_provenance_no_level_claim_until_attested_release",
+      "evidence": [
+        ".github/workflows/release-candidate.yml",
+        "scripts/build_release_candidate.mjs",
+        "scripts/generate_sbom.mjs",
+        "scripts/check_release_reproducibility.mjs",
+        "docs/release-verification.md"
+      ],
+      "limitations": "A SLSA level is a property of an actual source/build process and attested artifact. Source configuration alone cannot prove the level before the fresh GitHub repository executes the release workflow.",
+      "reference": "https://slsa.dev/spec/v1.2/"
+    },
+    {
+      "id": "reuse-3.3",
+      "name": "REUSE Specification 3.3",
+      "status": "repository_metadata_and_ci_ready",
+      "evidence": [
+        "REUSE.toml",
+        "LICENSES/Apache-2.0.txt",
+        "scripts/check_ruleoak_licensing.py",
+        ".github/workflows/ci.yml"
+      ],
+      "reference": "https://reuse.software/spec/"
+    },
+    {
+      "id": "nist-ssdf",
+      "name": "NIST Secure Software Development Framework",
+      "status": "practice_crosswalk_only",
+      "evidence": [
+        "secure repository governance",
+        "automated QA/security checks",
+        "dependency/release controls",
+        "vulnerability disclosure/remediation policy",
+        "release provenance/SBOM preparation"
+      ],
+      "limitations": "NIST SSDF is organization/process guidance. RuleOak does not claim NIST certification.",
+      "reference": "https://csrc.nist.gov/pubs/sp/800/218/final"
+    }
+  ],
+  "related_release_evidence": {
+    "cyclonedx_sbom": {
+      "spec_version": "1.7",
+      "status": "deterministic_generation_and_reproducibility_check_implemented",
+      "evidence": "scripts/generate_sbom.mjs"
+    },
+    "github_artifact_attestations": {
+      "status": "workflow_configured_for_provenance_and_sbom_attestation_live_verification_pending",
+      "reference": "https://docs.github.com/en/actions/concepts/security/artifact-attestations",
+      "evidence": ".github/workflows/release-candidate.yml"
+    },
+    "npm_trusted_publishing": {
+      "status": "workflow_configured_live_registry_provenance_pending",
+      "reference": "https://docs.npmjs.com/trusted-publishers/",
+      "evidence": ".github/workflows/publish.yml"
+    },
+    "openssf_scorecard": {
+      "status": "workflow_configured_external_score_pending",
+      "reference": "https://github.com/ossf/scorecard-action",
+      "evidence": ".github/workflows/scorecard.yml"
+    },
+    "security_insights": {
+      "spec_version": "2.2.0",
+      "status": "machine_readable_source_metadata_ready_live_urls_external",
+      "reference": "https://github.com/ossf/security-insights/blob/main/docs/schema.md",
+      "evidence": "security-insights.yml"
+    }
+  }
+}

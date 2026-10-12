@@ -1,0 +1,8 @@
+/* SPDX-FileCopyrightText: 2026 RuleOak Pte. Ltd.
+ * SPDX-License-Identifier: Apache-2.0 */
+import assert from 'node:assert/strict';import {mkdtempSync,writeFileSync,readFileSync} from 'node:fs';import {tmpdir} from 'node:os';import {join} from 'node:path';import {executeModelRole,listModelProviders,writeModelExecution} from '../src/model-execution.js';
+const providers=listModelProviders();assert(providers.some(x=>x.provider_id==='deterministic-reference-a'));assert(providers.some(x=>x.provider_id==='deterministic-reference-b'));assert(providers.some(x=>x.provider_id==='openai-responses'));
+const plan={request:'preserve evidence authority while changing model execution',impact:{affected_capability_ids:['cap.intent-evidence-authority']},implementation_scope:{allowed_paths:['packages/cli/src/model-execution.js']},verification:{required_evidence_types:['unit','integration']}};
+const a=await executeModelRole({role:'planner',providerId:'deterministic-reference-a',plan}),b=await executeModelRole({role:'planner',providerId:'deterministic-reference-b',plan});assert.equal(a.authority,'NON_AUTHORITATIVE');assert.equal(a.evidence_authority,'EXTERNAL_TO_MODEL_EXECUTION');assert.notEqual(a.output.strategy,b.output.strategy);assert.deepEqual(a.output.capability_ids,b.output.capability_ids);
+const hosted=await executeModelRole({role:'planner',providerId:'openai-responses',plan,allowNetwork:false});assert.equal(hosted.status,'NOT_RUN');assert.equal(hosted.usage.kind,'NOT_RUN');
+const d=mkdtempSync(join(tmpdir(),'ruleoak-model-execution-')),p=join(d,'result.json');writeModelExecution(a,p);assert.equal(JSON.parse(readFileSync(p)).authority,'NON_AUTHORITATIVE');console.log('Model-Independent Execution tests passed');

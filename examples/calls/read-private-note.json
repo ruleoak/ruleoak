@@ -1,0 +1,26 @@
+{
+  "call_id": "call_read_private_note",
+  "timestamp": "2026-01-01T00:00:00.000Z",
+  "actor": {
+    "type": "agent",
+    "name": "example-agent",
+    "session_id": "sess_example"
+  },
+  "tool": {
+    "name": "filesystem.read",
+    "category": "file",
+    "operation": "read"
+  },
+  "target": {
+    "resource": "~/Documents/Private/note.txt",
+    "scope": "local-user-files",
+    "sensitivity": "private"
+  },
+  "arguments": {
+    "path": "~/Documents/Private/note.txt"
+  },
+  "context": {
+    "user_intent": "Agent wants to read a private note",
+    "app": "ruleoak-example"
+  }
+}

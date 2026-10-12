@@ -1,0 +1,156 @@
+{
+  "description": "Synthetic structural corpus; no evidence trust or real qualification implied.",
+  "cases": [
+    {
+      "id": "structure-only-not-integrity",
+      "envelope": {
+        "schemaVersion": "1.0",
+        "id": "portable-example",
+        "producer": {
+          "product": "example",
+          "releaseId": "fixture-release-1",
+          "sourceSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "subject": {
+          "kind": "document",
+          "id": "example",
+          "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "scope": "example-review",
+        "payloadSchema": {
+          "id": "example",
+          "version": "1"
+        },
+        "payload": {},
+        "payloadSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sources": [],
+        "createdAt": "2026-09-13T00:00:00.000Z",
+        "expiresAt": "2026-09-14T00:00:00.000Z",
+        "claims": [],
+        "envelopeSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "structurallyValid": true
+    },
+    {
+      "id": "unknown-version",
+      "envelope": {
+        "schemaVersion": "2.0",
+        "id": "portable-example",
+        "producer": {
+          "product": "example",
+          "releaseId": "fixture-release-1",
+          "sourceSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "subject": {
+          "kind": "document",
+          "id": "example",
+          "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "scope": "example-review",
+        "payloadSchema": {
+          "id": "example",
+          "version": "1"
+        },
+        "payload": {},
+        "payloadSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sources": [],
+        "createdAt": "2026-09-13T00:00:00.000Z",
+        "expiresAt": "2026-09-14T00:00:00.000Z",
+        "claims": [],
+        "envelopeSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "structurallyValid": false
+    },
+    {
+      "id": "impossible-date",
+      "envelope": {
+        "schemaVersion": "1.0",
+        "id": "portable-example",
+        "producer": {
+          "product": "example",
+          "releaseId": "fixture-release-1",
+          "sourceSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "subject": {
+          "kind": "document",
+          "id": "example",
+          "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "scope": "example-review",
+        "payloadSchema": {
+          "id": "example",
+          "version": "1"
+        },
+        "payload": {},
+        "payloadSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sources": [],
+        "createdAt": "2026-02-30T00:00:00.000Z",
+        "expiresAt": "2026-09-14T00:00:00.000Z",
+        "claims": [],
+        "envelopeSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "structurallyValid": false
+    },
+    {
+      "id": "global-verified-forbidden",
+      "envelope": {
+        "schemaVersion": "1.0",
+        "id": "portable-example",
+        "producer": {
+          "product": "example",
+          "releaseId": "fixture-release-1",
+          "sourceSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "subject": {
+          "kind": "document",
+          "id": "example",
+          "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "scope": "example-review",
+        "payloadSchema": {
+          "id": "example",
+          "version": "1"
+        },
+        "payload": {},
+        "payloadSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sources": [],
+        "createdAt": "2026-09-13T00:00:00.000Z",
+        "expiresAt": "2026-09-14T00:00:00.000Z",
+        "claims": [],
+        "envelopeSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "verified": true
+      },
+      "structurallyValid": false
+    },
+    {
+      "id": "invalid-digest",
+      "envelope": {
+        "schemaVersion": "1.0",
+        "id": "portable-example",
+        "producer": {
+          "product": "example",
+          "releaseId": "fixture-release-1",
+          "sourceSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "subject": {
+          "kind": "document",
+          "id": "example",
+          "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "scope": "example-review",
+        "payloadSchema": {
+          "id": "example",
+          "version": "1"
+        },
+        "payload": {},
+        "payloadSha256": "000",
+        "sources": [],
+        "createdAt": "2026-09-13T00:00:00.000Z",
+        "expiresAt": "2026-09-14T00:00:00.000Z",
+        "claims": [],
+        "envelopeSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "structurallyValid": false
+    }
+  ]
+}

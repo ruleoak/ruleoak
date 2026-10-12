@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/capability-evidence.schema.json",
+  "title": "RuleOak Capability Evidence",
+  "type": "object",
+  "required": ["evidence_version", "evidence_id", "evidence_classes", "observed_at", "source", "mutability", "classification_basis"],
+  "properties": {
+    "evidence_version": {"const": "1.0"},
+    "evidence_id": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "evidence_classes": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["registry_metadata", "declared_manifest", "runtime_discovery", "local_package_evidence", "inferred_classification", "operator_annotation", "historical_observation"]}},
+    "observed_at": {"type": ["string", "null"], "format": "date-time"},
+    "source": {"type": "object", "required": ["source_kind", "source_digest", "declared_version", "protocol_version"], "properties": {"source_kind": {"type": "string", "minLength": 1}, "source_digest": {"type": ["string", "null"]}, "declared_version": {"type": ["string", "null"]}, "protocol_version": {"type": ["string", "null"]}}, "additionalProperties": false},
+    "mutability": {"type": "string", "minLength": 1},
+    "classification_basis": {"type": "object"}
+  },
+  "additionalProperties": false
+}

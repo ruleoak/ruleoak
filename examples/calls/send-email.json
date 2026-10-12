@@ -1,0 +1,9 @@
+{
+  "call_id": "call_send_email",
+  "timestamp": "2026-01-01T00:00:00.000Z",
+  "actor": { "type": "agent", "name": "example-agent", "session_id": "sess_example" },
+  "tool": { "name": "email.send", "category": "email", "operation": "send" },
+  "target": { "resource": "friend@example.com", "scope": "external", "sensitivity": "internal" },
+  "arguments": { "to": "friend@example.com", "subject": "Summary", "body": "Here is the requested summary." },
+  "context": { "user_intent": "Agent wants to send an email", "app": "ruleoak-example" }
+}

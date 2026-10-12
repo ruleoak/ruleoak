@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/capability-observation.schema.json",
+  "title": "RuleOak Capability Observation",
+  "type": "object",
+  "required": ["observation_version", "observation_id", "integration_id", "capability_id", "integration_name", "action_name", "observed_at", "lifecycle_state", "drift_categories", "snapshot"],
+  "properties": {
+    "observation_version": {"const": "1.0"},
+    "observation_id": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "integration_id": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "capability_id": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "integration_name": {"type": "string", "minLength": 1, "maxLength": 256},
+    "action_name": {"type": "string", "minLength": 1, "maxLength": 256},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "lifecycle_state": {"enum": ["first_seen", "present", "removed", "reintroduced"]},
+    "drift_categories": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"enum": ["metadata_change", "schema_change", "capability_expansion", "capability_contraction", "consequence_escalation", "consequence_reduction", "provenance_change", "transport_change", "classification_basis_change"]}
+    },
+    "previous_observation_id": {"type": ["string", "null"], "pattern": "^sha256:[a-f0-9]{64}$"},
+    "snapshot": {
+      "type": "object",
+      "required": ["state", "consequence", "secret_or_identity_related", "schema_digest", "classification_basis", "evidence", "transport"],
+      "properties": {
+        "state": {"enum": ["read_only", "state_changing", "unknown", "removed"]},
+        "consequence": {"enum": ["read_only", "high_consequence", "destructive", "unknown", "removed"]},
+        "secret_or_identity_related": {"type": "boolean"},
+        "schema_digest": {"type": ["string", "null"]},
+        "classification_basis": {"type": "object"},
+        "transport": {"type": "string", "minLength": 1},
+        "evidence": {"$ref": "capability-evidence.schema.json"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

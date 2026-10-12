@@ -1,0 +1,78 @@
+{
+  "vector_version": "1.0",
+  "contract_id": "capability_identity_evidence",
+  "contract_versions": [
+    "1.0"
+  ],
+  "cases": [
+    {
+      "case_id": "capability_identity_evidence.valid",
+      "expectation": "valid",
+      "input": {
+        "identity": {
+          "identity_version": "1.0",
+          "integration_id": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "capability_id": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "integration_name": "demo",
+          "action_name": "repo.read",
+          "transport": "stdio",
+          "identity_basis": "explicit"
+        },
+        "evidence": {
+          "evidence_version": "1.0",
+          "evidence_id": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "evidence_classes": [
+            "runtime_discovery",
+            "inferred_classification"
+          ],
+          "observed_at": "2026-08-28T00:00:00.000Z",
+          "source": {
+            "source_kind": "remote-service",
+            "source_digest": "sha256:source",
+            "declared_version": null,
+            "protocol_version": "2026-07-28"
+          },
+          "mutability": "remote-can-change-without-local-update",
+          "classification_basis": {
+            "state": "inferred:tool-name"
+          }
+        }
+      },
+      "canonical_json": "{\"evidence\":{\"classification_basis\":{\"state\":\"inferred:tool-name\"},\"evidence_classes\":[\"runtime_discovery\",\"inferred_classification\"],\"evidence_id\":\"sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc\",\"evidence_version\":\"1.0\",\"mutability\":\"remote-can-change-without-local-update\",\"observed_at\":\"2026-08-28T00:00:00.000Z\",\"source\":{\"declared_version\":null,\"protocol_version\":\"2026-07-28\",\"source_digest\":\"sha256:source\",\"source_kind\":\"remote-service\"}},\"identity\":{\"action_name\":\"repo.read\",\"capability_id\":\"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\",\"identity_basis\":\"explicit\",\"identity_version\":\"1.0\",\"integration_id\":\"sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"integration_name\":\"demo\",\"transport\":\"stdio\"}}"
+    },
+    {
+      "case_id": "capability_identity_evidence.invalid",
+      "expectation": "invalid",
+      "input": {
+        "identity": {
+          "identity_version": "1.0",
+          "integration_id": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "capability_id": "sha256:short",
+          "integration_name": "demo",
+          "action_name": "repo.read",
+          "transport": "stdio",
+          "identity_basis": "explicit"
+        },
+        "evidence": {
+          "evidence_version": "1.0",
+          "evidence_id": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "evidence_classes": [
+            "runtime_discovery",
+            "inferred_classification"
+          ],
+          "observed_at": "2026-08-28T00:00:00.000Z",
+          "source": {
+            "source_kind": "remote-service",
+            "source_digest": "sha256:source",
+            "declared_version": null,
+            "protocol_version": "2026-07-28"
+          },
+          "mutability": "remote-can-change-without-local-update",
+          "classification_basis": {
+            "state": "inferred:tool-name"
+          }
+        }
+      }
+    }
+  ]
+}

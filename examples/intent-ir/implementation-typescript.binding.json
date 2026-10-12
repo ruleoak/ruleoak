@@ -1,0 +1,10 @@
+{
+  "binding_version": "0.1",
+  "intent_manifest_id": "manifest.radio-playback.v01",
+  "implementation_id": "impl.desktop-typescript",
+  "language": "TypeScript",
+  "capability_bindings": [
+    {"capability_id": "cap.playback.switch", "modules": ["src/audio/station-controller.ts", "src/audio/player-session.ts"]},
+    {"capability_id": "cap.playback.background", "modules": ["src/audio/background-session.ts"]}
+  ]
+}

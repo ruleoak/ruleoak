@@ -1,0 +1,288 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RuleOak Authority Grant",
+  "type": "object",
+  "required": [
+    "grant_version",
+    "grant_id",
+    "issuer",
+    "subject",
+    "principal_chain",
+    "capabilities",
+    "issued_at",
+    "not_before",
+    "expires_at",
+    "delegation_depth"
+  ],
+  "properties": {
+    "grant_version": {
+      "enum": [
+        "1.0",
+        "1.1"
+      ]
+    },
+    "grant_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "issuer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject": {
+      "$ref": "#/$defs/principal"
+    },
+    "principal_chain": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/principal"
+      }
+    },
+    "capabilities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/capability"
+      }
+    },
+    "issued_at": {
+      "type": "string",
+      "minLength": 1,
+      "format": "date-time"
+    },
+    "not_before": {
+      "type": "string",
+      "minLength": 1,
+      "format": "date-time"
+    },
+    "expires_at": {
+      "type": "string",
+      "minLength": 1,
+      "format": "date-time"
+    },
+    "parent_grant_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "delegation_depth": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 32
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "intent_id": {
+      "type": "string"
+    },
+    "session_id": {
+      "type": "string"
+    },
+    "signature": {
+      "type": "string"
+    },
+    "ancestor_grant_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "budget": {
+      "$ref": "#/$defs/budget"
+    },
+    "obligations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/obligation"
+      }
+    },
+    "delegation": {
+      "$ref": "#/$defs/delegation"
+    }
+  },
+  "$defs": {
+    "principal": {
+      "type": "object",
+      "required": [
+        "type",
+        "id"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "user",
+            "agent",
+            "script",
+            "service",
+            "organization"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string"
+        },
+        "issuer": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "capability": {
+      "type": "object",
+      "required": [
+        "actions",
+        "resources"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "actions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "resources": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "max_executions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_objects": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_amount": {
+          "type": "number",
+          "minimum": 0
+        },
+        "max_external_calls": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "obligation": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "require_approval",
+            "require_effect_receipt",
+            "require_recorder",
+            "execution_before",
+            "target_verified"
+          ]
+        },
+        "deadline": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "execution_before"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "required": [
+              "deadline"
+            ],
+            "properties": {
+              "deadline": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "delegation": {
+      "type": "object",
+      "required": [
+        "allowed",
+        "max_depth",
+        "budget_mode"
+      ],
+      "properties": {
+        "allowed": {
+          "type": "boolean"
+        },
+        "max_depth": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 32
+        },
+        "budget_mode": {
+          "enum": [
+            "inherit",
+            "partition"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "grant_version": {
+            "const": "1.1"
+          }
+        },
+        "required": [
+          "grant_version"
+        ]
+      },
+      "then": {
+        "required": [
+          "ancestor_grant_ids",
+          "budget",
+          "obligations",
+          "delegation"
+        ]
+      }
+    }
+  ]
+}

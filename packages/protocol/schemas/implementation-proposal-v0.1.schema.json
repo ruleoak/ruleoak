@@ -1,0 +1,13 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://ruleoak.com/schemas/implementation-proposal-v0.1.schema.json",
+  "title":"RuleOak Implementation Proposal v0.1",
+  "type":"object","additionalProperties":false,
+  "required":["implementation_proposal_version","proposal_id","plan_id","producer","changes"],
+  "properties":{
+    "implementation_proposal_version":{"const":"0.1"},"proposal_id":{"type":"string","minLength":1},"plan_id":{"type":"string","minLength":1},
+    "producer":{"type":"object","additionalProperties":true,"required":["kind","id"],"properties":{"kind":{"enum":["agent","model","human","deterministic_tool"]},"id":{"type":"string","minLength":1}}},
+    "changes":{"type":"array","minItems":1,"items":{"type":"object","additionalProperties":false,"required":["path","operation","before_sha256"],"properties":{"path":{"type":"string","minLength":1},"operation":{"enum":["write","delete"]},"before_sha256":{"type":["string","null"]},"content":{"type":"string"}}}},
+    "assertions":{"type":"array","items":{"type":"object"}}
+  }
+}

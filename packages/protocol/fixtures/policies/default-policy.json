@@ -1,0 +1,17 @@
+{
+  "defaultAction": "needs_approval",
+  "allowedActions": [
+    "filesystem.read"
+  ],
+  "approvalRequired": [
+    "filesystem.write",
+    "email.send",
+    "network.*",
+    "memory.read"
+  ],
+  "blockedActions": [
+    "filesystem.delete",
+    "shell.run",
+    "payment.*"
+  ]
+}

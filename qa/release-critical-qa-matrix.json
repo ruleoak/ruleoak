@@ -1,0 +1,346 @@
+{
+  "matrix_version": "1.2",
+  "description": "Release-critical automatic QA anchors for the public RuleOak architecture.",
+  "areas": [
+    {
+      "id": "capability-intelligence",
+      "tests": [
+        "packages/core/tests/capability-identity-evidence.test.js",
+        "packages/core/tests/capability-history.test.js",
+        "packages/core/tests/public-inspector-index.test.js",
+        "packages/cli/tests/public-inspector-index-cli.test.js",
+        "packages/core/tests/mcp-registry.test.js"
+      ],
+      "schemas": [
+        "packages/protocol/schemas/capability-identity.schema.json",
+        "packages/protocol/schemas/capability-evidence.schema.json",
+        "packages/protocol/schemas/capability-observation.schema.json",
+        "packages/protocol/schemas/capability-manifest.schema.json"
+      ],
+      "docs": [
+        "docs/public-inspector-index.md"
+      ],
+      "coverage_class": "capability_and_discovery"
+    },
+    {
+      "id": "authority-control",
+      "tests": [
+        "packages/core/tests/authority-graph.test.js",
+        "packages/core/tests/delegation-revocation.test.js",
+        "packages/core/tests/approval-contract.test.js",
+        "packages/cli/tests/authority-graph-cli.test.js",
+        "packages/cli/tests/delegation-revocation-cli.test.js",
+        "packages/cli/tests/approval-contract-cli.test.js"
+      ],
+      "schemas": [
+        "packages/protocol/schemas/authority-grant.schema.json",
+        "packages/protocol/schemas/authority-envelope.schema.json",
+        "packages/protocol/schemas/authority-graph.schema.json",
+        "packages/protocol/schemas/approval-request.schema.json",
+        "packages/protocol/schemas/approval-result.schema.json",
+        "packages/protocol/schemas/execution-lease.schema.json"
+      ],
+      "docs": [
+        "docs/authority-graph.md",
+        "docs/approval-providers.md"
+      ],
+      "coverage_class": "authority_and_approval"
+    },
+    {
+      "id": "effect-evidence",
+      "tests": [
+        "packages/core/tests/evidence-graph.test.js",
+        "packages/core/tests/observation-quality.test.js",
+        "packages/core/tests/evidence-bundle-sink.test.js",
+        "packages/cli/tests/evidence-graph-cli.test.js",
+        "packages/cli/tests/evidence-bundle.test.js",
+        "packages/cli/tests/mcp-http-hardening.test.js"
+      ],
+      "schemas": [
+        "packages/protocol/schemas/effect-receipt.schema.json",
+        "packages/protocol/schemas/evidence-graph.schema.json",
+        "packages/protocol/schemas/evidence-bundle-manifest.schema.json"
+      ],
+      "docs": [
+        "docs/evidence-bundle.md",
+        "docs/evidence-bundle-verification.md"
+      ],
+      "coverage_class": "effect_and_evidence"
+    },
+    {
+      "id": "reliability-crashlab",
+      "tests": [
+        "packages/core/tests/crashlab.test.js",
+        "packages/core/tests/failure-taxonomy-scenario-contract.test.js",
+        "packages/cli/tests/crashlab-scenario-contract-cli.test.js",
+        "packages/core/tests/concurrency-staleness.test.js",
+        "packages/core/tests/reliability-scorecard-ci.test.js",
+        "packages/cli/tests/reliability-scorecard-cli.test.js"
+      ],
+      "schemas": [
+        "packages/protocol/schemas/crashlab-scenario.schema.json",
+        "packages/protocol/schemas/reliability-scorecard.schema.json"
+      ],
+      "docs": [
+        "docs/crashlab-scenario-contract.md",
+        "ROADMAP.md",
+        "qa/reliability-coverage-matrix.json",
+        "docs/reliability-scorecard.md",
+        "qa/reliability-release-contracts.json"
+      ],
+      "coverage_class": "reliability_and_recovery"
+    },
+    {
+      "id": "runtime-boundaries",
+      "tests": [
+        "packages/core/tests/git-execution.test.js",
+        "packages/core/tests/mcp-capability-pin.test.js",
+        "packages/core/tests/mcp-protocol.test.js",
+        "packages/cli/tests/mcp-http-hardening.test.js",
+        "tests/runtime-boundary-check.js"
+      ],
+      "schemas": [
+        "packages/protocol/schemas/normalized-tool-call.schema.json"
+      ],
+      "docs": [
+        "docs/security-boundary.md",
+        "docs/mcp-streamable-http.md"
+      ],
+      "coverage_class": "runtime_boundary"
+    },
+    {
+      "id": "public-private-release-boundary",
+      "tests": [
+        "scripts/check_public_private_boundary.mjs",
+        "scripts/check_public_surface.mjs",
+        "scripts/check_npm_pack_contents.py",
+        "scripts/check_packed_install.mjs"
+      ],
+      "schemas": [],
+      "docs": [
+        "SECURITY.md",
+        "docs/release-process.md"
+      ],
+      "coverage_class": "publication_boundary"
+    },
+    {
+      "id": "automatic-qa-authority",
+      "tests": [
+        "scripts/check_automatic_qa.mjs",
+        "scripts/run_all_package_tests.mjs",
+        "scripts/run_package_tests.mjs",
+        "scripts/reliability_release_qa.mjs",
+        "packages/core/tests/automatic-qa-release-contracts.test.js",
+        "packages/core/tests/automatic/nested-discovery.test.js"
+      ],
+      "schemas": [],
+      "docs": [
+        "docs/automatic-qa.md",
+        "qa/reliability-coverage-matrix.json",
+        "qa/reliability-release-contracts.json"
+      ],
+      "coverage_class": "qualification_authority"
+    },
+    {
+      "id": "public-protocol-conformance",
+      "tests": [
+        "packages/core/tests/public-protocol-conformance.test.js",
+        "scripts/public_conformance_qa.mjs"
+      ],
+      "schemas": [
+        "packages/protocol/schemas/adapter-descriptor.schema.json",
+        "packages/protocol/schemas/revocation-record.schema.json"
+      ],
+      "docs": [
+        "packages/protocol/conformance/README.md",
+        "packages/protocol/conformance/manifest.json",
+        "packages/protocol/conformance/version-matrix.json"
+      ],
+      "coverage_class": "protocol_conformance"
+    },
+    {
+      "id": "public-api-stability",
+      "tests": [
+        "packages/core/tests/public-api-stability.test.js",
+        "scripts/public_api_stability_qa.mjs",
+        "scripts/check_packed_install.mjs"
+      ],
+      "schemas": [],
+      "docs": [
+        "docs/api-stability.md",
+        "docs/deprecation-policy.md",
+        "docs/public-api-compatibility.md",
+        "docs/release-readiness-v0.50.md",
+        "packages/protocol/stability/api-maturity.json",
+        "packages/protocol/stability/stable-api-snapshot.json",
+        "packages/protocol/stability/compatibility-matrix.json"
+      ],
+      "coverage_class": "public_api_stability"
+    },
+    {
+      "id": "quality-reliability-resilience",
+      "tests": [
+        "packages/core/tests/quality-reliability-resilience.test.js",
+        "packages/cli/tests/quality-reliability-resilience.test.js",
+        "scripts/quality_reliability_resilience_qa.mjs"
+      ],
+      "schemas": [],
+      "docs": [
+        "docs/quality-reliability-resilience.md"
+      ],
+      "coverage_class": "quality_reliability_resilience"
+    },
+    {
+      "id": "intent-context-compiler",
+      "tests": [
+        "packages/cli/tests/context-compiler.test.js",
+        "packages/cli/tests/context-compiler-cli.test.js",
+        "packages/protocol/tests/context-package-schema.test.js",
+        "scripts/check_context_compiler.mjs",
+        "scripts/benchmark_context_compiler.mjs"
+      ],
+      "schemas": [
+        "packages/protocol/schemas/context-package-v0.1.schema.json"
+      ],
+      "docs": [
+        "docs/context-compiler.md",
+        "qa/context-compiler-contract.json"
+      ],
+      "coverage_class": "intent_verified_development"
+    },
+    {
+      "id": "intent-model-independent-execution",
+      "tests": [
+        "packages/cli/tests/model-execution.test.js",
+        "packages/cli/tests/model-execution-cli.test.js",
+        "packages/protocol/tests/model-execution-schema.test.js",
+        "scripts/check_model_execution.mjs",
+        "scripts/benchmark_model_execution.mjs"
+      ],
+      "schemas": [
+        "packages/protocol/schemas/model-execution-v0.1.schema.json"
+      ],
+      "docs": [
+        "docs/model-independent-execution.md",
+        "qa/model-independent-execution-contract.json"
+      ],
+      "coverage_class": "intent_verified_development"
+    },
+    {
+      "id": "intent-ruleoak-verify",
+      "tests": [
+        "packages/cli/tests/verify-product.test.js",
+        "packages/cli/tests/verify-product-cli.test.js",
+        "packages/protocol/tests/verify-product-schema.test.js",
+        "scripts/check_verify_product.mjs",
+        "scripts/benchmark_verify_product.mjs"
+      ],
+      "schemas": [
+        "packages/protocol/schemas/verify-product-v0.1.schema.json"
+      ],
+      "docs": [
+        "docs/ruleoak-verify.md",
+        "qa/ruleoak-verify-contract.json"
+      ],
+      "coverage_class": "intent_verified_development"
+    },
+    {
+      "id": "intent-one-intent-autonomous-development",
+      "tests": [
+        "packages/cli/tests/autonomous-development.test.js",
+        "packages/cli/tests/autonomous-development-cli.test.js",
+        "packages/protocol/tests/autonomous-development-schema.test.js",
+        "scripts/check_autonomous_development.mjs",
+        "scripts/benchmark_autonomous_development.mjs"
+      ],
+      "schemas": [
+        "packages/protocol/schemas/autonomous-development-v0.1.schema.json"
+      ],
+      "docs": [
+        "docs/one-intent-development.md",
+        "qa/one-intent-development-contract.json"
+      ],
+      "coverage_class": "intent_verified_development"
+    },
+    {
+      "id": "intent-multi-frontend-development",
+      "tests": [
+        "packages/cli/tests/multi-frontend-development.test.js",
+        "packages/cli/tests/multi-frontend-development-cli.test.js",
+        "packages/cli/tests/multi-frontend-handoff.test.js",
+        "packages/protocol/tests/multi-frontend-development-schema.test.js",
+        "scripts/check_multi_frontend.mjs",
+        "scripts/benchmark_multi_frontend.mjs"
+      ],
+      "schemas": [
+        "packages/protocol/schemas/multi-frontend-development-v0.1.schema.json"
+      ],
+      "docs": [
+        "docs/multi-frontend-development.md",
+        "qa/multi-frontend-development-contract.json"
+      ],
+      "coverage_class": "intent_verified_development"
+    },
+    {
+      "id": "intent-candidate-acceptance-review",
+      "tests": [
+        "packages/cli/tests/candidate-review.test.js",
+        "packages/cli/tests/dev-frontdoor-cli.test.js",
+        "scripts/check_candidate_acceptance.mjs"
+      ],
+      "schemas": [],
+      "docs": [
+        "docs/candidate-acceptance-review.md",
+        "qa/candidate-acceptance-review-contract.json"
+      ],
+      "coverage_class": "release_critical"
+    }
+  ],
+  "required_public_symbols": {
+    "packages/protocol/src/index.d.ts": [
+      "CapabilityIdentity",
+      "CapabilityEvidence",
+      "CapabilityObservation",
+      "AuthorityGraph",
+      "ApprovalRequest",
+      "ApprovalResult",
+      "EvidenceGraph",
+      "EvidenceBundleManifest",
+      "CrashLabScenarioV2",
+      "CRASHLAB_FAILURE_CLASSES",
+      "validateCrashLabScenario",
+      "CrashLabScenarioV21",
+      "RELIABILITY_SCORECARD_VERSIONS",
+      "RELIABILITY_SCORECARD_DIMENSIONS",
+      "ReliabilityScorecardDimensionId",
+      "RELIABILITY_SCORECARD_INVARIANT_DIMENSIONS",
+      "ADAPTER_CONTRACT_VERSIONS",
+      "AdapterDescriptor",
+      "validateAdapterDescriptor",
+      "REVOCATION_RECORD_VERSIONS",
+      "RevocationRecord",
+      "validateRevocationRecord",
+      "canonicalProtocolJson"
+    ],
+    "packages/core/src/index.d.ts": [
+      "buildAuthorityGraph",
+      "buildEvidenceGraph",
+      "EvidenceSinkRegistry",
+      "runCrashScenario",
+      "CRASHLAB_SYNTHETIC_SUPPORTED_FAILURE_CLASSES",
+      "RELIABILITY_SCORECARD_VERSION",
+      "RELIABILITY_SCORECARD_DIMENSIONS",
+      "buildReliabilityScorecard",
+      "serializeReliabilityScorecardJUnit",
+      "serializeReliabilityScorecardSarif",
+      "reliabilityScorecardExitCode",
+      "stableStringify",
+      "canonicalStringify",
+      "RuleOakExtensionRegistry",
+      "validateRuleOakExtension"
+    ]
+  },
+  "allowed_unreachable_modules": [
+    "packages/core/src/runtime/node-preload.js"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "contract_version": "1.0",
+  "product_name": "RuleOak Dev",
+  "tagline": "AI writes. RuleOak verifies.",
+  "canonical_repository": "ruleoak/ruleoak",
+  "front_door": {
+    "command": "ruleoak dev",
+    "demo": "ruleoak dev demo",
+    "default_implementation": "external",
+    "default_frontend": "chat",
+    "duplicate_ruleoak_coding_model_calls": 0,
+    "build_inbox_env": "RULEOAK_BUILD_INBOX"
+  },
+  "authority": {
+    "scope": "Intent-Driven Change",
+    "semantic_diff": "Semantic Diff",
+    "evidence": "Intent Evidence Authority",
+    "context": "Context Compiler",
+    "learning": "Development Learning",
+    "frontend": "Multi-Frontend Development"
+  },
+  "truth_boundaries": {
+    "handoff_is_build_evidence": false,
+    "external_model_quality_claimed": false,
+    "external_adoption_proven_by_source": false,
+    "implicit_learning_promotion_allowed": false
+  }
+}

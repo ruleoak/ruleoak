@@ -1,0 +1,9 @@
+{
+  "call_id": "call_delete_protected",
+  "timestamp": "2026-01-01T00:00:00.000Z",
+  "actor": { "type": "agent", "name": "example-agent", "session_id": "sess_example" },
+  "tool": { "name": "filesystem.delete", "category": "file", "operation": "delete" },
+  "target": { "resource": "~/Documents/Private/tax.pdf", "scope": "local-user-files", "sensitivity": "private" },
+  "arguments": { "path": "~/Documents/Private/tax.pdf", "recursive": false },
+  "context": { "user_intent": "Agent wants to delete a protected file", "app": "ruleoak-example" }
+}

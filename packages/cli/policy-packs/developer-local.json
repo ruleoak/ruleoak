@@ -1,0 +1,27 @@
+{
+  "policyVersion": 2,
+  "defaultAction": "needs_approval",
+  "rules": [
+    {
+      "id": "deny-payment-and-delete",
+      "effect": "deny",
+      "priority": 100,
+      "actions": ["payment.*", "mcp.payment.*", "filesystem.delete", "mcp.filesystem.delete"]
+    },
+    {
+      "id": "allow-local-low-risk-reads",
+      "effect": "allow",
+      "priority": 30,
+      "actions": ["filesystem.read", "mcp.filesystem.read", "workspace.read"],
+      "riskAtMost": "low",
+      "conditions": { "dataFlows": ["local"], "sideEffects": ["read_only"] }
+    },
+    {
+      "id": "review-local-mutations",
+      "effect": "needs_approval",
+      "priority": 20,
+      "actions": ["filesystem.write", "shell.run", "email.send", "mcp.*"],
+      "conditions": { "sideEffects": ["mutating", "destructive"] }
+    }
+  ]
+}

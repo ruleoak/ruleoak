@@ -1,0 +1,612 @@
+{
+  "benchmark_version": "semantic-impact-1.0",
+  "labeling": "manually established expected affected capability sets",
+  "cases": [
+    {
+      "id": "semantic-impact-01",
+      "request": "prevent blind retry for uncertain external effects",
+      "expected_affected_capabilities": [
+        "cap.effect-boundary",
+        "cap.mcp-boundary"
+      ]
+    },
+    {
+      "id": "semantic-impact-02",
+      "request": "tighten effect authorization before execution",
+      "expected_affected_capabilities": [
+        "cap.effect-boundary",
+        "cap.mcp-boundary"
+      ]
+    },
+    {
+      "id": "semantic-impact-03",
+      "request": "change execution lease handling after an uncertain effect",
+      "expected_affected_capabilities": [
+        "cap.effect-boundary",
+        "cap.mcp-boundary"
+      ]
+    },
+    {
+      "id": "semantic-impact-04",
+      "request": "verify side effects before retrying them",
+      "expected_affected_capabilities": [
+        "cap.effect-boundary",
+        "cap.mcp-boundary"
+      ]
+    },
+    {
+      "id": "semantic-impact-05",
+      "request": "harden effect receipt verification",
+      "expected_affected_capabilities": [
+        "cap.effect-boundary",
+        "cap.mcp-boundary"
+      ]
+    },
+    {
+      "id": "semantic-impact-06",
+      "request": "reduce policy authorization latency while preserving behavior",
+      "expected_affected_capabilities": [
+        "cap.effect-boundary",
+        "cap.mcp-boundary"
+      ]
+    },
+    {
+      "id": "semantic-impact-07",
+      "request": "change one-use execution lease replay semantics",
+      "expected_affected_capabilities": [
+        "cap.effect-boundary",
+        "cap.mcp-boundary"
+      ]
+    },
+    {
+      "id": "semantic-impact-08",
+      "request": "require authorization for consequential effects",
+      "expected_affected_capabilities": [
+        "cap.effect-boundary",
+        "cap.mcp-boundary"
+      ]
+    },
+    {
+      "id": "semantic-impact-09",
+      "request": "adjust effect retry disposition after timeout",
+      "expected_affected_capabilities": [
+        "cap.effect-boundary",
+        "cap.mcp-boundary"
+      ]
+    },
+    {
+      "id": "semantic-impact-10",
+      "request": "strengthen external effect verification",
+      "expected_affected_capabilities": [
+        "cap.effect-boundary",
+        "cap.mcp-boundary"
+      ]
+    },
+    {
+      "id": "semantic-impact-11",
+      "request": "make evidence claims require independent proof",
+      "expected_affected_capabilities": [
+        "cap.evidence-authority",
+        "cap.ruleoak-verify"
+      ]
+    },
+    {
+      "id": "semantic-impact-12",
+      "request": "change evidence recording and audit behavior",
+      "expected_affected_capabilities": [
+        "cap.evidence-authority"
+      ]
+    },
+    {
+      "id": "semantic-impact-13",
+      "request": "harden observation evidence persistence",
+      "expected_affected_capabilities": [
+        "cap.evidence-authority"
+      ]
+    },
+    {
+      "id": "semantic-impact-14",
+      "request": "prevent agent assertion from counting as proof",
+      "expected_affected_capabilities": [
+        "cap.evidence-authority",
+        "cap.ruleoak-verify"
+      ]
+    },
+    {
+      "id": "semantic-impact-15",
+      "request": "improve evidence append latency",
+      "expected_affected_capabilities": [
+        "cap.evidence-authority"
+      ]
+    },
+    {
+      "id": "semantic-impact-16",
+      "request": "change receipt evidence recording",
+      "expected_affected_capabilities": [
+        "cap.evidence-authority"
+      ]
+    },
+    {
+      "id": "semantic-impact-17",
+      "request": "require audit evidence for execution claims",
+      "expected_affected_capabilities": [
+        "cap.evidence-authority"
+      ]
+    },
+    {
+      "id": "semantic-impact-18",
+      "request": "strengthen independent evidence verification",
+      "expected_affected_capabilities": [
+        "cap.evidence-authority",
+        "cap.ruleoak-verify"
+      ]
+    },
+    {
+      "id": "semantic-impact-19",
+      "request": "change claim proof requirements",
+      "expected_affected_capabilities": [
+        "cap.evidence-authority"
+      ]
+    },
+    {
+      "id": "semantic-impact-20",
+      "request": "improve evidence observation handling",
+      "expected_affected_capabilities": [
+        "cap.evidence-authority"
+      ]
+    },
+    {
+      "id": "semantic-impact-21",
+      "request": "change MCP gateway authorization",
+      "expected_affected_capabilities": [
+        "cap.mcp-boundary"
+      ]
+    },
+    {
+      "id": "semantic-impact-22",
+      "request": "harden MCP stdio protocol handling",
+      "expected_affected_capabilities": [
+        "cap.mcp-boundary"
+      ]
+    },
+    {
+      "id": "semantic-impact-23",
+      "request": "modify MCP HTTP gateway behavior",
+      "expected_affected_capabilities": [
+        "cap.mcp-boundary"
+      ]
+    },
+    {
+      "id": "semantic-impact-24",
+      "request": "change protected MCP tool execution",
+      "expected_affected_capabilities": [
+        "cap.mcp-boundary"
+      ]
+    },
+    {
+      "id": "semantic-impact-25",
+      "request": "tighten MCP boundary checks",
+      "expected_affected_capabilities": [
+        "cap.mcp-boundary"
+      ]
+    },
+    {
+      "id": "semantic-impact-26",
+      "request": "improve MCP protocol gateway latency",
+      "expected_affected_capabilities": [
+        "cap.mcp-boundary"
+      ]
+    },
+    {
+      "id": "semantic-impact-27",
+      "request": "change stdio MCP effect profile handling",
+      "expected_affected_capabilities": [
+        "cap.mcp-boundary"
+      ]
+    },
+    {
+      "id": "semantic-impact-28",
+      "request": "prevent unguarded MCP execution",
+      "expected_affected_capabilities": [
+        "cap.mcp-boundary"
+      ]
+    },
+    {
+      "id": "semantic-impact-29",
+      "request": "modify MCP HTTP transport boundary",
+      "expected_affected_capabilities": [
+        "cap.mcp-boundary"
+      ]
+    },
+    {
+      "id": "semantic-impact-30",
+      "request": "harden MCP gateway tool routing",
+      "expected_affected_capabilities": [
+        "cap.mcp-boundary"
+      ]
+    },
+    {
+      "id": "semantic-impact-31",
+      "request": "improve brownfield repository understanding",
+      "expected_affected_capabilities": [
+        "cap.context-compiler",
+        "cap.intent-driven-change",
+        "cap.intent-recompilation",
+        "cap.model-independent-execution",
+        "cap.repository-understanding",
+        "cap.ruleoak-verify",
+        "cap.semantic-diff",
+        "cap.semantic-impact"
+      ],
+      "expected": [
+        "cap.context-compiler"
+      ]
+    },
+    {
+      "id": "semantic-impact-32",
+      "request": "change repository provenance graph generation",
+      "expected_affected_capabilities": [
+        "cap.context-compiler",
+        "cap.intent-driven-change",
+        "cap.intent-recompilation",
+        "cap.model-independent-execution",
+        "cap.repository-understanding",
+        "cap.ruleoak-verify",
+        "cap.semantic-diff",
+        "cap.semantic-impact"
+      ],
+      "expected": [
+        "cap.context-compiler"
+      ]
+    },
+    {
+      "id": "semantic-impact-33",
+      "request": "harden codebase dependency observation",
+      "expected_affected_capabilities": [
+        "cap.context-compiler",
+        "cap.intent-driven-change",
+        "cap.intent-recompilation",
+        "cap.model-independent-execution",
+        "cap.repository-understanding",
+        "cap.ruleoak-verify",
+        "cap.semantic-diff",
+        "cap.semantic-impact"
+      ],
+      "expected": [
+        "cap.context-compiler"
+      ]
+    },
+    {
+      "id": "semantic-impact-34",
+      "request": "reduce false positive repository relationships",
+      "expected_affected_capabilities": [
+        "cap.context-compiler",
+        "cap.intent-driven-change",
+        "cap.intent-recompilation",
+        "cap.model-independent-execution",
+        "cap.repository-understanding",
+        "cap.ruleoak-verify",
+        "cap.semantic-diff",
+        "cap.semantic-impact"
+      ],
+      "expected": [
+        "cap.context-compiler"
+      ]
+    },
+    {
+      "id": "semantic-impact-35",
+      "request": "change brownfield graph provenance handling",
+      "expected_affected_capabilities": [
+        "cap.context-compiler",
+        "cap.intent-driven-change",
+        "cap.intent-recompilation",
+        "cap.model-independent-execution",
+        "cap.repository-understanding",
+        "cap.ruleoak-verify",
+        "cap.semantic-diff",
+        "cap.semantic-impact"
+      ],
+      "expected": [
+        "cap.context-compiler"
+      ]
+    },
+    {
+      "id": "semantic-impact-36",
+      "request": "raise repository scan limit to 25000 files",
+      "expected_affected_capabilities": [
+        "cap.context-compiler",
+        "cap.intent-driven-change",
+        "cap.intent-recompilation",
+        "cap.model-independent-execution",
+        "cap.repository-understanding",
+        "cap.ruleoak-verify",
+        "cap.semantic-diff",
+        "cap.semantic-impact"
+      ],
+      "expected": [
+        "cap.context-compiler"
+      ]
+    },
+    {
+      "id": "semantic-impact-37",
+      "request": "improve repository codebase understanding",
+      "expected_affected_capabilities": [
+        "cap.context-compiler",
+        "cap.intent-driven-change",
+        "cap.intent-recompilation",
+        "cap.model-independent-execution",
+        "cap.repository-understanding",
+        "cap.ruleoak-verify",
+        "cap.semantic-diff",
+        "cap.semantic-impact"
+      ],
+      "expected": [
+        "cap.context-compiler"
+      ]
+    },
+    {
+      "id": "semantic-impact-38",
+      "request": "change provenance handling for repository imports",
+      "expected_affected_capabilities": [
+        "cap.context-compiler",
+        "cap.intent-driven-change",
+        "cap.intent-recompilation",
+        "cap.model-independent-execution",
+        "cap.oakspec-interoperability",
+        "cap.repository-understanding",
+        "cap.ruleoak-verify",
+        "cap.semantic-diff",
+        "cap.semantic-impact"
+      ],
+      "expected": [
+        "cap.context-compiler"
+      ]
+    },
+    {
+      "id": "semantic-impact-39",
+      "request": "improve semantic impact classification",
+      "expected_affected_capabilities": [
+        "cap.context-compiler",
+        "cap.intent-driven-change",
+        "cap.intent-recompilation",
+        "cap.model-independent-execution",
+        "cap.semantic-impact"
+      ],
+      "expected": [
+        "cap.context-compiler"
+      ]
+    },
+    {
+      "id": "semantic-impact-40",
+      "request": "change blast radius analysis",
+      "expected_affected_capabilities": [
+        "cap.context-compiler",
+        "cap.intent-driven-change",
+        "cap.intent-recompilation",
+        "cap.model-independent-execution",
+        "cap.semantic-impact"
+      ],
+      "expected": [
+        "cap.context-compiler"
+      ]
+    },
+    {
+      "id": "semantic-impact-41",
+      "request": "harden impact dependency traversal",
+      "expected_affected_capabilities": [
+        "cap.context-compiler",
+        "cap.intent-driven-change",
+        "cap.intent-recompilation",
+        "cap.model-independent-execution",
+        "cap.semantic-impact"
+      ],
+      "expected": [
+        "cap.context-compiler"
+      ]
+    },
+    {
+      "id": "semantic-impact-42",
+      "request": "improve semantic conflict detection",
+      "expected_affected_capabilities": [
+        "cap.context-compiler",
+        "cap.intent-driven-change",
+        "cap.intent-recompilation",
+        "cap.model-independent-execution",
+        "cap.semantic-impact"
+      ],
+      "expected": [
+        "cap.context-compiler"
+      ]
+    },
+    {
+      "id": "semantic-impact-43",
+      "request": "change impact uncertainty propagation",
+      "expected_affected_capabilities": [
+        "cap.context-compiler",
+        "cap.intent-driven-change",
+        "cap.intent-recompilation",
+        "cap.model-independent-execution",
+        "cap.semantic-impact"
+      ],
+      "expected": [
+        "cap.context-compiler"
+      ]
+    },
+    {
+      "id": "semantic-impact-44",
+      "request": "improve dependency impact reporting",
+      "expected_affected_capabilities": [
+        "cap.context-compiler",
+        "cap.intent-driven-change",
+        "cap.intent-recompilation",
+        "cap.model-independent-execution",
+        "cap.semantic-impact"
+      ],
+      "expected": [
+        "cap.context-compiler"
+      ]
+    },
+    {
+      "id": "semantic-impact-45",
+      "request": "change semantic impact risk analysis",
+      "expected_affected_capabilities": [
+        "cap.context-compiler",
+        "cap.intent-driven-change",
+        "cap.intent-recompilation",
+        "cap.model-independent-execution",
+        "cap.semantic-impact"
+      ],
+      "expected": [
+        "cap.context-compiler"
+      ]
+    },
+    {
+      "id": "semantic-impact-46",
+      "request": "change effect verification and evidence proof together",
+      "expected_affected_capabilities": [
+        "cap.effect-boundary",
+        "cap.evidence-authority",
+        "cap.mcp-boundary",
+        "cap.ruleoak-verify"
+      ]
+    },
+    {
+      "id": "semantic-impact-47",
+      "request": "harden MCP gateway and evidence audit behavior",
+      "expected_affected_capabilities": [
+        "cap.evidence-authority",
+        "cap.mcp-boundary"
+      ]
+    },
+    {
+      "id": "semantic-impact-48",
+      "request": "change repository understanding and evidence claims",
+      "expected_affected_capabilities": [
+        "cap.context-compiler",
+        "cap.evidence-authority",
+        "cap.intent-driven-change",
+        "cap.intent-recompilation",
+        "cap.model-independent-execution",
+        "cap.repository-understanding",
+        "cap.ruleoak-verify",
+        "cap.semantic-diff",
+        "cap.semantic-impact"
+      ],
+      "expected": [
+        "cap.context-compiler"
+      ]
+    },
+    {
+      "id": "semantic-impact-49",
+      "request": "change effect authorization and brownfield repository analysis",
+      "expected_affected_capabilities": [
+        "cap.context-compiler",
+        "cap.effect-boundary",
+        "cap.intent-driven-change",
+        "cap.intent-recompilation",
+        "cap.mcp-boundary",
+        "cap.model-independent-execution",
+        "cap.repository-understanding",
+        "cap.ruleoak-verify",
+        "cap.semantic-diff",
+        "cap.semantic-impact"
+      ],
+      "expected": [
+        "cap.context-compiler"
+      ]
+    },
+    {
+      "id": "semantic-impact-50",
+      "request": "change MCP tool routing and semantic impact uncertainty",
+      "expected_affected_capabilities": [
+        "cap.context-compiler",
+        "cap.intent-driven-change",
+        "cap.intent-recompilation",
+        "cap.mcp-boundary",
+        "cap.model-independent-execution",
+        "cap.semantic-impact"
+      ],
+      "expected": [
+        "cap.context-compiler"
+      ]
+    },
+    {
+      "id": "semantic-impact-51",
+      "request": "raise MCP HTTP latency budget to 500 ms",
+      "expected_affected_capabilities": [
+        "cap.mcp-boundary"
+      ]
+    },
+    {
+      "id": "semantic-impact-52",
+      "request": "allow blind retry without effect verification",
+      "expected_affected_capabilities": [
+        "cap.effect-boundary",
+        "cap.mcp-boundary"
+      ]
+    },
+    {
+      "id": "semantic-impact-53",
+      "request": "let agent assertions satisfy evidence claims",
+      "expected_affected_capabilities": [
+        "cap.context-compiler",
+        "cap.evidence-authority",
+        "cap.intent-driven-change",
+        "cap.intent-evidence-authority",
+        "cap.intent-recompilation",
+        "cap.model-independent-execution",
+        "cap.ruleoak-verify",
+        "cap.semantic-diff"
+      ],
+      "expected": [
+        "cap.context-compiler"
+      ]
+    },
+    {
+      "id": "semantic-impact-54",
+      "request": "bypass the MCP gateway for tool execution",
+      "expected_affected_capabilities": [
+        "cap.mcp-boundary"
+      ]
+    },
+    {
+      "id": "semantic-impact-55",
+      "request": "change semantic impact benchmark precision",
+      "expected_affected_capabilities": [
+        "cap.context-compiler",
+        "cap.intent-driven-change",
+        "cap.intent-recompilation",
+        "cap.model-independent-execution",
+        "cap.semantic-impact"
+      ],
+      "expected": [
+        "cap.context-compiler"
+      ]
+    },
+    {
+      "id": "semantic-impact-56",
+      "request": "update README typography",
+      "expected_affected_capabilities": []
+    },
+    {
+      "id": "semantic-impact-57",
+      "request": "change login screen color",
+      "expected_affected_capabilities": []
+    },
+    {
+      "id": "semantic-impact-58",
+      "request": "optimize image cache eviction",
+      "expected_affected_capabilities": []
+    },
+    {
+      "id": "semantic-impact-59",
+      "request": "add billing reminder email",
+      "expected_affected_capabilities": []
+    },
+    {
+      "id": "semantic-impact-60",
+      "request": "rename the customer dashboard",
+      "expected_affected_capabilities": []
+    }
+  ]
+}

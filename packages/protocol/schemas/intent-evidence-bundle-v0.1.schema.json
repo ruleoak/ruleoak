@@ -1,0 +1,261 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/intent-evidence-bundle-v0.1.schema.json",
+  "title": "RuleOak Intent Evidence Bundle v0.1",
+  "description": "Experimental evidence/observation bundle for Intent-Verified Development. Agent/model assertions may be represented but are not independent proof.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "evidence_authority_version",
+    "bundle_id",
+    "intent_manifest_id",
+    "observations",
+    "evidence"
+  ],
+  "properties": {
+    "evidence_authority_version": {
+      "const": "0.1"
+    },
+    "bundle_id": {
+      "$ref": "#/$defs/id"
+    },
+    "intent_manifest_id": {
+      "$ref": "#/$defs/id"
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/observation"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "ids": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/id"
+      },
+      "uniqueItems": true
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "UNKNOWN",
+        "NOT_RUN",
+        "STALE",
+        "CONFLICTED"
+      ]
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "producer_kind",
+        "producer_id",
+        "verification_method"
+      ],
+      "properties": {
+        "producer_kind": {
+          "enum": [
+            "tool",
+            "test_runner",
+            "ci",
+            "runtime",
+            "device",
+            "external_system",
+            "human",
+            "model",
+            "agent",
+            "unknown"
+          ]
+        },
+        "producer_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verification_method": {
+          "enum": [
+            "deterministic_check",
+            "test_execution",
+            "static_analysis",
+            "runtime_observation",
+            "device_observation",
+            "external_observation",
+            "manual_review",
+            "signed_attestation",
+            "model_inference",
+            "self_assertion",
+            "unknown"
+          ]
+        },
+        "source": {
+          "type": "string"
+        }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "media_type": {
+          "type": "string"
+        }
+      }
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "status",
+        "statement",
+        "provenance"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "valid_from": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "valid_until": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "artifact": {
+          "$ref": "#/$defs/artifact"
+        },
+        "supersedes_ids": {
+          "$ref": "#/$defs/ids"
+        },
+        "attestation": {
+          "$ref": "#/$defs/attestation"
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "evidence_class",
+        "statement",
+        "observation_ids"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "evidence_class": {
+          "enum": [
+            "STATIC",
+            "UNIT",
+            "INTEGRATION",
+            "PROPERTY",
+            "BUILD",
+            "RUNTIME",
+            "DEVICE",
+            "EXTERNAL",
+            "MANUAL",
+            "MODEL_INFERENCE"
+          ]
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "aggregation": {
+          "enum": [
+            "all",
+            "any"
+          ]
+        },
+        "observation_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "claim_ids": {
+          "$ref": "#/$defs/ids"
+        },
+        "evidence_requirement_ids": {
+          "$ref": "#/$defs/ids"
+        },
+        "capability_ids": {
+          "$ref": "#/$defs/ids"
+        }
+      }
+    },
+    "attestation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "algorithm",
+        "key_id",
+        "subject_digest",
+        "signature_base64"
+      ],
+      "properties": {
+        "format": {
+          "const": "ruleoak-signed-digest-v1"
+        },
+        "algorithm": {
+          "const": "ed25519"
+        },
+        "key_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subject_digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "signature_base64": {
+          "type": "string",
+          "minLength": 16
+        }
+      }
+    }
+  }
+}

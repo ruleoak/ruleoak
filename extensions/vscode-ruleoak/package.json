@@ -1,0 +1,72 @@
+{
+  "name": "ruleoak-inspector",
+  "displayName": "RuleOak Inspector",
+  "description": "Inspect AI-agent and MCP capability surfaces locally before granting authority.",
+  "version": "0.50.0",
+  "publisher": "ruleoak",
+  "license": "Apache-2.0",
+  "homepage": "https://ruleoak.com/developers.html",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ruleoak/ruleoak.git",
+    "directory": "extensions/vscode-ruleoak"
+  },
+  "bugs": {
+    "url": "https://github.com/ruleoak/ruleoak/issues"
+  },
+  "engines": {
+    "vscode": ">=1.100.0"
+  },
+  "categories": [
+    "Other",
+    "Testing"
+  ],
+  "keywords": [
+    "MCP",
+    "AI agents",
+    "agent security",
+    "authorization",
+    "capability inspection",
+    "RuleOak"
+  ],
+  "main": "./extension.cjs",
+  "activationEvents": [
+    "onCommand:ruleoak.inspectWorkspace",
+    "onCommand:ruleoak.inspectFile",
+    "onCommand:ruleoak.doctor",
+    "onCommand:ruleoak.openFlightControl"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "ruleoak.inspectWorkspace",
+        "title": "RuleOak: Inspect Workspace Capability Files"
+      },
+      {
+        "command": "ruleoak.inspectFile",
+        "title": "RuleOak: Inspect Capability Manifest"
+      },
+      {
+        "command": "ruleoak.doctor",
+        "title": "RuleOak: Run Doctor"
+      },
+      {
+        "command": "ruleoak.openFlightControl",
+        "title": "RuleOak: Open Flight Control"
+      }
+    ],
+    "configuration": {
+      "title": "RuleOak",
+      "properties": {
+        "ruleoak.cliPath": {
+          "type": "string",
+          "default": "ruleoak",
+          "description": "Path to the local RuleOak CLI executable. RuleOak Inspector never downloads or installs a CLI automatically."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "test": "node test/model.test.cjs && node test/source-contract.test.cjs"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "contract_version": "1.0",
+  "capability_id": "cap.one-intent-autonomous-development",
+  "graduation": {
+    "cases_min": 60,
+    "expected_status_rate_min": 1.0,
+    "zero_human_intermediate_rate_min": 1.0,
+    "manual_ruleoak_subcommands_max": 0,
+    "manual_file_targets_max": 0,
+    "manual_context_construction_max": 0,
+    "manual_build_invocations_max": 0,
+    "manual_evidence_bundles_max": 0,
+    "human_interventions_max": 0,
+    "repair_success_required": "10/10",
+    "missing_device_truth_required": "10/10",
+    "hosted_end_to_end": "NOT_RUN_ALLOWED_WITH_REASON"
+  },
+  "name": "One-Intent Development"
+}

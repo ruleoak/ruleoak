@@ -1,0 +1,62 @@
+{
+  "vector_version": "1.0",
+  "contract_id": "approval_result",
+  "contract_versions": [
+    "1.0"
+  ],
+  "cases": [
+    {
+      "case_id": "approval_result.valid",
+      "expectation": "valid",
+      "input": {
+        "approval_result_version": "1.0",
+        "approval_result_id": "apprr_1",
+        "approval_id": "appr_1",
+        "request_decision_id": "dec_pending",
+        "request_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "result_digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "action_digest": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "policy_digest": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "principal_id": "agent:parent",
+        "provider_id": "provider:test",
+        "approver": {
+          "type": "user",
+          "id": "user:reviewer"
+        },
+        "decision": "allow",
+        "decided_at": "2026-08-28T00:10:00.000Z",
+        "not_before": "2026-08-28T00:10:00.000Z",
+        "expires_at": "2026-08-28T00:20:00.000Z",
+        "one_time": true,
+        "result_nonce": "nonce"
+      },
+      "canonical_json": "{\"action_digest\":\"sha256:3333333333333333333333333333333333333333333333333333333333333333\",\"approval_id\":\"appr_1\",\"approval_result_id\":\"apprr_1\",\"approval_result_version\":\"1.0\",\"approver\":{\"id\":\"user:reviewer\",\"type\":\"user\"},\"decided_at\":\"2026-08-28T00:10:00.000Z\",\"decision\":\"allow\",\"expires_at\":\"2026-08-28T00:20:00.000Z\",\"not_before\":\"2026-08-28T00:10:00.000Z\",\"one_time\":true,\"policy_digest\":\"sha256:4444444444444444444444444444444444444444444444444444444444444444\",\"principal_id\":\"agent:parent\",\"provider_id\":\"provider:test\",\"request_decision_id\":\"dec_pending\",\"request_digest\":\"sha256:1111111111111111111111111111111111111111111111111111111111111111\",\"result_digest\":\"sha256:2222222222222222222222222222222222222222222222222222222222222222\",\"result_nonce\":\"nonce\"}"
+    },
+    {
+      "case_id": "approval_result.invalid",
+      "expectation": "invalid",
+      "input": {
+        "approval_result_version": "1.0",
+        "approval_result_id": "apprr_1",
+        "approval_id": "appr_1",
+        "request_decision_id": "dec_pending",
+        "request_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "result_digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "action_digest": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "policy_digest": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "principal_id": "agent:parent",
+        "provider_id": "provider:test",
+        "approver": {
+          "type": "user",
+          "id": "user:reviewer"
+        },
+        "decision": "allow_once",
+        "decided_at": "2026-08-28T00:10:00.000Z",
+        "not_before": "2026-08-28T00:10:00.000Z",
+        "expires_at": "2026-08-28T00:20:00.000Z",
+        "one_time": true,
+        "result_nonce": "nonce"
+      }
+    }
+  ]
+}

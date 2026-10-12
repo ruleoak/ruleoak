@@ -1,0 +1,54 @@
+{
+  "header": {
+    "schema-version": "2.2.0",
+    "last-updated": "2026-09-05",
+    "last-reviewed": "2026-09-05",
+    "url": "https://raw.githubusercontent.com/ruleoak/ruleoak/main/security-insights.yml",
+    "comment": "RuleOak security metadata. Live-hosted controls and attestations remain externally verifiable."
+  },
+  "project": {
+    "name": "RuleOak",
+    "administrators": [{"name":"RuleOak Maintainers","primary":true,"affiliation":"RuleOak"}],
+    "repositories": [{"name":"ruleoak","comment":"Authoritative RuleOak Effect Boundary source repository.","url":"https://github.com/ruleoak/ruleoak"}],
+    "vulnerability-reporting": {
+      "bug-bounty-available": false,
+      "reports-accepted": true,
+      "policy": "https://github.com/ruleoak/ruleoak/blob/main/SECURITY.md",
+      "contact": {"name":"RuleOak Security","primary":true,"affiliation":"RuleOak"},
+      "in-scope": ["RuleOak source and release artifacts", "Effect Boundary authority, verification and evidence paths"],
+      "out-of-scope": ["Third-party MCP servers and tools not maintained by RuleOak", "Claims about actions that bypass a RuleOak-controlled boundary"]
+    },
+    "homepage": "https://ruleoak.com",
+    "documentation": {
+      "code-of-conduct": "https://github.com/ruleoak/ruleoak/blob/main/CODE_OF_CONDUCT.md",
+      "quickstart-guide": "https://github.com/ruleoak/ruleoak/blob/main/docs/quickstart.md",
+      "release-process": "https://github.com/ruleoak/ruleoak/blob/main/docs/release-process.md",
+      "signature-verification": "https://github.com/ruleoak/ruleoak/blob/main/docs/release-verification.md",
+      "support-policy": "https://github.com/ruleoak/ruleoak/blob/main/SUPPORT.md"
+    }
+  },
+  "repository": {
+    "url": "https://github.com/ruleoak/ruleoak",
+    "status": "active",
+    "accepts-change-request": true,
+    "accepts-automated-change-request": true,
+    "core-team": [{"name":"RuleOak Maintainers","primary":true,"affiliation":"RuleOak"}],
+    "license": {"expression":"Apache-2.0","url":"https://github.com/ruleoak/ruleoak/blob/main/LICENSE"},
+    "documentation": {
+      "contributing-guide": "https://github.com/ruleoak/ruleoak/blob/main/CONTRIBUTING.md",
+      "dependency-management-policy": "https://github.com/ruleoak/ruleoak/blob/main/docs/dependency-management-policy.md",
+      "governance": "https://github.com/ruleoak/ruleoak/blob/main/GOVERNANCE.md",
+      "review-policy": "https://github.com/ruleoak/ruleoak/blob/main/CONTRIBUTING.md",
+      "security-policy": "https://github.com/ruleoak/ruleoak/blob/main/SECURITY.md"
+    },
+    "release": {
+      "automated-pipeline": true,
+      "distribution-points": [
+        {"comment":"GitHub releases","uri":"https://github.com/ruleoak/ruleoak/releases"},
+        {"comment":"npm packages","uri":"https://www.npmjs.com/org/ruleoak"}
+      ],
+      "changelog": "https://github.com/ruleoak/ruleoak/blob/main/CHANGELOG.md"
+    },
+    "security": {"assessments": {}}
+  }
+}

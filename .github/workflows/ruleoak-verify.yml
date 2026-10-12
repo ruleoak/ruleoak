@@ -1,0 +1,38 @@
+# SPDX-FileCopyrightText: 2026 RuleOak Pte. Ltd.
+# SPDX-License-Identifier: Apache-2.0
+name: RuleOak Verify
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: ruleoak-verify-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up Node.js
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+      - name: Run RuleOak Verify in Observe mode
+        env:
+          RULEOAK_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          RULEOAK_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          node packages/cli/bin/ruleoak.js verify --mode observe --base "${RULEOAK_BASE_SHA}" --candidate "${RULEOAK_HEAD_SHA}" --json --out ruleoak-verify-report.json
+          node --input-type=module <<'NODE'
+          import { readFileSync, appendFileSync } from 'node:fs'
+          const r=JSON.parse(readFileSync('ruleoak-verify-report.json','utf8'))
+          appendFileSync(process.env.GITHUB_STEP_SUMMARY,`## RuleOak Verify\n\n**Decision:** ${r.decision} (${r.summary.merge_recommendation})\n\nAffected capabilities: ${r.semantic.affected_capability_ids.length}\n\nFindings: ${r.findings.length}\n`)
+          NODE

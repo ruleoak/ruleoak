@@ -1,0 +1,449 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/approval-request-v1.json",
+  "title": "RuleOak ApprovalRequest v1",
+  "type": "object",
+  "required": [
+    "approval_request_version",
+    "approval_id",
+    "request_decision_id",
+    "request_digest",
+    "issuer",
+    "audience",
+    "provider_id",
+    "requested_at",
+    "not_before",
+    "expires_at",
+    "one_time",
+    "request_nonce",
+    "action_digest",
+    "policy_digest",
+    "principal_id"
+  ],
+  "properties": {
+    "approval_request_version": {
+      "const": "1.0"
+    },
+    "approval_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "request_decision_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "request_digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "issuer": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "audience": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "requested_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "not_before": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "one_time": {
+      "const": true
+    },
+    "request_nonce": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "action_digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "policy_digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "principal_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "risk": {
+      "enum": [
+        "safe",
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ]
+    },
+    "call_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 256
+    },
+    "session_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 256
+    },
+    "summary": {
+      "type": "string",
+      "maxLength": 512
+    },
+    "canonical_action": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 256
+    },
+    "canonical_resource": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 512
+    },
+    "decision_key": {
+      "type": "string",
+      "maxLength": 128
+    },
+    "decision_channel": {
+      "type": "string",
+      "maxLength": 128
+    },
+    "reason": {
+      "type": "string",
+      "maxLength": 512
+    },
+    "classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "risk",
+        "data_flow",
+        "side_effect",
+        "detected_secrets",
+        "detected_prompt_injection"
+      ],
+      "properties": {
+        "risk": {
+          "enum": [
+            "safe",
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ]
+        },
+        "data_flow": {
+          "enum": [
+            "local",
+            "external",
+            "unknown"
+          ]
+        },
+        "side_effect": {
+          "enum": [
+            "read_only",
+            "mutating",
+            "destructive",
+            "unknown"
+          ]
+        },
+        "detected_secrets": {
+          "type": "boolean"
+        },
+        "detected_prompt_injection": {
+          "type": "boolean"
+        }
+      }
+    },
+    "normalized_call": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "call_id",
+        "actor",
+        "tool",
+        "target"
+      ],
+      "properties": {
+        "call_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 256
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "actor": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "id",
+            "name",
+            "issuer",
+            "session_id"
+          ],
+          "properties": {
+            "type": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "agent",
+                    "user",
+                    "script",
+                    "service"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "id": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 256
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "name": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 256
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "issuer": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 256
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "session_id": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 256
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        },
+        "tool": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "category",
+            "operation"
+          ],
+          "properties": {
+            "name": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 256
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "category": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "file",
+                    "filesystem",
+                    "shell",
+                    "email",
+                    "web",
+                    "memory",
+                    "payment",
+                    "calendar",
+                    "custom"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "operation": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "read",
+                    "write",
+                    "delete",
+                    "send",
+                    "execute",
+                    "search",
+                    "create",
+                    "update",
+                    "run"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        },
+        "target": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "resource",
+            "scope",
+            "sensitivity"
+          ],
+          "properties": {
+            "resource": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 512
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "scope": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 128
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "sensitivity": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "public",
+                    "internal",
+                    "private",
+                    "secret",
+                    "unknown"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "target",
+        "metadata"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "target": {
+          "type": "string",
+          "maxLength": 512
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "canonical_action",
+            "canonical_resource"
+          ],
+          "properties": {
+            "canonical_action": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 256
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "canonical_resource": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 512
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "provider_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    }
+  },
+  "additionalProperties": false
+}

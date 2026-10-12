@@ -1,0 +1,30 @@
+{
+  "matrix_version": "1.0",
+  "ruleoak_release": "0.50.0",
+  "release_status": "developer_preview",
+  "node_engine": ">=22",
+  "package_line": {
+    "@ruleoak/protocol": "0.50.x",
+    "@ruleoak/core": "0.50.x",
+    "@ruleoak/cli": "0.50.x"
+  },
+  "protocol_conformance_version": "1.0",
+  "reliability_scorecard_versions": [
+    "1.0"
+  ],
+  "extension_spi_versions": [
+    "1.0"
+  ],
+  "crashlab_scenario_versions": [
+    "1.0",
+    "1.1",
+    "2.0",
+    "2.1"
+  ],
+  "compatibility_rules": [
+    "Stable protocol versions remain accepted for the lifetime promised by the deprecation policy.",
+    "Preview and experimental surfaces may evolve before 1.0, with explicit migration notes for breaking changes.",
+    "RuleOak package minor versions remain pre-1.0 developer-preview releases; maturity labels govern the stronger per-surface compatibility commitments."
+  ],
+  "one_point_zero_declared": false
+}

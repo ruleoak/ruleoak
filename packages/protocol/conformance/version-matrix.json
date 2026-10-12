@@ -1,0 +1,115 @@
+{
+  "matrix_version": "1.0",
+  "ruleoak_release": "0.50.0",
+  "contracts": [
+    {
+      "contract_id": "capability_identity_evidence",
+      "versions": [
+        "1.0"
+      ],
+      "public_validators": [
+        "validateCapabilityIdentity",
+        "validateCapabilityEvidence"
+      ]
+    },
+    {
+      "contract_id": "authority_grant",
+      "versions": [
+        "1.0",
+        "1.1"
+      ],
+      "public_validators": [
+        "validateAuthorityGrant"
+      ]
+    },
+    {
+      "contract_id": "authority_envelope",
+      "versions": [
+        "1.0"
+      ],
+      "public_validators": [
+        "validateAuthorityEnvelope"
+      ]
+    },
+    {
+      "contract_id": "delegation",
+      "versions": [
+        "authority-grant-1.1"
+      ],
+      "public_validators": [
+        "third-party semantic attenuation check"
+      ]
+    },
+    {
+      "contract_id": "revocation",
+      "versions": [
+        "1.0",
+        "1.1"
+      ],
+      "public_validators": [
+        "validateRevocationRecord"
+      ]
+    },
+    {
+      "contract_id": "approval_result",
+      "versions": [
+        "1.0"
+      ],
+      "public_validators": [
+        "validateApprovalResult"
+      ]
+    },
+    {
+      "contract_id": "execution_lease",
+      "versions": [
+        "1.0",
+        "1.1",
+        "1.2"
+      ],
+      "public_validators": [
+        "validateExecutionLease"
+      ]
+    },
+    {
+      "contract_id": "effect_receipt",
+      "versions": [
+        "1.0",
+        "1.1"
+      ],
+      "public_validators": [
+        "validateEffectReceipt"
+      ]
+    },
+    {
+      "contract_id": "evidence_bundle",
+      "versions": [
+        "3.0"
+      ],
+      "public_validators": [
+        "validateEvidenceBundleManifest"
+      ]
+    },
+    {
+      "contract_id": "adapter_descriptor",
+      "versions": [
+        "1.0",
+        "1.1"
+      ],
+      "public_validators": [
+        "validateAdapterDescriptor"
+      ]
+    },
+    {
+      "contract_id": "crashlab_scenario",
+      "versions": [
+        "1.0",
+        "1.1",
+        "2.0",
+        "2.1"
+      ],
+      "public_validators": [
+        "validateCrashLabScenario"
+      ]
+    }
+  ]
+}

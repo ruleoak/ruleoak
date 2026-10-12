@@ -1,0 +1,315 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/oakspec-v1.schema.json",
+  "title": "OakSpec 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "oakspec_version",
+    "document_id",
+    "product",
+    "source_contract",
+    "capabilities",
+    "invariants",
+    "evidence_requirements",
+    "semantic_change_contract",
+    "provenance_contract",
+    "interoperability_contract"
+  ],
+  "properties": {
+    "oakspec_version": {
+      "const": "1.0"
+    },
+    "document_id": {
+      "$ref": "#/$defs/id"
+    },
+    "product": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        }
+      }
+    },
+    "source_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "intent_format",
+        "intent_manifest_id",
+        "intent_digest_sha256",
+        "provenance"
+      ],
+      "properties": {
+        "intent_format": {
+          "type": "string",
+          "minLength": 1
+        },
+        "intent_manifest_id": {
+          "$ref": "#/$defs/id"
+        },
+        "intent_digest_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "provenance": {
+          "const": "DECLARED"
+        }
+      }
+    },
+    "capabilities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/capability"
+      }
+    },
+    "invariants": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/invariant"
+      }
+    },
+    "evidence_requirements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidenceRequirement"
+      }
+    },
+    "semantic_change_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "provenance_levels",
+        "unknown_is_first_class",
+        "behavioral_change_requires_declared_intent"
+      ],
+      "properties": {
+        "format": {
+          "const": "ruleoak.semantic-diff/0.1"
+        },
+        "provenance_levels": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "DETERMINISTIC",
+              "OBSERVED",
+              "INFERRED",
+              "UNKNOWN"
+            ]
+          }
+        },
+        "unknown_is_first_class": {
+          "const": true
+        },
+        "behavioral_change_requires_declared_intent": {
+          "const": true
+        }
+      }
+    },
+    "provenance_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "levels",
+        "inference_is_not_proof",
+        "unknown_must_not_be_promoted"
+      ],
+      "properties": {
+        "levels": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "DECLARED",
+              "OBSERVED",
+              "INFERRED",
+              "UNKNOWN"
+            ]
+          }
+        },
+        "inference_is_not_proof": {
+          "const": true
+        },
+        "unknown_must_not_be_promoted": {
+          "const": true
+        }
+      }
+    },
+    "interoperability_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "adapters",
+        "imports_are_candidates",
+        "promotion_requires_explicit_authority"
+      ],
+      "properties": {
+        "adapters": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "openapi",
+              "tests",
+              "ci",
+              "git",
+              "agents",
+              "docs",
+              "mcp"
+            ]
+          }
+        },
+        "imports_are_candidates": {
+          "const": true
+        },
+        "promotion_requires_explicit_authority": {
+          "const": true
+        }
+      }
+    },
+    "extensions": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[A-Za-z][A-Za-z0-9-]*(?:[.:][A-Za-z0-9-]+)+$"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "refs": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/id"
+      }
+    },
+    "capability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string"
+        },
+        "invariant_refs": {
+          "$ref": "#/$defs/refs"
+        },
+        "evidence_requirement_refs": {
+          "$ref": "#/$defs/refs"
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "goals": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "dependency_capability_refs": {
+          "$ref": "#/$defs/refs"
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "budgets": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "authorities": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "invariant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "statement",
+        "capability_refs"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "capability_refs": {
+          "$ref": "#/$defs/refs"
+        }
+      }
+    },
+    "evidenceRequirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "statement",
+        "evidence_classes",
+        "capability_refs"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_classes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "capability_refs": {
+          "$ref": "#/$defs/refs"
+        }
+      }
+    }
+  }
+}

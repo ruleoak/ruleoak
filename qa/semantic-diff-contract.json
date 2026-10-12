@@ -1,0 +1,13 @@
+{
+  "contract_version": "1.0",
+  "required_capability": "cap.semantic-diff",
+  "required_invariant": "inv.semantic-diff-provenance-truth",
+  "required_cli": "diff --semantic",
+  "required_protocol_entrypoint": "./semantic-diff",
+  "required_schema": "packages/protocol/schemas/semantic-diff-v0.1.schema.json",
+  "benchmark_cases_min": 60,
+  "benchmark_exact_rate_min": 1.0,
+  "declared_behavior_change_recall_min": 1.0,
+  "behavior_overclaim_rate_max": 0.0,
+  "name": "Semantic Diff"
+}

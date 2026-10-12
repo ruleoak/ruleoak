@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/capability-manifest.schema.json",
+  "title": "RuleOak Capability Manifest",
+  "type": "object",
+  "required": ["manifest_version", "identity", "tools", "summary", "fingerprint"],
+  "properties": {
+    "manifest_version": {"enum": ["1.0", "1.1", "1.2"]},
+    "identity": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "integration_id": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+        "identity_basis": {"enum": ["explicit", "package-identifier", "source-anchor", "name-transport"]}
+      },
+      "additionalProperties": true
+    },
+    "provenance": {"type": "object"},
+    "tools": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "state", "consequence", "schema_digest"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "state": {"enum": ["read_only", "state_changing", "unknown"]},
+          "consequence": {"enum": ["read_only", "high_consequence", "destructive", "unknown"]},
+          "schema_digest": {"type": "string", "pattern": "^sha256:"},
+          "capability_id": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+          "capability_identity": {"$ref": "capability-identity.schema.json"},
+          "evidence": {"$ref": "capability-evidence.schema.json"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "summary": {"type": "object"},
+    "fingerprint": {"type": "string", "pattern": "^sha256:"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"manifest_version": {"const": "1.2"}}},
+      "then": {
+        "properties": {
+          "identity": {"required": ["integration_id", "identity_basis"]},
+          "tools": {"items": {"required": ["capability_id", "capability_identity", "evidence"]}}
+        }
+      }
+    }
+  ],
+  "additionalProperties": true
+}

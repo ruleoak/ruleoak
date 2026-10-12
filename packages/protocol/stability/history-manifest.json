@@ -1,0 +1,10 @@
+{
+  "history_version": "1.0",
+  "snapshots": [
+    {
+      "ruleoak_release": "0.50.0",
+      "path": "history/0.50.0.json",
+      "sha256": "sha256:55df3195ec70050f02ec74523323684ae70e278df896be106f8b43737626b59b"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+name: Quickstart feedback
+description: Report whether the 60-second quickstart worked and where it was unclear
+title: "[Quickstart]: "
+labels: [quickstart, feedback]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for testing RuleOak. Use synthetic data only. Do not paste secrets, private evidence, customer data, or vulnerability details here.
+  - type: input
+    id: version
+    attributes:
+      label: RuleOak version
+      placeholder: 0.50.0
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Operating system, Node.js version, and npm version
+      placeholder: macOS 15, Node.js 24, npm 11
+    validations:
+      required: true
+  - type: dropdown
+    id: completed
+    attributes:
+      label: Did the quickstart complete?
+      options:
+        - Yes
+        - No
+        - Partly
+    validations:
+      required: true
+  - type: textarea
+    id: understanding
+    attributes:
+      label: What did you understand RuleOak to protect?
+      description: This helps assess whether the application-layer security boundary is clear.
+    validations:
+      required: true
+  - type: textarea
+    id: friction
+    attributes:
+      label: First confusing or failing step
+      description: Include sanitized output and the exact command when relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: next
+    attributes:
+      label: What would you try next?

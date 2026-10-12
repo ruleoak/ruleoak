@@ -1,0 +1,29 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://ruleoak.com/schemas/semantic-diff-v0.1.schema.json",
+  "title":"RuleOak Semantic Diff v0.1",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["semantic_diff_version","base","candidate","entity_changes","capability_changes","implementation_changes","guarantees","budgets","authorities","user_visible_behavior","failure_behavior","compatibility","evidence","risks","uncertainties","summary"],
+  "properties":{
+    "semantic_diff_version":{"const":"0.1"},
+    "base":{"$ref":"#/$defs/snapshot"},
+    "candidate":{"$ref":"#/$defs/snapshot"},
+    "entity_changes":{"type":"object"},
+    "capability_changes":{"type":"array"},
+    "implementation_changes":{"type":"array"},
+    "guarantees":{"type":"object"},
+    "budgets":{"type":"object"},
+    "authorities":{"type":"object"},
+    "user_visible_behavior":{"type":"object"},
+    "failure_behavior":{"type":"object"},
+    "compatibility":{"type":"object"},
+    "evidence":{"type":"object"},
+    "risks":{"type":"object"},
+    "uncertainties":{"type":"array"},
+    "summary":{"type":"object"}
+  },
+  "$defs":{
+    "snapshot":{"type":"object","required":["label","source_type","intent_manifest_id","intent_digest"],"properties":{"label":{"type":"string","minLength":1},"source_type":{"type":"string","minLength":1},"intent_manifest_id":{"type":["string","null"]},"intent_digest":{"type":"string"},"repository_root":{"type":["string","null"]}},"additionalProperties":true}
+  }
+}

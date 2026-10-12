@@ -1,0 +1,21 @@
+{
+  "policyVersion": 2,
+  "defaultAction": "deny",
+  "rules": [
+    {
+      "id": "allow-low-risk-read-only",
+      "effect": "allow",
+      "priority": 20,
+      "actions": ["filesystem.read", "mcp.filesystem.read", "workspace.read"],
+      "riskAtMost": "low",
+      "conditions": { "sideEffects": ["read_only"] }
+    },
+    {
+      "id": "deny-all-side-effects",
+      "effect": "deny",
+      "priority": 100,
+      "actions": ["*"],
+      "conditions": { "sideEffects": ["mutating", "destructive", "unknown"] }
+    }
+  ]
+}

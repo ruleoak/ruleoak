@@ -1,0 +1,42 @@
+{
+  "vector_version": "1.0",
+  "contract_id": "revocation",
+  "contract_versions": [
+    "1.1"
+  ],
+  "cases": [
+    {
+      "case_id": "revocation.valid",
+      "expectation": "valid",
+      "input": {
+        "revocation_version": "1.1",
+        "revocation_id": "revoke_1",
+        "sequence": 1,
+        "subject_type": "execution_lease",
+        "subject_id": "lease_1",
+        "revoked_at": "2026-08-28T00:12:00.000Z",
+        "reason": "operator revoked",
+        "cascade": false,
+        "parent_id": null,
+        "record_digest": "sha256:a7456f6f3a1226a48d54aa2a0ee37ae62d181a0461911c3026ae54a3e83075da"
+      },
+      "canonical_json": "{\"cascade\":false,\"parent_id\":null,\"reason\":\"operator revoked\",\"record_digest\":\"sha256:a7456f6f3a1226a48d54aa2a0ee37ae62d181a0461911c3026ae54a3e83075da\",\"revocation_id\":\"revoke_1\",\"revocation_version\":\"1.1\",\"revoked_at\":\"2026-08-28T00:12:00.000Z\",\"sequence\":1,\"subject_id\":\"lease_1\",\"subject_type\":\"execution_lease\"}"
+    },
+    {
+      "case_id": "revocation.invalid",
+      "expectation": "invalid",
+      "input": {
+        "revocation_version": "1.1",
+        "revocation_id": "revoke_1",
+        "sequence": 1,
+        "subject_type": "unknown",
+        "subject_id": "lease_1",
+        "revoked_at": "2026-08-28T00:12:00.000Z",
+        "reason": "operator revoked",
+        "cascade": false,
+        "parent_id": null,
+        "record_digest": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+      }
+    }
+  ]
+}

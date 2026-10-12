@@ -1,0 +1,11 @@
+flowchart LR
+  A[MCP client] --> B{RuleOak transport guard}
+  B -->|stdio| C[JSON-RPC stream gate]
+  B -->|Streamable HTTP| D[Local HTTP gateway]
+  C --> E[Shared policy and risk path]
+  D --> E
+  E -->|allow| F[Consume one-time receipt]
+  F --> G[Simulated MCP filesystem server]
+  E -->|needs approval| H[Local approval queue]
+  E -->|deny| I[Deterministic JSON-RPC error]
+  E --> J[Hash-chained evidence]

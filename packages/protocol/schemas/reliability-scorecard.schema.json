@@ -1,0 +1,297 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/reliability-scorecard.schema.json",
+  "title": "RuleOak Reliability Scorecard",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "scorecard_version",
+    "ruleoak_version",
+    "report_kind",
+    "status",
+    "summary",
+    "dimensions",
+    "failing_invariants",
+    "scenarios"
+  ],
+  "properties": {
+    "scorecard_version": {
+      "const": "1.0"
+    },
+    "ruleoak_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+    },
+    "report_kind": {
+      "const": "ruleoak.crashlab.reliability_scorecard"
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL"
+      ]
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scenarios",
+        "dimensions"
+      ],
+      "properties": {
+        "scenarios": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "total",
+            "pass",
+            "fail"
+          ],
+          "properties": {
+            "total": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "pass": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "fail": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "dimensions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "pass",
+            "fail",
+            "not_applicable"
+          ],
+          "properties": {
+            "pass": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "fail": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "not_applicable": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    },
+    "dimensions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "duplicate_effect_resistance",
+        "revocation_compliance",
+        "ambiguity_handling",
+        "retry_boundedness",
+        "evidence_completeness",
+        "recovery_correctness"
+      ],
+      "properties": {
+        "duplicate_effect_resistance": {
+          "$ref": "#/$defs/dimension"
+        },
+        "revocation_compliance": {
+          "$ref": "#/$defs/dimension"
+        },
+        "ambiguity_handling": {
+          "$ref": "#/$defs/dimension"
+        },
+        "retry_boundedness": {
+          "$ref": "#/$defs/dimension"
+        },
+        "evidence_completeness": {
+          "$ref": "#/$defs/dimension"
+        },
+        "recovery_correctness": {
+          "$ref": "#/$defs/dimension"
+        }
+      }
+    },
+    "failing_invariants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "scenario_id",
+          "invariant",
+          "dimension"
+        ],
+        "properties": {
+          "scenario_id": {
+            "type": "string"
+          },
+          "invariant": {
+            "type": "string"
+          },
+          "dimension": {
+            "enum": [
+              "duplicate_effect_resistance",
+              "revocation_compliance",
+              "ambiguity_handling",
+              "retry_boundedness",
+              "evidence_completeness",
+              "recovery_correctness"
+            ]
+          }
+        }
+      }
+    },
+    "scenarios": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/scenario"
+      }
+    }
+  },
+  "$defs": {
+    "dimension": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "applicable_checks",
+        "passed_checks",
+        "failed_checks",
+        "checks"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "applicable_checks": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "passed_checks": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "failed_checks": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/check"
+          }
+        }
+      }
+    },
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scenario_id",
+        "scenario",
+        "result_version",
+        "failure_class",
+        "check_id",
+        "pass",
+        "expected",
+        "actual"
+      ],
+      "properties": {
+        "scenario_id": {
+          "type": "string"
+        },
+        "scenario": {
+          "type": "string"
+        },
+        "result_version": {
+          "type": "string"
+        },
+        "failure_class": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "check_id": {
+          "type": "string"
+        },
+        "pass": {
+          "type": "boolean"
+        },
+        "expected": {},
+        "actual": {},
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "scenario": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scenario_id",
+        "scenario",
+        "result_version",
+        "failure_class",
+        "status",
+        "attempts",
+        "effect_count",
+        "failed_checks"
+      ],
+      "properties": {
+        "scenario_id": {
+          "type": "string"
+        },
+        "scenario": {
+          "type": "string"
+        },
+        "result_version": {
+          "type": "string"
+        },
+        "failure_class": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "attempts": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "effect_count": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "failed_checks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

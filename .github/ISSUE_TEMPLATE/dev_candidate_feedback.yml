@@ -1,0 +1,36 @@
+name: RuleOak Dev candidate feedback
+description: Report first-run or real-candidate experience without uploading private source.
+title: "[Dev feedback] "
+labels: ["feedback", "ruleoak-dev"]
+body:
+  - type: dropdown
+    id: producer
+    attributes:
+      label: Candidate producer
+      options: [ChatGPT, Codex, Claude, Cursor, Human, Other]
+    validations:
+      required: true
+  - type: dropdown
+    id: result
+    attributes:
+      label: RuleOak result
+      options: [VERIFIED, VERIFICATION_REQUIRED, BLOCKED, STOPPED, FAILED]
+    validations:
+      required: true
+  - type: input
+    id: first_value
+    attributes:
+      label: Approximate time to first useful result
+      placeholder: e.g. 3 minutes
+  - type: textarea
+    id: friction
+    attributes:
+      label: What was the main friction?
+      description: Do not paste proprietary source, secrets, credentials, or private build logs.
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I removed source code, secrets, credentials, personal data and private build logs from this report.
+          required: true

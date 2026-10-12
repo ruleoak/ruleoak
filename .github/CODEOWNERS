@@ -1,0 +1,14 @@
+# Security-sensitive authority/effect/release surfaces
+# GitHub CODEOWNERS requires a visible organization team with write access.
+/packages/core/src/execution/ @ruleoak/maintainers
+/packages/core/src/authority/ @ruleoak/maintainers
+/packages/core/src/evidence/ @ruleoak/maintainers
+/packages/core/src/mcp/ @ruleoak/maintainers
+/packages/cli/src/http-gateway.js @ruleoak/maintainers
+/packages/cli/src/stream-gate.js @ruleoak/maintainers
+/packages/cli/src/stdio-effect-boundary.js @ruleoak/maintainers
+/packages/cli/src/effect-operations.js @ruleoak/maintainers
+/.github/workflows/ @ruleoak/maintainers
+/scripts/check_* @ruleoak/maintainers
+/standards/ @ruleoak/maintainers
+/SECURITY.md @ruleoak/maintainers

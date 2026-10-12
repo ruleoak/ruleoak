@@ -1,0 +1,29 @@
+{
+  "contract_version": "1.0",
+  "name": "Semantic Impact Engine",
+  "impact_version": "0.1",
+  "matcher": "deterministic-lexical-v0.1",
+  "required_cli_commands": [
+    "impact"
+  ],
+  "required_capabilities": [
+    "cap.repository-understanding",
+    "cap.semantic-impact"
+  ],
+  "required_protected_intent_kinds": [
+    "invariant",
+    "constraint",
+    "budget",
+    "authority",
+    "risk",
+    "evidence_requirement",
+    "incident"
+  ],
+  "minimum_benchmark_cases": 60,
+  "minimum_precision": 0.95,
+  "minimum_recall": 0.95,
+  "minimum_exact_match_rate": 0.9,
+  "candidate_test_is_verification_evidence": false,
+  "unknown_is_preserved": true,
+  "model_assisted_impact_default": false
+}

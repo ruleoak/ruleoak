@@ -1,0 +1,22 @@
+{
+  "contract_version": "1.0",
+  "model_execution_version": "0.1",
+  "minimum_two_provider_scenarios": 20,
+  "required_roles": [
+    "planner",
+    "implementer",
+    "reviewer",
+    "reasoning"
+  ],
+  "required_provider_ids": [
+    "deterministic-reference-a",
+    "deterministic-reference-b",
+    "openai-responses"
+  ],
+  "minimum_two_provider_completion_rate": 1.0,
+  "minimum_distinct_strategy_rate": 1.0,
+  "required_model_output_authority": "NON_AUTHORITATIVE",
+  "hosted_source_qualification": "adapter-present; actual credentialed execution may be NOT_RUN",
+  "truth_boundary": "Model invocation never owns intent, tool, mutation, verification, or evidence authority.",
+  "name": "Model-Independent Execution"
+}

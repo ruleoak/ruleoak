@@ -1,0 +1,154 @@
+# SPDX-FileCopyrightText: 2026 RuleOak Pte. Ltd.
+# SPDX-License-Identifier: Apache-2.0
+
+name: Publish npm packages
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm_version:
+        description: "Exact package version to publish, for example 0.50.0"
+        required: true
+        type: string
+      publication_mode:
+        description: "initial-direct for brand-new packages; stage-existing for subsequent releases"
+        required: true
+        type: choice
+        default: stage-existing
+        options:
+          - initial-direct
+          - stage-existing
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: npm-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Publish @ruleoak packages
+    runs-on: ubuntu-latest
+    environment: npm
+    steps:
+      - name: Checkout exact release tag
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+
+      - name: Use an npm CLI with trusted-publishing support
+        run: npm install --global npm@11.18.0
+
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: "3.13"
+
+      - name: Require the exact release tag
+        env:
+          CONFIRM_VERSION: ${{ inputs.confirm_version }}
+        run: |
+          expected="refs/tags/v${CONFIRM_VERSION}"
+          if [ "${GITHUB_REF}" != "${expected}" ]; then
+            echo "Select tag v${CONFIRM_VERSION} when running this workflow"
+            echo "Current ref: ${GITHUB_REF}"
+            exit 1
+          fi
+
+      - name: Install dependencies from lockfile
+        run: npm ci --ignore-scripts
+
+      - name: Verify version alignment, package existence and unpublished status
+        env:
+          CONFIRM_VERSION: ${{ inputs.confirm_version }}
+          PUBLICATION_MODE: ${{ inputs.publication_mode }}
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFileSync } from 'node:fs'
+          import { execFileSync } from 'node:child_process'
+
+          const version = process.env.CONFIRM_VERSION
+          const mode = process.env.PUBLICATION_MODE
+          if (!['initial-direct', 'stage-existing'].includes(mode)) throw new Error(`invalid publication mode ${mode}`)
+          const names = ['protocol', 'core', 'cli']
+          const root = JSON.parse(readFileSync('package.json', 'utf8'))
+          if (root.version !== version) throw new Error(`root version ${root.version} does not match ${version}`)
+          let existingPackages = 0
+          for (const name of names) {
+            const pkg = JSON.parse(readFileSync(`packages/${name}/package.json`, 'utf8'))
+            if (pkg.version !== version) throw new Error(`${pkg.name} version ${pkg.version} does not match ${version}`)
+            try {
+              execFileSync('npm', ['view', `${pkg.name}@${version}`, 'version'], { stdio: 'pipe' })
+              throw new Error(`${pkg.name}@${version} already exists on npm`)
+            } catch (error) {
+              if (error.message.includes('already exists')) throw error
+            }
+            try {
+              execFileSync('npm', ['view', pkg.name, 'version'], { stdio: 'pipe' })
+              existingPackages += 1
+            } catch {}
+          }
+          if (mode === 'initial-direct' && existingPackages !== 0) throw new Error(`initial-direct requires all packages to be brand new; found ${existingPackages} existing package(s)`)
+          if (mode === 'stage-existing' && existingPackages !== names.length) throw new Error(`stage-existing requires all packages to exist; found ${existingPackages}/${names.length}`)
+          NODE
+
+      - name: Run full publish-readiness checks
+        run: npm run check:publish
+
+      - name: Build exact deterministic release candidate
+        env:
+          SOURCE_DATE_EPOCH: '946684800'
+        run: npm run release:candidate
+
+      - name: Publish or stage exact package tarballs
+        env:
+          CONFIRM_VERSION: ${{ inputs.confirm_version }}
+          PUBLICATION_MODE: ${{ inputs.publication_mode }}
+        run: |
+          set -euo pipefail
+          submit() {
+            tarball="$1"
+            if [ "${PUBLICATION_MODE}" = "initial-direct" ]; then
+              npm publish "${tarball}" --access public
+            else
+              npm stage publish "${tarball}"
+            fi
+          }
+          submit "release-candidate/ruleoak-protocol-${CONFIRM_VERSION}.tgz"
+          submit "release-candidate/ruleoak-core-${CONFIRM_VERSION}.tgz"
+          submit "release-candidate/ruleoak-cli-${CONFIRM_VERSION}.tgz"
+
+      - name: Verify direct publication or record staged review requirement
+        env:
+          CONFIRM_VERSION: ${{ inputs.confirm_version }}
+          PUBLICATION_MODE: ${{ inputs.publication_mode }}
+        run: |
+          set -euo pipefail
+          if [ "${PUBLICATION_MODE}" = "stage-existing" ]; then
+            {
+              echo "### Packages staged for human approval"
+              echo "Review the staged tarballs and approve with 2FA in dependency order: @ruleoak/protocol, @ruleoak/core, @ruleoak/cli."
+              echo "CI intentionally does not approve staged packages."
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          for package in @ruleoak/protocol @ruleoak/core @ruleoak/cli; do
+            published=""
+            for attempt in 1 2 3 4 5 6; do
+              published="$(npm view "${package}@${CONFIRM_VERSION}" version 2>/dev/null || true)"
+              [ "${published}" = "${CONFIRM_VERSION}" ] && break
+              sleep 10
+            done
+            test "${published}" = "${CONFIRM_VERSION}"
+          done
+

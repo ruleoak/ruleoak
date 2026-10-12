@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/extension-spi.schema.json",
+  "title": "RuleOak Extension SPI Descriptor v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["spi_version", "extension_id", "kind", "data_access", "network"],
+  "properties": {
+    "spi_version": {"const": "1.0"},
+    "extension_id": {"type": "string", "minLength": 1},
+    "kind": {"enum": ["organization_policy", "approval", "event_sink", "inspector_intelligence", "crashlab_scenario"]},
+    "data_access": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"enum": ["normalized_actions", "authority_metadata", "effect_metadata", "capability_metadata", "scenario_metadata"]}
+    },
+    "network": {"enum": ["none", "optional", "required"]},
+    "description": {"type": "string"}
+  }
+}

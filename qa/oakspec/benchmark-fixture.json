@@ -1,0 +1,16 @@
+{
+  "openapi": {
+    "openapi": "3.1.0",
+    "info": {"title": "OakSpec Fixture", "version": "1.0.0"},
+    "paths": {
+      "/orders": {"get": {"operationId": "listOrders"}},
+      "/orders/{id}": {"post": {"operationId": "updateOrder"}}
+    }
+  },
+  "tests": ["alpha.test.js", "beta.spec.js"],
+  "ci": "name: Verify\non: [push]\njobs:\n  verify:\n    runs-on: ubuntu-latest\n    steps:\n      - run: npm test\n",
+  "git": "1111111111111111111111111111111111111111\tPreserve evidence authority\n2222222222222222222222222222222222222222\tBound semantic change\n",
+  "agents": "# Agent guidance\n- MUST preserve evidence authority.\n- Never promote inference into proof.\n",
+  "docs": "# Interchange guarantee\nConsumers MUST keep UNKNOWN first-class.\n",
+  "mcp": {"tools": [{"name": "read_policy", "description": "Read policy"}, {"name": "inspect_change", "description": "Inspect change"}]}
+}

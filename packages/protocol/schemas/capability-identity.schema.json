@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/capability-identity.schema.json",
+  "title": "RuleOak Capability Identity",
+  "type": "object",
+  "required": ["identity_version", "integration_id", "capability_id", "integration_name", "action_name", "transport", "identity_basis"],
+  "properties": {
+    "identity_version": {"const": "1.0"},
+    "integration_id": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "capability_id": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "integration_name": {"type": "string", "minLength": 1},
+    "action_name": {"type": "string", "minLength": 1},
+    "transport": {"type": "string", "minLength": 1},
+    "identity_basis": {"enum": ["explicit", "package-identifier", "source-anchor", "name-transport"]}
+  },
+  "additionalProperties": false
+}

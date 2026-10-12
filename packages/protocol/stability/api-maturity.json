@@ -1,0 +1,616 @@
+{
+  "registry_version": "1.0",
+  "ruleoak_release": "0.50.0",
+  "release_status": "developer_preview",
+  "maturity_levels": [
+    "experimental",
+    "preview",
+    "stable"
+  ],
+  "semantics": {
+    "experimental": "May change or be removed in a later developer-preview release; migration notes are still required.",
+    "preview": "Intended for integration use but may evolve before 1.0; breaking changes require explicit migration documentation.",
+    "stable": "Existing stable identifiers, entry points, and contract versions may not be removed or incompatibly redefined without the published deprecation process."
+  },
+  "packages": {
+    "@ruleoak/protocol": {
+      "maturity": "preview",
+      "entrypoints": [
+        ".",
+        "./intent",
+        "./intent-evidence",
+        "./semantic-diff",
+        "./intent-change",
+        "./context-package",
+        "./schemas/*",
+        "./fixtures/*",
+        "./conformance/*",
+        "./stability/*",
+        "./package.json",
+        "./engineering-memory",
+        "./model-execution",
+        "./intent-compile",
+        "./verify-product",
+        "./oakspec",
+        "./autonomous-development",
+        "./development-learning",
+        "./multi-frontend-development",
+        "./family"
+      ]
+    },
+    "@ruleoak/core": {
+      "maturity": "preview",
+      "entrypoints": [
+        ".",
+        "./package.json",
+        "./family",
+        "./family-receipts"
+      ]
+    },
+    "@ruleoak/cli": {
+      "maturity": "preview",
+      "entrypoints": [
+        "./package.json"
+      ],
+      "bin": [
+        "ruleoak"
+      ]
+    }
+  },
+  "exports": {
+    "@ruleoak/protocol": {
+      "default_maturity": "preview",
+      "stable": [
+        "ADAPTER_CONTRACT_VERSIONS",
+        "APPROVAL_RESULT_DECISIONS",
+        "APPROVAL_RESULT_VERSIONS",
+        "AUTHORITY_ENVELOPE_VERSIONS",
+        "AUTHORITY_GRANT_VERSIONS",
+        "CAPABILITY_EVIDENCE_VERSIONS",
+        "CAPABILITY_IDENTITY_VERSIONS",
+        "CRASHLAB_AUTHORITY_EXPECTATIONS",
+        "CRASHLAB_FAILURE_CLASSES",
+        "CRASHLAB_FAILURE_PHASES",
+        "CRASHLAB_IDEMPOTENCY_MODES",
+        "CRASHLAB_INVARIANTS",
+        "CRASHLAB_RETRY_STRATEGIES",
+        "CRASHLAB_SCENARIO_VERSIONS",
+        "EFFECT_RECEIPT_VERSIONS",
+        "EVIDENCE_BUNDLE_FILE_ROLES",
+        "EVIDENCE_BUNDLE_VERSIONS",
+        "EVIDENCE_PRIVACY_PROFILES",
+        "EXECUTION_LEASE_VERSIONS",
+        "EXTENSION_SPI_VERSIONS",
+        "REVOCATION_RECORD_VERSIONS",
+        "REVOCATION_SUBJECT_TYPES",
+        "canonicalProtocolJson",
+        "revocationRecordDigestPayload",
+        "validateAdapterDescriptor",
+        "validateApprovalResult",
+        "validateAuthorityEnvelope",
+        "validateAuthorityGrant",
+        "validateCapabilityEvidence",
+        "validateCapabilityIdentity",
+        "validateCrashLabScenario",
+        "validateEffectReceipt",
+        "validateEvidenceBundleManifest",
+        "validateExecutionLease",
+        "validateExtensionDescriptor",
+        "validateRevocationRecord"
+      ],
+      "experimental": []
+    },
+    "@ruleoak/core": {
+      "default_maturity": "preview",
+      "stable": [
+        "RULEOAK_EXTENSION_SPI_VERSION",
+        "RuleOakExtensionRegistry",
+        "validateRuleOakExtension"
+      ],
+      "experimental": [
+        "AGENT_RELEASE_STATES",
+        "DEFAULT_AGENT_RELEASE_POLICY",
+        "EFFECT_VERIFICATION_STATES",
+        "RETRY_DISPOSITIONS",
+        "buildAgentReleasePassport",
+        "buildEffectVerificationRecord",
+        "captureFilesystemState",
+        "decideEffectRetry",
+        "evaluateAgentReleaseGate",
+        "inferFilesystemEffectContract",
+        "inferMcpEffectContract",
+        "recommendCapabilityPolicy",
+        "verifyFilesystemPostcondition",
+        "verifyGitPostcondition",
+        "verifyHttpPostcondition",
+        "verifyProcessPostcondition"
+      ]
+    }
+  },
+  "cli_commands": {
+    "version": "stable",
+    "doctor": "stable",
+    "onboard": "preview",
+    "feedback": "experimental",
+    "flight": "preview",
+    "inspect": "preview",
+    "authority": "preview",
+    "evidence": "preview",
+    "record": "preview",
+    "crashlab": "preview",
+    "init": "preview",
+    "protect": "preview",
+    "check": "stable",
+    "receipt": "preview",
+    "exec": "preview",
+    "approve": "preview",
+    "policy": "preview",
+    "learn": "experimental",
+    "secrets": "preview",
+    "audit": "preview",
+    "mcp": "preview",
+    "serve": "preview",
+    "run": "preview",
+    "replay": "preview",
+    "demo": "experimental",
+    "workspace": "preview",
+    "release": "experimental",
+    "effect": "experimental",
+    "intent": "experimental",
+    "understand": "experimental",
+    "explain": "experimental",
+    "trace": "experimental",
+    "impact": "experimental",
+    "verify": "experimental",
+    "prove": "experimental",
+    "coverage": "experimental",
+    "contradiction": "experimental",
+    "diff": "experimental",
+    "change": "experimental",
+    "context": "experimental",
+    "memory": "experimental",
+    "model": "experimental",
+    "compile": "experimental",
+    "oakspec": "preview",
+    "dev": "experimental",
+    "do": "experimental",
+    "api": "experimental"
+  },
+  "protocol_contracts": {
+    "capability_identity_evidence": {
+      "maturity": "stable",
+      "versions": [
+        "1.0"
+      ],
+      "version_exports": [
+        "CAPABILITY_IDENTITY_VERSIONS",
+        "CAPABILITY_EVIDENCE_VERSIONS"
+      ]
+    },
+    "authority_grant": {
+      "maturity": "stable",
+      "versions": [
+        "1.0",
+        "1.1"
+      ],
+      "version_exports": [
+        "AUTHORITY_GRANT_VERSIONS"
+      ]
+    },
+    "authority_envelope": {
+      "maturity": "stable",
+      "versions": [
+        "1.0"
+      ],
+      "version_exports": [
+        "AUTHORITY_ENVELOPE_VERSIONS"
+      ]
+    },
+    "delegation": {
+      "maturity": "stable",
+      "versions": [
+        "authority-grant-1.1"
+      ],
+      "version_exports": []
+    },
+    "revocation": {
+      "maturity": "stable",
+      "versions": [
+        "1.0",
+        "1.1"
+      ],
+      "version_exports": [
+        "REVOCATION_RECORD_VERSIONS"
+      ]
+    },
+    "approval_result": {
+      "maturity": "stable",
+      "versions": [
+        "1.0"
+      ],
+      "version_exports": [
+        "APPROVAL_RESULT_VERSIONS"
+      ]
+    },
+    "execution_lease": {
+      "maturity": "stable",
+      "versions": [
+        "1.0",
+        "1.1",
+        "1.2"
+      ],
+      "version_exports": [
+        "EXECUTION_LEASE_VERSIONS"
+      ]
+    },
+    "effect_receipt": {
+      "maturity": "stable",
+      "versions": [
+        "1.0",
+        "1.1"
+      ],
+      "version_exports": [
+        "EFFECT_RECEIPT_VERSIONS"
+      ]
+    },
+    "evidence_bundle": {
+      "maturity": "stable",
+      "versions": [
+        "3.0"
+      ],
+      "version_exports": [
+        "EVIDENCE_BUNDLE_VERSIONS"
+      ]
+    },
+    "adapter_descriptor": {
+      "maturity": "stable",
+      "versions": [
+        "1.0",
+        "1.1"
+      ],
+      "version_exports": [
+        "ADAPTER_CONTRACT_VERSIONS"
+      ]
+    },
+    "crashlab_scenario": {
+      "maturity": "stable",
+      "versions": [
+        "1.0",
+        "1.1",
+        "2.0",
+        "2.1"
+      ],
+      "version_exports": [
+        "CRASHLAB_SCENARIO_VERSIONS"
+      ]
+    },
+    "reliability_scorecard": {
+      "maturity": "preview",
+      "versions": [
+        "1.0"
+      ],
+      "version_exports": [
+        "RELIABILITY_SCORECARD_VERSIONS"
+      ]
+    },
+    "authority_graph": {
+      "maturity": "preview",
+      "versions": [
+        "1.0"
+      ],
+      "version_exports": [
+        "AUTHORITY_GRAPH_VERSIONS"
+      ]
+    },
+    "evidence_graph": {
+      "maturity": "preview",
+      "versions": [
+        "1.0"
+      ],
+      "version_exports": [
+        "EVIDENCE_GRAPH_VERSIONS"
+      ]
+    },
+    "approval_request": {
+      "maturity": "preview",
+      "versions": [
+        "1.0"
+      ],
+      "version_exports": [
+        "APPROVAL_REQUEST_VERSIONS"
+      ]
+    },
+    "capability_manifest": {
+      "maturity": "preview",
+      "versions": [
+        "1.0",
+        "1.1",
+        "1.2"
+      ],
+      "version_exports": [
+        "CAPABILITY_MANIFEST_VERSIONS"
+      ]
+    },
+    "capability_observation": {
+      "maturity": "preview",
+      "versions": [
+        "1.0"
+      ],
+      "version_exports": [
+        "CAPABILITY_OBSERVATION_VERSIONS"
+      ]
+    },
+    "intent_ir": {
+      "maturity": "experimental",
+      "versions": [
+        "0.1"
+      ],
+      "version_exports": [],
+      "notes": "Intent IR is an implementation-independent experimental contract and does not confer execution authority."
+    },
+    "semantic_impact": {
+      "maturity": "experimental",
+      "versions": [
+        "0.1"
+      ],
+      "version_exports": [],
+      "notes": "Semantic Impact v0.1 is deterministic pre-implementation analysis; inferred impact is not verification evidence."
+    },
+    "intent_evidence_authority": {
+      "maturity": "experimental",
+      "versions": [
+        "0.1"
+      ],
+      "version_exports": [],
+      "notes": "Intent Evidence Authority v0.1 separates observations from evidence and does not permit model/agent self-assertion to satisfy independent evidence requirements."
+    },
+    "semantic_diff": {
+      "maturity": "experimental",
+      "versions": [
+        "0.1"
+      ],
+      "version_exports": [],
+      "notes": "Semantic Diff v0.1 separates deterministic Intent deltas, observed implementation changes, inferred capability mappings, and unknown runtime effects; it is not verification evidence."
+    },
+    "verify_product": {
+      "maturity": "experimental",
+      "versions": [
+        "0.1"
+      ],
+      "version_exports": [],
+      "notes": "RuleOak Verify v0.1 is an experimental PR/change-assurance report and merge recommendation; Intent Evidence Authority remains evidence authority."
+    },
+    "oakspec": {
+      "maturity": "preview",
+      "versions": [
+        "1.0"
+      ],
+      "version_exports": [],
+      "notes": "OakSpec 1.0 is a RuleOak-authored normative interoperability profile at preview ecosystem maturity; external standard status and adoption are not claimed."
+    },
+    "autonomous_development": {
+      "maturity": "experimental",
+      "versions": [
+        "0.1"
+      ],
+      "version_exports": [],
+      "notes": "One-Intent Development v0.1 orchestrates the governed development stack internally; user intent authorizes only bounded mutation and never model self-certification or missing-evidence promotion."
+    },
+    "development_learning": {
+      "maturity": "experimental",
+      "versions": [
+        "0.1"
+      ],
+      "version_exports": [],
+      "notes": "Development Learning v0.1 generates non-authoritative candidates from completed autonomous changes; only explicit user promotion creates declared Engineering Memory, and historical learning never proves future implementations."
+    }
+  },
+  "extension_spi": {
+    "maturity": "stable",
+    "versions": [
+      "1.0"
+    ],
+    "schema": "extension-spi.schema.json"
+  },
+  "file_formats": {
+    "adapter-descriptor.schema.json": {
+      "maturity": "stable",
+      "path": "packages/protocol/schemas/adapter-descriptor.schema.json"
+    },
+    "approval-result.schema.json": {
+      "maturity": "stable",
+      "path": "packages/protocol/schemas/approval-result.schema.json"
+    },
+    "authority-envelope.schema.json": {
+      "maturity": "stable",
+      "path": "packages/protocol/schemas/authority-envelope.schema.json"
+    },
+    "authority-grant.schema.json": {
+      "maturity": "stable",
+      "path": "packages/protocol/schemas/authority-grant.schema.json"
+    },
+    "capability-evidence.schema.json": {
+      "maturity": "stable",
+      "path": "packages/protocol/schemas/capability-evidence.schema.json"
+    },
+    "capability-identity.schema.json": {
+      "maturity": "stable",
+      "path": "packages/protocol/schemas/capability-identity.schema.json"
+    },
+    "crashlab-scenario.schema.json": {
+      "maturity": "stable",
+      "path": "packages/protocol/schemas/crashlab-scenario.schema.json"
+    },
+    "effect-receipt.schema.json": {
+      "maturity": "stable",
+      "path": "packages/protocol/schemas/effect-receipt.schema.json"
+    },
+    "evidence-bundle-manifest.schema.json": {
+      "maturity": "stable",
+      "path": "packages/protocol/schemas/evidence-bundle-manifest.schema.json"
+    },
+    "execution-lease.schema.json": {
+      "maturity": "stable",
+      "path": "packages/protocol/schemas/execution-lease.schema.json"
+    },
+    "revocation-record.schema.json": {
+      "maturity": "stable",
+      "path": "packages/protocol/schemas/revocation-record.schema.json"
+    },
+    "extension-spi.schema.json": {
+      "maturity": "stable",
+      "path": "packages/protocol/schemas/extension-spi.schema.json"
+    },
+    "reliability-scorecard.schema.json": {
+      "maturity": "preview",
+      "path": "packages/protocol/schemas/reliability-scorecard.schema.json"
+    },
+    "authority-graph.schema.json": {
+      "maturity": "preview",
+      "path": "packages/protocol/schemas/authority-graph.schema.json"
+    },
+    "evidence-graph.schema.json": {
+      "maturity": "preview",
+      "path": "packages/protocol/schemas/evidence-graph.schema.json"
+    },
+    "approval-request.schema.json": {
+      "maturity": "preview",
+      "path": "packages/protocol/schemas/approval-request.schema.json"
+    },
+    "capability-manifest.schema.json": {
+      "maturity": "preview",
+      "path": "packages/protocol/schemas/capability-manifest.schema.json"
+    },
+    "capability-observation.schema.json": {
+      "maturity": "preview",
+      "path": "packages/protocol/schemas/capability-observation.schema.json"
+    },
+    "action-envelope.schema.json": {
+      "maturity": "preview",
+      "path": "packages/protocol/schemas/action-envelope.schema.json"
+    },
+    "normalized-tool-call.schema.json": {
+      "maturity": "preview",
+      "path": "packages/protocol/schemas/normalized-tool-call.schema.json"
+    },
+    "policy.schema.json": {
+      "maturity": "preview",
+      "path": "packages/protocol/schemas/policy.schema.json"
+    },
+    "authorization-api-error.schema.json": {
+      "maturity": "preview",
+      "path": "packages/protocol/schemas/authorization-api-error.schema.json"
+    },
+    "authorization-api-response.schema.json": {
+      "maturity": "preview",
+      "path": "packages/protocol/schemas/authorization-api-response.schema.json"
+    },
+    "intent-manifest-v0.1.schema.json": {
+      "maturity": "experimental",
+      "path": "packages/protocol/schemas/intent-manifest-v0.1.schema.json"
+    },
+    "repository-understanding-v0.1.schema.json": {
+      "maturity": "experimental",
+      "path": "packages/protocol/schemas/repository-understanding-v0.1.schema.json"
+    },
+    "semantic-impact-v0.1.schema.json": {
+      "maturity": "experimental",
+      "path": "packages/protocol/schemas/semantic-impact-v0.1.schema.json"
+    },
+    "intent-evidence-bundle-v0.1.schema.json": {
+      "maturity": "experimental",
+      "path": "packages/protocol/schemas/intent-evidence-bundle-v0.1.schema.json"
+    },
+    "intent-verification-v0.1.schema.json": {
+      "maturity": "experimental",
+      "path": "packages/protocol/schemas/intent-verification-v0.1.schema.json"
+    },
+    "semantic-diff-v0.1.schema.json": {
+      "maturity": "experimental",
+      "path": "packages/protocol/schemas/semantic-diff-v0.1.schema.json"
+    },
+    "intent-change-v0.1.schema.json": {
+      "maturity": "experimental",
+      "path": "packages/protocol/schemas/intent-change-v0.1.schema.json"
+    },
+    "implementation-proposal-v0.1.schema.json": {
+      "maturity": "experimental",
+      "path": "packages/protocol/schemas/implementation-proposal-v0.1.schema.json"
+    },
+    "context-package-v0.1.schema.json": {
+      "maturity": "experimental",
+      "path": "packages/protocol/schemas/context-package-v0.1.schema.json"
+    },
+    "engineering-memory-v0.1.schema.json": {
+      "maturity": "experimental",
+      "path": "packages/protocol/schemas/engineering-memory-v0.1.schema.json"
+    },
+    "model-execution-v0.1.schema.json": {
+      "maturity": "experimental",
+      "path": "packages/protocol/schemas/model-execution-v0.1.schema.json"
+    },
+    "intent-recompile-v0.1.schema.json": {
+      "maturity": "experimental",
+      "path": "packages/protocol/schemas/intent-recompile-v0.1.schema.json"
+    },
+    "intent-recompile-report-v0.1.schema.json": {
+      "maturity": "experimental",
+      "path": "packages/protocol/schemas/intent-recompile-report-v0.1.schema.json"
+    },
+    "verify-product-v0.1.schema.json": {
+      "maturity": "experimental",
+      "path": "packages/protocol/schemas/verify-product-v0.1.schema.json"
+    },
+    "oakspec-v1.schema.json": {
+      "maturity": "preview",
+      "path": "packages/protocol/schemas/oakspec-v1.schema.json"
+    },
+    "oakspec-candidate-bundle-v1.schema.json": {
+      "maturity": "preview",
+      "path": "packages/protocol/schemas/oakspec-candidate-bundle-v1.schema.json"
+    },
+    "autonomous-development-v0.1.schema.json": {
+      "maturity": "experimental",
+      "path": "packages/protocol/schemas/autonomous-development-v0.1.schema.json"
+    },
+    "development-learning-v0.1.schema.json": {
+      "maturity": "experimental",
+      "path": "packages/protocol/schemas/development-learning-v0.1.schema.json"
+    },
+    "multi-frontend-development-v0.1.schema.json": {
+      "maturity": "experimental",
+      "path": "packages/protocol/schemas/multi-frontend-development-v0.1.schema.json"
+    },
+    "family-evidence-envelope-v1.schema.json": {
+      "path": "packages/protocol/schemas/family-evidence-envelope-v1.schema.json",
+      "maturity": "experimental"
+    },
+    "family-release-registry-v1.schema.json": {
+      "path": "packages/protocol/schemas/family-release-registry-v1.schema.json",
+      "maturity": "experimental"
+    },
+    "family-compatibility-record-v1.schema.json": {
+      "path": "packages/protocol/schemas/family-compatibility-record-v1.schema.json",
+      "maturity": "experimental"
+    }
+  },
+  "deprecations": {
+    "@ruleoak/core.stableStringify": {
+      "maturity": "preview",
+      "since": "0.50.0",
+      "replacement": "@ruleoak/core.canonicalStringify",
+      "warning_code": "RULEOAK_DEP_STABLE_STRINGIFY",
+      "earliest_removal": "1.0.0",
+      "reason": "canonicalStringify is the canonical public serialization helper used by current signed/digested contracts."
+    }
+  },
+  "one_point_zero": {
+    "declared": false,
+    "remaining_gates": [
+      "external_adoption",
+      "independent_security_review",
+      "demonstrated_protocol_stability",
+      "real_integration_experience"
+    ]
+  }
+}

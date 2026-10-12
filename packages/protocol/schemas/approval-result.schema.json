@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/approval-result-v1.json",
+  "title": "RuleOak ApprovalResult v1",
+  "type": "object",
+  "required": [
+    "approval_result_version",
+    "approval_result_id",
+    "approval_id",
+    "request_decision_id",
+    "request_digest",
+    "result_digest",
+    "action_digest",
+    "policy_digest",
+    "principal_id",
+    "provider_id",
+    "approver",
+    "decision",
+    "decided_at",
+    "not_before",
+    "expires_at",
+    "one_time",
+    "result_nonce"
+  ],
+  "properties": {
+    "approval_result_version": {
+      "const": "1.0"
+    },
+    "approval_result_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "approval_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "request_decision_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "request_digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "result_digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "action_digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "policy_digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "principal_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "provider_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "provider_name": {
+      "type": "string",
+      "maxLength": 128
+    },
+    "approver": {
+      "type": "object",
+      "required": [
+        "type",
+        "id"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "user",
+            "agent",
+            "script",
+            "service",
+            "organization"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 256
+        },
+        "issuer": {
+          "type": "string",
+          "maxLength": 256
+        }
+      },
+      "additionalProperties": false
+    },
+    "decision": {
+      "enum": [
+        "allow",
+        "deny"
+      ]
+    },
+    "decision_scope": {
+      "type": "string",
+      "maxLength": 64
+    },
+    "reason": {
+      "type": "string",
+      "maxLength": 512
+    },
+    "decided_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "not_before": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "one_time": {
+      "const": true
+    },
+    "result_nonce": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "signature": {
+      "type": "string",
+      "pattern": "^hmac-sha256:[0-9a-f]{64}$"
+    }
+  },
+  "additionalProperties": false
+}

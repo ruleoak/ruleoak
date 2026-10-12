@@ -1,0 +1,110 @@
+{
+  "matrix_version": "1.0",
+  "description": "Executable reliability coverage for every formal CrashLab failure class.",
+  "families": [
+    {
+      "failure_class": "timeout",
+      "executable": true,
+      "tests": [
+        "packages/core/tests/concurrency-staleness.test.js"
+      ],
+      "coverage_family": "base_failure_taxonomy"
+    },
+    {
+      "failure_class": "response_loss",
+      "executable": true,
+      "tests": [
+        "packages/core/tests/concurrency-staleness.test.js"
+      ],
+      "coverage_family": "base_failure_taxonomy"
+    },
+    {
+      "failure_class": "token_expiry",
+      "executable": true,
+      "tests": [
+        "packages/core/tests/concurrency-staleness.test.js"
+      ],
+      "coverage_family": "concurrency_staleness"
+    },
+    {
+      "failure_class": "revocation_race",
+      "executable": true,
+      "tests": [
+        "packages/core/tests/concurrency-staleness.test.js"
+      ],
+      "coverage_family": "concurrency_staleness"
+    },
+    {
+      "failure_class": "concurrent_race",
+      "executable": true,
+      "tests": [
+        "packages/core/tests/concurrency-staleness.test.js"
+      ],
+      "coverage_family": "concurrency_staleness"
+    },
+    {
+      "failure_class": "stale_capability",
+      "executable": true,
+      "tests": [
+        "packages/core/tests/concurrency-staleness.test.js"
+      ],
+      "coverage_family": "concurrency_staleness"
+    },
+    {
+      "failure_class": "stale_policy",
+      "executable": true,
+      "tests": [
+        "packages/core/tests/concurrency-staleness.test.js"
+      ],
+      "coverage_family": "concurrency_staleness"
+    },
+    {
+      "failure_class": "stale_approved_baseline",
+      "executable": true,
+      "tests": [
+        "packages/core/tests/concurrency-staleness.test.js"
+      ],
+      "coverage_family": "concurrency_staleness"
+    },
+    {
+      "failure_class": "eventual_consistency",
+      "executable": true,
+      "tests": [
+        "packages/core/tests/concurrency-staleness.test.js"
+      ],
+      "coverage_family": "concurrency_staleness"
+    },
+    {
+      "failure_class": "transport_failure",
+      "executable": true,
+      "tests": [
+        "packages/core/tests/concurrency-staleness.test.js"
+      ],
+      "coverage_family": "base_failure_taxonomy"
+    },
+    {
+      "failure_class": "local_process_crash",
+      "executable": true,
+      "tests": [
+        "packages/core/tests/concurrency-staleness.test.js"
+      ],
+      "coverage_family": "base_failure_taxonomy"
+    },
+    {
+      "failure_class": "duplicate_retry",
+      "executable": true,
+      "tests": [
+        "packages/core/tests/concurrency-staleness.test.js"
+      ],
+      "coverage_family": "base_failure_taxonomy"
+    },
+    {
+      "failure_class": "synthetic_error",
+      "executable": true,
+      "tests": [
+        "packages/core/tests/concurrency-staleness.test.js"
+      ],
+      "coverage_family": "base_failure_taxonomy"
+    }
+  ]
+}

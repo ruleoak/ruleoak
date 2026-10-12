@@ -1,0 +1,9 @@
+{
+  "policyVersion": 2,
+  "defaultAction": "deny",
+  "rules": [
+    { "id": "deny-protected-delete", "effect": "deny", "priority": 300, "actions": ["mcp.filesystem.delete"], "resources": ["./protected/**"] },
+    { "id": "approve-private-read", "effect": "needs_approval", "priority": 200, "actions": ["mcp.filesystem.read"], "resources": ["./private/**"] },
+    { "id": "allow-public-read", "effect": "allow", "priority": 100, "actions": ["mcp.filesystem.read"], "resources": ["./public/**"] }
+  ]
+}

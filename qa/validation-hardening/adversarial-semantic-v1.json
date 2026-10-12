@@ -1,0 +1,173 @@
+{
+  "benchmark_version": "validation-adversarial-v1",
+  "cases": [
+    {
+      "request": "prevent retry bypass when an effect is uncertain",
+      "expected": [
+        "cap.retry"
+      ]
+    },
+    {
+      "request": "do not disable effect verification on retries",
+      "expected": [
+        "cap.retry"
+      ]
+    },
+    {
+      "request": "preserve effect verification even when retry latency increases",
+      "expected": [
+        "cap.retry"
+      ]
+    },
+    {
+      "request": "allow faster retries but never without effect verification",
+      "expected": [
+        "cap.retry"
+      ]
+    },
+    {
+      "request": "avoid blind replay of an external effect",
+      "expected": [
+        "cap.retry"
+      ]
+    },
+    {
+      "request": "reject agent assertions as evidence proof",
+      "expected": [
+        "cap.evidence"
+      ]
+    },
+    {
+      "request": "do not let model claims count as verified evidence",
+      "expected": [
+        "cap.evidence"
+      ]
+    },
+    {
+      "request": "preserve evidence authority while adding signed attestation",
+      "expected": [
+        "cap.evidence"
+      ]
+    },
+    {
+      "request": "allow CI evidence only when attestation is trusted",
+      "expected": [
+        "cap.evidence"
+      ]
+    },
+    {
+      "request": "strengthen claim evidence provenance",
+      "expected": [
+        "cap.evidence"
+      ]
+    },
+    {
+      "request": "do not leak password secrets into model context",
+      "expected": [
+        "cap.context"
+      ]
+    },
+    {
+      "request": "repository instructions must remain untrusted context data",
+      "expected": [
+        "cap.context"
+      ]
+    },
+    {
+      "request": "redact API key credentials from context slices",
+      "expected": [
+        "cap.context"
+      ]
+    },
+    {
+      "request": "reduce context tokens without treating omitted files as proof",
+      "expected": [
+        "cap.context"
+      ]
+    },
+    {
+      "request": "preserve secret redaction while improving context selection",
+      "expected": [
+        "cap.context"
+      ]
+    },
+    {
+      "request": "OpenAPI imports must stay candidate semantics",
+      "expected": [
+        "cap.interop"
+      ]
+    },
+    {
+      "request": "do not make imported documentation declared intent",
+      "expected": [
+        "cap.interop"
+      ]
+    },
+    {
+      "request": "preserve explicit promotion for imported candidates",
+      "expected": [
+        "cap.interop"
+      ]
+    },
+    {
+      "request": "avoid authority promotion from AGENTS instructions",
+      "expected": [
+        "cap.interop"
+      ]
+    },
+    {
+      "request": "keep MCP descriptions candidate-only on import",
+      "expected": [
+        "cap.interop"
+      ]
+    },
+    {
+      "request": "prevent evidence retry context imports from becoming authority",
+      "expected": [
+        "cap.evidence"
+      ]
+    },
+    {
+      "request": "preserve retry safety; unrelated evidence docs may change",
+      "expected": [
+        "cap.retry"
+      ]
+    },
+    {
+      "request": "improve secret context handling, not evidence claim logic",
+      "expected": [
+        "cap.context"
+      ]
+    },
+    {
+      "request": "candidate import provenance should not become verification proof",
+      "expected": [
+        "cap.interop"
+      ]
+    },
+    {
+      "request": "change CSS spacing only",
+      "expected": []
+    },
+    {
+      "request": "update contributor avatars",
+      "expected": []
+    },
+    {
+      "request": "reorder changelog headings",
+      "expected": []
+    },
+    {
+      "request": "adjust package description wording",
+      "expected": []
+    },
+    {
+      "request": "add a nonfunctional README example",
+      "expected": []
+    },
+    {
+      "request": "rename a benchmark output file",
+      "expected": []
+    }
+  ]
+}

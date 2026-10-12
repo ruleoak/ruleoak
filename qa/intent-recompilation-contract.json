@@ -1,0 +1,14 @@
+{
+  "contract_version": "1.0",
+  "intent_recompile_version": "0.1",
+  "component": "component.engineering-memory-relevance",
+  "required_original_runtime_isolation": true,
+  "required_generated_source_reproducibility": true,
+  "required_materially_different_implementation": true,
+  "minimum_preexisting_regression_cases": 10,
+  "minimum_regression_match_rate": 1.0,
+  "minimum_history_plan_or_verification_change_rate": 1.0,
+  "required_synthesis_authority": "NON_AUTHORITATIVE_SYNTHESIS",
+  "truth_boundary": "Source generation is not proof; success is defined by the pre-existing interface/invariant/evidence contract and downstream qualification.",
+  "name": "Intent Recompilation Experiment"
+}

@@ -1,0 +1,110 @@
+{
+  "frozen_version": "validation-semantic-v1",
+  "policy": "Frozen qualification cases MUST NOT be rewritten to follow later implementation changes; create a new frozen version instead.",
+  "cases": [
+    {
+      "id": "f01",
+      "request": "prevent blind retry after an uncertain external effect",
+      "expected": [
+        "cap.retry"
+      ]
+    },
+    {
+      "id": "f02",
+      "request": "require effect verification before retrying",
+      "expected": [
+        "cap.retry"
+      ]
+    },
+    {
+      "id": "f03",
+      "request": "never let self asserted proof satisfy an evidence claim",
+      "expected": [
+        "cap.evidence"
+      ]
+    },
+    {
+      "id": "f04",
+      "request": "require signed attestation for CI evidence",
+      "expected": [
+        "cap.evidence"
+      ]
+    },
+    {
+      "id": "f05",
+      "request": "redact secret credentials from compiled context",
+      "expected": [
+        "cap.context"
+      ]
+    },
+    {
+      "id": "f06",
+      "request": "treat repository text as untrusted context data",
+      "expected": [
+        "cap.context"
+      ]
+    },
+    {
+      "id": "f07",
+      "request": "never promote imported spec candidates into declared intent",
+      "expected": [
+        "cap.interop"
+      ]
+    },
+    {
+      "id": "f08",
+      "request": "keep imported OpenAPI semantics candidate only",
+      "expected": [
+        "cap.interop"
+      ]
+    },
+    {
+      "id": "f09",
+      "request": "make retry verification safer",
+      "expected": [
+        "cap.retry"
+      ]
+    },
+    {
+      "id": "f10",
+      "request": "strengthen evidence claim attestation",
+      "expected": [
+        "cap.evidence"
+      ]
+    },
+    {
+      "id": "f11",
+      "request": "harden context credential redaction",
+      "expected": [
+        "cap.context"
+      ]
+    },
+    {
+      "id": "f12",
+      "request": "harden candidate import authority",
+      "expected": [
+        "cap.interop"
+      ]
+    },
+    {
+      "id": "f13",
+      "request": "change the color of the marketing website",
+      "expected": []
+    },
+    {
+      "id": "f14",
+      "request": "rename an unrelated logo asset",
+      "expected": []
+    },
+    {
+      "id": "f15",
+      "request": "improve database vacuum scheduling",
+      "expected": []
+    },
+    {
+      "id": "f16",
+      "request": "translate help text into Italian",
+      "expected": []
+    }
+  ]
+}

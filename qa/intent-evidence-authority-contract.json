@@ -1,0 +1,45 @@
+{
+  "contract_version": "1.0",
+  "evidence_authority_version": "0.1",
+  "required_capability": "cap.intent-evidence-authority",
+  "required_commands": [
+    "verify",
+    "prove",
+    "coverage",
+    "contradiction"
+  ],
+  "required_evidence_subcommands": [
+    "validate",
+    "status"
+  ],
+  "required_statuses": [
+    "PASS",
+    "FAIL",
+    "UNKNOWN",
+    "NOT_RUN",
+    "STALE",
+    "CONFLICTED"
+  ],
+  "required_classes": [
+    "STATIC",
+    "UNIT",
+    "INTEGRATION",
+    "PROPERTY",
+    "BUILD",
+    "RUNTIME",
+    "DEVICE",
+    "EXTERNAL",
+    "MANUAL",
+    "MODEL_INFERENCE"
+  ],
+  "required_cases": [
+    "independent_pass",
+    "agent_self_assertion_rejected",
+    "explicit_fail",
+    "contradiction",
+    "stale",
+    "not_run",
+    "model_inference_non_authoritative"
+  ],
+  "name": "Intent Evidence Authority"
+}

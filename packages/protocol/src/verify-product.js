@@ -1,0 +1,8 @@
+/* SPDX-FileCopyrightText: 2026 RuleOak Pte. Ltd.
+ * SPDX-License-Identifier: Apache-2.0 */
+export const VERIFY_PRODUCT_VERSIONS=Object.freeze(['0.1']);
+export const VERIFY_PRODUCT_MODES=Object.freeze(['OBSERVE','VERIFY','GOVERN']);
+export const VERIFY_PRODUCT_DECISIONS=Object.freeze(['PASS','REVIEW','BLOCK']);
+export const VERIFY_PRODUCT_PROVENANCE=Object.freeze(['DETERMINISTIC','OBSERVED','INFERRED','UNKNOWN']);
+const isObj=v=>v&&typeof v==='object'&&!Array.isArray(v);const res=e=>({valid:e.length===0,isValid:e.length===0,errors:e,errorMessage:e.join('; ')});
+export function validateVerifyProductReport(r){const e=[];if(!isObj(r))return res(['verify report must be an object']);if(!VERIFY_PRODUCT_VERSIONS.includes(r.verify_product_version))e.push('verify_product_version is invalid');if(!VERIFY_PRODUCT_MODES.includes(r.mode))e.push('mode is invalid');if(!VERIFY_PRODUCT_DECISIONS.includes(r.decision))e.push('decision is invalid');for(const k of ['base','candidate','semantic','evidence','summary'])if(!isObj(r[k]))e.push(`${k} must be an object`);if(!Array.isArray(r.findings))e.push('findings must be an array');else for(const [i,f] of r.findings.entries()){if(!isObj(f))e.push(`findings[${i}] must be an object`);else{if(typeof f.code!=='string'||!f.code)e.push(`findings[${i}].code is required`);if(!VERIFY_PRODUCT_PROVENANCE.includes(f.provenance))e.push(`findings[${i}].provenance is invalid`);if(typeof f.blocking!=='boolean')e.push(`findings[${i}].blocking must be boolean`);}}if(!Array.isArray(r.historical_regressions))e.push('historical_regressions must be an array');if(isObj(r.summary)&&r.summary.decision!==r.decision)e.push('summary.decision must equal decision');return res(e);}

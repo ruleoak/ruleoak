@@ -1,0 +1,12 @@
+/* SPDX-FileCopyrightText: 2026 RuleOak Pte. Ltd.
+ * SPDX-License-Identifier: Apache-2.0 */
+export const INTENT_RECOMPILE_VERSIONS=Object.freeze(['0.1']);
+export const INTENT_RECOMPILE_STATUSES=Object.freeze(['DRY_RUN_READY','GENERATED','VERIFIED','FAILED']);
+export const INTENT_RECOMPILE_AUTHORITIES=Object.freeze(['NON_AUTHORITATIVE_SYNTHESIS']);
+const isObj=v=>v!==null&&typeof v==='object'&&!Array.isArray(v);
+const idRe=/^[A-Za-z][A-Za-z0-9_.:-]{0,127}$/;
+const result=e=>({valid:e.length===0,isValid:e.length===0,errors:e,errorMessage:e.join('; ')});
+const nonempty=(v,p,e)=>{if(typeof v!=='string'||!v.trim())e.push(`${p} must be a non-empty string`);};
+const stableId=(v,p,e)=>{if(typeof v!=='string'||!idRe.test(v))e.push(`${p} must be a stable ID`);};
+export function validateIntentRecompilePackage(v){const e=[];if(!isObj(v))return result(['package must be an object']);if(!INTENT_RECOMPILE_VERSIONS.includes(v.intent_recompile_version))e.push('intent_recompile_version is invalid');stableId(v.package_id,'package_id',e);stableId(v.component_id,'component_id',e);nonempty(v.target_module,'target_module',e);nonempty(v.baseline?.source_sha256,'baseline.source_sha256',e);if(!isObj(v.interface_contract))e.push('interface_contract must be an object');if(!Array.isArray(v.invariants)||!v.invariants.length)e.push('invariants must be a non-empty array');if(!Array.isArray(v.evidence_contract)||!v.evidence_contract.length)e.push('evidence_contract must be a non-empty array');if(!isObj(v.synthesis))e.push('synthesis must be an object');else{nonempty(v.synthesis.strategy,'synthesis.strategy',e);if(!Number.isInteger(v.synthesis.minimum_distinct_structure_signals)||v.synthesis.minimum_distinct_structure_signals<1)e.push('synthesis.minimum_distinct_structure_signals must be a positive integer');}return result(e);}
+export function validateIntentRecompileReport(v){const e=[];if(!isObj(v))return result(['report must be an object']);if(!INTENT_RECOMPILE_VERSIONS.includes(v.intent_recompile_version))e.push('intent_recompile_version is invalid');stableId(v.experiment_id,'experiment_id',e);if(!INTENT_RECOMPILE_STATUSES.includes(v.status))e.push('status is invalid');if(!INTENT_RECOMPILE_AUTHORITIES.includes(v.synthesis_authority))e.push('synthesis_authority must be NON_AUTHORITATIVE_SYNTHESIS');if(!isObj(v.baseline)||!isObj(v.replacement))e.push('baseline and replacement must be objects');if(!isObj(v.equivalence))e.push('equivalence must be an object');if(!isObj(v.model_execution))e.push('model_execution must be an object');return result(e);}

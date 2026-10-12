@@ -1,0 +1,52 @@
+{
+  "conformance_version": "1.0",
+  "ruleoak_release": "0.50.0",
+  "vector_count": 11,
+  "version_matrix_sha256": "sha256:06ea191a3a6d6eddf32a662a813867977a782f4267a3207c06a9cdfad09eec17",
+  "files": [
+    {
+      "path": "vectors/adapter_descriptor.json",
+      "sha256": "sha256:884c2328664d108d92f3fe7f1226fa28eca700b4420d0df1a2765df17f082331"
+    },
+    {
+      "path": "vectors/approval_result.json",
+      "sha256": "sha256:ebfef592859d0c89eb0600b55526df76e483b84f5b08e7119ba5ab3a9802958f"
+    },
+    {
+      "path": "vectors/authority_envelope.json",
+      "sha256": "sha256:70a334270caa2f2f8bbaeb0e628dd073e71d2f753f93323f62bb4463e3f62b0e"
+    },
+    {
+      "path": "vectors/authority_grant.json",
+      "sha256": "sha256:fe2a68ee1a561d77852755063fd6d5728f8d1932ca83ec218df4bb0f8142eaaa"
+    },
+    {
+      "path": "vectors/capability_identity_evidence.json",
+      "sha256": "sha256:1d48a1500583467f77b05465425431614f6379f1e62463af5dd4d76ef7daf63d"
+    },
+    {
+      "path": "vectors/crashlab_scenario.json",
+      "sha256": "sha256:e3d58a6306bc5480eadda45043bbcc72dbb2465c0671f0878efe2f434b8bedb0"
+    },
+    {
+      "path": "vectors/delegation.json",
+      "sha256": "sha256:1cc870344dff0ade6de8cb54f76cec1675fab453f18ec1cbe56e077eeb86f31a"
+    },
+    {
+      "path": "vectors/effect_receipt.json",
+      "sha256": "sha256:1377017ccd00b2b773fc12a5bd8bbcf3dce79257cc6d20d288727daca9826676"
+    },
+    {
+      "path": "vectors/evidence_bundle.json",
+      "sha256": "sha256:5d8d64ba384d4a509709590a932640dd36000767509e9d2319e058a1a1a2f1b1"
+    },
+    {
+      "path": "vectors/execution_lease.json",
+      "sha256": "sha256:76cb14957f969be7e5b52212b0a8f1a1f7853d25a222b5f15ccfebdf48d0d4cc"
+    },
+    {
+      "path": "vectors/revocation.json",
+      "sha256": "sha256:ce3289d92e1d8bd35a0daa47992aba224db7331a85187bb1a98d3a4a0480548f"
+    }
+  ]
+}

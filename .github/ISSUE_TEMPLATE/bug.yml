@@ -1,0 +1,28 @@
+name: Bug report
+description: Report reproducible RuleOak behavior that violates the documented Effect Boundary or operator contract.
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "Do not include secrets, production credentials, raw sensitive prompts, or customer data."
+  - type: input
+    id: version
+    attributes: {label: RuleOak version}
+    validations: {required: true}
+  - type: textarea
+    id: boundary
+    attributes: {label: Boundary / integration, description: "SDK, MCP stdio, MCP HTTP, Effect Profile, evidence/reconciliation, etc."}
+    validations: {required: true}
+  - type: textarea
+    id: repro
+    attributes: {label: Minimal reproduction}
+    validations: {required: true}
+  - type: textarea
+    id: expected
+    attributes: {label: Expected safety behavior}
+    validations: {required: true}
+  - type: textarea
+    id: actual
+    attributes: {label: Actual behavior}
+    validations: {required: true}

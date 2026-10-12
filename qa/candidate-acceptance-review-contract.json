@@ -1,0 +1,20 @@
+{
+  "contract_version": "1.0",
+  "product_identity": "RuleOak 0.50.0 developer preview",
+  "front_door": "ruleoak dev",
+  "requirements": [
+    "one candidate review summarizes changed behavior, failed protected checks, missing evidence, unknowns and deterministic next actions",
+    "external/chat review preserves zero RuleOak coding-model calls and zero RuleOak model tokens",
+    "UNKNOWN runtime behavior is never promoted to behavioral fact",
+    "a shareable Dev activation snapshot excludes repository paths, candidate paths, source code, prompt/intent text, credentials, raw test output and source hashes",
+    "activation snapshot reports local review duration and aggregate review counts without claiming external adoption",
+    "build handoff remains distinct from returned build or native evidence"
+  ],
+  "external_acceptance_metrics_not_claimed": [
+    "five independent developers",
+    "repeat-use rate",
+    "false-alert rate",
+    "willingness to pay"
+  ],
+  "name": "Candidate Acceptance Review"
+}

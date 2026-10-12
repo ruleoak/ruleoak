@@ -1,0 +1,168 @@
+{
+  "intent_manifest_version": "0.1",
+  "manifest_id": "manifest.radio-playback.v01",
+  "product": {
+    "id": "product.radio-demo",
+    "name": "Radio Playback Demo",
+    "summary": "Implementation-independent playback intent used to demonstrate RuleOak Intent IR v0.1.",
+    "version": "demo-1"
+  },
+  "capabilities": [
+    {
+      "id": "cap.playback.background",
+      "name": "Background playback",
+      "goal_ids": ["goal.continuity"],
+      "invariant_ids": ["inv.single-audible-stream"],
+      "evidence_requirement_ids": ["evidence.playback-runtime"]
+    },
+    {
+      "id": "cap.playback.switch",
+      "name": "Authoritative station switching",
+      "goal_ids": ["goal.switch-authority"],
+      "dependency_ids": ["dep.switch-background"],
+      "invariant_ids": ["inv.selected-is-audible", "inv.single-audible-stream"],
+      "constraint_ids": ["constraint.no-source-layout"],
+      "budget_ids": ["budget.switch-latency"],
+      "authority_ids": ["authority.selection-state"],
+      "risk_ids": ["risk.stale-audio"],
+      "failure_mode_ids": ["failure.dead-endpoint"],
+      "fallback_ids": ["fallback.next-endpoint"],
+      "evidence_requirement_ids": ["evidence.playback-runtime"]
+    }
+  ],
+  "goals": [
+    {
+      "id": "goal.continuity",
+      "statement": "Playback remains available through supported background lifecycle transitions.",
+      "capability_ids": ["cap.playback.background"]
+    },
+    {
+      "id": "goal.switch-authority",
+      "statement": "A user station selection becomes the authoritative audible station.",
+      "capability_ids": ["cap.playback.switch"]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "scenario.switch-station",
+      "name": "Switch active station",
+      "given": ["Station A is audible."],
+      "when": ["The user selects Station B."],
+      "then": ["Station A stops.", "Station B becomes the only audible station within the latency budget."],
+      "capability_ids": ["cap.playback.switch"],
+      "invariant_ids": ["inv.selected-is-audible", "inv.single-audible-stream"]
+    }
+  ],
+  "invariants": [
+    {
+      "id": "inv.selected-is-audible",
+      "statement": "After a successful switch, selected station identity equals audible station identity.",
+      "capability_ids": ["cap.playback.switch"]
+    },
+    {
+      "id": "inv.single-audible-stream",
+      "statement": "At most one station stream is audible at a time.",
+      "capability_ids": ["cap.playback.switch", "cap.playback.background"]
+    }
+  ],
+  "constraints": [
+    {
+      "id": "constraint.no-source-layout",
+      "statement": "The durable intent must not depend on a particular source-file layout or implementation language.",
+      "constraint_type": "compatibility",
+      "capability_ids": ["cap.playback.switch"]
+    }
+  ],
+  "budgets": [
+    {
+      "id": "budget.switch-latency",
+      "metric": "station_switch_latency",
+      "operator": "max",
+      "value": 2,
+      "unit": "seconds",
+      "capability_ids": ["cap.playback.switch"]
+    }
+  ],
+  "authorities": [
+    {
+      "id": "authority.selection-state",
+      "statement": "Canonical selected station identity is the design source of truth for playback selection.",
+      "authority_kind": "state_source",
+      "source": "canonical-selected-station",
+      "capability_ids": ["cap.playback.switch"]
+    }
+  ],
+  "dependencies": [
+    {
+      "id": "dep.switch-background",
+      "from_capability_id": "cap.playback.switch",
+      "to_capability_id": "cap.playback.background",
+      "dependency_type": "behavior",
+      "statement": "Station switching must preserve background playback continuity semantics."
+    }
+  ],
+  "risks": [
+    {
+      "id": "risk.stale-audio",
+      "statement": "The previous stream can remain audible after selection changes.",
+      "severity": "high",
+      "capability_ids": ["cap.playback.switch"],
+      "invariant_ids": ["inv.selected-is-audible", "inv.single-audible-stream"]
+    }
+  ],
+  "failure_modes": [
+    {
+      "id": "failure.dead-endpoint",
+      "statement": "The selected station endpoint cannot produce playable audio.",
+      "capability_ids": ["cap.playback.switch"],
+      "fallback_ids": ["fallback.next-endpoint"]
+    }
+  ],
+  "fallbacks": [
+    {
+      "id": "fallback.next-endpoint",
+      "statement": "Try the next currently valid endpoint without restoring stale audio authority.",
+      "capability_ids": ["cap.playback.switch"]
+    }
+  ],
+  "evidence_requirements": [
+    {
+      "id": "evidence.playback-runtime",
+      "statement": "Playback behavior requires independent integration and runtime observations.",
+      "evidence_types": ["integration", "runtime"],
+      "capability_ids": ["cap.playback.switch", "cap.playback.background"]
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim.switch-authoritative",
+      "statement": "Station switching preserves single-stream authority and completes within the declared budget.",
+      "capability_ids": ["cap.playback.switch"],
+      "invariant_ids": ["inv.selected-is-audible", "inv.single-audible-stream"],
+      "evidence_requirement_ids": ["evidence.playback-runtime"]
+    }
+  ],
+  "decisions": [
+    {
+      "id": "decision.intent-independent-of-code",
+      "statement": "Keep source paths and implementation-language structure outside the durable Intent IR.",
+      "status": "accepted",
+      "capability_ids": ["cap.playback.switch", "cap.playback.background"]
+    }
+  ],
+  "incidents": [
+    {
+      "id": "incident.stale-stream-demo",
+      "statement": "A prior implementation allowed old audio to continue after a new station was selected.",
+      "status": "resolved",
+      "capability_ids": ["cap.playback.switch"],
+      "invariant_ids": ["inv.selected-is-audible"],
+      "decision_ids": ["decision.intent-independent-of-code"]
+    }
+  ],
+  "extensions": {
+    "org.ruleoak.example": {
+      "purpose": "Intent IR graduation fixture"
+    }
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/authority-envelope-v1.json",
+  "title": "RuleOak Authority Envelope v1",
+  "type": "object",
+  "required": [
+    "envelope_version",
+    "envelope_id",
+    "grant_id",
+    "principal_chain",
+    "capabilities",
+    "issued_at",
+    "not_before",
+    "expires_at",
+    "constraints",
+    "obligations"
+  ],
+  "properties": {
+    "envelope_version": {
+      "const": "1.0"
+    },
+    "envelope_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "grant_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "principal_chain": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/principal"
+      }
+    },
+    "capabilities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/capability"
+      }
+    },
+    "issued_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "not_before": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expires_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "intent_id": {
+      "type": "string"
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "session_id": {
+      "type": "string"
+    },
+    "policy_digest": {
+      "type": "string"
+    },
+    "revocation_ref": {
+      "type": "string"
+    },
+    "constraints": {
+      "$ref": "#/$defs/constraints"
+    },
+    "obligations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/obligation"
+      }
+    },
+    "attestation": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "signature": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "principal": {
+      "type": "object",
+      "required": [
+        "type",
+        "id"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "user",
+            "agent",
+            "script",
+            "service",
+            "organization"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string"
+        },
+        "issuer": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "capability": {
+      "type": "object",
+      "required": [
+        "actions",
+        "resources"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "actions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "resources": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "constraints": {
+      "type": "object",
+      "properties": {
+        "max_executions": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_objects": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_amount": {
+          "type": "number",
+          "minimum": 0
+        },
+        "max_external_calls": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "network": {
+          "enum": [
+            "allow",
+            "deny",
+            "inherit"
+          ]
+        },
+        "delegation_allowed": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "obligation": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "require_approval",
+            "require_effect_receipt",
+            "require_recorder",
+            "execution_before",
+            "target_verified"
+          ]
+        },
+        "deadline": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

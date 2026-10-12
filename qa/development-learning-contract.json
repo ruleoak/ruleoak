@@ -1,0 +1,14 @@
+{
+  "contract_version": "1.0",
+  "requirements": {
+    "one_intent_generates_candidates": true,
+    "implicit_promotion_count": 0,
+    "explicit_promotion_required": true,
+    "promoted_learning_consumed_by_future_planning": true,
+    "repair_iteration_reduction_cases": 20,
+    "unpromoted_future_effects": 0,
+    "verification_gap_does_not_self_promote": true,
+    "hosted_learning_quality": "NOT_RUN"
+  },
+  "name": "Development Learning Loop"
+}

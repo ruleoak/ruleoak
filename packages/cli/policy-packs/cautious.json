@@ -1,0 +1,29 @@
+{
+  "policyVersion": 2,
+  "defaultAction": "needs_approval",
+  "rules": [
+    {
+      "id": "deny-destructive-and-financial",
+      "description": "Deny destructive filesystem, payment, and privileged shell actions",
+      "effect": "deny",
+      "priority": 100,
+      "actions": ["filesystem.delete", "mcp.filesystem.delete", "payment.*", "mcp.payment.*", "shell.run", "mcp.shell.run"]
+    },
+    {
+      "id": "allow-low-risk-reads",
+      "description": "Allow read-only actions that remain low risk",
+      "effect": "allow",
+      "priority": 20,
+      "actions": ["filesystem.read", "mcp.filesystem.read", "workspace.read"],
+      "riskAtMost": "low",
+      "conditions": { "sideEffects": ["read_only"] }
+    },
+    {
+      "id": "review-private-reads",
+      "effect": "needs_approval",
+      "priority": 30,
+      "actions": ["filesystem.read", "mcp.filesystem.read"],
+      "conditions": { "sensitivities": ["private", "secret"] }
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+RuleOak coding-agent shell guard
+Safe list: allowed
+Package install: approved for session
+Destructive command: denied before execution
+Evidence report: .../.ruleoak/report.html

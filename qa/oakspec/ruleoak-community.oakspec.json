@@ -1,0 +1,1300 @@
+{
+  "capabilities": [
+    {
+      "authorities": [
+        {
+          "authority_kind": "decision_owner",
+          "id": "authority.context-selection",
+          "source": "RuleOak Context Package v0.1",
+          "statement": "Declared Intent and Brownfield Understanding/Semantic Impact repository/impact facts authorize context inclusion; Context Compiler may rank and omit material for budget reasons but may not promote omission into semantic irrelevance or evidence."
+        }
+      ],
+      "budgets": [
+        {
+          "id": "budget.context-bytes",
+          "metric": "context_package_bytes",
+          "operator": "max",
+          "unit": "bytes",
+          "value": 131072
+        },
+        {
+          "id": "budget.context-files",
+          "metric": "context_package_files",
+          "operator": "max",
+          "unit": "files",
+          "value": 20
+        }
+      ],
+      "constraints": [
+        {
+          "constraint_type": "operational",
+          "id": "constraint.context-local-deterministic",
+          "statement": "Context Compiler context selection is deterministic and local by default; it does not require or invoke a hosted model provider."
+        }
+      ],
+      "dependency_capability_refs": [
+        "cap.intent-driven-change",
+        "cap.repository-understanding",
+        "cap.semantic-impact"
+      ],
+      "evidence_requirement_refs": [
+        "evidence.context-compiler"
+      ],
+      "goals": [
+        "Compile a bounded context package that preserves affected Intent and required implementation/evidence context while materially reducing naive repository context."
+      ],
+      "id": "cap.context-compiler",
+      "invariant_refs": [
+        "inv.context-bounded",
+        "inv.context-exclusion-not-proof"
+      ],
+      "name": "Bounded task context compiler",
+      "summary": "Compile the minimal sufficient, provenance-aware engineering context for a task from affected Intent, repository relationships, source/test slices and evidence requirements without repository-wide context stuffing."
+    },
+    {
+      "authorities": [],
+      "budgets": [],
+      "constraints": [
+        {
+          "constraint_type": "operational",
+          "id": "constraint.learning-explicit-authority",
+          "statement": "Promotion requires explicit user authority and may emit only governed Engineering Memory; core Intent is never silently rewritten."
+        }
+      ],
+      "dependency_capability_refs": [
+        "cap.one-intent-autonomous-development"
+      ],
+      "evidence_requirement_refs": [
+        "evidence.development-learning"
+      ],
+      "goals": [
+        "Successful development changes should compound useful engineering knowledge without silently changing durable authority."
+      ],
+      "id": "cap.development-learning-loop",
+      "invariant_refs": [
+        "inv.learning-no-implicit-promotion",
+        "inv.learning-history-not-proof",
+        "inv.learning-unpromoted-no-effect",
+        "inv.learning-future-consumption"
+      ],
+      "name": "Compounding development learning",
+      "summary": "Generate non-authoritative learning candidates from completed one-intent changes and explicitly promote reviewed knowledge into durable Engineering Memory for later planning."
+    },
+    {
+      "authorities": [
+        {
+          "authority_kind": "decision_owner",
+          "id": "authority.effect-decision",
+          "source": "RuleOak Effect Boundary authority model",
+          "statement": "The evaluator and bounded execution authority determine whether a governed external effect may execute; raw agent intent is not authority."
+        }
+      ],
+      "budgets": [
+        {
+          "id": "budget.policy-p99",
+          "metric": "policy_p99_ms",
+          "operator": "max",
+          "unit": "ms",
+          "value": 5
+        }
+      ],
+      "constraints": [
+        {
+          "constraint_type": "security",
+          "id": "constraint.effect-fail-closed",
+          "statement": "Effect execution must not bypass authorization, effect verification, or bounded retry disposition when outcome is uncertain."
+        }
+      ],
+      "dependency_capability_refs": [],
+      "evidence_requirement_refs": [
+        "evidence.effect-boundary"
+      ],
+      "goals": [
+        "Authorize supported effects before execution, execute once, verify the external effect, and avoid blind retry."
+      ],
+      "id": "cap.effect-boundary",
+      "invariant_refs": [
+        "inv.no-blind-retry",
+        "inv.one-use-execution-authority"
+      ],
+      "name": "Effect Boundary authorization and execution",
+      "summary": ""
+    },
+    {
+      "authorities": [
+        {
+          "authority_kind": "design_source",
+          "id": "authority.engineering-memory",
+          "source": ".ruleoak/memory/*.json",
+          "statement": "Versioned Engineering Memory bundles and their explicit provenance are authoritative for historical planning inputs; Intent Evidence Authority remains authoritative for current evidence adjudication."
+        }
+      ],
+      "budgets": [
+        {
+          "id": "budget.memory-records",
+          "metric": "engineering_memory_records",
+          "operator": "max",
+          "unit": "records",
+          "value": 5000
+        }
+      ],
+      "constraints": [
+        {
+          "constraint_type": "operational",
+          "id": "constraint.memory-validity-window",
+          "statement": "Expired, not-yet-effective, or superseded memory records must not alter current impact, context or change planning."
+        }
+      ],
+      "dependency_capability_refs": [],
+      "evidence_requirement_refs": [
+        "evidence.engineering-memory"
+      ],
+      "goals": [
+        "Preserve engineering lessons as executable, provenance-aware memory that changes future plans and verification requirements when relevant."
+      ],
+      "id": "cap.engineering-memory",
+      "invariant_refs": [
+        "inv.memory-provenance-truth",
+        "inv.memory-not-proof"
+      ],
+      "name": "Executable engineering memory",
+      "summary": "Turn validated engineering history into provenance-aware regression protections that can strengthen future impact analysis, context compilation, change planning and evidence requirements without becoming proof itself."
+    },
+    {
+      "authorities": [
+        {
+          "authority_kind": "state_source",
+          "id": "authority.evidence-record",
+          "source": "RuleOak evidence graph and recorder",
+          "statement": "Recorded observations and verified evidence records are authoritative for execution claims; agent prose is not."
+        }
+      ],
+      "budgets": [
+        {
+          "id": "budget.evidence-append-p99",
+          "metric": "evidence_append_p99_ms",
+          "operator": "max",
+          "unit": "ms",
+          "value": 10
+        }
+      ],
+      "constraints": [
+        {
+          "constraint_type": "operational",
+          "id": "constraint.evidence-independent",
+          "statement": "Model or agent assertions alone do not satisfy independent evidence requirements."
+        }
+      ],
+      "dependency_capability_refs": [],
+      "evidence_requirement_refs": [
+        "evidence.evidence-authority"
+      ],
+      "goals": [
+        "Preserve independently inspectable evidence for governed execution claims."
+      ],
+      "id": "cap.evidence-authority",
+      "invariant_refs": [
+        "inv.evidence-not-agent-assertion"
+      ],
+      "name": "Evidence recording and verification",
+      "summary": ""
+    },
+    {
+      "authorities": [
+        {
+          "authority_kind": "decision_owner",
+          "id": "authority.intent-change-plan",
+          "source": "RuleOak Intent Change Plan v0.1",
+          "statement": "Declared Intent plus Brownfield Understanding/Semantic Impact planning determine the allowed implementation scope; the implementer may propose changes but cannot expand its own authority or certify correctness."
+        }
+      ],
+      "budgets": [
+        {
+          "id": "budget.intent-change-files",
+          "metric": "intent_change_files",
+          "operator": "max",
+          "unit": "files",
+          "value": 32
+        }
+      ],
+      "constraints": [
+        {
+          "constraint_type": "security",
+          "id": "constraint.change-blocked-conflict",
+          "statement": "A change with unresolved direct capability ownership, protected-intent conflicts, or no bounded implementation scope must not mutate source."
+        },
+        {
+          "constraint_type": "operational",
+          "id": "constraint.change-dry-run-default",
+          "statement": "ruleoak change is dry-run by default; source mutation requires explicit --apply plus a separately produced implementation proposal bound to the exact plan_id."
+        }
+      ],
+      "dependency_capability_refs": [
+        "cap.intent-evidence-authority",
+        "cap.semantic-diff",
+        "cap.semantic-impact"
+      ],
+      "evidence_requirement_refs": [
+        "evidence.intent-driven-change"
+      ],
+      "goals": [
+        "Turn a desired behavioral outcome into a bounded implementation plan and Proposal Intent Delta before source mutation, then review the resulting change with semantic and evidence authorities."
+      ],
+      "id": "cap.intent-driven-change",
+      "invariant_refs": [
+        "inv.intent-delta-before-mutation",
+        "inv.change-scope-bounded",
+        "inv.implementer-not-evidence-authority"
+      ],
+      "name": "Intent-driven change orchestration",
+      "summary": "Plan desired behavioral changes as a Proposed Intent Delta before mutation, constrain implementation proposals to inferred scope, and require post-change semantic diff plus independent evidence adjudication."
+    },
+    {
+      "authorities": [
+        {
+          "authority_kind": "state_source",
+          "id": "authority.intent-evidence-adjudication",
+          "source": "RuleOak Intent Evidence Authority v0.1",
+          "statement": "Declared Intent evidence requirements plus current independently inspectable observations govern claim qualification; the implementation agent is not the adjudicator of its own correctness."
+        }
+      ],
+      "budgets": [],
+      "constraints": [
+        {
+          "constraint_type": "operational",
+          "id": "constraint.intent-evidence-independent",
+          "statement": "Only current independently inspectable observations may satisfy an Intent evidence requirement; model inference and agent self-assertion are non-authoritative."
+        }
+      ],
+      "dependency_capability_refs": [],
+      "evidence_requirement_refs": [
+        "evidence.intent-evidence-authority"
+      ],
+      "goals": [
+        "Adjudicate software-intent claims from typed observations and evidence requirements while preserving provenance, freshness, contradiction and independence semantics."
+      ],
+      "id": "cap.intent-evidence-authority",
+      "invariant_refs": [
+        "inv.evidence-not-agent-assertion",
+        "inv.intent-evidence-status-truth"
+      ],
+      "name": "Intent claim adjudication",
+      "summary": "Adjudicate declared claims against typed observations and independently inspectable evidence without allowing model or agent self-certification."
+    },
+    {
+      "authorities": [
+        {
+          "authority_kind": "decision_owner",
+          "id": "authority.recompile-synthesis-only",
+          "source": "RuleOak Intent Compiler experimental",
+          "statement": "The Intent Compiler may synthesize replacement source but owns neither behavior truth nor evidence authority."
+        }
+      ],
+      "budgets": [
+        {
+          "id": "budget.recompile-generated-bytes",
+          "metric": "generated_component_bytes",
+          "operator": "max",
+          "unit": "bytes",
+          "value": 16384
+        }
+      ],
+      "constraints": [
+        {
+          "constraint_type": "security",
+          "id": "constraint.recompile-bounded-experimental",
+          "statement": "Intent Recompilation compile is experimental and limited to the declared Engineering Memory relevance component; it may not mutate unrelated implementation surfaces."
+        }
+      ],
+      "dependency_capability_refs": [
+        "cap.engineering-memory",
+        "cap.intent-evidence-authority",
+        "cap.model-independent-execution",
+        "cap.semantic-diff"
+      ],
+      "evidence_requirement_refs": [
+        "evidence.intent-recompilation"
+      ],
+      "goals": [
+        "Demonstrate that a bounded RuleOak component can be replaced from durable Intent and engineering contracts while independently preserving externally relevant behavior."
+      ],
+      "id": "cap.intent-recompilation",
+      "invariant_refs": [
+        "inv.recompile-original-isolated",
+        "inv.recompile-not-self-proof",
+        "inv.recompile-contract-equivalence"
+      ],
+      "name": "Experimental intent recompilation",
+      "summary": "Regenerate one bounded implementation component from durable intent, interfaces, invariants, history and evidence contracts, then judge the replacement independently rather than by source similarity."
+    },
+    {
+      "authorities": [
+        {
+          "authority_kind": "design_source",
+          "id": "authority.validation-advisory",
+          "source": "Validation Hardening validation contract",
+          "statement": "Validation harnesses may classify evidence quality and readiness but cannot replace Intent Evidence Authority evidence authority or external independent evaluation."
+        }
+      ],
+      "budgets": [
+        {
+          "id": "budget.validation-synthetic-files",
+          "metric": "synthetic_file_nodes",
+          "operator": "min",
+          "unit": "files",
+          "value": 100000
+        }
+      ],
+      "constraints": [
+        {
+          "constraint_type": "operational",
+          "id": "constraint.validation-no-self-confirmation",
+          "statement": "Validation Hardening may strengthen local source qualification but MUST NOT claim external validation from implementation-visible or unexecuted fixtures."
+        }
+      ],
+      "dependency_capability_refs": [],
+      "evidence_requirement_refs": [
+        "evidence.ivd-validation-hardening"
+      ],
+      "goals": [
+        "Try to falsify Intent-Verified Development assumptions with independent, adversarial, hostile-input, scale and external validation gates before expanding claims."
+      ],
+      "id": "cap.ivd-validation-hardening",
+      "invariant_refs": [
+        "inv.validation-benchmarks-independent",
+        "inv.validation-external-truth",
+        "inv.context-untrusted-data",
+        "inv.evidence-attestation-trust"
+      ],
+      "name": "IVD critique and external-validation hardening",
+      "summary": "Continuously challenge the Intent-Verified Development stack with frozen and adversarial qualification, hostile-repository containment, attested evidence, scale checks and externally executable validation pilots without promoting unrun external claims."
+    },
+    {
+      "authorities": [
+        {
+          "authority_kind": "decision_owner",
+          "id": "authority.mcp-boundary",
+          "source": "RuleOak MCP Effect Boundary",
+          "statement": "Protected MCP execution authority is the RuleOak gateway/Effect Boundary, not the upstream client or tool request alone."
+        }
+      ],
+      "budgets": [
+        {
+          "id": "budget.mcp-http-p99",
+          "metric": "http_p99_ms",
+          "operator": "max",
+          "unit": "ms",
+          "value": 300
+        }
+      ],
+      "constraints": [
+        {
+          "constraint_type": "security",
+          "id": "constraint.mcp-no-bypass",
+          "statement": "Supported protected MCP paths must traverse the governed Effect Boundary rather than an unguarded execution path."
+        }
+      ],
+      "dependency_capability_refs": [
+        "cap.effect-boundary"
+      ],
+      "evidence_requirement_refs": [
+        "evidence.mcp-boundary"
+      ],
+      "goals": [
+        "Apply the Effect Boundary to supported MCP execution paths without silently bypassing authority."
+      ],
+      "id": "cap.mcp-boundary",
+      "invariant_refs": [
+        "inv.no-blind-retry"
+      ],
+      "name": "MCP protected execution boundary",
+      "summary": ""
+    },
+    {
+      "authorities": [
+        {
+          "authority_kind": "decision_owner",
+          "id": "authority.model-execution-only",
+          "source": "RuleOak Model Execution v0.1",
+          "statement": "Model providers may produce advice only; intent, tool, mutation, verification, and evidence authority remain external."
+        }
+      ],
+      "budgets": [
+        {
+          "id": "budget.model-output-tokens",
+          "metric": "model_output_tokens",
+          "operator": "max",
+          "unit": "tokens",
+          "value": 4000
+        }
+      ],
+      "constraints": [
+        {
+          "constraint_type": "security",
+          "id": "constraint.hosted-network-explicit",
+          "statement": "Hosted model execution requires explicit network opt-in and configured credentials/model identity."
+        }
+      ],
+      "dependency_capability_refs": [
+        "cap.context-compiler",
+        "cap.intent-driven-change",
+        "cap.intent-evidence-authority"
+      ],
+      "evidence_requirement_refs": [
+        "evidence.model-independent-execution"
+      ],
+      "goals": [
+        "The same durable Intent and context can be executed through interchangeable model providers without transferring RuleOak authority to the model."
+      ],
+      "id": "cap.model-independent-execution",
+      "invariant_refs": [
+        "inv.model-non-authoritative",
+        "inv.provider-independent-intent"
+      ],
+      "name": "Model-independent execution",
+      "summary": "Treat models as replaceable, non-authoritative execution resources behind stable planner/implementer/reviewer/reasoning interfaces."
+    },
+    {
+      "authorities": [
+        {
+          "authority_kind": "decision_owner",
+          "id": "authority.frontend-producer-selection",
+          "source": "Multi-Frontend Development multi-frontend development contract",
+          "statement": "The selected frontend/implementation producer may supply a candidate but cannot expand Intent-Driven Change scope, certify evidence, implicitly promote learning, or turn build submission into proof."
+        }
+      ],
+      "budgets": [
+        {
+          "id": "budget.frontend-external-model-tokens",
+          "metric": "ruleoak_model_tokens_external_implementation",
+          "operator": "max",
+          "unit": "tokens",
+          "value": 0
+        }
+      ],
+      "constraints": [
+        {
+          "constraint_type": "operational",
+          "id": "constraint.frontend-source-authority",
+          "statement": "The persistent governed application workspace is source authority; external qualification inbox and transient extraction directories are handoff/execution boundaries, not development authority."
+        }
+      ],
+      "dependency_capability_refs": [
+        "cap.development-learning-loop",
+        "cap.one-intent-autonomous-development"
+      ],
+      "evidence_requirement_refs": [
+        "evidence.multi-frontend-development"
+      ],
+      "goals": [
+        "Let a developer keep coding in Chat or another agent, or choose managed CLI/API coding, without duplicating model work or changing RuleOak governance semantics."
+      ],
+      "id": "cap.multi-frontend-development",
+      "invariant_refs": [
+        "inv.frontend-shared-authority",
+        "inv.frontend-external-zero-model",
+        "inv.frontend-exact-handoff",
+        "inv.frontend-api-authenticated"
+      ],
+      "name": "Multi-frontend development",
+      "summary": "Allow Chat/external agents, managed CLI models, and a local API to produce or submit implementation candidates using one shared RuleOak intent, scope, evidence, learning and build-handoff control model, with a single candidate-acceptance review at the Dev front door.",
+      "tags": [
+        "candidate-acceptance-review",
+        "first-useful-result"
+      ]
+    },
+    {
+      "authorities": [
+        {
+          "authority_kind": "design_source",
+          "id": "authority.oakspec-interchange-only",
+          "source": "OakSpec 1.0 normative RuleOak interoperability profile",
+          "statement": "OakSpec export/import may describe and discover interoperability data but does not grant execution authority or adjudicate evidence."
+        }
+      ],
+      "budgets": [
+        {
+          "id": "budget.oakspec-import-candidates",
+          "metric": "candidate_records_per_import",
+          "operator": "max",
+          "unit": "records",
+          "value": 512
+        }
+      ],
+      "constraints": [
+        {
+          "constraint_type": "operational",
+          "id": "constraint.oakspec-promotion-explicit",
+          "statement": "Promotion of an imported candidate requires an explicit authority-bearing workflow outside the importer."
+        }
+      ],
+      "dependency_capability_refs": [],
+      "evidence_requirement_refs": [
+        "evidence.oakspec-interoperability"
+      ],
+      "goals": [
+        "Provide portable deterministic interoperability for durable Intent, evidence requirements, semantic-change provenance and candidate imports without changing their authority."
+      ],
+      "id": "cap.oakspec-interoperability",
+      "invariant_refs": [
+        "inv.oakspec-import-candidate-only",
+        "inv.oakspec-standard-status-truth"
+      ],
+      "name": "OakSpec 1.0 interoperability",
+      "summary": "Export declared RuleOak Intent into a portable OakSpec profile and discover candidate semantics from engineering artifacts without promoting imports into authority."
+    },
+    {
+      "authorities": [
+        {
+          "authority_kind": "decision_owner",
+          "id": "authority.autonomy-user-intent-boundary",
+          "source": "One-Intent Development one-intent command",
+          "statement": "The one user intent authorizes bounded implementation orchestration only; Intent-Driven Change controls mutation scope and Intent Evidence Authority remains evidence authority."
+        }
+      ],
+      "budgets": [
+        {
+          "id": "budget.autonomy-repair-attempts",
+          "metric": "automatic_repair_attempts",
+          "operator": "max",
+          "unit": "attempts",
+          "value": 2
+        }
+      ],
+      "constraints": [
+        {
+          "constraint_type": "operational",
+          "id": "constraint.autonomy-governed-repository",
+          "statement": "Autonomous mutation requires sufficient declared Intent and implementation binding authority; an ungoverned repository is an explicit authority gap, not permission to guess."
+        }
+      ],
+      "dependency_capability_refs": [],
+      "evidence_requirement_refs": [
+        "evidence.one-intent-autonomous-development"
+      ],
+      "goals": [
+        "Let a developer state one desired outcome while RuleOak hides governed development orchestration and returns one implementation/verification result."
+      ],
+      "id": "cap.one-intent-autonomous-development",
+      "invariant_refs": [
+        "inv.autonomy-one-intent",
+        "inv.autonomy-model-non-authoritative",
+        "inv.autonomy-bounded-repair",
+        "inv.autonomy-missing-evidence-not-pass"
+      ],
+      "name": "One-intent autonomous development",
+      "summary": "Accept one natural-language development outcome and internally orchestrate impact, context, model planning/implementation, bounded mutation, automatic qualification, bounded repair and evidence adjudication without manual RuleOak subcommands."
+    },
+    {
+      "authorities": [
+        {
+          "authority_kind": "state_source",
+          "id": "authority.repository-facts",
+          "source": "RuleOak Repository Understanding graph",
+          "statement": "Filesystem/package observations and explicit Intent/binding declarations are authoritative at their stated provenance level; derived semantics remain inferred or unknown."
+        }
+      ],
+      "budgets": [
+        {
+          "id": "budget.repository-file-scan",
+          "metric": "repository_scan_files",
+          "operator": "max",
+          "unit": "files",
+          "value": 20000
+        }
+      ],
+      "constraints": [
+        {
+          "constraint_type": "operational",
+          "id": "constraint.repository-conservative",
+          "statement": "Static repository observation must prefer UNKNOWN over false-positive semantic or dependency claims."
+        }
+      ],
+      "dependency_capability_refs": [],
+      "evidence_requirement_refs": [
+        "evidence.repository-understanding"
+      ],
+      "goals": [
+        "Represent observed and declared repository structure with provenance while leaving unresolved semantic relationships UNKNOWN."
+      ],
+      "id": "cap.repository-understanding",
+      "invariant_refs": [
+        "inv.unknown-not-guessed"
+      ],
+      "name": "Brownfield repository understanding",
+      "summary": "Build a conservative provenance-aware graph from an existing repository without guessing unknown semantic relationships."
+    },
+    {
+      "authorities": [
+        {
+          "authority_kind": "decision_owner",
+          "id": "authority.verify-advisory-only",
+          "source": "RuleOak Verify v0.1",
+          "statement": "RuleOak Verify may recommend PASS, REVIEW or BLOCK but does not itself own repository merge authority or replace Intent Evidence Authority evidence authority."
+        }
+      ],
+      "budgets": [
+        {
+          "id": "budget.verify-report-bytes",
+          "metric": "verify_report_bytes",
+          "operator": "max",
+          "unit": "bytes",
+          "value": 262144
+        }
+      ],
+      "constraints": [
+        {
+          "constraint_type": "compatibility",
+          "id": "constraint.verify-backward-compatible",
+          "statement": "RuleOak Verify product mode must preserve the legacy Intent Evidence Authority evidence-only ruleoak verify behavior unless product change-assurance flags are explicitly supplied."
+        }
+      ],
+      "dependency_capability_refs": [
+        "cap.engineering-memory",
+        "cap.intent-evidence-authority",
+        "cap.semantic-diff"
+      ],
+      "evidence_requirement_refs": [
+        "evidence.ruleoak-verify"
+      ],
+      "goals": [
+        "Give teams an agent-neutral PR/change assurance result that explains behavioral impact, proof sufficiency, historical regressions and a mode-specific merge recommendation."
+      ],
+      "id": "cap.ruleoak-verify",
+      "invariant_refs": [
+        "inv.verify-mode-policy",
+        "inv.verify-unknown-not-pass",
+        "inv.verify-evidence-independent"
+      ],
+      "name": "RuleOak Verify change assurance",
+      "summary": "Combine Semantic Diff, independent Intent Evidence Authority and Engineering Memory into Observe/Verify/Govern PR and change-assurance decisions without converting inference into proof."
+    },
+    {
+      "authorities": [
+        {
+          "authority_kind": "design_source",
+          "id": "authority.semantic-diff-source",
+          "source": "RuleOak Intent IR plus observed repository/Git state",
+          "statement": "Intent IR is authoritative for declared semantic change; filesystem or Git comparison is authoritative only for observed file change; inferred bindings and runtime behavior remain non-authoritative."
+        }
+      ],
+      "budgets": [
+        {
+          "id": "budget.semantic-diff-file-scan",
+          "metric": "semantic_diff_scan_files",
+          "operator": "max",
+          "unit": "files",
+          "value": 20000
+        }
+      ],
+      "constraints": [
+        {
+          "constraint_type": "operational",
+          "id": "constraint.semantic-diff-conservative",
+          "statement": "Implementation-only source changes must not be labeled behavior-changing or behavior-preserving solely from source text; actual runtime effect remains UNKNOWN until independently evidenced."
+        }
+      ],
+      "dependency_capability_refs": [
+        "cap.intent-evidence-authority",
+        "cap.repository-understanding"
+      ],
+      "evidence_requirement_refs": [
+        "evidence.semantic-diff"
+      ],
+      "goals": [
+        "Explain what changed behaviorally by comparing durable Intent declarations and observed implementation differences, including guarantees, budgets, authorities, evidence invalidation and uncertainty."
+      ],
+      "id": "cap.semantic-diff",
+      "invariant_refs": [
+        "inv.semantic-diff-provenance-truth"
+      ],
+      "name": "Semantic behavioral diff",
+      "summary": "Compare declared Intent and observed implementation changes without upgrading inferred mappings or unknown runtime effects into behavioral fact."
+    },
+    {
+      "authorities": [
+        {
+          "authority_kind": "design_source",
+          "id": "authority.intent-impact",
+          "source": "RuleOak Intent IR and Repository Understanding",
+          "statement": "Declared Intent IR and Repository Understanding provenance are the authority inputs for deterministic Semantic Impact impact analysis; the impact engine does not upgrade inference into verified fact."
+        }
+      ],
+      "budgets": [],
+      "constraints": [
+        {
+          "constraint_type": "operational",
+          "id": "constraint.impact-deterministic-first",
+          "statement": "Semantic Impact impact classification must remain deterministic and local by default; model-assisted semantics require an explicit future adapter and separate provenance."
+        }
+      ],
+      "dependency_capability_refs": [
+        "cap.repository-understanding"
+      ],
+      "evidence_requirement_refs": [
+        "evidence.semantic-impact"
+      ],
+      "goals": [
+        "Analyze a proposed behavioral change before implementation and report direct and transitive capability impact, protected intent, implementation surfaces, evidence gaps, conflicts, uncertainty and risk."
+      ],
+      "id": "cap.semantic-impact",
+      "invariant_refs": [
+        "inv.impact-not-proof",
+        "inv.unknown-not-guessed"
+      ],
+      "name": "Semantic impact analysis",
+      "summary": "Determine behavioral impact before implementation, propagating dependencies, intent constraints, evidence gaps, uncertainty and risk."
+    }
+  ],
+  "document_id": "oakspec.product.ruleoak-community.1_0",
+  "evidence_requirements": [
+    {
+      "capability_refs": [
+        "cap.context-compiler"
+      ],
+      "evidence_classes": [
+        "UNIT",
+        "INTEGRATION",
+        "PROPERTY"
+      ],
+      "id": "evidence.context-compiler",
+      "statement": "Context Compiler requires unit/integration/property evidence for deterministic bounded selection, required Intent/binding retention, exclusion rationale and materially smaller context than the naive implementation/test corpus; external same-model A/B evidence remains separate when no model provider is invoked."
+    },
+    {
+      "capability_refs": [
+        "cap.development-learning-loop"
+      ],
+      "evidence_classes": [
+        "UNIT",
+        "INTEGRATION"
+      ],
+      "id": "evidence.development-learning",
+      "statement": "Learning candidate generation, zero implicit promotion, explicit promotion, future retrieval, and compounding repair behavior require independent local unit/integration evidence."
+    },
+    {
+      "capability_refs": [
+        "cap.effect-boundary"
+      ],
+      "evidence_classes": [
+        "UNIT",
+        "INTEGRATION"
+      ],
+      "id": "evidence.effect-boundary",
+      "statement": "Effect Boundary behavior requires unit/integration evidence and effect-verification checks."
+    },
+    {
+      "capability_refs": [
+        "cap.engineering-memory"
+      ],
+      "evidence_classes": [
+        "UNIT",
+        "INTEGRATION",
+        "PROPERTY"
+      ],
+      "id": "evidence.engineering-memory",
+      "statement": "Engineering Memory requires unit/integration/property evidence for schema validity, provenance/validity handling, deterministic matching, historical-regression plan effects and no-proof authority separation."
+    },
+    {
+      "capability_refs": [
+        "cap.evidence-authority"
+      ],
+      "evidence_classes": [
+        "UNIT",
+        "INTEGRATION"
+      ],
+      "id": "evidence.evidence-authority",
+      "statement": "Evidence recording and verification require unit/integration evidence."
+    },
+    {
+      "capability_refs": [
+        "cap.intent-driven-change"
+      ],
+      "evidence_classes": [
+        "UNIT",
+        "INTEGRATION",
+        "PROPERTY"
+      ],
+      "id": "evidence.intent-driven-change",
+      "statement": "Intent-driven change requires unit, integration and property/benchmark evidence covering dry-run non-mutation, bounded scope, stale/out-of-scope rejection, post-change semantic diff and independent evidence adjudication."
+    },
+    {
+      "capability_refs": [
+        "cap.intent-evidence-authority"
+      ],
+      "evidence_classes": [
+        "UNIT",
+        "INTEGRATION"
+      ],
+      "id": "evidence.intent-evidence-authority",
+      "statement": "Intent claim adjudication requires unit and integration evidence covering independent PASS, self-assertion rejection, stale evidence, contradiction, failure, and missing evidence states."
+    },
+    {
+      "capability_refs": [
+        "cap.intent-recompilation"
+      ],
+      "evidence_classes": [
+        "UNIT",
+        "INTEGRATION",
+        "PROPERTY",
+        "BUILD"
+      ],
+      "id": "evidence.intent-recompilation",
+      "statement": "Demonstrate generated-source reproducibility, original implementation isolation, interface preservation, pre-existing Engineering Memory regression equivalence, downstream Semantic Impact/Intent-Driven Change/Context Compiler compatibility and non-authoritative model output."
+    },
+    {
+      "capability_refs": [
+        "cap.ivd-validation-hardening"
+      ],
+      "evidence_classes": [
+        "UNIT",
+        "INTEGRATION",
+        "PROPERTY",
+        "BUILD"
+      ],
+      "id": "evidence.ivd-validation-hardening",
+      "statement": "Validation Hardening requires unit/integration/property/build evidence for frozen/adversarial qualification, hostile-input containment, cryptographic attestation, provider adapter authority separation and synthetic scale; external pilots remain separately evidenced."
+    },
+    {
+      "capability_refs": [
+        "cap.mcp-boundary"
+      ],
+      "evidence_classes": [
+        "INTEGRATION",
+        "PROPERTY"
+      ],
+      "id": "evidence.mcp-boundary",
+      "statement": "MCP boundary behavior requires integration and property evidence."
+    },
+    {
+      "capability_refs": [
+        "cap.model-independent-execution"
+      ],
+      "evidence_classes": [
+        "UNIT",
+        "INTEGRATION",
+        "PROPERTY"
+      ],
+      "id": "evidence.model-independent-execution",
+      "statement": "Prove provider interchangeability and non-authoritative model output using independent tests."
+    },
+    {
+      "capability_refs": [
+        "cap.multi-frontend-development"
+      ],
+      "evidence_classes": [
+        "UNIT",
+        "INTEGRATION",
+        "PROPERTY"
+      ],
+      "id": "evidence.multi-frontend-development",
+      "statement": "Multi-Frontend Development and Candidate Acceptance Review require unit, integration and property evidence that external/managed frontends share authority, external mode makes zero RuleOak model calls/tokens, the local API authenticates mutation, exact source-ZIP handoff preserves bytes, and the Dev front door summarizes failed checks, missing evidence, unknowns and privacy-safe local activation facts without promoting UNKNOWN behavior."
+    },
+    {
+      "capability_refs": [
+        "cap.oakspec-interoperability"
+      ],
+      "evidence_classes": [
+        "UNIT",
+        "INTEGRATION",
+        "PROPERTY"
+      ],
+      "id": "evidence.oakspec-interoperability",
+      "statement": "OakSpec export/import must preserve candidate-only authority, validate deterministically, and interoperate across all declared adapters."
+    },
+    {
+      "capability_refs": [
+        "cap.one-intent-autonomous-development"
+      ],
+      "evidence_classes": [
+        "UNIT",
+        "INTEGRATION",
+        "PROPERTY"
+      ],
+      "id": "evidence.one-intent-autonomous-development",
+      "statement": "One-Intent Development requires unit, integration and property evidence for one-command orchestration, zero-manual-step accounting, bounded repair and missing-evidence truth handling."
+    },
+    {
+      "capability_refs": [
+        "cap.repository-understanding"
+      ],
+      "evidence_classes": [
+        "UNIT",
+        "INTEGRATION"
+      ],
+      "id": "evidence.repository-understanding",
+      "statement": "Repository understanding requires deterministic graph tests and conservative provenance/UNKNOWN regression coverage."
+    },
+    {
+      "capability_refs": [
+        "cap.ruleoak-verify"
+      ],
+      "evidence_classes": [
+        "UNIT",
+        "INTEGRATION",
+        "PROPERTY"
+      ],
+      "id": "evidence.ruleoak-verify",
+      "statement": "RuleOak Verify requires unit/integration/property evidence for mode policy, Intent Evidence Authority backward compatibility, no-Intent degradation, independent-evidence PASS, unsafe Govern blocking and Observe non-blocking behavior."
+    },
+    {
+      "capability_refs": [
+        "cap.semantic-diff"
+      ],
+      "evidence_classes": [
+        "UNIT",
+        "INTEGRATION",
+        "PROPERTY"
+      ],
+      "id": "evidence.semantic-diff",
+      "statement": "Semantic Diff requires unit/integration evidence plus a labeled benchmark covering declared changes, implementation-only refactors, unbound changes, and no-change controls."
+    },
+    {
+      "capability_refs": [
+        "cap.semantic-impact"
+      ],
+      "evidence_classes": [
+        "UNIT",
+        "INTEGRATION",
+        "PROPERTY"
+      ],
+      "id": "evidence.semantic-impact",
+      "statement": "Semantic impact classification requires deterministic unit/integration tests and a manually labeled benchmark with precision and recall reporting."
+    }
+  ],
+  "extensions": {
+    "org.ruleoak.ecosystem-maturity": "preview",
+    "org.ruleoak.external-standard-status": "NOT_CLAIMED"
+  },
+  "interoperability_contract": {
+    "adapters": [
+      "openapi",
+      "tests",
+      "ci",
+      "git",
+      "agents",
+      "docs",
+      "mcp"
+    ],
+    "imports_are_candidates": true,
+    "promotion_requires_explicit_authority": true
+  },
+  "invariants": [
+    {
+      "capability_refs": [
+        "cap.one-intent-autonomous-development"
+      ],
+      "id": "inv.autonomy-bounded-repair",
+      "statement": "Automatic repair is bounded and stops on repeated failure, proposal rejection, protected-intent conflict or repair limit rather than looping indefinitely."
+    },
+    {
+      "capability_refs": [
+        "cap.one-intent-autonomous-development"
+      ],
+      "id": "inv.autonomy-missing-evidence-not-pass",
+      "statement": "Unavailable device, runtime, external or other declared evidence remains NOT_RUN/UNKNOWN and prevents autonomous VERIFIED status."
+    },
+    {
+      "capability_refs": [
+        "cap.one-intent-autonomous-development"
+      ],
+      "id": "inv.autonomy-model-non-authoritative",
+      "statement": "Planner and implementer model outputs remain non-authoritative and cannot expand mutation scope or certify correctness."
+    },
+    {
+      "capability_refs": [
+        "cap.one-intent-autonomous-development"
+      ],
+      "id": "inv.autonomy-one-intent",
+      "statement": "Ordinary autonomous development requires one user outcome and zero manual impact, context, semantic-diff, build, evidence-bundle or verify subcommands."
+    },
+    {
+      "capability_refs": [
+        "cap.intent-driven-change"
+      ],
+      "id": "inv.change-scope-bounded",
+      "statement": "Intent-Driven Change implementation mutation is limited to the plan-derived allowed scope and current before_sha256 values; out-of-scope or stale proposals fail before the first write."
+    },
+    {
+      "capability_refs": [
+        "cap.context-compiler"
+      ],
+      "id": "inv.context-bounded",
+      "statement": "Context Compiler context compilation must obey explicit file, byte and slice budgets and must not fall back to repository-wide context stuffing."
+    },
+    {
+      "capability_refs": [
+        "cap.context-compiler"
+      ],
+      "id": "inv.context-exclusion-not-proof",
+      "statement": "Excluding a file from a Context Package is a bounded relevance decision, not proof that the file cannot affect runtime behavior."
+    },
+    {
+      "capability_refs": [
+        "cap.ivd-validation-hardening"
+      ],
+      "id": "inv.context-untrusted-data",
+      "statement": "Repository source, tests, docs and agent instruction files are untrusted data for model context; they have no instruction authority and credential-like secrets are redacted before context emission."
+    },
+    {
+      "capability_refs": [
+        "cap.ivd-validation-hardening"
+      ],
+      "id": "inv.evidence-attestation-trust",
+      "statement": "Cryptographically attested evidence is distinguished from merely declared independent evidence and requires a trusted key plus producer-identity match."
+    },
+    {
+      "capability_refs": [
+        "cap.evidence-authority",
+        "cap.intent-evidence-authority"
+      ],
+      "id": "inv.evidence-not-agent-assertion",
+      "statement": "A model or agent assertion alone is not independent execution evidence."
+    },
+    {
+      "capability_refs": [
+        "cap.multi-frontend-development"
+      ],
+      "id": "inv.frontend-api-authenticated",
+      "statement": "The development mutation API requires bearer authentication and cannot switch the governed repository root per request."
+    },
+    {
+      "capability_refs": [
+        "cap.multi-frontend-development"
+      ],
+      "id": "inv.frontend-exact-handoff",
+      "statement": "When an exact external source ZIP is handed to a external qualification inbox, RuleOak preserves and verifies the exact source bytes and does not treat submission as build evidence."
+    },
+    {
+      "capability_refs": [
+        "cap.multi-frontend-development"
+      ],
+      "id": "inv.frontend-external-zero-model",
+      "statement": "External implementation mode invokes zero RuleOak planner or implementer model calls and consumes zero RuleOak model tokens."
+    },
+    {
+      "capability_refs": [
+        "cap.multi-frontend-development"
+      ],
+      "id": "inv.frontend-shared-authority",
+      "statement": "CLI, API, Chat, external-agent and managed implementation paths use the same Intent-Driven Change scope governance, Intent Evidence Authority evidence authority and Development Learning explicit learning-promotion authority."
+    },
+    {
+      "capability_refs": [
+        "cap.semantic-impact"
+      ],
+      "id": "inv.impact-not-proof",
+      "statement": "Impact analysis and candidate tests are planning evidence only and must not be presented as proof that changed behavior is correct."
+    },
+    {
+      "capability_refs": [
+        "cap.intent-driven-change"
+      ],
+      "id": "inv.implementer-not-evidence-authority",
+      "statement": "Implementation producer assertions are non-authoritative and cannot satisfy Intent Evidence Authority evidence requirements."
+    },
+    {
+      "capability_refs": [
+        "cap.intent-driven-change"
+      ],
+      "id": "inv.intent-delta-before-mutation",
+      "statement": "A validated Proposed Intent Delta and exact plan_id must exist before any Intent-Driven Change implementation mutation occurs."
+    },
+    {
+      "capability_refs": [
+        "cap.intent-evidence-authority"
+      ],
+      "id": "inv.intent-evidence-status-truth",
+      "statement": "Missing, stale, conflicting, model-generated, or agent-generated support must remain NOT_RUN, STALE, CONFLICTED, or UNKNOWN rather than being promoted to independent PASS."
+    },
+    {
+      "capability_refs": [
+        "cap.development-learning-loop"
+      ],
+      "id": "inv.learning-future-consumption",
+      "statement": "Explicitly promoted learning is discoverable by later brownfield understanding, impact, context, and autonomous development."
+    },
+    {
+      "capability_refs": [
+        "cap.development-learning-loop"
+      ],
+      "id": "inv.learning-history-not-proof",
+      "statement": "Promoted historical learning can constrain future planning but cannot prove a future implementation."
+    },
+    {
+      "capability_refs": [
+        "cap.development-learning-loop"
+      ],
+      "id": "inv.learning-no-implicit-promotion",
+      "statement": "Development learning candidates never become durable authority without explicit promotion."
+    },
+    {
+      "capability_refs": [
+        "cap.development-learning-loop"
+      ],
+      "id": "inv.learning-unpromoted-no-effect",
+      "statement": "Unpromoted learning candidates have no effect on future impact, context, scope, evidence, or verification."
+    },
+    {
+      "capability_refs": [
+        "cap.engineering-memory"
+      ],
+      "id": "inv.memory-not-proof",
+      "statement": "A historical regression or past evidence reference may strengthen current verification requirements but cannot independently prove a new implementation."
+    },
+    {
+      "capability_refs": [
+        "cap.engineering-memory"
+      ],
+      "id": "inv.memory-provenance-truth",
+      "statement": "Engineering memory must retain record provenance, validity and supersession state; historical narrative may not be silently upgraded into observed current fact."
+    },
+    {
+      "capability_refs": [
+        "cap.model-independent-execution"
+      ],
+      "id": "inv.model-non-authoritative",
+      "statement": "Model outputs remain non-authoritative and cannot certify evidence, grant tool authority, or mutate source without the existing RuleOak gates."
+    },
+    {
+      "capability_refs": [
+        "cap.effect-boundary",
+        "cap.mcp-boundary"
+      ],
+      "id": "inv.no-blind-retry",
+      "statement": "An uncertain external effect must not be blindly re-executed without verification."
+    },
+    {
+      "capability_refs": [
+        "cap.oakspec-interoperability"
+      ],
+      "id": "inv.oakspec-import-candidate-only",
+      "statement": "Imported interoperability records remain CANDIDATE and MUST NOT become declared Intent or verification evidence by import alone."
+    },
+    {
+      "capability_refs": [
+        "cap.oakspec-interoperability"
+      ],
+      "id": "inv.oakspec-standard-status-truth",
+      "statement": "OakSpec 1.0 MUST NOT be represented as an externally adopted industry standard without independent adoption evidence."
+    },
+    {
+      "capability_refs": [
+        "cap.effect-boundary"
+      ],
+      "id": "inv.one-use-execution-authority",
+      "statement": "A one-use execution authority must not be consumed successfully more than once."
+    },
+    {
+      "capability_refs": [
+        "cap.model-independent-execution"
+      ],
+      "id": "inv.provider-independent-intent",
+      "statement": "Intent IR and evidence contracts do not contain provider-specific model usage or authority semantics."
+    },
+    {
+      "capability_refs": [
+        "cap.intent-recompilation"
+      ],
+      "id": "inv.recompile-contract-equivalence",
+      "statement": "Replacement success is defined by preserved interface, invariants, downstream behavior and evidence contract rather than source equality."
+    },
+    {
+      "capability_refs": [
+        "cap.intent-recompilation"
+      ],
+      "id": "inv.recompile-not-self-proof",
+      "statement": "Compiler/model output cannot certify its own equivalence; pre-existing independent tests and evidence remain authoritative."
+    },
+    {
+      "capability_refs": [
+        "cap.intent-recompilation"
+      ],
+      "id": "inv.recompile-original-isolated",
+      "statement": "The original target implementation is not used by the Intent Recompilation runtime path after replacement generation."
+    },
+    {
+      "capability_refs": [
+        "cap.semantic-diff"
+      ],
+      "id": "inv.semantic-diff-provenance-truth",
+      "statement": "Semantic Diff must distinguish declared deterministic Intent changes, observed file changes, inferred capability mappings, and UNKNOWN runtime effects without promoting one provenance class into another."
+    },
+    {
+      "capability_refs": [
+        "cap.repository-understanding",
+        "cap.semantic-impact"
+      ],
+      "id": "inv.unknown-not-guessed",
+      "statement": "A relationship that cannot be conservatively established must remain UNKNOWN rather than being presented as observed or declared fact."
+    },
+    {
+      "capability_refs": [
+        "cap.ivd-validation-hardening"
+      ],
+      "id": "inv.validation-benchmarks-independent",
+      "statement": "Frozen qualification benchmarks MUST NOT be rewritten merely to follow later implementation changes; a new benchmark version is required."
+    },
+    {
+      "capability_refs": [
+        "cap.ivd-validation-hardening"
+      ],
+      "id": "inv.validation-external-truth",
+      "statement": "External repository, hosted-model, blind-holdout and live-PR results remain NOT_RUN until independently executed; local proxies are not promoted to external evidence."
+    },
+    {
+      "capability_refs": [
+        "cap.ruleoak-verify"
+      ],
+      "id": "inv.verify-evidence-independent",
+      "statement": "RuleOak Verify consumes Intent Evidence Authority independent evidence adjudication and never treats model or agent assertions as proof."
+    },
+    {
+      "capability_refs": [
+        "cap.ruleoak-verify"
+      ],
+      "id": "inv.verify-mode-policy",
+      "statement": "Observe never blocks; Verify requires independent proof for affected governed capabilities before PASS; Govern blocks unsafe or ungoverned changes according to declared policy."
+    },
+    {
+      "capability_refs": [
+        "cap.ruleoak-verify"
+      ],
+      "id": "inv.verify-unknown-not-pass",
+      "statement": "Unknown semantic context or ungoverned code may not be silently promoted to a verified PASS."
+    }
+  ],
+  "oakspec_version": "1.0",
+  "product": {
+    "id": "product.ruleoak-community",
+    "name": "RuleOak Open Source",
+    "summary": "Public Effect Boundary and evidence-bound execution safety for AI agents.",
+    "version": "0.50.0"
+  },
+  "provenance_contract": {
+    "inference_is_not_proof": true,
+    "levels": [
+      "DECLARED",
+      "OBSERVED",
+      "INFERRED",
+      "UNKNOWN"
+    ],
+    "unknown_must_not_be_promoted": true
+  },
+  "semantic_change_contract": {
+    "behavioral_change_requires_declared_intent": true,
+    "format": "ruleoak.semantic-diff/0.1",
+    "provenance_levels": [
+      "DETERMINISTIC",
+      "OBSERVED",
+      "INFERRED",
+      "UNKNOWN"
+    ],
+    "unknown_is_first_class": true
+  },
+  "source_contract": {
+    "intent_digest_sha256": "f16ff745d4ce3855d1aaf9de2fb80ab49484598d2febdc4515d789427e69f292",
+    "intent_format": "ruleoak.intent/0.1",
+    "intent_manifest_id": "manifest.ruleoak-community.v0.50",
+    "provenance": "DECLARED"
+  }
+}

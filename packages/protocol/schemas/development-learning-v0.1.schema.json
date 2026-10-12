@@ -1,0 +1,13 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://ruleoak.com/schemas/development-learning-v0.1.schema.json",
+  "title":"RuleOak Development Learning Proposal v0.1",
+  "type":"object","additionalProperties":true,
+  "required":["development_learning_version","proposal_id","source_run_id","outcome","status","candidates","authority"],
+  "properties":{
+    "development_learning_version":{"const":"0.1"},"proposal_id":{"type":"string","minLength":1},"source_run_id":{"type":"string","minLength":1},"outcome":{"type":"string","minLength":1},
+    "status":{"enum":["NO_CANDIDATES","CANDIDATES","PARTIALLY_PROMOTED","PROMOTED"]},
+    "candidates":{"type":"array","items":{"type":"object","required":["candidate_id","kind","statement","promotion_status","capability_ids","source_paths","trigger_terms","required_evidence_types","plan_actions","provenance","authority"],"properties":{"candidate_id":{"type":"string"},"kind":{"enum":["DECISION","IMPLEMENTATION_MAPPING","REGRESSION_PROTECTION","INVARIANT_PROPOSAL","EVIDENCE_REQUIREMENT_PROPOSAL"]},"statement":{"type":"string"},"promotion_status":{"enum":["CANDIDATE","PROMOTED","REJECTED"]},"capability_ids":{"type":"array"},"source_paths":{"type":"array"},"trigger_terms":{"type":"array"},"required_evidence_types":{"type":"array"},"plan_actions":{"type":"array"},"provenance":{"type":"object"},"authority":{"const":"NON_AUTHORITATIVE_CANDIDATE"}}}},
+    "authority":{"type":"object"}
+  }
+}

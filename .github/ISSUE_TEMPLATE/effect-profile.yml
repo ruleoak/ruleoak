@@ -1,0 +1,29 @@
+name: Effect Profile request
+description: Propose trustworthy post-action verification semantics for a consequential tool.
+title: "[effect-profile] "
+labels: ["effect-profile"]
+body:
+  - type: input
+    id: tool
+    attributes: {label: Tool / MCP server and exact operation}
+    validations: {required: true}
+  - type: textarea
+    id: consequence
+    attributes: {label: Consequential side effect, description: "What can happen externally, and why would a duplicate matter?"}
+    validations: {required: true}
+  - type: textarea
+    id: identity
+    attributes: {label: Semantic provenance, description: "How can RuleOak know this is the intended implementation/version rather than another tool with the same name?"}
+    validations: {required: true}
+  - type: textarea
+    id: postcondition
+    attributes: {label: Independent postcondition, description: "What external state proves success, non-effect, partial/ambiguous effect, or cannot be known?"}
+    validations: {required: true}
+  - type: textarea
+    id: retry
+    attributes: {label: Retry/idempotency contract, description: "Under exactly what evidence, if any, is a fresh retry safe?"}
+    validations: {required: true}
+  - type: textarea
+    id: adversarial
+    attributes: {label: Adversarial cases, description: "Response loss, delayed visibility, concurrency, stale reads, duplicate dispatch, path/identity drift, etc."}
+    validations: {required: true}

@@ -1,0 +1,8 @@
+{
+  "policyVersion": 2,
+  "defaultAction": "deny",
+  "rules": [
+    { "id": "allow-internal-mail", "effect": "allow", "priority": 200, "actions": ["email.send"], "resources": ["*@internal.example"] },
+    { "id": "approve-external-mail", "effect": "needs_approval", "priority": 100, "actions": ["email.send"], "resources": ["*"] }
+  ]
+}

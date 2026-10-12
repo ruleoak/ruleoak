@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/oakspec-candidate-bundle-v1.schema.json",
+  "title": "OakSpec Candidate Bundle 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["candidate_bundle_version", "bundle_id", "adapter", "source", "authority_statement", "candidates"],
+  "properties": {
+    "candidate_bundle_version": { "const": "1.0" },
+    "bundle_id": { "$ref": "#/$defs/id" },
+    "adapter": { "enum": ["openapi", "tests", "ci", "git", "agents", "docs", "mcp"] },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "digest_sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "digest_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    },
+    "authority_statement": { "const": "Imported candidates are not declared Intent and are not verification evidence." },
+    "candidates": {
+      "type": "array",
+      "maxItems": 512,
+      "items": { "$ref": "#/$defs/candidate" }
+    }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$" },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "candidate_kind", "statement", "provenance", "source_locator", "authority"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "status": { "const": "CANDIDATE" },
+        "candidate_kind": { "enum": ["capability", "constraint", "evidence_relationship", "observation", "integration"] },
+        "statement": { "type": "string", "minLength": 1 },
+        "provenance": { "enum": ["OBSERVED", "INFERRED", "UNKNOWN"] },
+        "source_locator": { "type": "string", "minLength": 1 },
+        "authority": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["declared_intent", "verification_evidence", "promotion_required"],
+          "properties": {
+            "declared_intent": { "const": false },
+            "verification_evidence": { "const": false },
+            "promotion_required": { "const": true }
+          }
+        },
+        "metadata": { "type": "object" }
+      }
+    }
+  }
+}

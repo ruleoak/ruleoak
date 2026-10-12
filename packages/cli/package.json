@@ -1,0 +1,60 @@
+{
+  "name": "@ruleoak/cli",
+  "version": "0.50.0",
+  "description": "RuleOak local-first Effect Boundary and intent-verified development CLI for AI-produced code and consequential agent actions.",
+  "type": "module",
+  "bin": {
+    "ruleoak": "bin/ruleoak.js"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@ruleoak/core": "^0.50.0",
+    "@ruleoak/protocol": "^0.50.0"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "bin",
+    "src",
+    "policy-packs"
+  ],
+  "scripts": {
+    "test": "node ../../scripts/run_package_tests.mjs"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruleoak/ruleoak.git",
+    "directory": "packages/cli"
+  },
+  "homepage": "https://ruleoak.com",
+  "bugs": {
+    "url": "https://github.com/ruleoak/ruleoak/issues"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "ai-agents",
+    "mcp",
+    "effect-boundary",
+    "effect-verification",
+    "retry-safety",
+    "agent-security",
+    "distributed-systems",
+    "cli",
+    "local-first",
+    "ai-coding",
+    "code-verification",
+    "intent-verified-development",
+    "developer-tools"
+  ],
+  "preferGlobal": false,
+  "author": "RuleOak Pte. Ltd.",
+  "exports": {
+    "./package.json": "./package.json"
+  }
+}

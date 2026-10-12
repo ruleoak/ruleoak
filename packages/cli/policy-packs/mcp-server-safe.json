@@ -1,0 +1,26 @@
+{
+  "policyVersion": 2,
+  "defaultAction": "needs_approval",
+  "rules": [
+    {
+      "id": "deny-dangerous-mcp-tools",
+      "effect": "deny",
+      "priority": 100,
+      "actions": ["mcp.filesystem.delete", "mcp.shell.run", "mcp.payment.*"]
+    },
+    {
+      "id": "allow-low-risk-mcp-read",
+      "effect": "allow",
+      "priority": 30,
+      "actions": ["mcp.filesystem.read"],
+      "riskAtMost": "low",
+      "conditions": { "sideEffects": ["read_only"] }
+    },
+    {
+      "id": "review-other-mcp-tools",
+      "effect": "needs_approval",
+      "priority": 10,
+      "actions": ["mcp.*"]
+    }
+  ]
+}

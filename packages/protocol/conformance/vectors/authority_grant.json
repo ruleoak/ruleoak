@@ -1,0 +1,108 @@
+{
+  "vector_version": "1.0",
+  "contract_id": "authority_grant",
+  "contract_versions": [
+    "1.1"
+  ],
+  "cases": [
+    {
+      "case_id": "authority_grant.valid",
+      "expectation": "valid",
+      "input": {
+        "grant_version": "1.1",
+        "grant_id": "grant_parent",
+        "issuer": "user:owner",
+        "subject": {
+          "type": "agent",
+          "id": "agent:parent"
+        },
+        "principal_chain": [
+          {
+            "type": "user",
+            "id": "user:owner"
+          },
+          {
+            "type": "agent",
+            "id": "agent:parent"
+          }
+        ],
+        "capabilities": [
+          {
+            "id": "files",
+            "actions": [
+              "resource.read"
+            ],
+            "resources": [
+              "ruleoak://file/project/**"
+            ]
+          }
+        ],
+        "issued_at": "2026-08-28T00:00:00.000Z",
+        "not_before": "2026-08-28T00:00:00.000Z",
+        "expires_at": "2026-08-28T01:00:00.000Z",
+        "parent_grant_id": null,
+        "delegation_depth": 0,
+        "ancestor_grant_ids": [],
+        "budget": {
+          "max_executions": 2,
+          "max_objects": 5
+        },
+        "obligations": [
+          {
+            "type": "require_recorder"
+          }
+        ],
+        "delegation": {
+          "allowed": true,
+          "max_depth": 2,
+          "budget_mode": "partition"
+        }
+      },
+      "canonical_json": "{\"ancestor_grant_ids\":[],\"budget\":{\"max_executions\":2,\"max_objects\":5},\"capabilities\":[{\"actions\":[\"resource.read\"],\"id\":\"files\",\"resources\":[\"ruleoak://file/project/**\"]}],\"delegation\":{\"allowed\":true,\"budget_mode\":\"partition\",\"max_depth\":2},\"delegation_depth\":0,\"expires_at\":\"2026-08-28T01:00:00.000Z\",\"grant_id\":\"grant_parent\",\"grant_version\":\"1.1\",\"issued_at\":\"2026-08-28T00:00:00.000Z\",\"issuer\":\"user:owner\",\"not_before\":\"2026-08-28T00:00:00.000Z\",\"obligations\":[{\"type\":\"require_recorder\"}],\"parent_grant_id\":null,\"principal_chain\":[{\"id\":\"user:owner\",\"type\":\"user\"},{\"id\":\"agent:parent\",\"type\":\"agent\"}],\"subject\":{\"id\":\"agent:parent\",\"type\":\"agent\"}}"
+    },
+    {
+      "case_id": "authority_grant.invalid",
+      "expectation": "invalid",
+      "input": {
+        "grant_version": "1.1",
+        "grant_id": "grant_parent",
+        "issuer": "user:owner",
+        "subject": {
+          "type": "agent",
+          "id": "agent:parent"
+        },
+        "principal_chain": [
+          {
+            "type": "user",
+            "id": "user:owner"
+          },
+          {
+            "type": "agent",
+            "id": "agent:parent"
+          }
+        ],
+        "capabilities": [],
+        "issued_at": "2026-08-28T00:00:00.000Z",
+        "not_before": "2026-08-28T00:00:00.000Z",
+        "expires_at": "2026-08-28T01:00:00.000Z",
+        "parent_grant_id": null,
+        "delegation_depth": 0,
+        "ancestor_grant_ids": [],
+        "budget": {
+          "max_executions": 2,
+          "max_objects": 5
+        },
+        "obligations": [
+          {
+            "type": "require_recorder"
+          }
+        ],
+        "delegation": {
+          "allowed": true,
+          "max_depth": 2,
+          "budget_mode": "partition"
+        }
+      }
+    }
+  ]
+}

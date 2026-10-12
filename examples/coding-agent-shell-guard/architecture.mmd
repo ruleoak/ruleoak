@@ -1,0 +1,9 @@
+flowchart LR
+  A[Coding agent proposes command] --> B[RuleOak SDK adapter]
+  B --> C[Policy and risk evaluation]
+  C -->|safe list| D[Mock executor]
+  C -->|package install| E[Session approval provider]
+  E --> F[One-time receipt consumption]
+  F --> D
+  C -->|destructive command| G[Denied before execution]
+  C --> H[Hash-chained evidence and HTML report]

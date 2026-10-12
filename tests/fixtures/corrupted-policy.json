@@ -1,0 +1,4 @@
+{
+  "defaultAction": "explode",
+  "allowedActions": "filesystem.read"
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/adapter-descriptor-v1.json",
+  "title": "RuleOak Adapter Descriptor",
+  "type": "object",
+  "required": ["contract_version", "adapter_id", "mode"],
+  "properties": {
+    "contract_version": {"enum": ["1.0", "1.1"]},
+    "adapter_id": {"type": "string", "minLength": 1},
+    "mode": {"enum": ["normalize", "execute"]},
+    "observation_qualities": {"type": "array", "minItems": 1, "items": {"enum": ["complete-for-adapter", "partial", "inferred", "unavailable"]}},
+    "observation_capabilities": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["quality", "boundary", "statuses"],
+        "properties": {
+          "quality": {"enum": ["requested_only", "process_return_observed", "local_state_observed", "remote_response_observed", "complete_for_adapter", "partial", "ambiguous"]},
+          "boundary": {"type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-z0-9][a-z0-9._:-]*$"},
+          "statuses": {"type": "array", "minItems": 1, "items": {"enum": ["success", "failure", "partial", "unknown"]}}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "allOf": [
+    {"if": {"properties": {"contract_version": {"const": "1.0"}}}, "then": {"required": ["observation_qualities"]}},
+    {"if": {"properties": {"contract_version": {"const": "1.1"}}}, "then": {"required": ["observation_capabilities"]}}
+  ],
+  "additionalProperties": false
+}

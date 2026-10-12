@@ -1,0 +1,9 @@
+{
+  "policyVersion": 2,
+  "defaultAction": "deny",
+  "rules": [
+    { "id": "deny-destructive-shell", "effect": "deny", "priority": 300, "actions": ["shell.delete"], "resources": ["*"] },
+    { "id": "approve-package-install", "effect": "needs_approval", "priority": 200, "actions": ["shell.package_install"], "resources": ["*"] },
+    { "id": "allow-safe-list", "effect": "allow", "priority": 100, "actions": ["shell.list"], "resources": ["*"] }
+  ]
+}

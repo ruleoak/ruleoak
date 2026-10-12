@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/revocation-record-v1.json",
+  "title": "RuleOak Revocation Record",
+  "type": "object",
+  "required": ["revocation_version", "revocation_id", "subject_type", "subject_id", "revoked_at", "reason", "cascade"],
+  "properties": {
+    "revocation_version": {"enum": ["1.0", "1.1"]},
+    "revocation_id": {"type": "string", "minLength": 1},
+    "sequence": {"type": "integer", "minimum": 1},
+    "subject_type": {"enum": ["principal", "authority_grant", "authority_envelope", "execution_lease", "session"]},
+    "subject_id": {"type": "string", "minLength": 1},
+    "revoked_at": {"type": "string", "format": "date-time"},
+    "reason": {"type": "string"},
+    "cascade": {"type": "boolean"},
+    "parent_id": {"type": ["string", "null"]},
+    "record_digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+  },
+  "allOf": [
+    {"if": {"properties": {"revocation_version": {"const": "1.1"}}}, "then": {"required": ["sequence", "record_digest"]}}
+  ],
+  "additionalProperties": false
+}

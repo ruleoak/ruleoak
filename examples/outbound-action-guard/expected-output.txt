@@ -1,0 +1,6 @@
+RuleOak outbound action guard
+Internal destination: allowed
+External destination: approved once
+Secret-bearing payload: denied before mock delivery
+Mock deliveries: 2
+Evidence bundle: .../ruleoak-evidence.zip

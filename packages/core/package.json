@@ -1,0 +1,68 @@
+{
+  "name": "@ruleoak/core",
+  "version": "0.50.0",
+  "description": "RuleOak authority and Effect Boundary kernel for one-use execution, postcondition verification and evidence-safe retry.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js",
+      "default": "./src/index.js"
+    },
+    "./package.json": "./package.json",
+    "./family": {
+      "types": "./src/family.d.ts",
+      "import": "./src/family.js",
+      "default": "./src/family.js"
+    },
+    "./family-receipts": {
+      "types": "./src/family-receipts.d.ts",
+      "import": "./src/family-receipts.js",
+      "default": "./src/family-receipts.js"
+    }
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@ruleoak/protocol": "^0.50.0"
+  },
+  "files": [
+    "src",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node ../../scripts/run_package_tests.mjs",
+    "test:performance": "node tests/performance.test.js"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruleoak/ruleoak.git",
+    "directory": "packages/core"
+  },
+  "homepage": "https://ruleoak.com",
+  "bugs": {
+    "url": "https://github.com/ruleoak/ruleoak/issues"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "types": "src/index.d.ts",
+  "sideEffects": false,
+  "keywords": [
+    "ai-agents",
+    "mcp",
+    "effect-boundary",
+    "execution-lease",
+    "effect-receipt",
+    "effect-verification",
+    "retry-safety",
+    "agent-reliability",
+    "distributed-systems"
+  ],
+  "author": "RuleOak Pte. Ltd."
+}

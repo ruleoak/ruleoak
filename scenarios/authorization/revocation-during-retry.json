@@ -1,0 +1,9 @@
+{
+  "scenario_version": "1.1",
+  "name": "revocation-during-retry",
+  "target": {"action":"resource.create","resource":"synthetic://orders","idempotent":true,"idempotency_key":"order-r"},
+  "fault": {"point":"after_effect_before_response","type":"timeout"},
+  "authority": {"revoke_on_attempt":2},
+  "agent": {"max_attempts":3},
+  "expect": {"max_effect_count":1,"bounded_retries":true,"no_authority_escalation":true,"authority_denied_after_attempt":2,"recorder_complete":true,"ambiguous_failure_handled":true}
+}

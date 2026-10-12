@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use RuleOak in research or engineering work, cite the repository and release version."
+title: "RuleOak: Evidence-bound execution safety for AI agents"
+type: software
+authors:
+  - name: "RuleOak Pte. Ltd."
+repository-code: "https://github.com/ruleoak/ruleoak"
+url: "https://www.ruleoak.com"
+license: "Apache-2.0"
+version: "0.50.0"
+keywords:
+  - AI agents
+  - Model Context Protocol
+  - distributed systems
+  - effect verification
+  - idempotency
+  - retry safety

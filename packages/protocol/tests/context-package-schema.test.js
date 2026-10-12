@@ -1,0 +1,6 @@
+/* SPDX-FileCopyrightText: 2026 RuleOak Pte. Ltd.
+ * SPDX-License-Identifier: Apache-2.0 */
+import assert from 'node:assert/strict';
+import { CONTEXT_PACKAGE_VERSIONS,CONTEXT_PROVENANCE,validateContextPackage } from '../src/context-package.js';
+const fixture={context_package_version:'0.1',package_id:'context:abc',task:'improve retry safety',compiler:{id:'deterministic-context-compiler-v0.1'},source:{intent_manifest_id:'manifest.example',repository_graph_digest:'sha256:'+'a'.repeat(64),impact_digest:'sha256:'+'b'.repeat(64)},budget:{max_context_bytes:65536,max_files:10,max_slice_lines:120},intent:{capabilities:[],goals:[],scenarios:[],invariants:[],constraints:[],budgets:[],authorities:[],risks:[],incidents:[],decisions:[],evidence_requirements:[]},source_slices:[],test_slices:[],exclusions:{categories:[]},accounting:{included_files:0,included_bytes:0,naive_bytes:1,estimated_tokens:0,reduction_ratio:1},sufficiency:{required_bound_module_coverage:1,required_intent_coverage:1},uncertainties:[]};
+assert.deepEqual(CONTEXT_PACKAGE_VERSIONS,['0.1']);assert(CONTEXT_PROVENANCE.includes('UNKNOWN'));assert.equal(validateContextPackage(fixture).valid,true);assert.equal(validateContextPackage({...fixture,context_package_version:'9.9'}).valid,false);console.log('Context Compiler protocol tests passed');

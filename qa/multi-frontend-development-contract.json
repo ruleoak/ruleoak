@@ -1,0 +1,25 @@
+{
+  "contract_version": "1.0",
+  "requirements": {
+    "frontends": [
+      "cli",
+      "api",
+      "chat",
+      "external-agent"
+    ],
+    "implementation_modes": [
+      "managed",
+      "external"
+    ],
+    "external_ruleoak_model_calls": 0,
+    "external_ruleoak_model_tokens": 0,
+    "shared_scope_authority": "Intent-Driven Change",
+    "shared_evidence_authority": "Intent Evidence Authority",
+    "shared_learning_authority": "Development Learning / explicit promotion",
+    "exact_zip_handoff_byte_identical": true,
+    "api_bearer_authentication": true,
+    "external_build_submission_is_not_evidence": true,
+    "hosted_external_duplicate_coding": "NOT_APPLICABLE"
+  },
+  "name": "Multi-Frontend Development"
+}

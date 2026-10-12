@@ -1,0 +1,331 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/semantic-impact-v0.1.schema.json",
+  "title": "RuleOak Semantic Impact v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "impact_version",
+    "request",
+    "repository",
+    "direct_capabilities",
+    "transitive_capabilities",
+    "affected_capability_ids",
+    "relevant",
+    "implementation_surfaces",
+    "evidence",
+    "conflicts",
+    "uncertainties",
+    "risk",
+    "impact_graph",
+    "summary"
+  ],
+  "properties": {
+    "impact_version": {
+      "const": "0.1"
+    },
+    "request": {
+      "type": "object",
+      "required": [
+        "text",
+        "normalized_tokens",
+        "matcher"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "normalized_tokens": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "matcher": {
+          "const": "deterministic-lexical-v0.1"
+        }
+      },
+      "additionalProperties": false
+    },
+    "repository": {
+      "type": "object"
+    },
+    "direct_capabilities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/capabilityImpact"
+      }
+    },
+    "transitive_capabilities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/transitiveImpact"
+      }
+    },
+    "affected_capability_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "relevant": {
+      "type": "object",
+      "required": [
+        "goals",
+        "scenarios",
+        "invariants",
+        "constraints",
+        "budgets",
+        "authorities",
+        "risks",
+        "evidence_requirements",
+        "incidents"
+      ],
+      "properties": {
+        "goals": {
+          "type": "array"
+        },
+        "scenarios": {
+          "type": "array"
+        },
+        "invariants": {
+          "type": "array"
+        },
+        "constraints": {
+          "type": "array"
+        },
+        "budgets": {
+          "type": "array"
+        },
+        "authorities": {
+          "type": "array"
+        },
+        "risks": {
+          "type": "array"
+        },
+        "evidence_requirements": {
+          "type": "array"
+        },
+        "incidents": {
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "implementation_surfaces": {
+      "type": "array"
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "candidate_tests",
+        "required_types",
+        "verified_types",
+        "missing_types",
+        "status",
+        "statement"
+      ],
+      "properties": {
+        "candidate_tests": {
+          "type": "array"
+        },
+        "required_types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "verified_types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "missing_types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "status": {
+          "enum": [
+            "UNKNOWN",
+            "NOT_DECLARED"
+          ]
+        },
+        "statement": {
+          "type": "string"
+        },
+        "history_required_types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "conflicts": {
+      "type": "array"
+    },
+    "uncertainties": {
+      "type": "array"
+    },
+    "risk": {
+      "type": "object",
+      "required": [
+        "level",
+        "score",
+        "reasons"
+      ],
+      "properties": {
+        "level": {
+          "enum": [
+            "LOW",
+            "MEDIUM",
+            "HIGH",
+            "CRITICAL",
+            "UNKNOWN"
+          ]
+        },
+        "score": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "impact_graph": {
+      "type": "object",
+      "required": [
+        "nodes",
+        "edges"
+      ],
+      "properties": {
+        "nodes": {
+          "type": "array"
+        },
+        "edges": {
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "summary": {
+      "type": "object"
+    },
+    "engineering_memory": {
+      "type": "object"
+    }
+  },
+  "$defs": {
+    "capabilityImpact": {
+      "type": "object",
+      "required": [
+        "capability_id",
+        "node_id",
+        "score",
+        "matched_terms",
+        "confidence",
+        "provenance",
+        "method"
+      ],
+      "properties": {
+        "capability_id": {
+          "type": "string"
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "score": {
+          "type": "number"
+        },
+        "matched_terms": {
+          "type": "array"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "provenance": {
+          "const": "INFERRED"
+        },
+        "method": {
+          "const": "deterministic-lexical-v0.1"
+        }
+      },
+      "additionalProperties": false
+    },
+    "transitiveImpact": {
+      "type": "object",
+      "required": [
+        "capability_id",
+        "node_id",
+        "depth",
+        "via_capability_id",
+        "dependency_relation",
+        "basis_edge",
+        "basis_provenance",
+        "confidence",
+        "provenance",
+        "method"
+      ],
+      "properties": {
+        "capability_id": {
+          "type": "string"
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "depth": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "via_capability_id": {
+          "type": "string"
+        },
+        "dependency_relation": {
+          "type": "string"
+        },
+        "basis_edge": {
+          "type": "string"
+        },
+        "basis_provenance": {
+          "enum": [
+            "DECLARED",
+            "OBSERVED",
+            "INFERRED"
+          ]
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "provenance": {
+          "const": "INFERRED"
+        },
+        "method": {
+          "const": "reverse-dependency-impact-v0.1"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

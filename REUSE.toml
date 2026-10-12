@@ -1,0 +1,11 @@
+version = 1
+
+[[annotations]]
+path = ["packages/**", "docs/**", "tests/**", "scripts/**", "examples/**", "benchmarks/**", "standards/**", ".github/**"]
+SPDX-FileCopyrightText = "2026 RuleOak Pte. Ltd."
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = ["package.json", "package-lock.json", "README.md", "DEMO.md", "CITATION.cff", "LICENSE.md", "NOTICE.md", "TRADEMARK.md", "DCO.md", "CONTRIBUTING.md", "SECURITY.md", "SUPPORT.md", "GOVERNANCE.md", "ROADMAP.md", "MIGRATION.md", "AUTHORS.md", "CHANGELOG.md", "CODE_OF_CONDUCT.md", "REUSE.toml", ".gitignore"]
+SPDX-FileCopyrightText = "2026 RuleOak Pte. Ltd."
+SPDX-License-Identifier = "Apache-2.0"

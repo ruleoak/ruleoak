@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/model-execution-v0.1.schema.json",
+  "title": "RuleOak Model Execution Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "model_execution_version",
+    "execution_id",
+    "role",
+    "status",
+    "authority",
+    "provider",
+    "input",
+    "output",
+    "usage",
+    "evidence_authority",
+    "tool_authority"
+  ],
+  "properties": {
+    "model_execution_version": {
+      "const": "0.1"
+    },
+    "execution_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "role": {
+      "enum": [
+        "planner",
+        "implementer",
+        "reviewer",
+        "reasoning"
+      ]
+    },
+    "status": {
+      "enum": [
+        "COMPLETED",
+        "NOT_RUN",
+        "FAILED"
+      ]
+    },
+    "authority": {
+      "const": "NON_AUTHORITATIVE"
+    },
+    "provider": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "provider_id",
+        "kind",
+        "roles",
+        "network_required"
+      ],
+      "properties": {
+        "provider_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "deterministic",
+            "hosted"
+          ]
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "planner",
+              "implementer",
+              "reviewer",
+              "reasoning"
+            ]
+          }
+        },
+        "network_required": {
+          "type": "boolean"
+        },
+        "model": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "configured": {
+          "type": "boolean"
+        }
+      }
+    },
+    "input": {
+      "type": "object"
+    },
+    "output": {
+      "type": "object"
+    },
+    "usage": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "kind"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "EXACT_PROVIDER",
+            "ESTIMATED_LOCAL",
+            "NOT_RUN"
+          ]
+        },
+        "input_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "output_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "currency": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "estimated_cost": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "evidence_authority": {
+      "const": "EXTERNAL_TO_MODEL_EXECUTION"
+    },
+    "tool_authority": {
+      "const": "EXTERNAL_TO_MODEL_EXECUTION"
+    }
+  }
+}

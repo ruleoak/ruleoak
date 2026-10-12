@@ -1,0 +1,24 @@
+{
+  "contract_version": "1.0",
+  "capability_id": "cap.ruleoak-verify",
+  "modes": [
+    "OBSERVE",
+    "VERIFY",
+    "GOVERN"
+  ],
+  "decisions": [
+    "PASS",
+    "REVIEW",
+    "BLOCK"
+  ],
+  "graduation": {
+    "benchmark_cases_min": 60,
+    "exact_rate_min": 1.0,
+    "observe_blocks_max": 0,
+    "verify_requires_independent_evidence": true,
+    "govern_blocks_unsafe": true,
+    "intent_evidence_backward_compatible": true
+  },
+  "authority": "Verify merge recommendations are advisory; Intent Evidence Authority remains the evidence authority.",
+  "name": "RuleOak Verify"
+}

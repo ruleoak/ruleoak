@@ -1,0 +1,23 @@
+{
+  "scenario_version": "1.0",
+  "name": "idempotent-create-timeout",
+  "target": {
+    "action": "resource.create",
+    "resource": "synthetic://orders",
+    "idempotent": true,
+    "idempotency_key": "order-1"
+  },
+  "fault": {
+    "point": "after_effect_before_response",
+    "type": "timeout"
+  },
+  "agent": {
+    "max_attempts": 3
+  },
+  "expect": {
+    "max_effect_count": 1,
+    "bounded_retries": true,
+    "no_authority_escalation": true,
+    "recorder_complete": true
+  }
+}

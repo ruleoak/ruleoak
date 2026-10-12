@@ -1,0 +1,26 @@
+{
+  "policyVersion": 2,
+  "defaultAction": "needs_approval",
+  "rules": [
+    {
+      "id": "deny-destructive-execution-and-payment",
+      "effect": "deny",
+      "priority": 100,
+      "actions": ["filesystem.delete", "shell.run", "payment.*", "browser.download"]
+    },
+    {
+      "id": "allow-public-read",
+      "effect": "allow",
+      "priority": 30,
+      "actions": ["filesystem.read"],
+      "riskAtMost": "low",
+      "conditions": { "sensitivities": ["public", "internal"], "sideEffects": ["read_only"] }
+    },
+    {
+      "id": "review-communication-calendar-and-memory",
+      "effect": "needs_approval",
+      "priority": 20,
+      "actions": ["filesystem.write", "email.send", "calendar.create", "memory.write"]
+    }
+  ]
+}

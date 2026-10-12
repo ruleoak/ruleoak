@@ -1,0 +1,133 @@
+{
+  "name": "@ruleoak/protocol",
+  "version": "0.50.0",
+  "description": "Open Apache-2.0 RuleOak contracts and schemas for authority, ExecutionLease, EffectReceipt, evidence and Effect Boundary interoperability.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js",
+      "default": "./src/index.js"
+    },
+    "./intent": {
+      "types": "./src/intent.d.ts",
+      "import": "./src/intent.js",
+      "default": "./src/intent.js"
+    },
+    "./schemas/*": "./schemas/*",
+    "./fixtures/*": "./fixtures/*",
+    "./package.json": "./package.json",
+    "./conformance/*": "./conformance/*",
+    "./stability/*": "./stability/*",
+    "./intent-evidence": {
+      "types": "./src/intent-evidence.d.ts",
+      "import": "./src/intent-evidence.js",
+      "default": "./src/intent-evidence.js"
+    },
+    "./semantic-diff": {
+      "types": "./src/semantic-diff.d.ts",
+      "import": "./src/semantic-diff.js",
+      "default": "./src/semantic-diff.js"
+    },
+    "./intent-change": {
+      "types": "./src/intent-change.d.ts",
+      "import": "./src/intent-change.js",
+      "default": "./src/intent-change.js"
+    },
+    "./context-package": {
+      "types": "./src/context-package.d.ts",
+      "import": "./src/context-package.js",
+      "default": "./src/context-package.js"
+    },
+    "./engineering-memory": {
+      "types": "./src/engineering-memory.d.ts",
+      "import": "./src/engineering-memory.js",
+      "default": "./src/engineering-memory.js"
+    },
+    "./model-execution": {
+      "types": "./src/model-execution.d.ts",
+      "import": "./src/model-execution.js",
+      "default": "./src/model-execution.js"
+    },
+    "./intent-compile": {
+      "types": "./src/intent-compile.d.ts",
+      "import": "./src/intent-compile.js",
+      "default": "./src/intent-compile.js"
+    },
+    "./verify-product": {
+      "types": "./src/verify-product.d.ts",
+      "import": "./src/verify-product.js",
+      "default": "./src/verify-product.js"
+    },
+    "./oakspec": {
+      "types": "./src/oakspec.d.ts",
+      "import": "./src/oakspec.js",
+      "default": "./src/oakspec.js"
+    },
+    "./autonomous-development": {
+      "types": "./src/autonomous-development.d.ts",
+      "import": "./src/autonomous-development.js",
+      "default": "./src/autonomous-development.js"
+    },
+    "./development-learning": {
+      "types": "./src/development-learning.d.ts",
+      "import": "./src/development-learning.js",
+      "default": "./src/development-learning.js"
+    },
+    "./multi-frontend-development": {
+      "types": "./src/multi-frontend-development.d.ts",
+      "import": "./src/multi-frontend-development.js",
+      "default": "./src/multi-frontend-development.js"
+    },
+    "./family": {
+      "types": "./src/family.d.ts",
+      "import": "./src/family.js",
+      "default": "./src/family.js"
+    }
+  },
+  "license": "Apache-2.0",
+  "files": [
+    "src",
+    "schemas",
+    "fixtures",
+    "conformance",
+    "LICENSE",
+    "README.md",
+    "stability"
+  ],
+  "scripts": {
+    "test": "node ../../scripts/run_package_tests.mjs",
+    "validate:fixtures": "node tests/protocol.test.js"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruleoak/ruleoak.git",
+    "directory": "packages/protocol"
+  },
+  "homepage": "https://ruleoak.com",
+  "bugs": {
+    "url": "https://github.com/ruleoak/ruleoak/issues"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "types": "src/index.d.ts",
+  "sideEffects": false,
+  "keywords": [
+    "ai-agents",
+    "mcp",
+    "effect-boundary",
+    "execution-lease",
+    "effect-receipt",
+    "protocol",
+    "json-schema",
+    "conformance",
+    "evidence"
+  ],
+  "author": "RuleOak Pte. Ltd."
+}

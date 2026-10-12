@@ -1,0 +1,3 @@
+/* SPDX-FileCopyrightText: 2026 RuleOak Pte. Ltd.
+ * SPDX-License-Identifier: Apache-2.0 */
+import assert from 'node:assert/strict';import {executeModelRole,listModelProviders} from '../src/model-execution.js';const ids=listModelProviders().map(x=>x.provider_id);for(const id of ['openai-responses','anthropic-messages','google-gemini'])assert(ids.includes(id));for(const id of ['openai-responses','anthropic-messages','google-gemini']){const r=await executeModelRole({role:'reviewer',providerId:id,task:'review evidence authority',allowNetwork:false});assert.equal(r.status,'NOT_RUN');assert.equal(r.authority,'NON_AUTHORITATIVE');assert.equal(r.evidence_authority,'EXTERNAL_TO_MODEL_EXECUTION');}console.log('Hosted-provider adapter tests passed');

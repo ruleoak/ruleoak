@@ -1,0 +1,10 @@
+flowchart LR
+  A[Agent proposes outbound action] --> B[RuleOak SDK adapter]
+  B --> C[Risk and Policy v2 evaluation]
+  C -->|internal destination| D[Allowed mock sender]
+  C -->|external destination| E[Human approval provider]
+  E --> F[One-time receipt consumption]
+  F --> D
+  C -->|secret-bearing external payload| G[Hard deny]
+  C --> H[Evidence chain]
+  H --> I[Verifiable evidence bundle]

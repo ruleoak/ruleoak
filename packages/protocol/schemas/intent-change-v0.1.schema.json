@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/intent-change-v0.1.schema.json",
+  "title": "RuleOak Intent Change Plan v0.1",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "intent_change_version",
+    "change_id",
+    "plan_id",
+    "request",
+    "mode",
+    "status",
+    "intent_delta",
+    "impact",
+    "allowed_scope",
+    "roles",
+    "gates",
+    "plan_steps",
+    "blockers",
+    "warnings"
+  ],
+  "properties": {
+    "intent_change_version": {
+      "const": "0.1"
+    },
+    "change_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "plan_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "request": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mode": {
+      "enum": [
+        "dry-run",
+        "apply"
+      ]
+    },
+    "status": {
+      "enum": [
+        "READY",
+        "BLOCKED",
+        "APPLIED_VERIFICATION_REQUIRED",
+        "APPLIED_VERIFIED",
+        "REJECTED"
+      ]
+    },
+    "intent_delta": {
+      "type": "object"
+    },
+    "impact": {
+      "type": "object"
+    },
+    "allowed_scope": {
+      "type": "object"
+    },
+    "roles": {
+      "type": "object"
+    },
+    "gates": {
+      "type": "object"
+    },
+    "plan_steps": {
+      "type": "array"
+    },
+    "blockers": {
+      "type": "array"
+    },
+    "warnings": {
+      "type": "array"
+    },
+    "engineering_memory": {
+      "type": "object"
+    }
+  }
+}

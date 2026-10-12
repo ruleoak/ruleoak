@@ -1,0 +1,169 @@
+{
+  "snapshot_version": "1.0",
+  "ruleoak_release": "0.50.0",
+  "stable_packages": {
+    "@ruleoak/protocol": [
+      ".",
+      "./schemas/*",
+      "./conformance/*",
+      "./stability/*",
+      "./package.json"
+    ]
+  },
+  "stable_exports": {
+    "@ruleoak/protocol": [
+      "ADAPTER_CONTRACT_VERSIONS",
+      "APPROVAL_RESULT_DECISIONS",
+      "APPROVAL_RESULT_VERSIONS",
+      "AUTHORITY_ENVELOPE_VERSIONS",
+      "AUTHORITY_GRANT_VERSIONS",
+      "CAPABILITY_EVIDENCE_VERSIONS",
+      "CAPABILITY_IDENTITY_VERSIONS",
+      "CRASHLAB_AUTHORITY_EXPECTATIONS",
+      "CRASHLAB_FAILURE_CLASSES",
+      "CRASHLAB_FAILURE_PHASES",
+      "CRASHLAB_IDEMPOTENCY_MODES",
+      "CRASHLAB_INVARIANTS",
+      "CRASHLAB_RETRY_STRATEGIES",
+      "CRASHLAB_SCENARIO_VERSIONS",
+      "EFFECT_RECEIPT_VERSIONS",
+      "EVIDENCE_BUNDLE_FILE_ROLES",
+      "EVIDENCE_BUNDLE_VERSIONS",
+      "EVIDENCE_PRIVACY_PROFILES",
+      "EXECUTION_LEASE_VERSIONS",
+      "EXTENSION_SPI_VERSIONS",
+      "REVOCATION_RECORD_VERSIONS",
+      "REVOCATION_SUBJECT_TYPES",
+      "canonicalProtocolJson",
+      "revocationRecordDigestPayload",
+      "validateAdapterDescriptor",
+      "validateApprovalResult",
+      "validateAuthorityEnvelope",
+      "validateAuthorityGrant",
+      "validateCapabilityEvidence",
+      "validateCapabilityIdentity",
+      "validateCrashLabScenario",
+      "validateEffectReceipt",
+      "validateEvidenceBundleManifest",
+      "validateExecutionLease",
+      "validateExtensionDescriptor",
+      "validateRevocationRecord"
+    ],
+    "@ruleoak/core": [
+      "RULEOAK_EXTENSION_SPI_VERSION",
+      "RuleOakExtensionRegistry",
+      "validateRuleOakExtension"
+    ]
+  },
+  "stable_cli_commands": [
+    "version",
+    "doctor",
+    "check"
+  ],
+  "stable_protocol_contracts": {
+    "capability_identity_evidence": [
+      "1.0"
+    ],
+    "authority_grant": [
+      "1.0",
+      "1.1"
+    ],
+    "authority_envelope": [
+      "1.0"
+    ],
+    "delegation": [
+      "authority-grant-1.1"
+    ],
+    "revocation": [
+      "1.0",
+      "1.1"
+    ],
+    "approval_result": [
+      "1.0"
+    ],
+    "execution_lease": [
+      "1.0",
+      "1.1",
+      "1.2"
+    ],
+    "effect_receipt": [
+      "1.0",
+      "1.1"
+    ],
+    "evidence_bundle": [
+      "3.0"
+    ],
+    "adapter_descriptor": [
+      "1.0",
+      "1.1"
+    ],
+    "crashlab_scenario": [
+      "1.0",
+      "1.1",
+      "2.0",
+      "2.1"
+    ]
+  },
+  "stable_extension_spi_versions": [
+    "1.0"
+  ],
+  "stable_file_formats": [
+    "packages/protocol/schemas/adapter-descriptor.schema.json",
+    "packages/protocol/schemas/approval-result.schema.json",
+    "packages/protocol/schemas/authority-envelope.schema.json",
+    "packages/protocol/schemas/authority-grant.schema.json",
+    "packages/protocol/schemas/capability-evidence.schema.json",
+    "packages/protocol/schemas/capability-identity.schema.json",
+    "packages/protocol/schemas/crashlab-scenario.schema.json",
+    "packages/protocol/schemas/effect-receipt.schema.json",
+    "packages/protocol/schemas/evidence-bundle-manifest.schema.json",
+    "packages/protocol/schemas/execution-lease.schema.json",
+    "packages/protocol/schemas/extension-spi.schema.json",
+    "packages/protocol/schemas/revocation-record.schema.json"
+  ],
+  "stable_declaration_fingerprints": {
+    "@ruleoak/protocol": {
+      "ADAPTER_CONTRACT_VERSIONS": "sha256:0e3bf1d8e781586b8416cca105c026749e28e36a0c60fd446ee1b1b11441d6f9",
+      "APPROVAL_RESULT_DECISIONS": "sha256:77939f20e9b2dd1e5ae8aad375ad86c97ca1b13e215ac3e41a4ec4a0968baef7",
+      "APPROVAL_RESULT_VERSIONS": "sha256:d00043dad2e76db07661917036b1e9f228b7138367f5bd0162c9974099a33fa7",
+      "AUTHORITY_ENVELOPE_VERSIONS": "sha256:18d9fac7f6cd912c381d96e6643f6fe3208d3ea7b2c52544e535ea5af14da5ab",
+      "AUTHORITY_GRANT_VERSIONS": "sha256:96fc5170d08199b23c2346e1ecde40b62743f5cf79f74e18fa9d15b97aba5284",
+      "CAPABILITY_EVIDENCE_VERSIONS": "sha256:360d8b469bdc64795251cfbbcf947e4b3558fce4186a6f4122687342d67fafc3",
+      "CAPABILITY_IDENTITY_VERSIONS": "sha256:70f57f3acce1be26282a61b6b187df825ef17c62a2197d6cf329e73b58e35261",
+      "CRASHLAB_AUTHORITY_EXPECTATIONS": "sha256:7f5a068007143f6e2dc1a5a63297490eb6a622d50b6cf90e9e7a645673b2c105",
+      "CRASHLAB_FAILURE_CLASSES": "sha256:cbcffffe48b55f45705c021064a95db3fad5484cbd12debc1cc88226275665e2",
+      "CRASHLAB_FAILURE_PHASES": "sha256:a4e4ec583126cb3e2177eb252abd98bda9ba9c157b000c9bd9497282e81f8d90",
+      "CRASHLAB_IDEMPOTENCY_MODES": "sha256:8c9daeb796bab4fcc47a654ea7587b80673cc1281bd04cd442372935ceea56b8",
+      "CRASHLAB_INVARIANTS": "sha256:673588268f395952b6363da528e28f40e46aeaa0e4878465c16fa1aaf18c32ad",
+      "CRASHLAB_RETRY_STRATEGIES": "sha256:b4804ce3857c5ac13ba0242ee223b4a23f464ee9d697411dff514d2918893cbf",
+      "CRASHLAB_SCENARIO_VERSIONS": "sha256:534733f7a362c908dfec1a3b9ded5d8bd52470a032355f0ca7974f57e6aad143",
+      "EFFECT_RECEIPT_VERSIONS": "sha256:b6509fc2e621985158110b0999cb3c168c07f78b4c50161f160f4f80cd85ef18",
+      "EVIDENCE_BUNDLE_FILE_ROLES": "sha256:48f6d4a9bb9a4f7c8273bf5ba71db9de806b49954dbbc47b5bf94683c3b71720",
+      "EVIDENCE_BUNDLE_VERSIONS": "sha256:6321879c19ae667386bdba55ed3b4aa77ad766c3b97d12a7d7434e665221098f",
+      "EVIDENCE_PRIVACY_PROFILES": "sha256:1273c75bf6f789fe76f9760e962b308bc6fc1aacfe918b9ae37f6d2217a87c39",
+      "EXECUTION_LEASE_VERSIONS": "sha256:98e58c4b5fe0dfbea834cc082f408306e3d052cd78fcb2c11a86f3292501e1cd",
+      "EXTENSION_SPI_VERSIONS": "sha256:eeadaa2f837d05d47ca7ab08b91f4448df901b1c03ef4954e90d75d04c86e934",
+      "REVOCATION_RECORD_VERSIONS": "sha256:3c9dc457303cc3b51139c3ce8327fe144af2ecd745e65c740840a9eb6f7fcb58",
+      "REVOCATION_SUBJECT_TYPES": "sha256:f4c9a87840e6c97ce2aa38fa2cd5780ce1f62eb8c16c9c5f884452c9a1edbf94",
+      "canonicalProtocolJson": "sha256:7a0126e2a533afdec0cde23162212978bf699c6820656d9105d637c89d3328aa",
+      "revocationRecordDigestPayload": "sha256:41d9a46a851960a08ce3d8a54fca5e896ab16fa120ffe69ecffed02fd4190135",
+      "validateAdapterDescriptor": "sha256:8e6c9ad7b66f66340ebf3d3bcdfd3ed0b3138dd91518bfb8922d6d56e96dace1",
+      "validateApprovalResult": "sha256:cda9414e4d4c6c1c199e257f4fd0f7f574b3bf9eca9a4379e74d60965c798952",
+      "validateAuthorityEnvelope": "sha256:7ea5c22e2f478c5a609b751cf417c30d66351c88b8cf9810ab1469f4298c21ac",
+      "validateAuthorityGrant": "sha256:afa84c2654523331d67c633c7768a78974f48c7c87d1d33ba32c854f6f7ef970",
+      "validateCapabilityEvidence": "sha256:2f5cd6ea42f1f55ca1628ccb8ed9dc6374b7d592f24b621a3fc34bfeae483612",
+      "validateCapabilityIdentity": "sha256:5730fb8144ba9b5b5784198d58ae00ba87d4722f44f300df119d505e8ec2de93",
+      "validateCrashLabScenario": "sha256:d6be3f416572a91990e87c36703f07028957a0e4d26846b3e971827d7afbf700",
+      "validateEffectReceipt": "sha256:4271490d0af22ac6072dd6e21981c16e2a788fff759c49906917ac6c78618072",
+      "validateEvidenceBundleManifest": "sha256:b6016cc29eb7b789419974bab33d4b223b5bfaab9930366b7f02bf57cab3e0fb",
+      "validateExecutionLease": "sha256:74382bd6450b486e9dc27f080498519d143132e893c7d30473efc70bda1596e8",
+      "validateExtensionDescriptor": "sha256:aa1fb46744999a162b2646cd0ad5698d3e65bbc72ad47815fbe6b4c78cb62e9f",
+      "validateRevocationRecord": "sha256:007471a0c52b22df15b1b884c77099ecc69cc1b0aa834bf02ee48f87a95c5d4d"
+    },
+    "@ruleoak/core": {
+      "RULEOAK_EXTENSION_SPI_VERSION": "sha256:24c5f535de8f3d29b45d92116c35cda60be80a877ed1c604e7aca3a047ad600b",
+      "RuleOakExtensionRegistry": "sha256:83294f0a09c7ceed1e6d9440bddd41a8db39cd9651616124fdce572e6978632e",
+      "validateRuleOakExtension": "sha256:494e843b13dae8036acf58129fa0bf72e27431d8f0b7220261e047b9491375d6"
+    }
+  }
+}

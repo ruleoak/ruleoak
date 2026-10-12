@@ -1,0 +1,46 @@
+{
+  "vector_version": "1.0",
+  "contract_id": "adapter_descriptor",
+  "contract_versions": [
+    "1.1"
+  ],
+  "cases": [
+    {
+      "case_id": "adapter_descriptor.valid",
+      "expectation": "valid",
+      "input": {
+        "contract_version": "1.1",
+        "adapter_id": "public-test",
+        "mode": "execute",
+        "observation_capabilities": [
+          {
+            "quality": "remote_response_observed",
+            "boundary": "public-test-response",
+            "statuses": [
+              "unknown"
+            ]
+          }
+        ]
+      },
+      "canonical_json": "{\"adapter_id\":\"public-test\",\"contract_version\":\"1.1\",\"mode\":\"execute\",\"observation_capabilities\":[{\"boundary\":\"public-test-response\",\"quality\":\"remote_response_observed\",\"statuses\":[\"unknown\"]}]}"
+    },
+    {
+      "case_id": "adapter_descriptor.invalid",
+      "expectation": "invalid",
+      "input": {
+        "contract_version": "1.1",
+        "adapter_id": "public-test",
+        "mode": "normalize",
+        "observation_capabilities": [
+          {
+            "quality": "remote_response_observed",
+            "boundary": "public-test-response",
+            "statuses": [
+              "unknown"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

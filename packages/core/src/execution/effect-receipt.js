@@ -1,0 +1,23 @@
+/*
+ * Copyright © 2026 RuleOak Pte. Ltd.
+ * SPDX-FileCopyrightText: 2026 RuleOak Pte. Ltd.
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import { createHmac, randomUUID, timingSafeEqual } from 'node:crypto';
+import { validateEffectReceipt } from '@ruleoak/protocol';
+import { canonicalStringify } from '../decision/receipt.js';
+import { evaluateObligations } from '../authority/obligations.js';
+function unsigned(value={}){const{signature,...rest}=value;return rest;}function equal(a,b){const x=Buffer.from(String(a));const y=Buffer.from(String(b));return x.length===y.length&&timingSafeEqual(x,y);}
+const DEFAULT_BOUNDARIES=Object.freeze({requested_only:'requested-action-only',process_return_observed:'process-return',local_state_observed:'local-state',remote_response_observed:'remote-response',complete_for_adapter:'adapter-defined-complete',partial:'partial-observation',ambiguous:'ambiguous-effect'});
+function normalizeQuality(value,version){if(version==='1.0')return value||'unavailable';if(['complete-for-adapter','inferred','unavailable'].includes(value))throw new Error(`legacy observation quality ${value} requires EffectReceipt v1.0 or an explicit Observation Quality value`);return value||'requested_only';}
+function boundaryFor(quality,outcome,options){if(options.observationBoundary||outcome.observation_boundary)return String(options.observationBoundary||outcome.observation_boundary);const cap=options.descriptor?.contract_version==='1.1'?options.descriptor.observation_capabilities?.find(c=>c.quality===quality):null;if(cap?.boundary)return cap.boundary;if(['requested_only','ambiguous'].includes(quality))return DEFAULT_BOUNDARIES[quality];throw new Error(`EffectReceipt v1.1 ${quality} requires an adapter descriptor or explicit observationBoundary`);}
+export function buildEffectReceipt(lease,outcome={},options={}){
+  if(!lease?.lease_id)throw new Error('effect receipt requires an execution lease');
+  const startedAt=new Date(options.startedAt||outcome.started_at||new Date()).toISOString();const completedAt=new Date(options.completedAt||outcome.completed_at||new Date()).toISOString();
+  const effectVersion=options.effectVersion||'1.1';const quality=normalizeQuality(outcome.observation_quality,effectVersion);
+  const receipt={effect_version:effectVersion,effect_id:options.effectId||`effect_${randomUUID()}`,lease_id:lease.lease_id,decision_id:lease.decision_id,adapter:options.adapter||outcome.adapter||'unknown-adapter',...(effectVersion==='1.1'?{adapter_contract_version:options.descriptor?.contract_version||options.adapterContractVersion||'1.1'}:{}),started_at:startedAt,completed_at:completedAt,status:outcome.status||'unknown',observation_quality:quality,...(effectVersion==='1.1'?{observation_boundary:boundaryFor(quality,outcome,options)}:{}),requested:structuredClone(outcome.requested||{}),observed:structuredClone(outcome.observed||{}),error:outcome.error?structuredClone(outcome.error):null};
+  const validation=validateEffectReceipt(receipt);if(!validation.valid)throw new Error(`invalid effect receipt: ${validation.errors.join('; ')}`);return options.secret?signEffectReceipt(receipt,options.secret):receipt;
+}
+export function signEffectReceipt(receipt,secret){if(!secret)throw new Error('effect receipt signing secret is required');const validation=validateEffectReceipt(unsigned(receipt));if(!validation.valid)throw new Error(`invalid effect receipt: ${validation.errors.join('; ')}`);return{...unsigned(receipt),signature:`hmac-sha256:${createHmac('sha256',String(secret)).update(canonicalStringify(unsigned(receipt))).digest('hex')}`};}
+export function verifyEffectReceipt(receipt,options={}){const validation=validateEffectReceipt(receipt);const errors=[...validation.errors];if(options.lease&&receipt?.lease_id!==options.lease.lease_id)errors.push('effect receipt lease mismatch');if(options.lease&&receipt?.decision_id!==options.lease.decision_id)errors.push('effect receipt decision mismatch');if(new Date(receipt?.completed_at||0).getTime()<new Date(receipt?.started_at||0).getTime())errors.push('effect receipt completed_at precedes started_at');if(options.requireSignature!==false&&!options.secret)errors.push('effect receipt verification secret is required');if(options.secret){if(!receipt?.signature)errors.push('signed effect receipt required');else if(!equal(receipt.signature,signEffectReceipt(unsigned(receipt),options.secret).signature))errors.push('effect receipt signature mismatch');}if(options.lease){const obligations=evaluateObligations(options.lease.obligations||[],{...options.obligationContext,effectReceipt:receipt},'post');errors.push(...obligations.errors);}return{ok:errors.length===0,errors,receipt};}

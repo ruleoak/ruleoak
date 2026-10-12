@@ -1,0 +1,56 @@
+# SPDX-FileCopyrightText: 2026 RuleOak Pte. Ltd.
+# SPDX-License-Identifier: Apache-2.0
+name: RuleOak adoption check
+description: Run local RuleOak onboarding, doctor, or RuleOak Dev candidate verification in a GitHub Actions workspace.
+inputs:
+  mode:
+    description: onboarding, doctor, or dev
+    required: false
+    default: onboarding
+  candidate:
+    description: Candidate source directory or ZIP for mode=dev, relative to the checked-out workspace or absolute.
+    required: false
+    default: ''
+  intent:
+    description: Desired behavioral outcome for mode=dev.
+    required: false
+    default: ''
+  report:
+    description: JSON report path for mode=dev.
+    required: false
+    default: ruleoak-dev-report.json
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v6
+      with:
+        node-version: '24'
+        package-manager-cache: false
+    - name: Bootstrap RuleOak action
+      shell: bash
+      working-directory: ${{ github.action_path }}
+      run: npm ci --ignore-scripts --no-audit --no-fund
+    - name: Run RuleOak diagnostics or Dev verification
+      shell: bash
+      env:
+        RULEOAK_ACTION_MODE: ${{ inputs.mode }}
+        RULEOAK_DEV_CANDIDATE: ${{ inputs.candidate }}
+        RULEOAK_DEV_INTENT: ${{ inputs.intent }}
+        RULEOAK_DEV_REPORT: ${{ inputs.report }}
+      run: |
+        set -euo pipefail
+        cd "$GITHUB_WORKSPACE"
+        if [ "$RULEOAK_ACTION_MODE" = "doctor" ]; then
+          node "${{ github.action_path }}/packages/cli/bin/ruleoak.js" doctor --dir "$GITHUB_WORKSPACE" --json
+        elif [ "$RULEOAK_ACTION_MODE" = "dev" ]; then
+          test -n "$RULEOAK_DEV_CANDIDATE" || { echo "mode=dev requires candidate" >&2; exit 2; }
+          test -n "$RULEOAK_DEV_INTENT" || { echo "mode=dev requires intent" >&2; exit 2; }
+          node "${{ github.action_path }}/packages/cli/bin/ruleoak.js" dev "$RULEOAK_DEV_CANDIDATE" \
+            --intent "$RULEOAK_DEV_INTENT" \
+            --dir "$GITHUB_WORKSPACE" \
+            --no-handoff \
+            --out "$RULEOAK_DEV_REPORT" \
+            --json
+        else
+          node "${{ github.action_path }}/packages/cli/bin/ruleoak.js" onboard --dir "$GITHUB_WORKSPACE" --json
+        fi

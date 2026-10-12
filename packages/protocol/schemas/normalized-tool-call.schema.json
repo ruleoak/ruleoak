@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RuleOak Normalized Tool Call",
+  "type": "object",
+  "required": [
+    "call_id",
+    "timestamp",
+    "actor",
+    "tool",
+    "target",
+    "arguments",
+    "context"
+  ],
+  "properties": {
+    "call_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "timestamp": {
+      "type": "string",
+      "minLength": 1
+    },
+    "actor": {
+      "type": "object",
+      "required": [
+        "type",
+        "name",
+        "session_id"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "agent",
+            "user",
+            "script",
+            "service"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "session_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "tool": {
+      "type": "object",
+      "required": [
+        "name",
+        "category",
+        "operation"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "category": {
+          "enum": [
+            "file",
+            "filesystem",
+            "shell",
+            "email",
+            "web",
+            "memory",
+            "payment",
+            "calendar",
+            "custom"
+          ]
+        },
+        "operation": {
+          "enum": [
+            "read",
+            "write",
+            "delete",
+            "send",
+            "execute",
+            "search",
+            "create",
+            "update",
+            "run"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "target": {
+      "type": "object",
+      "required": [
+        "resource",
+        "scope",
+        "sensitivity"
+      ],
+      "properties": {
+        "resource": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "sensitivity": {
+          "enum": [
+            "public",
+            "internal",
+            "private",
+            "secret",
+            "unknown"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "arguments": {
+      "type": "object"
+    },
+    "context": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

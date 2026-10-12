@@ -1,0 +1,9 @@
+{
+  "contract_version": "1.0",
+  "engineering_memory_version": "0.1",
+  "minimum_historical_regression_scenarios": 10,
+  "minimum_expected_regression_match_rate": 1.0,
+  "minimum_history_changes_plan_or_verification_rate": 1.0,
+  "truth_boundary": "Engineering memory may strengthen planning and evidence requirements; historical records never independently prove a current implementation.",
+  "name": "Executable Engineering Memory"
+}

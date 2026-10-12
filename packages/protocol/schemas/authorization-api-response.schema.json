@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ruleoak/ruleoak/schemas/authorization-api-response.schema.json",
+  "title": "RuleOak Authorization API Response",
+  "type": "object",
+  "required": ["api_version", "decision"],
+  "properties": {
+    "api_version": { "const": "1.0" },
+    "decision": {
+      "type": "object",
+      "required": ["action", "reason"],
+      "properties": {
+        "action": { "enum": ["allow", "deny", "needs_approval", "dry_run_only"] },
+        "reason": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "classification": { "type": "object" },
+    "normalized_call": { "type": "object" },
+    "approval": {
+      "anyOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "required": ["approval_id", "status"],
+          "properties": {
+            "approval_id": { "type": "string", "minLength": 1 },
+            "status": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": true
+        }
+      ]
+    },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "event_id": { "type": "string" },
+        "index": { "type": "integer", "minimum": 1 }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

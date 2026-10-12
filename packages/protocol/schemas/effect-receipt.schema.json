@@ -1,0 +1,251 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ruleoak.com/schemas/effect-receipt-v1.json",
+  "title": "RuleOak Effect Receipt v1",
+  "type": "object",
+  "required": [
+    "effect_version",
+    "effect_id",
+    "lease_id",
+    "decision_id",
+    "adapter",
+    "started_at",
+    "completed_at",
+    "status",
+    "observation_quality",
+    "observed"
+  ],
+  "properties": {
+    "effect_version": {
+      "enum": [
+        "1.0",
+        "1.1"
+      ]
+    },
+    "effect_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lease_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "decision_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "adapter": {
+      "type": "string",
+      "minLength": 1
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "enum": [
+        "success",
+        "failure",
+        "partial",
+        "unknown"
+      ]
+    },
+    "observation_quality": {
+      "type": "string"
+    },
+    "observation_boundary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+    },
+    "requested": {
+      "type": "object"
+    },
+    "observed": {
+      "type": "object"
+    },
+    "error": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "signature": {
+      "type": "string"
+    },
+    "adapter_contract_version": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "effect_version": {
+            "const": "1.0"
+          }
+        },
+        "required": [
+          "effect_version"
+        ]
+      },
+      "then": {
+        "properties": {
+          "observation_quality": {
+            "enum": [
+              "complete-for-adapter",
+              "partial",
+              "inferred",
+              "unavailable"
+            ]
+          }
+        },
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "observation_boundary"
+              ]
+            },
+            {
+              "required": [
+                "adapter_contract_version"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "effect_version": {
+            "const": "1.1"
+          }
+        },
+        "required": [
+          "effect_version"
+        ]
+      },
+      "then": {
+        "required": [
+          "observation_boundary",
+          "adapter_contract_version"
+        ],
+        "properties": {
+          "observation_quality": {
+            "enum": [
+              "requested_only",
+              "process_return_observed",
+              "local_state_observed",
+              "remote_response_observed",
+              "complete_for_adapter",
+              "partial",
+              "ambiguous"
+            ]
+          },
+          "adapter_contract_version": {
+            "const": "1.1"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "effect_version": {
+            "const": "1.1"
+          },
+          "observation_quality": {
+            "enum": [
+              "requested_only",
+              "ambiguous"
+            ]
+          }
+        },
+        "required": [
+          "effect_version",
+          "observation_quality"
+        ]
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "const": "unknown"
+          },
+          "adapter_contract_version": {
+            "const": "1.1"
+          }
+        },
+        "required": [
+          "adapter_contract_version"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "effect_version": {
+            "const": "1.1"
+          },
+          "observation_quality": {
+            "const": "partial"
+          }
+        },
+        "required": [
+          "effect_version",
+          "observation_quality"
+        ]
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "enum": [
+              "partial",
+              "unknown"
+            ]
+          },
+          "adapter_contract_version": {
+            "const": "1.1"
+          }
+        },
+        "required": [
+          "adapter_contract_version"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "effect_version": {
+            "const": "1.1"
+          },
+          "observation_quality": {
+            "const": "complete_for_adapter"
+          }
+        },
+        "required": [
+          "effect_version",
+          "observation_quality"
+        ]
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "enum": [
+              "success",
+              "failure",
+              "partial"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}

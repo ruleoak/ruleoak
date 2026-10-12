@@ -1,0 +1,33 @@
+{
+  "baseline": "OpenSSF OSPS Baseline",
+  "version": "2026.08.28",
+  "maturity_level": 1,
+  "assessment_scope": "RuleOak authoritative public repository",
+  "non_claim": "Source evidence cannot prove hosted repository settings. external_required and hybrid controls must be verified on the live authoritative repository before any compliance claim.",
+  "controls": [
+    {"id":"OSPS-AC-01.01","status":"external_required","evidence":["docs/security/OPEN_SOURCE_SECURITY_BASELINE.md"],"external_check":"Require MFA/passkeys for sensitive repository resources."},
+    {"id":"OSPS-AC-02.01","status":"external_required","evidence":["docs/security/OPEN_SOURCE_SECURITY_BASELINE.md"],"external_check":"Verify new collaborators receive lowest privilege/manual assignment."},
+    {"id":"OSPS-AC-03.01","status":"external_required","evidence":["docs/security/OPEN_SOURCE_SECURITY_BASELINE.md"],"external_check":"Protect main from direct commits."},
+    {"id":"OSPS-AC-03.02","status":"external_required","evidence":["docs/security/OPEN_SOURCE_SECURITY_BASELINE.md"],"external_check":"Protect main from deletion/require explicit confirmation."},
+    {"id":"OSPS-BR-01.01","status":"source_pass","evidence":["scripts/check_workflow_security.mjs",".github/workflows/ci.yml"],"note":"Workflow inputs are bounded and release version input is validated before use."},
+    {"id":"OSPS-BR-01.03","status":"source_pass_external_execution_required","evidence":["scripts/check_workflow_security.mjs",".github/workflows/ci.yml",".github/workflows/dependency-review.yml"],"note":"PR workflows have read/minimal permissions and no repository-secret references; live Actions settings remain externally verifiable."},
+    {"id":"OSPS-BR-03.01","status":"source_pass_live_channel_required","evidence":["README.md","package.json"],"external_check":"Verify official HTTPS endpoints remain TLS-only."},
+    {"id":"OSPS-BR-03.02","status":"hybrid","evidence":[".github/workflows/release-candidate.yml",".github/workflows/publish.yml","docs/release-verification.md"],"external_check":"Verify GitHub attestations and npm trusted-publishing provenance on real releases."},
+    {"id":"OSPS-BR-07.01","status":"hybrid","evidence":[".gitignore","scripts/check_workflow_security.mjs","docs/local-secret-management.md"],"external_check":"Enable secret scanning and push protection on authoritative GitHub repository."},
+    {"id":"OSPS-DO-01.01","status":"source_pass","evidence":["README.md","docs/quickstart.md","docs/getting-started.md","DEMO.md"]},
+    {"id":"OSPS-DO-02.01","status":"source_pass","evidence":["CONTRIBUTING.md","SUPPORT.md",".github/ISSUE_TEMPLATE/bug.yml"]},
+    {"id":"OSPS-GV-02.01","status":"hybrid","evidence":["CONTRIBUTING.md","SUPPORT.md"],"external_check":"Enable GitHub Issues/Discussions as documented."},
+    {"id":"OSPS-GV-03.01","status":"source_pass","evidence":["CONTRIBUTING.md","DCO.md"]},
+    {"id":"OSPS-LE-02.01","status":"source_pass","evidence":["LICENSE","LICENSES/Apache-2.0.txt","REUSE.toml"]},
+    {"id":"OSPS-LE-02.02","status":"source_pass","evidence":["LICENSE","scripts/check_npm_pack_contents.py"]},
+    {"id":"OSPS-LE-03.01","status":"source_pass","evidence":["LICENSE","LICENSES/Apache-2.0.txt"]},
+    {"id":"OSPS-LE-03.02","status":"source_pass","evidence":["scripts/check_npm_pack_contents.py","packages/core/LICENSE","packages/cli/LICENSE","packages/protocol/LICENSE"]},
+    {"id":"OSPS-QA-01.01","status":"external_required","evidence":["README.md"],"external_check":"Publish authoritative repository at https://github.com/ruleoak/ruleoak."},
+    {"id":"OSPS-QA-01.02","status":"external_required","evidence":["GOVERNANCE.md"],"external_check":"Preserve publicly readable Git history identifying changes/authors/timestamps."},
+    {"id":"OSPS-QA-02.01","status":"source_pass","evidence":["package.json","package-lock.json"]},
+    {"id":"OSPS-QA-04.01","status":"not_applicable_single_repository","evidence":["docs/project/PUBLIC_REPOSITORY_SCOPE.md"],"note":"The public release is defined as one authoritative source repository."},
+    {"id":"OSPS-QA-05.01","status":"source_pass","evidence":["tests/repository-structure-check.js","scripts/check_public_private_boundary.mjs"]},
+    {"id":"OSPS-QA-05.02","status":"source_pass","evidence":["tests/repository-structure-check.js","scripts/check_public_private_boundary.mjs"]},
+    {"id":"OSPS-VM-02.01","status":"source_pass","evidence":["SECURITY.md","security-insights.yml"]}
+  ]
+}

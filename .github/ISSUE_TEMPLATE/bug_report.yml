@@ -1,0 +1,49 @@
+name: Bug report
+description: Report a reproducible RuleOak defect
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not report security vulnerabilities here. Use GitHub private vulnerability reporting as described in SECURITY.md.
+  - type: input
+    id: version
+    attributes:
+      label: RuleOak version
+      placeholder: 0.50.0
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Operating system, Node.js version, package manager
+      placeholder: macOS 15, Node.js 24.18.0, npm 11.18.0
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Use synthetic data and remove secrets or private evidence
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Sanitized diagnostics
+      description: Include relevant output from ruleoak doctor or ruleoak policy lint
+      render: text

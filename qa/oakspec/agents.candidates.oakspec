@@ -1,0 +1,44 @@
+{
+  "candidate_bundle_version": "1.0",
+  "bundle_id": "oakspec.candidates.agents.83e7b0d8a8935aac",
+  "adapter": "agents",
+  "source": {
+    "path": "examples/oakspec/AGENTS.md",
+    "digest_sha256": "83e7b0d8a8935aac170482bf044292c2ab1e3675e727c0d59383e7e03029b094"
+  },
+  "authority_statement": "Imported candidates are not declared Intent and are not verification evidence.",
+  "candidates": [
+    {
+      "id": "cand.agents.001.line:3",
+      "status": "CANDIDATE",
+      "candidate_kind": "constraint",
+      "statement": "MUST preserve independent evidence authority.",
+      "provenance": "INFERRED",
+      "source_locator": "line:3",
+      "authority": {
+        "declared_intent": false,
+        "verification_evidence": false,
+        "promotion_required": true
+      },
+      "metadata": {
+        "line": 3
+      }
+    },
+    {
+      "id": "cand.agents.002.line:4",
+      "status": "CANDIDATE",
+      "candidate_kind": "constraint",
+      "statement": "Never promote inferred interoperability candidates directly into declared Intent.",
+      "provenance": "INFERRED",
+      "source_locator": "line:4",
+      "authority": {
+        "declared_intent": false,
+        "verification_evidence": false,
+        "promotion_required": true
+      },
+      "metadata": {
+        "line": 4
+      }
+    }
+  ]
+}

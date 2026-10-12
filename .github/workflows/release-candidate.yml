@@ -1,0 +1,94 @@
+# SPDX-FileCopyrightText: 2026 RuleOak Pte. Ltd.
+# SPDX-License-Identifier: Apache-2.0
+
+name: Build release candidate
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm_version:
+        description: "Exact repository version to package, for example 0.50.0"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+  attestations: write
+  artifact-metadata: write
+
+concurrency:
+  group: release-candidate-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Validate, pack and attest v${{ inputs.confirm_version }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout selected ref
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: 24
+          package-manager-cache: false
+
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Verify selected version
+        env:
+          CONFIRM_VERSION: ${{ inputs.confirm_version }}
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFileSync } from 'node:fs'
+          const actual = JSON.parse(readFileSync('package.json', 'utf8')).version
+          if (actual !== process.env.CONFIRM_VERSION) {
+            throw new Error(`repository version ${actual} does not match ${process.env.CONFIRM_VERSION}`)
+          }
+          NODE
+
+      - name: Run publish-readiness checks
+        run: npm run check:publish
+
+      - name: Run standards and launch-readiness checks
+        run: npm run check:standards && npm run check:launch
+
+      - name: Build package tarballs, SBOM and manifest
+        run: npm run release:candidate
+
+      - name: Attest package tarballs
+        uses: actions/attest@508db95dd578ae2727ebd6217d5ba78e4fbda05d
+        with:
+          subject-path: 'release-candidate/*.tgz'
+
+      - name: Attest packages against CycloneDX SBOM
+        uses: actions/attest@508db95dd578ae2727ebd6217d5ba78e4fbda05d
+        with:
+          subject-path: 'release-candidate/*.tgz'
+          sbom-path: release-candidate/sbom.cdx.json
+
+      - name: Attest release metadata
+        uses: actions/attest@508db95dd578ae2727ebd6217d5ba78e4fbda05d
+        with:
+          subject-path: |
+            release-candidate/release-manifest.json
+            release-candidate/SHA256SUMS.txt
+            release-candidate/sbom.cdx.json
+
+      - name: Upload release-candidate artifact
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        with:
+          name: ruleoak-v${{ inputs.confirm_version }}-release-candidate
+          path: release-candidate/
+          if-no-files-found: error
+          retention-days: 14
