@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: 2026 RuleOak Pte. Ltd.
  * SPDX-License-Identifier: Apache-2.0 */
 import assert from 'node:assert/strict';
-import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, renameSync, rmSync, symlinkSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, realpathSync, renameSync, rmSync, symlinkSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { inferFilesystemEffectContract, inferMcpEffectContract, verifyFilesystemPostcondition } from '../src/index.js';
@@ -50,7 +50,8 @@ if(process.platform!=='win32') {const real=join(root,'real.txt'),link=join(root,
 const outside=join(tmpdir(),'ruleoak-effect-outside.txt');
 assert.equal(inferFilesystemEffectContract({operation:'write_file',path:outside,content:'x'},{allowedRoots:[root]}),null);
 const scoped=inferFilesystemEffectContract({operation:'write_file',path:target,content:'scoped'},{allowedRoots:[root]});
-assert.equal(scoped.path_guard.allowed_root,root);
+// Filesystem effect identity is canonical. On macOS, /var/... may resolve to /private/var/....
+assert.equal(scoped.path_guard.allowed_root,realpathSync(root));
 // If path resolution changes after dispatch (for example via a symlinked parent),
 // verification must become ambiguous instead of certifying a different target.
 if(process.platform!=='win32') {
