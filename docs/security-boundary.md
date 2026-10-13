@@ -42,7 +42,7 @@ It does not claim universal containment of the caller or host.
 
 ## Enforcement and bypass
 
-For transport wrappers, RuleOak evaluates client-to-server action requests before they reach the guarded server. It cannot observe or prevent side effects performed through an alternate direct route.
+For transport wrappers, RuleOak evaluates client-to-server action requests before they reach the guarded server. RuleOak does not observe or prevent side effects performed through an alternate direct route.
 
 For SDK integrations, the developer must invoke the guarded function/tool rather than a retained unguarded executor. Treat unguarded references as a bypass path in the application threat model.
 

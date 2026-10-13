@@ -25,6 +25,6 @@ try{
  test('CRC validation and cleanup',()=>{const p=join(root,'bad.zip');writeFileSync(p,zip([{name:'a',data:'hello',badCrc:true}]));const before=readdirSync(tmpdir()).filter(p=>p.startsWith('ruleoak-candidate-')).sort();assert.throws(()=>extractCandidateZip(p),/CRC/);assert.deepEqual(readdirSync(tmpdir()).filter(p=>p.startsWith('ruleoak-candidate-')).sort(),before);});
  test('metadata bounds before source read',()=>{const dir=join(root,'sparse');mkdirSync(dir);const p=join(dir,'large');writeFileSync(p,'');truncateSync(p,9*1024*1024);assert.throws(()=>scanCandidateTree(dir),/byte limit/);});
  test('symlink rejected',()=>{const dir=join(root,'links');mkdirSync(dir);symlinkSync(root,join(dir,'link'));assert.throws(()=>scanCandidateTree(dir),/regular/);});
- test('case-ambiguous directory rejected',()=>{const dir=join(root,'case');mkdirSync(dir);writeFileSync(join(dir,'A'),'a');writeFileSync(join(dir,'a'),'b');assert.throws(()=>scanCandidateTree(dir),/ambiguous/);});
+ test('case-ambiguous directory rejected when host filesystem can represent both names',()=>{const dir=join(root,'case');mkdirSync(dir);writeFileSync(join(dir,'A'),'a');writeFileSync(join(dir,'a'),'b');const names=readdirSync(dir);if(names.includes('A')&&names.includes('a'))assert.throws(()=>scanCandidateTree(dir),/ambiguous/);else{assert.equal(names.length,1);assert.doesNotThrow(()=>scanCandidateTree(dir));}});
  console.log(`candidate ingestion PASS: ${count} cases`);
 }finally{rmSync(root,{recursive:true,force:true});}
